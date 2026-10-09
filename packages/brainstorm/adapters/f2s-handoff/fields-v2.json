@@ -1,0 +1,47 @@
+[
+  {
+    "field_id": "experience-goal",
+    "f2s_target": "Production definition: experience goal",
+    "required_at_handoff": true
+  },
+  {
+    "field_id": "core-loop",
+    "f2s_target": "Production definition: complete core loop",
+    "required_at_handoff": true
+  },
+  {
+    "field_id": "scope",
+    "f2s_target": "Production definition: scope and exclusions",
+    "required_at_handoff": true
+  },
+  {
+    "field_id": "validation-depth",
+    "f2s_target": "Production definition: validation questions and depth",
+    "required_at_handoff": false
+  },
+  {
+    "field_id": "presentation-feedback",
+    "f2s_target": "Production definition: necessary presentation and feedback",
+    "required_at_handoff": false
+  },
+  {
+    "field_id": "lifecycle-environment",
+    "f2s_target": "Production definition: lifecycle and formal environment",
+    "required_at_handoff": false
+  },
+  {
+    "field_id": "rules-state",
+    "f2s_target": "Design baseline: choices, rules and state",
+    "required_at_handoff": false
+  },
+  {
+    "field_id": "risks-decisions",
+    "f2s_target": "Design baseline: risks, decisions and assumptions",
+    "required_at_handoff": false
+  },
+  {
+    "field_id": "budget-authority",
+    "f2s_target": "Production definition: budget and authority",
+    "required_at_handoff": false
+  }
+]

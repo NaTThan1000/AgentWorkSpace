@@ -1,0 +1,394 @@
+{
+  "canonical_sha256": {
+    ".gitignore": "97a5448475797834b4b9d0db8779559d773d1011666085af58c1a8602262cc9d",
+    "AGENTS.md": "c66f170c10bd0622b36f4b891b0187194fe4a3cfcd72a7549b42f4da55ec1d0d",
+    "COMMAND_MANUAL.md": "880f5a39d0c65e2d49be7f1713fbf56176537913c4197fc2d9d28f2785f68ba7",
+    "Clippings/README.md": "2c4d9027f0102892ce45e0c0ee4594c4c0bf00cbaa89f3eb0db8540a12297478",
+    "NOW.md": "c8823065c4b83ffbb505798f5f83d1f04512e9fb613188d6883e3d226ba23d61",
+    "README.md": "504bec7558b0560d21831731d5584e92ef48b45c485ce880a7c572ac2197d161",
+    "_release.json": "eb4a3cd294c72176ef41305d761e03a267872c90d47108f2eea077e3c3936541",
+    "domains/README.md": "a74f8bc9d6b0f2efce0e559abf4ee4849716cd1188058751832ea73a83342340",
+    "domains/domain.template.md": "209462a85148dc05573aab91181ae7a002d63e0b20867688a90c4e64cf173fca",
+    "groups/README.md": "41f9435fc39d6a589817d855e1034ac9e8cd97a27132fc50855134fd51b45b0b",
+    "groups/group.template.md": "58b90a2c5100e55214fdb13b5dc87bca29640ec6acf80b26f52b6345864470de",
+    "raw-sources/README.md": "b8c13298539ffb3cf347daa0d4344927cfd1fbc66c3a37bfbddea8608adb4863",
+    "raw-sources/raw-source.template.md": "a8a07cabb01a321bc3ba9e5f35b8271592a08004c198344338e9147ec48ab6c1",
+    "system/README.md": "256ed87160e30de63aec211ddcbfe4b471f4d61fb8bd9f2a888db10b6afc389c",
+    "system/integrations/IMA-GUIDE.md": "e12edcc7493d3ffc0c240668742e5a40e2d86aa05dd964e21c8e350c6abad9b1",
+    "system/integrations/README.md": "d1e430d032e3284f2760e54fc999c4dee5ccb4c3b0286879040481837c19d38d",
+    "system/integrations/ima-config.template.json": "7d524ba265641271fb4400fddc70978672746ab3fc64ed36216149d496bcc230",
+    "system/maintenance/CHANGELOG.md": "c54092b273b98fd3e2282623d65fb5785cdcf8a890b47334c9cca72bcc33e4a0",
+    "system/maintenance/CHANGELOG_archive/README.md": "d51c95c7112ec85dd20f79c071d1899ef4adea780c00684bdaecbd05a3e36c76",
+    "system/maintenance/README.md": "3daaa07d4d19954dce69d094a02ff73220702a3222634d49c5a80665b40a8d7d",
+    "system/maintenance/SETUP.md": "c92efc9c5e1c3eec11c08be2b5bf8a4661994f4c9606bc171e33e6fa836324ee",
+    "system/maintenance/checklists/README.md": "5fab014dd41b9ad3221bb779fcfd7abb2d16c5c82e4f0edf9d19ef30d671e721",
+    "system/maintenance/checklists/audit-ingest-depth-history.ps1": "94fde11fa5ace98a42f400e8734aea2cc35f1eb93dd5fc7db909697939b49439",
+    "system/maintenance/checklists/check-depth-remediation.ps1": "fb6c01e1777aa4e929e913b9c44fbf1c8872237e154111f0bab13c2674a79430",
+    "system/maintenance/checklists/check-raw-depth.ps1": "834336f1acde51e5c4ecdcaee21288481d7b3c7874a9dc92ded86b3ecd250555",
+    "system/maintenance/checklists/check-raw-style.ps1": "62f52dedb81cb4edf94de092ac2f4749c5302f9c7a945ceb51e00156147e60eb",
+    "system/maintenance/checklists/check-wiki-groups.ps1": "af66f1c3342cc6ebc50cc800d51dbb87ae829a5f73847299c4388175679c6b8b",
+    "system/maintenance/checklists/clippings-path-resolver.ps1": "3b982b74a57bb2ec7e261c3b8344632e9cad447178e31f8eed97b89fa9229c04",
+    "system/maintenance/checklists/content-backtest.ps1": "dc3fcf212133aa4178ae7cc9e94e4c803f0dd0ddefe73adaf8d1c359574d33f3",
+    "system/maintenance/checklists/get-wiki-group-review-scope.ps1": "d7a2ed4cc643a365b3d0a8e4913cc13e2eaa74982f05a06ce86c943cb8cd5da1",
+    "system/maintenance/checklists/ingest-control.ps1": "54fa31cc615ad7666c9c1f21f79a8881118d900531962ff1f88c8e26e7720921",
+    "system/maintenance/checklists/ingest-package-data-v1.schema.json": "a72f20501ecdfda019c60b6d0d1d9cc5771ed8aa2aca19fed3517a154b3c1e26",
+    "system/maintenance/checklists/ingest-semantic-review.md": "808cbb69e41cdf666352a91d662ffe36d177653407ed14fb115712e44794b28f",
+    "system/maintenance/checklists/ingest-stage-gates.md": "46daff3ccd96209fe7d71c22d81e4b95b6663f4f55d844e6d96836bb3807f305",
+    "system/maintenance/checklists/initialization-check.md": "1cbaebf5b8ddcfc24f867f3ab09be2b97526b8e601f18ba63c49993795fc6902",
+    "system/maintenance/checklists/initialize-wiki-group-fields.ps1": "28b358931e2a58daa33193588e6cc80899c0bce216c57f98a80cfcf6b3b5a4d0",
+    "system/maintenance/checklists/knowledge-health-check.md": "48cfad8762bf518a821997a45ed8ee8ae4cb0504ee3c9fbdc8af1a9ea8242f71",
+    "system/maintenance/checklists/prepare-ingest-context.ps1": "9351eddc687ed1fd6ce43f3a73ac2f07411764116883c970d0561d16449a1abd",
+    "system/maintenance/checklists/prepare-wiki-group-review.ps1": "393c4e4869725d99841cf5adb9fbcf1d866c33d5d00bd8b8c916ea83402028f4",
+    "system/maintenance/checklists/release-package-check.md": "88227c9ed1108c9c678cb5b4b3fd8b74364fbf2bfefe4c120f957abea4c52340",
+    "system/maintenance/checklists/render-ingest-package.ps1": "90503fe8a049c8a68751053180512402912a5ee539dbcac4b7e79c25c12bd476",
+    "system/maintenance/checklists/run-ingest-maintenance.ps1": "d81c3df9580e1f1b5837c952f0d3d0666629f697a49eeed79c7bf11b116e34f2",
+    "system/maintenance/checklists/run-platform-contract.ps1": "dae02948f727bff6464c8917fe42f6cfd60bcaa59b4310b96e37da0e6b7db29d",
+    "system/maintenance/checklists/run-query-contract.ps1": "cb0306a3a320428bcc49717136a2e8bb24cd69d7f88c0c40aa53a5bde4e8f8da",
+    "system/maintenance/checklists/run-release-contract.ps1": "bef4625ae711730e11b21d3074073bdcbb8d4dbca853eb1e6c92f01d0ceeb26b",
+    "system/maintenance/checklists/source-audit-vnext.ps1": "a6e754ebfae1db69e83c3bbf8c717e9d19441e3fb7c5cd24d170f6d2b44b8d92",
+    "system/maintenance/checklists/source-content-audit-standard-v1.md": "8795775c3efc1ec758c7005b692bc43e2752bdc32f41653dd4800e91cf127922",
+    "system/maintenance/checklists/source-content-audit.ps1": "477a32657def7959784de271c38493064c30da6f10cbfd89fef67e6ad0bee4d1",
+    "system/maintenance/checklists/sync-capacity-risks.ps1": "a8cd6e0bfffd2c76cdbcf3d61b1bed4772478da0c729da6b824e1638d764fa37",
+    "system/maintenance/checklists/sync-quick-reference-groups.ps1": "c4c3260c8025709ce7435fb71182bf754c23bbeebc5204d7df05a4885ddcea75",
+    "system/maintenance/checklists/sync-wiki-groups.ps1": "2f7918d42a90bf9cbaaf13d8b1207a7301d6833093ff0c3edc0d2ab3ea1caf03",
+    "system/maintenance/checklists/validate-wiki-group-query-plan.ps1": "dba15ed1fb36eda1a4dad10e82fbfe95f8c23b6d685699273f50a1f05731ae2c",
+    "system/maintenance/checklists/verify-wiki-split.ps1": "e770c7c3d2b47c3d30169f66e0b9d3dd1d185cbd0c831f8b0a120bc546ffa16e",
+    "system/maintenance/group-proposals/README.md": "be336a3c1406b77c59f321838f4f520602ac7543ebef42cfff7b6240ad4a9470",
+    "system/maintenance/ingest-runs/index.json": "1a7fdb40a1c2b9a9b573aa97069e8bafa1d1f3ce2c5ebaddc5094f47d76803ce",
+    "system/maintenance/initialize-knowledge.ps1": "2c9103a40c4c10536ec4557e5c5f80043e71e8ff621b9d6141bb2a26afd357a2",
+    "system/maintenance/receipts/wiki-group-query-selection.template.json": "2cb5b4b40bef98c741bda83e9c02b38277db8e4c5c8be55e9e7ed045cc97944c",
+    "system/maintenance/schemas/ingest-semantic-review-v1.schema.json": "86bd4c4b5bbea9d81833ad792c5f2f42899c8ee4612918f245ca97b183f010e0",
+    "system/maintenance/schemas/wiki-group-review-v1.schema.json": "3b8b3490440652c6fd0b7156bf2f7592b469b538e4f2a42d17f6d99c9afb11c4",
+    "system/maintenance/setup-wizard.ps1": "cd2087e0823631921a3118381fae4e1d061a393c6ba304de42178d0d6df525b0",
+    "system/maintenance/setup-wizard.zh-CN.json": "decb273cdad4a0443b1c4e4a2c6d43db08feffad995664f13fcf91f30faf2e8d",
+    "system/protocols/INGEST_PROTOCOL.md": "e72cf333c6f7b80140badca1b02a8de750ce2b6adf2100f158dca4218f7a39ea",
+    "system/protocols/MODEL_ROUTING.md": "395d972201124bbbea52d5c934b3ab46a2bbe94fcf96ff5b937c501d9cbad0d7",
+    "system/protocols/QUERY_PROTOCOL.md": "3ccbd50e561c7688db11f435c6402de110d708afbc75449baa3a2af985e8388c",
+    "system/protocols/RUNTIME_ROUTING.md": "cb6735dd1fef3908826e414099bc0ae8635054d024e5a9615edec88277d81b14",
+    "system/protocols/SCORING_SYSTEM.md": "05302daf65d8a8ac875feeea0352cf70304076eb7af5a59786af7dec10518b03",
+    "system/protocols/WIKI-LINK-STANDARD.md": "f266b77de8a333a604e167c7af39f992a5e1cba1ebb7d7c1fcf170ab64b592bf",
+    "system/registry/KNOWLEDGE_SCOPE.md": "6d8a262668abbc2bc04bc70c7d459a7b6339de5cc2fa145e33bf0d7d2fe282b9",
+    "system/registry/KNOWLEDGE_STATUS.md": "f383354eddb7607f9fe1e6f4a872550985ed6ed94116f3e6bfed6af6b350f188",
+    "system/registry/index.md": "cd7dc512c6abd7027f065629c09b901180400c8b4e81a94bb84a1dd0baa60292",
+    "system/registry/ingest-auto-review-state.json": "2ba908084dd32d253da8a170c71f35fcee8f3af4ebffa34a8176043bfc846463",
+    "system/registry/ingest-semantic-review-policy.json": "5b0c7c91a04643cdd50dfd54c96000943e46c1a0180b198b16e891c5601d4c7f",
+    "system/registry/quick-reference.md": "7665d8d211541ae7861209d56d7ae45606d8685e15445f59a609e65816251316",
+    "system/registry/raw-list.md": "3f463374447e8cba113da7982de68157d596a149a20caf5c43a9a45209fb913f",
+    "system/registry/skipped-sources.md": "841b3411998dfe8e20a0974958939163e4d2171d0541554eda9d3b473bd66736",
+    "wiki/README.md": "0908b3fabb46a6bf4dbfd3eaa24d0b73f588c55c44a8f09eb31c083b9f8393ba",
+    "wiki/wiki.template.md": "fa9cb8c1b8b3d6e9db64f92a86fc6ae4d5d7da3922c45f59aa098d94e7398eda"
+  },
+  "component_id": "knowledge",
+  "files": {
+    ".gitignore": [
+      "6314702d4fa1fc0bef678ff591cc24c62d21e4590f9e7cf40c814d09f15801b9",
+      "97a5448475797834b4b9d0db8779559d773d1011666085af58c1a8602262cc9d"
+    ],
+    "AGENTS.md": [
+      "923b10757fcc8e3d8e1acaedb95e4cc12aed94d43c6ae1ec6fafd66dc59c0822",
+      "c66f170c10bd0622b36f4b891b0187194fe4a3cfcd72a7549b42f4da55ec1d0d"
+    ],
+    "COMMAND_MANUAL.md": [
+      "78f950b95c99d9ee9dfd8fde7122a96924aa0af4caa3674f8de4f1cc5d9c8670",
+      "880f5a39d0c65e2d49be7f1713fbf56176537913c4197fc2d9d28f2785f68ba7"
+    ],
+    "Clippings/README.md": [
+      "2c4d9027f0102892ce45e0c0ee4594c4c0bf00cbaa89f3eb0db8540a12297478",
+      "84adc939e8692be105b0056b05bcadbb262f350e6628d57f32d5361335fa3f68"
+    ],
+    "NOW.md": [
+      "07f1dad35ef7aa8e8d7996d1b24441d1aab25484cf131baae19f593f1e4f7437",
+      "c8823065c4b83ffbb505798f5f83d1f04512e9fb613188d6883e3d226ba23d61"
+    ],
+    "README.md": [
+      "504bec7558b0560d21831731d5584e92ef48b45c485ce880a7c572ac2197d161",
+      "61513e3534174a9b870d4c62cd919fe91a51ea5760aecf4c446edd8209c31694"
+    ],
+    "_release.json": [
+      "c19088ceaa774f2ceaffa79249b2ba4c17762c1f437d60c6aaeebde71a2a9b38",
+      "eb4a3cd294c72176ef41305d761e03a267872c90d47108f2eea077e3c3936541"
+    ],
+    "domains/README.md": [
+      "6469fac640782bf8ecb29db5dc5eedabaafa1694825ddba078d985c83d90702e",
+      "a74f8bc9d6b0f2efce0e559abf4ee4849716cd1188058751832ea73a83342340"
+    ],
+    "domains/domain.template.md": [
+      "175ef9f814d681a9fbe477defc4c0fc6ee242878c0a887df37c1a83b14e0d185",
+      "209462a85148dc05573aab91181ae7a002d63e0b20867688a90c4e64cf173fca"
+    ],
+    "groups/README.md": [
+      "41f9435fc39d6a589817d855e1034ac9e8cd97a27132fc50855134fd51b45b0b",
+      "b5c178f86db10d57fca4ecfa3722d41823540985abf06ef0b71a4ba70a25c469"
+    ],
+    "groups/group.template.md": [
+      "58b90a2c5100e55214fdb13b5dc87bca29640ec6acf80b26f52b6345864470de",
+      "638443aa1150d6c504ed57717235fd7ff498a9ee818b3970cf68e6d0b64b696a"
+    ],
+    "raw-sources/README.md": [
+      "a1cfac2e5b5de41ecaad670161ca4e66c1ceff8ba095dbdab685010f159cbf94",
+      "b8c13298539ffb3cf347daa0d4344927cfd1fbc66c3a37bfbddea8608adb4863"
+    ],
+    "raw-sources/raw-source.template.md": [
+      "a8a07cabb01a321bc3ba9e5f35b8271592a08004c198344338e9147ec48ab6c1",
+      "e9cb8ef16989bf4050e8a77d88dfc9815494a913ebca3c53737e69af4455201f"
+    ],
+    "system/README.md": [
+      "256ed87160e30de63aec211ddcbfe4b471f4d61fb8bd9f2a888db10b6afc389c",
+      "789ccfb190bf020e9d59ee425c0dcf74499eaf032866ffbea9aeb2e3fb3a92eb"
+    ],
+    "system/integrations/IMA-GUIDE.md": [
+      "67e82ab12c21d995ef3b6b3351d91722f35093ed0ed58f1c64ed8c1d668e5c7c",
+      "e12edcc7493d3ffc0c240668742e5a40e2d86aa05dd964e21c8e350c6abad9b1"
+    ],
+    "system/integrations/README.md": [
+      "1a5ee00a64ccddb760fabfd228b49e8f0ba04b48d87904a4bba663af76543fcf",
+      "d1e430d032e3284f2760e54fc999c4dee5ccb4c3b0286879040481837c19d38d"
+    ],
+    "system/integrations/ima-config.template.json": [
+      "38f1fc1f2f6fe40f5f826b7a9322339127507addb1dc1feb0a2e551669134224",
+      "7d524ba265641271fb4400fddc70978672746ab3fc64ed36216149d496bcc230"
+    ],
+    "system/maintenance/CHANGELOG.md": [
+      "9f422484338b2120b5cde19e863e51ba7b6b6d4fdb01537d8c603775f123703a",
+      "c54092b273b98fd3e2282623d65fb5785cdcf8a890b47334c9cca72bcc33e4a0"
+    ],
+    "system/maintenance/CHANGELOG_archive/README.md": [
+      "99c0406f045808a67650a38092717636341bbba4e4187490886a72a70b8bb677",
+      "d51c95c7112ec85dd20f79c071d1899ef4adea780c00684bdaecbd05a3e36c76"
+    ],
+    "system/maintenance/README.md": [
+      "3daaa07d4d19954dce69d094a02ff73220702a3222634d49c5a80665b40a8d7d",
+      "de9df7893ef73b32c8b88a265286029a3cf902f2c206a8ef388fd6f876760fa0"
+    ],
+    "system/maintenance/SETUP.md": [
+      "3344708ebd8afe474d0ac029cfe766509d9c5fec51d6c25452579dbfdba94c2e",
+      "c92efc9c5e1c3eec11c08be2b5bf8a4661994f4c9606bc171e33e6fa836324ee"
+    ],
+    "system/maintenance/checklists/README.md": [
+      "5fab014dd41b9ad3221bb779fcfd7abb2d16c5c82e4f0edf9d19ef30d671e721",
+      "ccf96f2be25367a5964039e4d69fad7e151b005d5ae22bf10c463816b2db4835"
+    ],
+    "system/maintenance/checklists/audit-ingest-depth-history.ps1": [
+      "9426d26cfcb84819a54a2ac3c4d787f74b378cc624914e24c1a9a506e10da95a",
+      "94fde11fa5ace98a42f400e8734aea2cc35f1eb93dd5fc7db909697939b49439"
+    ],
+    "system/maintenance/checklists/check-depth-remediation.ps1": [
+      "96a6aa08d9e3797595d12455bf8555e3423369a8eac3c709a4ec1be350b19c4f",
+      "fb6c01e1777aa4e929e913b9c44fbf1c8872237e154111f0bab13c2674a79430"
+    ],
+    "system/maintenance/checklists/check-raw-depth.ps1": [
+      "69db35f918fb418aedc53ddb10f9bf24f99b98a3dcdc081921734d456ea69f16",
+      "834336f1acde51e5c4ecdcaee21288481d7b3c7874a9dc92ded86b3ecd250555"
+    ],
+    "system/maintenance/checklists/check-raw-style.ps1": [
+      "27891eecac1ef4c7cc587303b742ce92ce6bcf80bba519881035fc83ee7d144b",
+      "62f52dedb81cb4edf94de092ac2f4749c5302f9c7a945ceb51e00156147e60eb"
+    ],
+    "system/maintenance/checklists/check-wiki-groups.ps1": [
+      "af66f1c3342cc6ebc50cc800d51dbb87ae829a5f73847299c4388175679c6b8b",
+      "cfe1f0a817c8d6a307dac3be13dc4218b56839adf42ed16432d63bf674dfad34"
+    ],
+    "system/maintenance/checklists/clippings-path-resolver.ps1": [
+      "26b6a4027c0d3362e238e46763849a3a4f870abf39b48cb460e9589cce7ac33e",
+      "3b982b74a57bb2ec7e261c3b8344632e9cad447178e31f8eed97b89fa9229c04"
+    ],
+    "system/maintenance/checklists/content-backtest.ps1": [
+      "69323919c42365d0717ee09e305afc26a23ed11e3c0cf9a2eefeec7d98771e50",
+      "dc3fcf212133aa4178ae7cc9e94e4c803f0dd0ddefe73adaf8d1c359574d33f3"
+    ],
+    "system/maintenance/checklists/get-wiki-group-review-scope.ps1": [
+      "bbe05caa82f7b7e205e35492513d5ec4a4c94eaba6dd45cebb4dcfa940f14480",
+      "d7a2ed4cc643a365b3d0a8e4913cc13e2eaa74982f05a06ce86c943cb8cd5da1"
+    ],
+    "system/maintenance/checklists/ingest-control.ps1": [
+      "54fa31cc615ad7666c9c1f21f79a8881118d900531962ff1f88c8e26e7720921",
+      "a79b8e4fd4ec412f957487dffcda61bb1f3c7c3fbf1274432ba114e687a9a744"
+    ],
+    "system/maintenance/checklists/ingest-package-data-v1.schema.json": [
+      "847a2b506e10cef06f3323c5d5f2ca2af03d881c88dac358eabaa7462fc3e6a9",
+      "a72f20501ecdfda019c60b6d0d1d9cc5771ed8aa2aca19fed3517a154b3c1e26"
+    ],
+    "system/maintenance/checklists/ingest-semantic-review.md": [
+      "04c9296ecffeeca9722321ee1c6cdb9cd571a7c56a097db2a7debc32848da36d",
+      "808cbb69e41cdf666352a91d662ffe36d177653407ed14fb115712e44794b28f"
+    ],
+    "system/maintenance/checklists/ingest-stage-gates.md": [
+      "46daff3ccd96209fe7d71c22d81e4b95b6663f4f55d844e6d96836bb3807f305",
+      "f09c1c630b63cdb2eaf8a3ee3f215d8251234a8c1b2d1ddf0847159acf79caa6"
+    ],
+    "system/maintenance/checklists/initialization-check.md": [
+      "1cbaebf5b8ddcfc24f867f3ab09be2b97526b8e601f18ba63c49993795fc6902",
+      "cd2465ab0a443edc53d92d5d1c5859324080bee0d6eab71a6d06277ee95fb17a"
+    ],
+    "system/maintenance/checklists/initialize-wiki-group-fields.ps1": [
+      "28b358931e2a58daa33193588e6cc80899c0bce216c57f98a80cfcf6b3b5a4d0",
+      "bfbd37517f3e7046d5394c3548c3a8251ac04da74f37d4a5bb45cf9ca1241075"
+    ],
+    "system/maintenance/checklists/knowledge-health-check.md": [
+      "48cfad8762bf518a821997a45ed8ee8ae4cb0504ee3c9fbdc8af1a9ea8242f71",
+      "addb0acde120438ef27231244297cfe43701db8c6cd1154fc04d041563c634cd"
+    ],
+    "system/maintenance/checklists/prepare-ingest-context.ps1": [
+      "5c697aac48cdf01061eb3cf814d336f3e08068e49dcb456d0f56b96af30c1bf6",
+      "9351eddc687ed1fd6ce43f3a73ac2f07411764116883c970d0561d16449a1abd"
+    ],
+    "system/maintenance/checklists/prepare-wiki-group-review.ps1": [
+      "144763b001dc15176f15195e78405b47bd80517df2895d651ae5be146ed62376",
+      "393c4e4869725d99841cf5adb9fbcf1d866c33d5d00bd8b8c916ea83402028f4"
+    ],
+    "system/maintenance/checklists/release-package-check.md": [
+      "43ec66b1f3ee2e86c5c6fed167924f94db64e8b80fe6c9943280000739873d9f",
+      "88227c9ed1108c9c678cb5b4b3fd8b74364fbf2bfefe4c120f957abea4c52340"
+    ],
+    "system/maintenance/checklists/render-ingest-package.ps1": [
+      "266152bac1ed84c394f7bc31d956e98d6987a0df2a94abac7c12ebcb47f94448",
+      "90503fe8a049c8a68751053180512402912a5ee539dbcac4b7e79c25c12bd476"
+    ],
+    "system/maintenance/checklists/run-ingest-maintenance.ps1": [
+      "d81c3df9580e1f1b5837c952f0d3d0666629f697a49eeed79c7bf11b116e34f2",
+      "ef923c763ec2245f18778b582b26cd807487aa6f3eb0a217ed6f5785d5de8d41"
+    ],
+    "system/maintenance/checklists/run-platform-contract.ps1": [
+      "7eda29c876307f5540286d18795d554a110acccf36d6cc110ed7d6317addb623",
+      "dae02948f727bff6464c8917fe42f6cfd60bcaa59b4310b96e37da0e6b7db29d"
+    ],
+    "system/maintenance/checklists/run-query-contract.ps1": [
+      "13dccd58026bd50f37ce01dce0c7c0dedfaee7521eca1b6cea851b9b25eb482b",
+      "cb0306a3a320428bcc49717136a2e8bb24cd69d7f88c0c40aa53a5bde4e8f8da"
+    ],
+    "system/maintenance/checklists/run-release-contract.ps1": [
+      "9ebe2c491ec96d1dc6b671cb858cf985bf1d56cf65348fab48a7e11b84d2e0de",
+      "bef4625ae711730e11b21d3074073bdcbb8d4dbca853eb1e6c92f01d0ceeb26b"
+    ],
+    "system/maintenance/checklists/source-audit-vnext.ps1": [
+      "a6e754ebfae1db69e83c3bbf8c717e9d19441e3fb7c5cd24d170f6d2b44b8d92",
+      "ae4dc91470d28efce766a9662b95beeb5b6bf0f927592711c210b6e92561cd06"
+    ],
+    "system/maintenance/checklists/source-content-audit-standard-v1.md": [
+      "8795775c3efc1ec758c7005b692bc43e2752bdc32f41653dd4800e91cf127922",
+      "e83c1361e058eb20f62a3948730535d9b0b94b323ce2111004fb16dc8abf7a0e"
+    ],
+    "system/maintenance/checklists/source-content-audit.ps1": [
+      "477a32657def7959784de271c38493064c30da6f10cbfd89fef67e6ad0bee4d1",
+      "d9d3903497991b44d902cdab6eeb1ef62399acb16bf3cb738c2ff5c871574d07"
+    ],
+    "system/maintenance/checklists/sync-capacity-risks.ps1": [
+      "9cd86249e8b7de3fc6af1c4a3725bb163726656684be16ae98caff48504db346",
+      "a8cd6e0bfffd2c76cdbcf3d61b1bed4772478da0c729da6b824e1638d764fa37"
+    ],
+    "system/maintenance/checklists/sync-quick-reference-groups.ps1": [
+      "0c917c2b61900bcd327c86f25c9374ee6102353f78c611cee46dd25b477aece0",
+      "c4c3260c8025709ce7435fb71182bf754c23bbeebc5204d7df05a4885ddcea75"
+    ],
+    "system/maintenance/checklists/sync-wiki-groups.ps1": [
+      "2f7918d42a90bf9cbaaf13d8b1207a7301d6833093ff0c3edc0d2ab3ea1caf03",
+      "9fa422aefc5823cb31d291fd00d3ef171676b2816ee5cbc9222f9bdb9bae1705"
+    ],
+    "system/maintenance/checklists/validate-wiki-group-query-plan.ps1": [
+      "a5e33ce9af6619dfa7d7e8737b5fb2ed35f851b5698f38a675dc2e9c13fda017",
+      "dba15ed1fb36eda1a4dad10e82fbfe95f8c23b6d685699273f50a1f05731ae2c"
+    ],
+    "system/maintenance/checklists/verify-wiki-split.ps1": [
+      "8d770e58f502066d46743795fc4cfcaf1e8bcc0a3101c0c82c88daa793d84220",
+      "e770c7c3d2b47c3d30169f66e0b9d3dd1d185cbd0c831f8b0a120bc546ffa16e"
+    ],
+    "system/maintenance/group-proposals/README.md": [
+      "be336a3c1406b77c59f321838f4f520602ac7543ebef42cfff7b6240ad4a9470",
+      "c2a4884acae226d3013f3c31e671cd55a3bc3d1a531c07fe39513b3fc606e317"
+    ],
+    "system/maintenance/ingest-runs/index.json": [
+      "04a51a880c6a3c4787316bd762d2d7ce050fc7a141f411af25f099b915ec046d",
+      "1a7fdb40a1c2b9a9b573aa97069e8bafa1d1f3ce2c5ebaddc5094f47d76803ce"
+    ],
+    "system/maintenance/initialize-knowledge.ps1": [
+      "2c9103a40c4c10536ec4557e5c5f80043e71e8ff621b9d6141bb2a26afd357a2",
+      "6c5442b1553b6fa0b5d86820d2cc2bb94f86b617856a3f2ebaf6b9a705cc8d3d"
+    ],
+    "system/maintenance/receipts/wiki-group-query-selection.template.json": [
+      "2cb5b4b40bef98c741bda83e9c02b38277db8e4c5c8be55e9e7ed045cc97944c",
+      "f3e6117e470194c15e5ea90b87fe805125866fb07270130f9884065a83f7fb12"
+    ],
+    "system/maintenance/schemas/ingest-semantic-review-v1.schema.json": [
+      "175576f5d0c44106ecd713cebcb9620b0386c59c192d13e876eb9e6d109fcd47",
+      "86bd4c4b5bbea9d81833ad792c5f2f42899c8ee4612918f245ca97b183f010e0"
+    ],
+    "system/maintenance/schemas/wiki-group-review-v1.schema.json": [
+      "3b8b3490440652c6fd0b7156bf2f7592b469b538e4f2a42d17f6d99c9afb11c4",
+      "d61b4b3e6eebfa83489656d9355044b3e78e28a215671b4848d458dab807b042"
+    ],
+    "system/maintenance/setup-wizard.ps1": [
+      "cd2087e0823631921a3118381fae4e1d061a393c6ba304de42178d0d6df525b0",
+      "d92ef49617be398532386bca3ea7696ebb646ac560ac529430b798dd1737b640"
+    ],
+    "system/maintenance/setup-wizard.zh-CN.json": [
+      "9b142bb9969160d783061d98898d66b38cc90a278c23e12cdc967326fa2f3a95",
+      "decb273cdad4a0443b1c4e4a2c6d43db08feffad995664f13fcf91f30faf2e8d"
+    ],
+    "system/protocols/INGEST_PROTOCOL.md": [
+      "8e0157e77ffb042e922ab26ef89974864579bdd2027a8bef2e05b4f12942ae54",
+      "e72cf333c6f7b80140badca1b02a8de750ce2b6adf2100f158dca4218f7a39ea"
+    ],
+    "system/protocols/MODEL_ROUTING.md": [
+      "395d972201124bbbea52d5c934b3ab46a2bbe94fcf96ff5b937c501d9cbad0d7",
+      "a4df9ea7b531626d7e193c211183d2788fce017cc15e6a058745ca2bc1b29c5d"
+    ],
+    "system/protocols/QUERY_PROTOCOL.md": [
+      "3ccbd50e561c7688db11f435c6402de110d708afbc75449baa3a2af985e8388c",
+      "c0e2cd1e65139fce7e654808422cb441ce6b055ceca7cca9c29f85c424990ab5"
+    ],
+    "system/protocols/RUNTIME_ROUTING.md": [
+      "554e192feb7aa73884e29000600ba655794279e980aa8418ec72b4489540b4dc",
+      "cb6735dd1fef3908826e414099bc0ae8635054d024e5a9615edec88277d81b14"
+    ],
+    "system/protocols/SCORING_SYSTEM.md": [
+      "05302daf65d8a8ac875feeea0352cf70304076eb7af5a59786af7dec10518b03",
+      "d35888cb157ed0a01b468e7d04374de209d51a244070487c1bddc65a7f6ea9c1"
+    ],
+    "system/protocols/WIKI-LINK-STANDARD.md": [
+      "8060d02d207275eb644deff8406da2547f6476ef1a8bf0f0f9aa080f692eef65",
+      "f266b77de8a333a604e167c7af39f992a5e1cba1ebb7d7c1fcf170ab64b592bf"
+    ],
+    "system/registry/KNOWLEDGE_SCOPE.md": [
+      "6d8a262668abbc2bc04bc70c7d459a7b6339de5cc2fa145e33bf0d7d2fe282b9",
+      "ff2df35d2dc8820cb5fabb0f691f4e0807c0fd29de6e30a3458c716d2164ca4c"
+    ],
+    "system/registry/KNOWLEDGE_STATUS.md": [
+      "62e0f03b0cf7ff350488ea8de2f1dd016865f81db1a7686dca36f088eee6a726",
+      "f383354eddb7607f9fe1e6f4a872550985ed6ed94116f3e6bfed6af6b350f188"
+    ],
+    "system/registry/index.md": [
+      "cd7dc512c6abd7027f065629c09b901180400c8b4e81a94bb84a1dd0baa60292",
+      "f3295ddce4adbac23a1000766dd64340a330714efeeaf0c19f9837497b5307a1"
+    ],
+    "system/registry/ingest-auto-review-state.json": [
+      "2ba908084dd32d253da8a170c71f35fcee8f3af4ebffa34a8176043bfc846463",
+      "47f4ba1521651d674f54b858893bcff27fd17ad265a7a8049d9232df3f309adb"
+    ],
+    "system/registry/ingest-semantic-review-policy.json": [
+      "4e0e255d2b8f46f8cdbd36b718830439868d79efede41b4f70c4ba65bffd107a",
+      "5b0c7c91a04643cdd50dfd54c96000943e46c1a0180b198b16e891c5601d4c7f"
+    ],
+    "system/registry/quick-reference.md": [
+      "7665d8d211541ae7861209d56d7ae45606d8685e15445f59a609e65816251316",
+      "be2ccca20b52b604a99adff47cffbf4dcf0fb6b39c193e09dd91f56d47f587b1"
+    ],
+    "system/registry/raw-list.md": [
+      "13069f2104c5f811c330c563e87828d46f559a427704425a1f552502b27d7a2d",
+      "3f463374447e8cba113da7982de68157d596a149a20caf5c43a9a45209fb913f"
+    ],
+    "system/registry/skipped-sources.md": [
+      "7e08ee488172613820a3285f1a158b65a5de7243d3193388bb5e961ee2e545ce",
+      "841b3411998dfe8e20a0974958939163e4d2171d0541554eda9d3b473bd66736"
+    ],
+    "wiki/README.md": [
+      "0908b3fabb46a6bf4dbfd3eaa24d0b73f588c55c44a8f09eb31c083b9f8393ba",
+      "ed47ff58f0752f4dbe79791e7eecf859e1c4d5f725178934f053dd4e00266001"
+    ],
+    "wiki/wiki.template.md": [
+      "9e52992b46c149b9d65ffb6699e3bea93b740ebfd2cbe82bd7cad91efcfcdb5a",
+      "fa9cb8c1b8b3d6e9db64f92a86fc6ae4d5d7da3922c45f59aa098d94e7398eda"
+    ]
+  },
+  "schema_version": 1,
+  "source_revision": "156c50d83e96010cb4bd1d22501a05ee3aa55606"
+}

@@ -1,0 +1,10 @@
+{
+  "component_id": "knowledge",
+  "file_count": 115,
+  "generated_at": "2026-10-09T18:09:34+08:00",
+  "generator_version": "3.0.0",
+  "manifest_sha256": "b86b093fbb2e0952476dfef225336a5e54e5ed7bbeaeabcda2fa729b5d685b20",
+  "preview": false,
+  "release_schema": 1,
+  "source_revision": "099d874788db1f4ddf288cca8d704f731a38a4a8"
+}

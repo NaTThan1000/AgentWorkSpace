@@ -1,0 +1,709 @@
+{
+  "canonical_sha256": {
+    ".gitattributes": "5e3d69f1abee1cbf231f791d463b5148da4d4274a005948b7f1ff52b5445639d",
+    "AGENTS.md": "ea81933952e1406c893db80595bb02183a3dc7e8a49741f7e0ef7507aae60dd0",
+    "AI_INDEX.md": "15dbae649b0eaffe55e2dd069ec866d4eb20d0d74bb42394c33d006b06779b95",
+    "BRAINSTORM_PROTOCOL.md": "de965eb024748d4224df0387fe41d0dae3027054679cd2593b611575e0a4e763",
+    "CHANGELOG.md": "4c0d24cf4cb834bb73bb1c6506cf359d4b81af0e30276867cc910b6ae8a86abf",
+    "COMMAND_MANUAL.md": "4831d4fdb5238dee33820fc3bafb9b90d43fb2ade3f97be998d120f2890b1305",
+    "NOW.md": "05bdc8b6faee09b8f13c9cb1f97388d3e061bd47b330651934a09ffcee367184",
+    "README.md": "c2fbc0c53c357b1f14de588e9c1f8ced619368e97ea73a0d802d2d52f27b2724",
+    "VALIDATION.md": "70e2173524add9b36485626a384835dbd5d3d252bc9416e5d85d447a7bd976ad",
+    "_release.json": "26f298826baf0c1f1e0b68b8b90de3387dd2d6120faea9a1a903d9d115170e92",
+    "adapters/README.md": "d81f05b8ceb6a96504d3a9173747d9d59a250a07829ab7cf32d6f16c5c7e5efa",
+    "adapters/catalog.json": "a3e80e640f0eaff989db97f4962dcf85b4aca1c439916b0ab999c255b7070b72",
+    "adapters/f2s-handoff/COMPATIBILITY.md": "45b255e8ccdd2b35b0898884089c691adbb4a9c3387fc7ffca8bf9b57ada2754",
+    "adapters/f2s-handoff/README.md": "f9b6188dd76b1956dd3860f3aad2ec68cbf4afb5508bd8a80b48a4bef128a595",
+    "adapters/f2s-handoff/fields-v2.json": "cf83d021db075e6845d77aace003752c92505f0d5803e9c4d790e72304073423",
+    "adapters/game-analysis-decision/README.md": "7d7f6ed2bc630a833df8bd9984a701e42839cb920459185840158a5fb8487d25",
+    "adapters/game-analysis-decision/brainstorm-analysis-request.schema.json": "204fe7eaea67627c0e042a55ebe32be5e3228e05c8a7a060c0903f709480ba4a",
+    "adapters/game-analysis-decision/brainstorm-producer-decision.schema.json": "29d3a50caf5be2f47d8bad01ee01ae77243ea0df833264158cbe3fbe1f7ee5a5",
+    "adapters/knowledge-context-brief/README.md": "5b37dc38581166eeff3c03a67f4874bbd7347f7fc216870fd6b41a689b1bd3b8",
+    "config/session-storage.json": "c3f3877047831cc51309deabb649422d97dafda0201f55b94c0507b363598d37",
+    "docs/architecture.md": "73889e40c7200b1ca05a6ea4a2c1a6d45ce9be6f258172c40de8f5c712e6601c",
+    "docs/contracts/decision-record-contract.md": "51757499f3f293a0f7b9b8f79e924467b99cc8b2b07d2803eb69e1ae45e298de",
+    "docs/contracts/idea-ledger-contract.md": "5c5e66b1c32c2d3473b84eb7b74e592ce8269dbc12173d86d3d87bc714c2d566",
+    "docs/contracts/session-contract.md": "e4d68dbe3f6c7933b5e7a915ba0c7730feb0c090277280188ec1e2d4c36af780",
+    "docs/maintenance/README.md": "48ce2c8881ee010f8ec8037bb32569839351753ad1ba1f5d79a89fab8bf06328",
+    "docs/method-learning.md": "ff692bf98b6e56346ecb14d73fe513e0201a6ee40b5422fb39b2e160d925066c",
+    "docs/research/public-sources.json": "3caa093cf81677f788c15ecfa8dbcbcd3a0754a7b4f7ad3bc9615aa45603d5e8",
+    "docs/research/public-sources.md": "f85feed3d0299359623a31cddf31316d663a6506c5524e48952845bd1ca8c77b",
+    "docs/research/source-policy.md": "32f42056735b50fdf6ddfd5899d178414569b1ba2aac5a6ab04620475f276d2d",
+    "examples/co-creation/README.md": "ee0e60a359ff929472a230d069e5bc70c5ea358294621e47b5aa8495755076e3",
+    "examples/co-creation/combination-conflict.md": "f5b9307b562236900d6bbcca9cf7d3fceebec8ad55b469001822e71ef05cf1e1",
+    "examples/co-creation/game-open.md": "f7b88c32f42d31d7b00458cc639e5de7c82086ba0481b21dfdc2c8a23cab7587",
+    "examples/co-creation/multi-source-gap.md": "306226d79a59652ab4138c15f569078d30e04d91b37fb44ec11cd866a2230260",
+    "examples/co-creation/service-selected.md": "ea186068f770c5a70bc926b9debd8cbebdaaccc5a9d39aa57e9bc5c52e4e9f48",
+    "examples/game-analysis-decision/producer-decision.json": "ec235a8b941322590073b0e8dd1c2f3795676e93e6126d032034be990d2ceeca",
+    "examples/game-analysis-decision/request-v2.json": "c7b6df021476fae5ec68cc1a7c27193b97eb6c097bbfbcd12d3a6a08a6c9e157",
+    "examples/redesign-playbook-examples.md": "a3a38be29296476c0a742a37fdcc6ed20c97d8b01b42f48b8fd66746f102e373",
+    "methods/MAINTENANCE.md": "450607400fcca03a7e97df87322796e402baa4c7515d37b55186f2d5c8f19593",
+    "methods/METHOD_ROUTER.md": "981d7e507588f8fa31942ca576e448487e94c1e25d220ac5ed52daacd9756361",
+    "methods/OPERATING_GUIDE.md": "ab07c1e63220322a9efe91355ce365909ce461bf203395ef0d50737f7ba6c102",
+    "methods/README.md": "13a3b7816dcb4126429c1125534cb185bb048ecccf279e24d27d287300d0a252",
+    "methods/capture/brain-dump.md": "53fabaff2415dacb489d794af644df1f94d2387f15047092845d535e5ca67682",
+    "methods/catalog.json": "34350205dad8abc5bd4148e41e257479c588078f3c09967c494792f21acec184",
+    "methods/convergence/anchored-decision-matrix.md": "ec0b98c6e350ab8bc47061516ae69fbac49bf8c78b85d4e3d05ce0941d2bf46b",
+    "methods/divergence/analogy.md": "f39d51df5927b4ce621c44e7e4aec328856204aeac89e332d1a74b26ca66d0f1",
+    "methods/divergence/brainwriting-6-3-5.md": "fddbb5cb0386b2efd2d9583ef9534c9362fbbd763499d25f8d22cd39d69985ef",
+    "methods/divergence/forced-connections.md": "29794a71ae069bcecd755fdc4e04c2ed475a98555ecec43d583b0a44a608d0bc",
+    "methods/divergence/morphological-matrix.md": "60630fff37a56faee69e55c08943a4e67703c027404b614fd3fc3ada0724e316",
+    "methods/divergence/reverse-brainstorming.md": "b1b653ae316f4177866fafc423fdc68607cb6b46a4fcae66197abad82aa4d53f",
+    "methods/divergence/scamper.md": "23b187118362d1f1e54d84f0d837d940683fccfbbf042f6352d1e0fb0f075961",
+    "methods/divergence/worst-possible-idea.md": "ce461840e53c76775ab9e66ad30d7e0714a9381cc57b54ad25914f17f2273d13",
+    "methods/framing/assumption-reversal.md": "d861b24196f8c9629fb7bfadd91a32b8f4ea95a8689df240a0875914c2a80b80",
+    "methods/framing/first-principles.md": "b272a5caf01206f10f1a31451575da87a2c01c8f078922d336a91a412bced2fe",
+    "methods/framing/future-backcasting.md": "16e9df815d8cce103b717545ff4bc23cbebc95e8b272e12b6802f42081ec8040",
+    "methods/framing/how-might-we.md": "7e052aaf6016b7aeab65d74494c38d0fe0b9f6cec6ebe6481b29df185eab6074",
+    "methods/placeholders/crazy-8s.md": "55f2c604f7b37b0cb5a12c5aa2baa955fa57fb57a3633d3e37eb6c4df4881e8c",
+    "methods/placeholders/lotus-blossom.md": "4caec5aead48068716f323e949c1803a28c953222965711b1500e0c5806fe9ad",
+    "methods/placeholders/mashup.md": "728d2063c7728e0bce8fed902550e90942afaf5f01c4ed7098585ef1ed56ab64",
+    "methods/placeholders/nm-method.md": "cf359c8a5fb0a71285015edfac527206179877c5284498707ef23346fb4247b2",
+    "methods/placeholders/six-thinking-hats.md": "4ee673923b6bdc9c46094df48acdd281ba8b076925f84bb2405394a6454b7045",
+    "methods/synthesis/disney-strategy.md": "5895110679dc3b278b5251b82882accf8206b13816cfc0fffe8de73a6bb0a589",
+    "methods/synthesis/kj-affinity.md": "d789a015b18669cb5dbe52ff59c5bcb141fc3bc6ba3f30738967fc85529c2770",
+    "perspectives/README.md": "a4f45d5b51e9145263ec07cc068a6ba7b0799141318d37379d00b876d0e56922",
+    "perspectives/catalog.json": "7323ad747e0d4c8cc746a6982e1e53a691d406fc71aed9ddfe371d901565cd7b",
+    "perspectives/core/accessibility-inclusion.md": "7a2d859c4684d18c6ec340c6aed8867268f12c6fe7b4080412f567f8e54be36f",
+    "perspectives/core/counterpoint-failure.md": "b00fe820e3b02a6e7bb50eb56e046a04d4a956449b60f4eac67b4e0c1d26f6af",
+    "perspectives/core/implementation-scope.md": "0476448b6525266699b3ab2642f624a53a69f64054439277324f0ecc06820d1f",
+    "perspectives/core/system-effects.md": "9914647bcd19490c9f7bb9f5598331a6affda8ffc0b9fd065f408db3091deb50",
+    "perspectives/core/user-experience.md": "186a12efe0bfd80053852971615f5e8c200f52cff91f04df82cff19c4b415157",
+    "perspectives/core/value-sustainability.md": "dc02a393f572b3b3cf769ab369475dfd16c38e337e1048059cafb9ac5b666c57",
+    "perspectives/domains/game-design/content-throughput.md": "828c9bb1a78089a2585e9f6d024c0cd60ac363fec04b6ee154fd36c95ddda29c",
+    "perspectives/domains/game-design/degeneracy.md": "2a634b4217b07fbfeb700e929da7e0ff7f755a4bb02afcf6c2830e60eac7cf56",
+    "perspectives/domains/game-design/economy-evolution.md": "3db0c6fdb5519fcb1d822c7f8135b572fa514d6cf4fda0189bb68e47ed2c1044",
+    "perspectives/domains/game-design/feel-feedback.md": "fe0875a6b2e3229254b5b1fc7c28d9b0c05b05565bd5137f10dbdefdc1cd2293",
+    "perspectives/domains/game-design/first-run-curve.md": "be445c5f494b14a89c7935c8d20991fa4c49e7c26850e8e8d0064517ff0df17b",
+    "perspectives/domains/game-design/player-motivation.md": "3d57f91c56a76a7806327df4b27e782449fc51f917c0c58cca16f629ed22bbc8",
+    "playbooks/catalog.json": "cab91d52492ace5d4d67ad8dbe78b7cf5549986eaf94610eee53dbeedf7bb6c6",
+    "playbooks/game-concept/CONVERGENCE_PROFILE.md": "d9ab0e6cfcef6f963a3402282fe0b186832de48e471a62ec07b0b900a467245e",
+    "playbooks/game-concept/METHOD_PRESET.md": "934a6c2f4a1153fb8bb7158196240d53128d64f7bf39b2ea1c035c45536d86a5",
+    "playbooks/game-concept/OUTPUT_SCHEMA.md": "1969245eae1eca980a9926e29565faa60d6d12d8557df989f8b2519b3805c731",
+    "playbooks/game-concept/README.md": "38b4e88eec58ecdd5f556943a26c687a3733f7e2a6e14a3bc5754d434b8923db",
+    "playbooks/opportunity-thesis/CONVERGENCE_PROFILE.md": "4767b5fd96e2ce937dbc875ba7d36fb09bdf31d2fc66a1826246902698dc76cd",
+    "playbooks/opportunity-thesis/METHOD_PRESET.md": "ff2b0ab634396cda432cc94229a4e09a1fa5c22c488908ce9a93743d1f529ea4",
+    "playbooks/opportunity-thesis/OUTPUT_SCHEMA.md": "6361fd9239a9f6932d852cfc60cf0011d88ae9ad66c8c0256ffb7f74f27d3ffb",
+    "playbooks/opportunity-thesis/README.md": "34284b9411256642b920b1da9e32a7acf7818ec42d3c32edbae2016b7f438557",
+    "schemas/adapter-catalog.schema.json": "9ba2fd6c1dd7aa05ce7244e13c350646796accdf26e9cee6efd003bfb3f7ade9",
+    "schemas/f2s-gap.schema.json": "f5425dca87b5209e0a70b56ad78d6a1ebdfc75cc17812b198c5ee767759190bb",
+    "schemas/method-catalog.schema.json": "285a678e10240255e7159027e4559bcad5da390b4570a05f539f231d40c3d477",
+    "schemas/playbook-catalog.schema.json": "ad8421ad7fc5a8ed2201d15ee820d246820e27dea67f6cbd0e959a1e316ff477",
+    "schemas/public-sources.schema.json": "b994e8527612b3654ece5398ee4bebec06cc8d084b26aabc1964dbab9759f476",
+    "schemas/session-state.schema.json": "6900866946c4400f5a6f3758e5194a8fdd8648a23950efa4488cf49e9759a5e4",
+    "scripts/README.md": "c31d5472e3afb38d4ff826a1d2d3c4a416b4031069fca6c401349132217862be",
+    "scripts/adapter-common.ps1": "80170487c1a31e8d719db9b5c3a34766b3594512f07fc28e2c454452b9f63a88",
+    "scripts/brainstorm-analysis-adapter.mjs": "5606b5a796b3579a5c255aa293209d6047dc54f8c68c02a78b57018ac27dfbef",
+    "scripts/build-session-index.ps1": "78df297b737bf4078f7cbdbf3624f7db9a0d993c9d5c0a043ab7333dbbf552a9",
+    "scripts/f2s-v2-common.ps1": "29d34bc620679d929321b768db4d3f4cf2c4b9298f84670fbd1dc94e48f57b8d",
+    "scripts/gad-v2-binding.mjs": "a64ea0e7b0686cf8d93f3af0604b47f23c982781f2940393907d30f121ce4ecb",
+    "scripts/game-concept-common.ps1": "caadb3a92dbfd34a03aafd4cfa7894722ef8a6157ddf4e72ff39e2aa8cc4cf0f",
+    "scripts/get-close-summary.ps1": "3c2001b2d101bc7b2394bd27bf5d6024650d5dd1e4593c9cef68f0987694486d",
+    "scripts/import-f2s-learning-feedback.ps1": "f8826d23481e81b2011d31a304d44ebb16fc89db4a2c383aa2ba6757801d7a90",
+    "scripts/list-methods.ps1": "9582ff6c60cc50500885d2bbf6887916c57815822241c5f76a13b3878ad526ae",
+    "scripts/method-common.ps1": "2de017f652a5ab84cb03cb9595934148509ad7761c6e4b0ece39b2398e0d5a8c",
+    "scripts/method-learning.mjs": "d77cc9349d42a35fb76e593e69cf36cab7369e3f068f13b4968d81555974329a",
+    "scripts/new-f2s-gap.ps1": "cbcb64fca0cb4dd807aa4af4ccb8b67eae7df48cb27e757c4203f573f342b7b4",
+    "scripts/new-game-concept-brief.ps1": "72031861f5c398b35b180eb647271bf01d4a0bc192599e70c96b6bc902b43bb5",
+    "scripts/new-game-concept-combinations.ps1": "66cf985daaf2fe8a4ad7d459698f3a56fb47641b24d10cc0ecbc1df6c20c9133",
+    "scripts/new-knowledge-context-brief.ps1": "87ca666537fc676587bc2c8d9ef85380fc9fe05bcf3337a12b2d4cced786dba9",
+    "scripts/new-learning-feedback-candidate.ps1": "b49a6e903520f8c1e9c37450c9f1ce1e903c27014880af8b9b607cae844a91a7",
+    "scripts/new-method.ps1": "e2cea755b40a3a47fad2ccb76603411e899c8e6e6c09704f823ff7786f9e6487",
+    "scripts/new-session-artifact.ps1": "637f6950f3e046657a5d24a63a42bdd2025a731f5506cfc91d5f7a2f239def05",
+    "scripts/new-session.ps1": "a87d2790d653a4ba29f355a698e3af7e79edf4465d85b9a94bb5e77f2544fe5e",
+    "scripts/playbook-common.ps1": "208094eb7e416a336ed6314fa37eec04df1411ecc48acc3a78394e559a503262",
+    "scripts/render-f2s-handoff.ps1": "6fa84090e8e5d1d1132a6403f78450520202959f6940c0a392545bf8a2b364a6",
+    "scripts/resume-session.ps1": "a2fc1c7099ce82103c3c02af55cc43727ff4b1277bbcd56ced6741dc909ce5c1",
+    "scripts/revise-session-idea.ps1": "9bacdb5250f375a7c2640acbf61cee28edb2dffe3fa0c5327b4dd54200225698",
+    "scripts/session-common.ps1": "083cf2bf5feb96fb6d4bd9cbb5370c708de140215a29488f6671587b7d034eee",
+    "scripts/set-session-phase.ps1": "7ad7a5a1c94bcfae9bd7027354f708695c7c5536435180c67c2513c21b0cc082",
+    "scripts/set-session-state.ps1": "35417e5e97502fd46fbe9e16a80aa75b1e9c2711fff65a1ae9023dd4acf6b216",
+    "scripts/validate-adapters.ps1": "eebb8bd62f9a28df41019ace5c46c1d08efa44be9bac5bc57bb72ca0f055f698",
+    "scripts/validate-f2s-gap.ps1": "1be68b6703d0db3bf322c863afd475bdfd729db7417ca8f585411112fe1e5a0a",
+    "scripts/validate-f2s-handoff.ps1": "16f73ca998517640b6c9e8699a292fcaf6c5cc3dde2102fb1d1178b7339161b3",
+    "scripts/validate-game-concept-brief.ps1": "9bb230118612b44abe83b7534c9dfc0bb65d6c8b6f20c1ee007761a1b2a32851",
+    "scripts/validate-game-concept-combinations.ps1": "e53746542a5bff72e1d748cc630362eac9a57c728a95a04bc4db3ccacd677fb7",
+    "scripts/validate-knowledge-context-brief.ps1": "3d5433b2349fd903f27bd02a7ade0a261ba81578a945546d9665c5fefd495885",
+    "scripts/validate-learning-feedback-candidate.ps1": "99a9bcf45329fa3e1f6e780cbe878e63a4ce47039ddd39d88aa6ca9ae95ee2f7",
+    "scripts/validate-method.ps1": "2f4711ba34a9e7484b226419ddbcedc3dacfd741ee61ed43982d86529a0bcf9d",
+    "scripts/validate-playbook.ps1": "6558b08c01d1536a37b6d3eddeff28460acaf89c3c16f791fe4f49cab33df2f3",
+    "scripts/validate-session.ps1": "ab4cb785bbba1ca3431e5d773c6370c36492ea9733bd92c91d5c510efa04bcae",
+    "templates/decision-record.md": "b1c5f47bdfb0a5b3e0acd8043ee1c239d11d8a6404d6f8b1d2b820ce90090c82",
+    "templates/f2s-handoff.md": "322d216f8839ebeaf1ec6db5bc4fb079500ad19fe4f8e4ca50fbb57680700bdb",
+    "templates/game-concept-brief.md": "1a42b2a41f598fb44fea8355894f2791f1cc3515c8f9a56ac597c02024238242",
+    "templates/game-concept-combinations.md": "05e3019b7b8bcacbd218706d288f960ba030a5a8d013666b49fab6c3f0d96acb",
+    "templates/knowledge-context-brief.md": "d6e80629f9ad43b3fbbf5ff982053a398c93e78c48df8df5ba079662b16a9411",
+    "templates/learning-feedback-candidate.md": "6d9d07194f101a2f949129b8331810af50938ee3049c69fd51b34e8893d5c075",
+    "templates/opportunity-thesis.md": "03902be0537ceac5d76c0de7d4cabb5e9d369c69748931fa9af676b790d5f5b5",
+    "templates/perspective-review.md": "6a505c6dcdbae8313ffe3f253c9333520a0d66e83a84631020f9cb2590ca2a8f",
+    "templates/session-artifact.md": "ca4c61d44edbe0a2c2f850fa3f410aacc291d5778726dc7ece5d7b4495615a30",
+    "templates/session-record.md": "5f2a11b08b1bb3c397941840ec72e0b6ac23caa4250c3664ccaadaf89c53c02d",
+    "tests/README.md": "defdd62eb536c9332a2f399210f3a254a6fb500e658d5262550c0b1ee6508387",
+    "tests/run-release-contract.ps1": "814ab31a4514c780e3ee2e85209d01d675b6194cdad7da2ae9806898a0b5633f"
+  },
+  "component_id": "brainstorm",
+  "files": {
+    ".gitattributes": [
+      "5e3d69f1abee1cbf231f791d463b5148da4d4274a005948b7f1ff52b5445639d",
+      "85ecf6aa24e46850e6595fb6f9394025cb7eb293aa964d0fafdfc2c6c3aac0d4"
+    ],
+    "AGENTS.md": [
+      "2be0d090ff32f0b51057bdfd1c23fd6b7e7b4d01e13e0838ef948b0421ebe73d",
+      "ea81933952e1406c893db80595bb02183a3dc7e8a49741f7e0ef7507aae60dd0"
+    ],
+    "AI_INDEX.md": [
+      "15dbae649b0eaffe55e2dd069ec866d4eb20d0d74bb42394c33d006b06779b95",
+      "259b6a286fe09a07cc3505a5b3b9c36fba64a73a706e9bb57c6cd05dd00dfb1a"
+    ],
+    "BRAINSTORM_PROTOCOL.md": [
+      "1cfd79d4d0f2e78dd7aa6f080b67ac328398ee610b1e63fdf9b394e5b392e92c",
+      "de965eb024748d4224df0387fe41d0dae3027054679cd2593b611575e0a4e763"
+    ],
+    "CHANGELOG.md": [
+      "4c0d24cf4cb834bb73bb1c6506cf359d4b81af0e30276867cc910b6ae8a86abf",
+      "b8689ef0243cf3f3f640e9131c3ca03e2018007d19626985d874977167679d4e"
+    ],
+    "COMMAND_MANUAL.md": [
+      "092e1138d32480195af314c099f9d807a9421fe037e403647110da95315bfe30",
+      "4831d4fdb5238dee33820fc3bafb9b90d43fb2ade3f97be998d120f2890b1305"
+    ],
+    "NOW.md": [
+      "05bdc8b6faee09b8f13c9cb1f97388d3e061bd47b330651934a09ffcee367184",
+      "c2499b19787b550b7ff63cadda1febd8bcf94c2d0955036940b2ad38cbe75b89"
+    ],
+    "README.md": [
+      "c2fbc0c53c357b1f14de588e9c1f8ced619368e97ea73a0d802d2d52f27b2724",
+      "fde369a3e1001a4ef32af42b49bf70c25762da90a3ca79d9c1d0a9f97dc8102a"
+    ],
+    "VALIDATION.md": [
+      "5faed60c6f30fae56a86441caa92e4a65036a5a81f707ac11c26163e9baeab69",
+      "70e2173524add9b36485626a384835dbd5d3d252bc9416e5d85d447a7bd976ad"
+    ],
+    "_release.json": [
+      "26f298826baf0c1f1e0b68b8b90de3387dd2d6120faea9a1a903d9d115170e92",
+      "30744ef603ba04bd71270698ff767090ba6a140a987ab3ee1a39e70e47784fcb"
+    ],
+    "adapters/README.md": [
+      "6f23c467ef3ec2201b9217208b3b2a8452610cff09c69e66666b944467969262",
+      "d81f05b8ceb6a96504d3a9173747d9d59a250a07829ab7cf32d6f16c5c7e5efa"
+    ],
+    "adapters/catalog.json": [
+      "05ac195a7f1688b1a0a34fc999a2e0dbdea78c660e88c9ca50f891df4f60bd26",
+      "a3e80e640f0eaff989db97f4962dcf85b4aca1c439916b0ab999c255b7070b72"
+    ],
+    "adapters/f2s-handoff/COMPATIBILITY.md": [
+      "45b255e8ccdd2b35b0898884089c691adbb4a9c3387fc7ffca8bf9b57ada2754",
+      "8f81f3f82117ff7f8d8c7972694389b3da2c9ac764bcede95099c124feaaeabd"
+    ],
+    "adapters/f2s-handoff/README.md": [
+      "e884d8b1dbd7cfab81f696d51a600773493e79b1a9782303879522e0193d303f",
+      "f9b6188dd76b1956dd3860f3aad2ec68cbf4afb5508bd8a80b48a4bef128a595"
+    ],
+    "adapters/f2s-handoff/fields-v2.json": [
+      "cf83d021db075e6845d77aace003752c92505f0d5803e9c4d790e72304073423",
+      "da88f2f2316384f62c1b0659d7c6ec019bfb3ede2831abf61595d46a9b9c8ca0"
+    ],
+    "adapters/game-analysis-decision/README.md": [
+      "09bc903c0787db8fb4d62805064dc2ddb5c516f160aab64803890cba984c92c9",
+      "7d7f6ed2bc630a833df8bd9984a701e42839cb920459185840158a5fb8487d25"
+    ],
+    "adapters/game-analysis-decision/brainstorm-analysis-request.schema.json": [
+      "03c4800b2e4618c3071e196829a7a350abef527428718f83463b72dcd898b04e",
+      "204fe7eaea67627c0e042a55ebe32be5e3228e05c8a7a060c0903f709480ba4a"
+    ],
+    "adapters/game-analysis-decision/brainstorm-producer-decision.schema.json": [
+      "29d3a50caf5be2f47d8bad01ee01ae77243ea0df833264158cbe3fbe1f7ee5a5",
+      "93682a9c48d4f2d05cbce446405aa2a1ad645e61b388aada94f2aabb7a006a05"
+    ],
+    "adapters/knowledge-context-brief/README.md": [
+      "5b37dc38581166eeff3c03a67f4874bbd7347f7fc216870fd6b41a689b1bd3b8",
+      "9486ea8b107e8da64e1193fa86efa9dec48d46231366ae7761d633ceef113579"
+    ],
+    "config/session-storage.json": [
+      "c3f3877047831cc51309deabb649422d97dafda0201f55b94c0507b363598d37",
+      "c615c5eec7d73a71a1ac50a54874693b314b5f5c5f6158be2c00796c5b420f1d"
+    ],
+    "docs/architecture.md": [
+      "73889e40c7200b1ca05a6ea4a2c1a6d45ce9be6f258172c40de8f5c712e6601c",
+      "e52da6dae8ec1575cdb2d3aa0ba0a61bb788e70ed8397234cb4a25b313efbf2e"
+    ],
+    "docs/contracts/decision-record-contract.md": [
+      "51757499f3f293a0f7b9b8f79e924467b99cc8b2b07d2803eb69e1ae45e298de",
+      "79bbdebb9a78de46bb663d9acc6bdddf8225b70a1e088c34dc426356a13b86d9"
+    ],
+    "docs/contracts/idea-ledger-contract.md": [
+      "27014dae0cf3b032c6d035ce1f72a59fbb14f99a24c53f29bd7b9a2a9cce9e4c",
+      "5c5e66b1c32c2d3473b84eb7b74e592ce8269dbc12173d86d3d87bc714c2d566"
+    ],
+    "docs/contracts/session-contract.md": [
+      "b37e2638518f3f0a2fcb2fe107e28ed5304ec689bde26ff5b20e6f130e19a995",
+      "e4d68dbe3f6c7933b5e7a915ba0c7730feb0c090277280188ec1e2d4c36af780"
+    ],
+    "docs/maintenance/README.md": [
+      "48ce2c8881ee010f8ec8037bb32569839351753ad1ba1f5d79a89fab8bf06328",
+      "f5224299ff07a25422ddf240fc91226dde149adecc1c2947d7ab98d79e1da9cf"
+    ],
+    "docs/method-learning.md": [
+      "7a651538403fd192cd9b53a127d1a0ce2ab0e21af8f02c454b98299ef61ce7ed",
+      "ff692bf98b6e56346ecb14d73fe513e0201a6ee40b5422fb39b2e160d925066c"
+    ],
+    "docs/research/public-sources.json": [
+      "142af87c4680ed710f9e9a249f8640d6e52499eff57251a0149837c881995178",
+      "3caa093cf81677f788c15ecfa8dbcbcd3a0754a7b4f7ad3bc9615aa45603d5e8"
+    ],
+    "docs/research/public-sources.md": [
+      "83e4ac80edc91c31fb0fa323ed63e9c7d887d6940c491c511a095ad64007f253",
+      "f85feed3d0299359623a31cddf31316d663a6506c5524e48952845bd1ca8c77b"
+    ],
+    "docs/research/source-policy.md": [
+      "32f42056735b50fdf6ddfd5899d178414569b1ba2aac5a6ab04620475f276d2d",
+      "d11e4d467daa58fca71b4d01129df4f33588e1c48d23acc7caa264b218ea5b50"
+    ],
+    "examples/co-creation/README.md": [
+      "cb1ccd07b7d42b3890158156c245bdc4de513e9c2f360346cf032eca92d98fd1",
+      "ee0e60a359ff929472a230d069e5bc70c5ea358294621e47b5aa8495755076e3"
+    ],
+    "examples/co-creation/combination-conflict.md": [
+      "f5b9307b562236900d6bbcca9cf7d3fceebec8ad55b469001822e71ef05cf1e1",
+      "f9091653f128f61e83401ade6fbaa571d900e3bd2fd9e3b36fdb88c918a465c9"
+    ],
+    "examples/co-creation/game-open.md": [
+      "12b403d278d2b84218b845c5a5027c5196e80387f29127ff8f1b8227c0ae6beb",
+      "f7b88c32f42d31d7b00458cc639e5de7c82086ba0481b21dfdc2c8a23cab7587"
+    ],
+    "examples/co-creation/multi-source-gap.md": [
+      "306226d79a59652ab4138c15f569078d30e04d91b37fb44ec11cd866a2230260",
+      "7d76414c4546de6394f1085fb2d77c384b32888eb91665f96cd97cab30679582"
+    ],
+    "examples/co-creation/service-selected.md": [
+      "10ea264a38b6c3e296e67bcf47509a747ad03ebe097ef3a496bd6f5213daab30",
+      "ea186068f770c5a70bc926b9debd8cbebdaaccc5a9d39aa57e9bc5c52e4e9f48"
+    ],
+    "examples/game-analysis-decision/producer-decision.json": [
+      "b985d8c6d556b56a01971ca612629f861f9f829fba037ec0bbb3b02517bfebdf",
+      "ec235a8b941322590073b0e8dd1c2f3795676e93e6126d032034be990d2ceeca"
+    ],
+    "examples/game-analysis-decision/request-v2.json": [
+      "0be908c2435b9d939add7b427c6de30049c5d19ee7d09c7c6124c30b2f7410d5",
+      "c7b6df021476fae5ec68cc1a7c27193b97eb6c097bbfbcd12d3a6a08a6c9e157"
+    ],
+    "examples/redesign-playbook-examples.md": [
+      "4e65bdeacc22d83919f1c606ff44081b91ff2555491d2b994d026f2229400e47",
+      "a3a38be29296476c0a742a37fdcc6ed20c97d8b01b42f48b8fd66746f102e373"
+    ],
+    "methods/MAINTENANCE.md": [
+      "450607400fcca03a7e97df87322796e402baa4c7515d37b55186f2d5c8f19593",
+      "84ccc7196155424b95824c23cfa0e436004bc04b24f5f31ea501d009cfc4e85d"
+    ],
+    "methods/METHOD_ROUTER.md": [
+      "20120735fb91369e293dcc0f22449da6d49b746403298f480aeb96ec260210f2",
+      "981d7e507588f8fa31942ca576e448487e94c1e25d220ac5ed52daacd9756361"
+    ],
+    "methods/OPERATING_GUIDE.md": [
+      "9a6d0da3ba77b2d89e5308a18113a78c088b23bac7f0a40cabccaa8874cf07b5",
+      "ab07c1e63220322a9efe91355ce365909ce461bf203395ef0d50737f7ba6c102"
+    ],
+    "methods/README.md": [
+      "13a3b7816dcb4126429c1125534cb185bb048ecccf279e24d27d287300d0a252",
+      "b9f2c22bacbbefd9e303131c4d1c8ce747eba46e66d6f6f019e0cb2e1071205a"
+    ],
+    "methods/capture/brain-dump.md": [
+      "48d74a760e98b44ced4ecb366bc8b50a0e2e422dac4f8b933fa93461c719a50e",
+      "53fabaff2415dacb489d794af644df1f94d2387f15047092845d535e5ca67682"
+    ],
+    "methods/catalog.json": [
+      "34350205dad8abc5bd4148e41e257479c588078f3c09967c494792f21acec184",
+      "a468f85a0e5e91812bd880da32e66c5098ad4afc060a10fd21e2888eb52aa436"
+    ],
+    "methods/convergence/anchored-decision-matrix.md": [
+      "6b052bb08b1762c0620c9f1a1be7dbf739d149e778276f065d764ef7b9b03cdb",
+      "ec0b98c6e350ab8bc47061516ae69fbac49bf8c78b85d4e3d05ce0941d2bf46b"
+    ],
+    "methods/divergence/analogy.md": [
+      "a807ebcad66864f782ee7b3901339ba50b56d034c4b6031c224ac1789d5ccb6f",
+      "f39d51df5927b4ce621c44e7e4aec328856204aeac89e332d1a74b26ca66d0f1"
+    ],
+    "methods/divergence/brainwriting-6-3-5.md": [
+      "053339c7c106d93bfcaba9daf2740744ed731023a189e43364507eefe8f340ac",
+      "fddbb5cb0386b2efd2d9583ef9534c9362fbbd763499d25f8d22cd39d69985ef"
+    ],
+    "methods/divergence/forced-connections.md": [
+      "29794a71ae069bcecd755fdc4e04c2ed475a98555ecec43d583b0a44a608d0bc",
+      "5fca9096ebb7ee4bf7548afa3fefb76df43899535f7c478d0836109c6e1cca49"
+    ],
+    "methods/divergence/morphological-matrix.md": [
+      "60630fff37a56faee69e55c08943a4e67703c027404b614fd3fc3ada0724e316",
+      "cbaa422261e1591f4fbab1c94482c61d0c9ca09d64cfae8a5ee79f7bb718acd8"
+    ],
+    "methods/divergence/reverse-brainstorming.md": [
+      "3c6366f0d454c1d806923562644f4a67b0723240e7e2e4d43f5559390dccce01",
+      "b1b653ae316f4177866fafc423fdc68607cb6b46a4fcae66197abad82aa4d53f"
+    ],
+    "methods/divergence/scamper.md": [
+      "23b187118362d1f1e54d84f0d837d940683fccfbbf042f6352d1e0fb0f075961",
+      "c6e9c7fd6d459c9e4c0e2c8a5021c2deaa2bbb1dec24020e9288361034705f85"
+    ],
+    "methods/divergence/worst-possible-idea.md": [
+      "7227f766cc37f7364461fcfa395218bbc3ca40d6799ba07bc2e682cc4feb2250",
+      "ce461840e53c76775ab9e66ad30d7e0714a9381cc57b54ad25914f17f2273d13"
+    ],
+    "methods/framing/assumption-reversal.md": [
+      "a8c1dd16969ad94efa376ee5e58d30977715dac2789f870e65d7462143ca547d",
+      "d861b24196f8c9629fb7bfadd91a32b8f4ea95a8689df240a0875914c2a80b80"
+    ],
+    "methods/framing/first-principles.md": [
+      "4184cae8b54aa99f51db0e1a92e4c161ec72a9c320b79b2f6f8817711848c688",
+      "b272a5caf01206f10f1a31451575da87a2c01c8f078922d336a91a412bced2fe"
+    ],
+    "methods/framing/future-backcasting.md": [
+      "16e9df815d8cce103b717545ff4bc23cbebc95e8b272e12b6802f42081ec8040",
+      "200db264773bb0493c61594cdec9e83b89b7f9e0e92d655fbb36007206b25d2f"
+    ],
+    "methods/framing/how-might-we.md": [
+      "7e052aaf6016b7aeab65d74494c38d0fe0b9f6cec6ebe6481b29df185eab6074",
+      "cc688e7d24c99b42749c55dc4ce215028b46413287db91775ad70bf51da05726"
+    ],
+    "methods/placeholders/crazy-8s.md": [
+      "29f534ac80a0ddaf319e78d81505c01b57ba6419bdc976dbfc56ec599455b7d2",
+      "55f2c604f7b37b0cb5a12c5aa2baa955fa57fb57a3633d3e37eb6c4df4881e8c"
+    ],
+    "methods/placeholders/lotus-blossom.md": [
+      "0ef01b7037bba9aa274ba2c160939c576641ee15c3f52c2c8a867cd1abedaa28",
+      "4caec5aead48068716f323e949c1803a28c953222965711b1500e0c5806fe9ad"
+    ],
+    "methods/placeholders/mashup.md": [
+      "728d2063c7728e0bce8fed902550e90942afaf5f01c4ed7098585ef1ed56ab64",
+      "c548d0fb1d8c9736135509f3625913657e9e21d145a76de8ddbc7abaa9f3d9a1"
+    ],
+    "methods/placeholders/nm-method.md": [
+      "133256a1a7a70c8b77f82e5cd56fc9a0b5c054ec2fb0c9c919facf6e26c875e2",
+      "cf359c8a5fb0a71285015edfac527206179877c5284498707ef23346fb4247b2"
+    ],
+    "methods/placeholders/six-thinking-hats.md": [
+      "2392266a957df6552abc66b3a2a8d00c084bedcecace7f8b35895f2bd2b986a7",
+      "4ee673923b6bdc9c46094df48acdd281ba8b076925f84bb2405394a6454b7045"
+    ],
+    "methods/synthesis/disney-strategy.md": [
+      "0ba44d3f6134fa5329919168c954ef5e562d02ee7532092825f8509b269fb316",
+      "5895110679dc3b278b5251b82882accf8206b13816cfc0fffe8de73a6bb0a589"
+    ],
+    "methods/synthesis/kj-affinity.md": [
+      "b5beae84b9e550a63f616b96518e0c58ef10d9e22c02d281f337743c87ed0b0f",
+      "d789a015b18669cb5dbe52ff59c5bcb141fc3bc6ba3f30738967fc85529c2770"
+    ],
+    "perspectives/README.md": [
+      "1ebaf83dc30e8d7674e1cbda1a6238b8ff0f87381b87bf05c6e7d70518424abf",
+      "a4f45d5b51e9145263ec07cc068a6ba7b0799141318d37379d00b876d0e56922"
+    ],
+    "perspectives/catalog.json": [
+      "7323ad747e0d4c8cc746a6982e1e53a691d406fc71aed9ddfe371d901565cd7b",
+      "c109d2f59cabb7d5fd4105273786e8b4b98ce661d98dd725d21c774cfa5c67ac"
+    ],
+    "perspectives/core/accessibility-inclusion.md": [
+      "7a2d859c4684d18c6ec340c6aed8867268f12c6fe7b4080412f567f8e54be36f",
+      "91c4d56bc050e826b963aa9a5e2b182823b7b9829a6934b3bed171885ef8fb37"
+    ],
+    "perspectives/core/counterpoint-failure.md": [
+      "54c39fd8108146750e2e3994a7d899573e0a23631c14335335ba79bcf8cc1f79",
+      "b00fe820e3b02a6e7bb50eb56e046a04d4a956449b60f4eac67b4e0c1d26f6af"
+    ],
+    "perspectives/core/implementation-scope.md": [
+      "0476448b6525266699b3ab2642f624a53a69f64054439277324f0ecc06820d1f",
+      "ad01e14409d518ed76ca138f40ac81a3c063bf3e89b1009ffb1c367832efb7ee"
+    ],
+    "perspectives/core/system-effects.md": [
+      "9914647bcd19490c9f7bb9f5598331a6affda8ffc0b9fd065f408db3091deb50",
+      "dbed50f8dae19001067934b07a6201dad4a5330d26f4a39a1ad30f3fe4de6f0d"
+    ],
+    "perspectives/core/user-experience.md": [
+      "186a12efe0bfd80053852971615f5e8c200f52cff91f04df82cff19c4b415157",
+      "22fb833ed101c0804f8cb5a951d93290fa653dc5a6d45266ce7ab6c5ce845e87"
+    ],
+    "perspectives/core/value-sustainability.md": [
+      "19922b3ff1a692e8c262850efa78c4f6b1ae99da45de642691929f2714dcdab7",
+      "dc02a393f572b3b3cf769ab369475dfd16c38e337e1048059cafb9ac5b666c57"
+    ],
+    "perspectives/domains/game-design/content-throughput.md": [
+      "828c9bb1a78089a2585e9f6d024c0cd60ac363fec04b6ee154fd36c95ddda29c",
+      "b0acdbb2ec1c04f86eb43627d1d74b07232c795718694808de7f56b1d026069e"
+    ],
+    "perspectives/domains/game-design/degeneracy.md": [
+      "2a634b4217b07fbfeb700e929da7e0ff7f755a4bb02afcf6c2830e60eac7cf56",
+      "78a9a53b5a43390b7722cdbeb0f4e44d94dee2562e6fa216645ff42900ca6b77"
+    ],
+    "perspectives/domains/game-design/economy-evolution.md": [
+      "3db0c6fdb5519fcb1d822c7f8135b572fa514d6cf4fda0189bb68e47ed2c1044",
+      "941a1b008e0422ec61eaab74ba29f30d1cfce9ab5ba2d2f35680503793987df0"
+    ],
+    "perspectives/domains/game-design/feel-feedback.md": [
+      "b40e0d512306abcb15cede44f950819788631bf20cd059d64e2532009e165d0f",
+      "fe0875a6b2e3229254b5b1fc7c28d9b0c05b05565bd5137f10dbdefdc1cd2293"
+    ],
+    "perspectives/domains/game-design/first-run-curve.md": [
+      "3c17666216256248b3f87424d0d3b7cfc2ad8c9e6ef40af04a1b4662a97c95ad",
+      "be445c5f494b14a89c7935c8d20991fa4c49e7c26850e8e8d0064517ff0df17b"
+    ],
+    "perspectives/domains/game-design/player-motivation.md": [
+      "3d57f91c56a76a7806327df4b27e782449fc51f917c0c58cca16f629ed22bbc8",
+      "3f56af27db40dec4281a914f6adc5e711f9c1ff41de76e206d2da158a6e5d7b2"
+    ],
+    "playbooks/catalog.json": [
+      "cab91d52492ace5d4d67ad8dbe78b7cf5549986eaf94610eee53dbeedf7bb6c6",
+      "d1594d6eedc98278a85e5fc6728df660db67bdcb9f0664a82893b8497a787faa"
+    ],
+    "playbooks/game-concept/CONVERGENCE_PROFILE.md": [
+      "2ffd691fd5dc29d24278239b12198140ffef62278cf40301b168ac451a1dd007",
+      "d9ab0e6cfcef6f963a3402282fe0b186832de48e471a62ec07b0b900a467245e"
+    ],
+    "playbooks/game-concept/METHOD_PRESET.md": [
+      "3702f58128be91e184f97ab30fa517b1fd6fb639b62c84ca0e69e28a52e8ebd6",
+      "934a6c2f4a1153fb8bb7158196240d53128d64f7bf39b2ea1c035c45536d86a5"
+    ],
+    "playbooks/game-concept/OUTPUT_SCHEMA.md": [
+      "1969245eae1eca980a9926e29565faa60d6d12d8557df989f8b2519b3805c731",
+      "754c9cd47c132bf951e90bffae7f99f60136b50c08e3fc0d2d345a17d74943d9"
+    ],
+    "playbooks/game-concept/README.md": [
+      "38b4e88eec58ecdd5f556943a26c687a3733f7e2a6e14a3bc5754d434b8923db",
+      "5a755c1906dab9396c08f6ebea3bbec4a69ef58aedf8cd6ad71634b3aa951ae6"
+    ],
+    "playbooks/opportunity-thesis/CONVERGENCE_PROFILE.md": [
+      "4767b5fd96e2ce937dbc875ba7d36fb09bdf31d2fc66a1826246902698dc76cd",
+      "6ecd388da746ee18b170914819d6706c30e296b611f443c513277936f614b1fc"
+    ],
+    "playbooks/opportunity-thesis/METHOD_PRESET.md": [
+      "f04e222b0214862e2a8973a5c4fb06d2383eecd692ed9cee21209a87d61fb312",
+      "ff2b0ab634396cda432cc94229a4e09a1fa5c22c488908ce9a93743d1f529ea4"
+    ],
+    "playbooks/opportunity-thesis/OUTPUT_SCHEMA.md": [
+      "6361fd9239a9f6932d852cfc60cf0011d88ae9ad66c8c0256ffb7f74f27d3ffb",
+      "f17fae757aa63ac315248220a1df47222056d2dc39ec3886a34a8d5260d6b7c8"
+    ],
+    "playbooks/opportunity-thesis/README.md": [
+      "34284b9411256642b920b1da9e32a7acf7818ec42d3c32edbae2016b7f438557",
+      "4af09d6dbe025a18fee9378c00c03b53799d06aa80e64b97018a531ba0650bd4"
+    ],
+    "schemas/adapter-catalog.schema.json": [
+      "906861ceed7d2ac0faeeb74abcc288e3c8f046a18f41a043ec48329ee8bb2f13",
+      "9ba2fd6c1dd7aa05ce7244e13c350646796accdf26e9cee6efd003bfb3f7ade9"
+    ],
+    "schemas/f2s-gap.schema.json": [
+      "a5c0dd455807d9c0c190543fafa374241781a22d378e186ae59591575e486357",
+      "f5425dca87b5209e0a70b56ad78d6a1ebdfc75cc17812b198c5ee767759190bb"
+    ],
+    "schemas/method-catalog.schema.json": [
+      "285a678e10240255e7159027e4559bcad5da390b4570a05f539f231d40c3d477",
+      "f5f0dbb49361c071d6e8084563f7df1653cfe54a945488da1c21d28ecd64be30"
+    ],
+    "schemas/playbook-catalog.schema.json": [
+      "64675bbe97a7e9803c3dd4c4050f6afaa0e19ee8ea180582a534da9acfdb3515",
+      "ad8421ad7fc5a8ed2201d15ee820d246820e27dea67f6cbd0e959a1e316ff477"
+    ],
+    "schemas/public-sources.schema.json": [
+      "48e485df8f05d6c5ed54c59dd07b3e9cde48d6786929bf2b997605d735706fb0",
+      "b994e8527612b3654ece5398ee4bebec06cc8d084b26aabc1964dbab9759f476"
+    ],
+    "schemas/session-state.schema.json": [
+      "2a255f6b83d2cef46f785e8d1791ea6a48c0e6f002abe4b13a7e3bc2703a1f77",
+      "6900866946c4400f5a6f3758e5194a8fdd8648a23950efa4488cf49e9759a5e4"
+    ],
+    "scripts/README.md": [
+      "07b837b248a9993c3144c38098a83e70bb8fafe841d263a09dd21b02b70d36ae",
+      "c31d5472e3afb38d4ff826a1d2d3c4a416b4031069fca6c401349132217862be"
+    ],
+    "scripts/adapter-common.ps1": [
+      "80170487c1a31e8d719db9b5c3a34766b3594512f07fc28e2c454452b9f63a88",
+      "a1c402e5da70c6cb1bbf7a55187a43c71b92a5c30748f3de3e759dc22216a3c2"
+    ],
+    "scripts/brainstorm-analysis-adapter.mjs": [
+      "5606b5a796b3579a5c255aa293209d6047dc54f8c68c02a78b57018ac27dfbef",
+      "db882d025a02b776e02e1e3f7c27486357b7f946b7bdebe98fcaa6143fff5b16"
+    ],
+    "scripts/build-session-index.ps1": [
+      "1ec21643d0f9583785f2e9ea0b64be8c3b1f09899be0ef22936f8379e7f1a30a",
+      "78df297b737bf4078f7cbdbf3624f7db9a0d993c9d5c0a043ab7333dbbf552a9"
+    ],
+    "scripts/f2s-v2-common.ps1": [
+      "29186a857a4ccfc5180833756282367a5f5965ea4f9a6c3a388fbd54112df65b",
+      "29d34bc620679d929321b768db4d3f4cf2c4b9298f84670fbd1dc94e48f57b8d"
+    ],
+    "scripts/gad-v2-binding.mjs": [
+      "a64ea0e7b0686cf8d93f3af0604b47f23c982781f2940393907d30f121ce4ecb",
+      "ac4ab1070326bab86af52481890880e0fb03ce937ccfb7f0ac2bc017f2a7d759"
+    ],
+    "scripts/game-concept-common.ps1": [
+      "3e895153ac7cd0a27371dc7478eb33b72a23c8be4ace018cdba9e95e574364f2",
+      "caadb3a92dbfd34a03aafd4cfa7894722ef8a6157ddf4e72ff39e2aa8cc4cf0f"
+    ],
+    "scripts/get-close-summary.ps1": [
+      "07e975e99f2ddb8cf929840d912a1f78fb7a36907d993e96f60521dab0abbc71",
+      "3c2001b2d101bc7b2394bd27bf5d6024650d5dd1e4593c9cef68f0987694486d"
+    ],
+    "scripts/import-f2s-learning-feedback.ps1": [
+      "a66e2d2ed1290931960a19661c12baa672178685bd3ad0d03aa82c375b24f43b",
+      "f8826d23481e81b2011d31a304d44ebb16fc89db4a2c383aa2ba6757801d7a90"
+    ],
+    "scripts/list-methods.ps1": [
+      "9582ff6c60cc50500885d2bbf6887916c57815822241c5f76a13b3878ad526ae",
+      "af19966793478d44dddb64e34c2d665e9f45efefff37758732609b3c2abc0eb6"
+    ],
+    "scripts/method-common.ps1": [
+      "2de017f652a5ab84cb03cb9595934148509ad7761c6e4b0ece39b2398e0d5a8c",
+      "ae98c83752fcc7b7e3331e7d4443a50fea1e09046f017c39fc72f383d2dd42ab"
+    ],
+    "scripts/method-learning.mjs": [
+      "67eb9c17f14003a4747be5d27bfcca3024b57d34e78e4cc9a22779ddef424f9d",
+      "d77cc9349d42a35fb76e593e69cf36cab7369e3f068f13b4968d81555974329a"
+    ],
+    "scripts/new-f2s-gap.ps1": [
+      "6a1bb4d5edab61a96a9ca1d10e12dc8d42f8a033e5c506ffe5c6b18344170eb3",
+      "cbcb64fca0cb4dd807aa4af4ccb8b67eae7df48cb27e757c4203f573f342b7b4"
+    ],
+    "scripts/new-game-concept-brief.ps1": [
+      "72031861f5c398b35b180eb647271bf01d4a0bc192599e70c96b6bc902b43bb5",
+      "846215d3b70cfebe46701fa3baa7b821d5aa4741aabe830220d7827e37d4a6be"
+    ],
+    "scripts/new-game-concept-combinations.ps1": [
+      "2841131acc848aa5378f6a857ea026d2b7a9ababae34fa97d29fa32438f97fcf",
+      "66cf985daaf2fe8a4ad7d459698f3a56fb47641b24d10cc0ecbc1df6c20c9133"
+    ],
+    "scripts/new-knowledge-context-brief.ps1": [
+      "87ca666537fc676587bc2c8d9ef85380fc9fe05bcf3337a12b2d4cced786dba9",
+      "f413167880dde3b86978aaf5acedda4c265603f80e56f681cfb6ac467ac26631"
+    ],
+    "scripts/new-learning-feedback-candidate.ps1": [
+      "b49a6e903520f8c1e9c37450c9f1ce1e903c27014880af8b9b607cae844a91a7",
+      "bb238c91d69e9d45e3f922a079310db3e09a2c2c0942ab8e06356529644c8f48"
+    ],
+    "scripts/new-method.ps1": [
+      "14f456562f15c5fb8b63f2367a97716c133a181a03897a66de803d469d37c1af",
+      "e2cea755b40a3a47fad2ccb76603411e899c8e6e6c09704f823ff7786f9e6487"
+    ],
+    "scripts/new-session-artifact.ps1": [
+      "637f6950f3e046657a5d24a63a42bdd2025a731f5506cfc91d5f7a2f239def05",
+      "ad3507c0e14dfc0ec6604dde4ff1b12a0adb0c449a981df58199ce7138401ccc"
+    ],
+    "scripts/new-session.ps1": [
+      "a87d2790d653a4ba29f355a698e3af7e79edf4465d85b9a94bb5e77f2544fe5e",
+      "f9a6710a0f404d2375bb36bff410304e5a4c79a79d6b0e12d18df5229c79ab2a"
+    ],
+    "scripts/playbook-common.ps1": [
+      "208094eb7e416a336ed6314fa37eec04df1411ecc48acc3a78394e559a503262",
+      "7ec3914e2aae998ffbe96c87c4c8a3a73ca433a3d6bc0da0f19a8ce6fff678a4"
+    ],
+    "scripts/render-f2s-handoff.ps1": [
+      "6fa84090e8e5d1d1132a6403f78450520202959f6940c0a392545bf8a2b364a6",
+      "f80059293f99d502f3dfc09ab3a0ff95752ecb362ba944187ea99f05d2e4eb49"
+    ],
+    "scripts/resume-session.ps1": [
+      "a2fc1c7099ce82103c3c02af55cc43727ff4b1277bbcd56ced6741dc909ce5c1",
+      "b1377f48a1664213035d2c2c47ee2f1c0ef0a74894792d8cb42aec35a007d521"
+    ],
+    "scripts/revise-session-idea.ps1": [
+      "9bacdb5250f375a7c2640acbf61cee28edb2dffe3fa0c5327b4dd54200225698",
+      "f8cba98993532f6f8d35ec084dba661ddce754710d0a95e792965bc363c91e13"
+    ],
+    "scripts/session-common.ps1": [
+      "083cf2bf5feb96fb6d4bd9cbb5370c708de140215a29488f6671587b7d034eee",
+      "2be7f37b79db9df43c242de5775f43f6c2ff4569c71d6b51433e0d3a20e928bc"
+    ],
+    "scripts/set-session-phase.ps1": [
+      "7ad7a5a1c94bcfae9bd7027354f708695c7c5536435180c67c2513c21b0cc082",
+      "f0e5289daf7d7b8c3ae698c367077eeb9814c095a916f3d5ccc57212f1760470"
+    ],
+    "scripts/set-session-state.ps1": [
+      "35417e5e97502fd46fbe9e16a80aa75b1e9c2711fff65a1ae9023dd4acf6b216",
+      "5ed50d19f4e120ac1a8bcb05d2fae8b3b5723146ee1ed60f7332343da0676d94"
+    ],
+    "scripts/validate-adapters.ps1": [
+      "635516ad9d6de60dbc37b1ee2748adf74953c37cf2005fa1e5d5e1b7299900b8",
+      "eebb8bd62f9a28df41019ace5c46c1d08efa44be9bac5bc57bb72ca0f055f698"
+    ],
+    "scripts/validate-f2s-gap.ps1": [
+      "1be68b6703d0db3bf322c863afd475bdfd729db7417ca8f585411112fe1e5a0a",
+      "a301adfd93cc0c820b4a092168f8112906ca92b43e62b7fcec570161dd6b8ea2"
+    ],
+    "scripts/validate-f2s-handoff.ps1": [
+      "16f73ca998517640b6c9e8699a292fcaf6c5cc3dde2102fb1d1178b7339161b3",
+      "172d61999f907204a4b4d1a1fe657524ae98961147efa9e032e312bbd5898a2b"
+    ],
+    "scripts/validate-game-concept-brief.ps1": [
+      "885c80391062602862c2a5bb51b0ab58cc83170bd108489932b1f4de4e911ceb",
+      "9bb230118612b44abe83b7534c9dfc0bb65d6c8b6f20c1ee007761a1b2a32851"
+    ],
+    "scripts/validate-game-concept-combinations.ps1": [
+      "df58d7a71fd88ff5c50aeb32d6eea9ef491aebae4ec825aa23998ccfba0f0309",
+      "e53746542a5bff72e1d748cc630362eac9a57c728a95a04bc4db3ccacd677fb7"
+    ],
+    "scripts/validate-knowledge-context-brief.ps1": [
+      "3d5433b2349fd903f27bd02a7ade0a261ba81578a945546d9665c5fefd495885",
+      "78785fcfc1dcb13bbc781c64111bdc780d4d42937a144ffb0c5244ed5130ff3e"
+    ],
+    "scripts/validate-learning-feedback-candidate.ps1": [
+      "58f838b7d92d856dab60755668862ccc2d35b1c4a9d0a3a6e960159886e6774e",
+      "99a9bcf45329fa3e1f6e780cbe878e63a4ce47039ddd39d88aa6ca9ae95ee2f7"
+    ],
+    "scripts/validate-method.ps1": [
+      "2f4711ba34a9e7484b226419ddbcedc3dacfd741ee61ed43982d86529a0bcf9d",
+      "dc9c38d481e6fa3f59bb3178aba8bf92138fd150d57bbae891e684c461f970ec"
+    ],
+    "scripts/validate-playbook.ps1": [
+      "6558b08c01d1536a37b6d3eddeff28460acaf89c3c16f791fe4f49cab33df2f3",
+      "e2c4f9ff7523d274b59a68a5f17188080bafcfc95ef940c370007a98ba8d7882"
+    ],
+    "scripts/validate-session.ps1": [
+      "ab4cb785bbba1ca3431e5d773c6370c36492ea9733bd92c91d5c510efa04bcae",
+      "ef79a6529a725d5bea7b36793f60ed7a5606e9acee92ef7826a3d973db991a24"
+    ],
+    "templates/decision-record.md": [
+      "9ad9b2a6193ac00fac94b8a8b9e65929dcfa525172d1bc8eb9bc114cf108d506",
+      "b1c5f47bdfb0a5b3e0acd8043ee1c239d11d8a6404d6f8b1d2b820ce90090c82"
+    ],
+    "templates/f2s-handoff.md": [
+      "322d216f8839ebeaf1ec6db5bc4fb079500ad19fe4f8e4ca50fbb57680700bdb",
+      "f6fcfeb7d730dcf17ca74763fcd5572cfa38f88217d451818f5d663902b5d88b"
+    ],
+    "templates/game-concept-brief.md": [
+      "1a42b2a41f598fb44fea8355894f2791f1cc3515c8f9a56ac597c02024238242",
+      "3355b3082a736041fe45b09155aa4ed8797ae49bc9224a7d0271ddab6b921a11"
+    ],
+    "templates/game-concept-combinations.md": [
+      "05e3019b7b8bcacbd218706d288f960ba030a5a8d013666b49fab6c3f0d96acb",
+      "fc61716bd0ae3e9dc2313d8fda3353f32cf7650598121a4e9d776f42a9e2092e"
+    ],
+    "templates/knowledge-context-brief.md": [
+      "79218f1601d861dfc8d5c186710191b6a37a36e0660f56ccfea0e8152719dd95",
+      "d6e80629f9ad43b3fbbf5ff982053a398c93e78c48df8df5ba079662b16a9411"
+    ],
+    "templates/learning-feedback-candidate.md": [
+      "6d9d07194f101a2f949129b8331810af50938ee3049c69fd51b34e8893d5c075",
+      "a6363ce8737133d386d7dd98d3436a86b1034997a2d06b7ed4c19abc722f03da"
+    ],
+    "templates/opportunity-thesis.md": [
+      "03902be0537ceac5d76c0de7d4cabb5e9d369c69748931fa9af676b790d5f5b5",
+      "41ff2f7bd55fc11261d59cbdbdfecdfcce1c2964fab6ab2012e29ad9f181af75"
+    ],
+    "templates/perspective-review.md": [
+      "6a505c6dcdbae8313ffe3f253c9333520a0d66e83a84631020f9cb2590ca2a8f",
+      "d208cc91b2da7cc3ca8c4cea555ce34088c934467fe6a2841d4e304fa57f7605"
+    ],
+    "templates/session-artifact.md": [
+      "ae125b8fd60d1634898cce61a843ccac2bdad073950af58e906c65e3f523330c",
+      "ca4c61d44edbe0a2c2f850fa3f410aacc291d5778726dc7ece5d7b4495615a30"
+    ],
+    "templates/session-record.md": [
+      "5f2a11b08b1bb3c397941840ec72e0b6ac23caa4250c3664ccaadaf89c53c02d",
+      "626f83cca763efa2fd6151ceb243a57320f0cd81642a460b77452af959f42019"
+    ],
+    "tests/README.md": [
+      "4df77d1ceae6cc652b28e8ef623ed8359b864a8c7ac91ba310764500880e9a45",
+      "defdd62eb536c9332a2f399210f3a254a6fb500e658d5262550c0b1ee6508387"
+    ],
+    "tests/run-release-contract.ps1": [
+      "814ab31a4514c780e3ee2e85209d01d675b6194cdad7da2ae9806898a0b5633f",
+      "afb0130fba11efa8abafc825d331bf937046e26ab62e3143ec5c805e118582c4"
+    ]
+  },
+  "schema_version": 1,
+  "source_revision": "1d4aa8eb2fd65c9fd59cf15891152d004b581862"
+}

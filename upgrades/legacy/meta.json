@@ -1,0 +1,156 @@
+{
+  "canonical_sha256": {
+    "README.md": "39a098307861bda6d69e3b3f4f4ebab4e2755d86269b3bc1135cefa6f775669d",
+    "_release.json": "bbbaf10ffd594d0f29bcba33759df42c3e7a86c24f004e9b4bbbf27c6e8e5563",
+    "ai-bootstrap/01-questions-to-ask.md": "2eddcb3aeb69e356c42607111d44543729ea101315b2eee65abf3c1c72a38728",
+    "ai-bootstrap/02-build-order.md": "a46bf2abaaba782147a570b8c77ded759bd8c0b05250c1bdd5da095ec6c35f6a",
+    "ai-bootstrap/03-signal-sheet.md": "80548448c1de1b734016a8c51d234fa6bae7690d8bc34f9fe5219b8a30a46039",
+    "ai-bootstrap/04-update-flow.md": "bdbc39cb36798994a31cfa7dca3eb8d6ac41b71b05421cd72bc1362b0ff0d55a",
+    "ai-bootstrap/BOOTSTRAP.md": "622a92713915f4ecd8855dd2f1da762809dbda7376dc690bd71d7dfec61f330b",
+    "ai-bootstrap/COMMAND_MANUAL.md": "d4ff7d38973ecccafd05c8b46b488e408d1762c4c37b427b6cb7422f7ae2bf39",
+    "ai-bootstrap/templates/AGENTS.template.md": "ab15d52fab291352f064431f2d24706b16dc2a513d133fa15243c5a624b600b2",
+    "ai-bootstrap/templates/AI_INDEX.template.md": "4eaa9afbc1532fa12fec0d6ff3cf775bc4bc3a5d204e9b31d069c8ece00ecf78",
+    "ai-bootstrap/templates/AI_SELF_CHECK.template.md": "805e5781ca4a0fe33e2a556972f5b744c8a9b00f379f0acb3ddaf209d5a8c665",
+    "ai-bootstrap/templates/AI_SOFT_HINTS.template.md": "b071c31906b76092a442172e6172f8c8d92da426395e3167588118d530c81b3b",
+    "ai-bootstrap/templates/CHANGELOG.template.md": "da91f2c8e37ebd71f60825231ee48ea5fbdedd77fa35407bb255715453f00d54",
+    "ai-bootstrap/templates/NOW.template.md": "dfccba972f4835938363188f6415f431c26fbf2d47bd758d9bcca2509095e505",
+    "ai-bootstrap/templates/OUTPUT_SCHEMA.template.md": "d7e2ec24382c718ee4df43d9ab189e952ae623d9dd74b292214c4b1b3e7f3a63",
+    "ai-bootstrap/templates/USER_PROFILE.template.md": "17aca2b651ef5cd0c8c4b150d07da729217b810844fab4e76cc09b700d96e8f1",
+    "ai-bootstrap/templates/_observations.template.md": "c8f71d0543808aa86b8b1996f9d3b99de6158b9cf303fed7e1c354705314cbab",
+    "ai-bootstrap/templates/heartbeat-state.template.md": "014ef2f4c41fa5536beee1c53bb2c38df9e8f1f5784931454e9e129d6c29bad0",
+    "ai-bootstrap/templates/maintenance/README.md": "7a1cdf8fc695491b47a2e383e0d3a722fc11808bff5a8ba8ac00a84bdaec7d46",
+    "ai-bootstrap/templates/maintenance/code_changes.md": "b7cc1b914399df9a1084c519dc5ec36ef66dd7bb02113e3150465b73da487e4f",
+    "ai-bootstrap/templates/maintenance/config_changes.md": "bf9d4e2d60dddec0f204db637d8a18f5f79d95bf711252e83ccf844134d8353b",
+    "ai-bootstrap/templates/maintenance/feature_changes.md": "e92524775a8a3f1b15479f508ed7d6903cef6fe79d213456ad23f24478169252",
+    "ai-bootstrap/templates/memory.template.md": "df35ea7cf83538ca0dfbbeed6facffed6fdfee5228decacfec4edb5036a0737c",
+    "why/doc-ecosystem.md": "65fc212cd910fe6aa76e5e16f4266606aa9a688df0dfaf6797a40b2630665f3d",
+    "why/element-decoupling-and-assembly.md": "7c4240617852e40bfffa7ed2dd576f8b34db8137268e85d2e4a67ee1e3a8f0d2",
+    "why/gradual-adoption.md": "1147220c3b2de66a6644d5a316f37c0aaf88fa67aaf1c12dbbb42141ff748f1e",
+    "why/reusable-agent-skills.md": "88e0da5350dabc3eb90686724263f27e126b4faf18039a1559b41305556b4d5c",
+    "why/three-layer-agent.md": "b74094a240a776604d648a4826a665bf6f87e3b9a4ba84da622b6694efee9d85",
+    "why/wrap-up-thinking.md": "46d5029cc0d380a4ef36629287d434580e05a549b9adf4da0e25faf0a3c4f3ae"
+  },
+  "component_id": "meta",
+  "files": {
+    "README.md": [
+      "39a098307861bda6d69e3b3f4f4ebab4e2755d86269b3bc1135cefa6f775669d",
+      "cbe00be083fc02af0c694fc49d68ff138d0e923da682e7d42a4fea044f646bc9"
+    ],
+    "_release.json": [
+      "bbbaf10ffd594d0f29bcba33759df42c3e7a86c24f004e9b4bbbf27c6e8e5563",
+      "c64929aaad971fc277da143717e31ff08b7300cf138cf5f1e03912d56153a651"
+    ],
+    "ai-bootstrap/01-questions-to-ask.md": [
+      "2eddcb3aeb69e356c42607111d44543729ea101315b2eee65abf3c1c72a38728",
+      "306441c26a8d31dc85d453ae60d57e51ecbe90864efca9dbd4e533c313bf8f78"
+    ],
+    "ai-bootstrap/02-build-order.md": [
+      "6fa42f07b86212ec494c8226eb2e601f453c440b21d785930a292a55fe164626",
+      "888c20e0265ba91592ad8f8d02991979fa00160dcb8c5418a66f0b7ccd375a9b",
+      "a46bf2abaaba782147a570b8c77ded759bd8c0b05250c1bdd5da095ec6c35f6a"
+    ],
+    "ai-bootstrap/03-signal-sheet.md": [
+      "80548448c1de1b734016a8c51d234fa6bae7690d8bc34f9fe5219b8a30a46039",
+      "c3a01286c8d7ae5661c00d65cefa7845f2bab8825807f5b0b4b486e151702150"
+    ],
+    "ai-bootstrap/04-update-flow.md": [
+      "aa597be5e57be915ad72d60400aaebac14b8ffccd24892a89a7a99105353f319",
+      "bdbc39cb36798994a31cfa7dca3eb8d6ac41b71b05421cd72bc1362b0ff0d55a"
+    ],
+    "ai-bootstrap/BOOTSTRAP.md": [
+      "17cff7b367decaf01bb9d367a3bedd97798b06c290b8229b72ee34d40c5cca4c",
+      "622a92713915f4ecd8855dd2f1da762809dbda7376dc690bd71d7dfec61f330b"
+    ],
+    "ai-bootstrap/COMMAND_MANUAL.md": [
+      "2d949bdf01b66fe8cd6f28794a2e5be8bb2da8ce1a3718c9e074763a43bc3ab7",
+      "d4ff7d38973ecccafd05c8b46b488e408d1762c4c37b427b6cb7422f7ae2bf39"
+    ],
+    "ai-bootstrap/templates/AGENTS.template.md": [
+      "8701bf96bb745538831ca05f9efeb7dfdca215e62190d4c4467e93507bdd7179",
+      "ab15d52fab291352f064431f2d24706b16dc2a513d133fa15243c5a624b600b2"
+    ],
+    "ai-bootstrap/templates/AI_INDEX.template.md": [
+      "231043b52d1cda927331cf7420b8bc2b578d5467208dc21daeed4261cfa3b467",
+      "4eaa9afbc1532fa12fec0d6ff3cf775bc4bc3a5d204e9b31d069c8ece00ecf78",
+      "b5cb9f0ec5feccf30496e5f907db876de3ce97239cda63a32d910d2d950518c1"
+    ],
+    "ai-bootstrap/templates/AI_SELF_CHECK.template.md": [
+      "12890fd94938bf321a2f0c2ab02c2b594b4a733c3fafa062ffb0eee2ac731df0",
+      "805e5781ca4a0fe33e2a556972f5b744c8a9b00f379f0acb3ddaf209d5a8c665"
+    ],
+    "ai-bootstrap/templates/AI_SOFT_HINTS.template.md": [
+      "2abe7d00a498c52925515320399a850063fd7e4ffb8df0beef716ec9b42e16b3",
+      "b071c31906b76092a442172e6172f8c8d92da426395e3167588118d530c81b3b"
+    ],
+    "ai-bootstrap/templates/CHANGELOG.template.md": [
+      "253fba85bc4cb64c9e43abc52ea84ac133a7ea18e7ec6b7830e1091444ce328a",
+      "da91f2c8e37ebd71f60825231ee48ea5fbdedd77fa35407bb255715453f00d54"
+    ],
+    "ai-bootstrap/templates/NOW.template.md": [
+      "512a29d94123a44dfa577606cb34959c64835cc964daf9f671150db7eed5f181",
+      "dfccba972f4835938363188f6415f431c26fbf2d47bd758d9bcca2509095e505"
+    ],
+    "ai-bootstrap/templates/OUTPUT_SCHEMA.template.md": [
+      "8eb10753533be2f9e4d6e1baceb0f824395dda5f6522e1b67fe02f6a5cff7b5d",
+      "d7e2ec24382c718ee4df43d9ab189e952ae623d9dd74b292214c4b1b3e7f3a63"
+    ],
+    "ai-bootstrap/templates/USER_PROFILE.template.md": [
+      "17aca2b651ef5cd0c8c4b150d07da729217b810844fab4e76cc09b700d96e8f1",
+      "b7689442bcd47c6a75a8ffbd5aeb52ead0ffd887d78a4793cbe5b63a992fc797"
+    ],
+    "ai-bootstrap/templates/_observations.template.md": [
+      "3ad14a6a444e328682b342e8a400fceb330d4a4747f1f144011933f1027abac8",
+      "c8f71d0543808aa86b8b1996f9d3b99de6158b9cf303fed7e1c354705314cbab"
+    ],
+    "ai-bootstrap/templates/heartbeat-state.template.md": [
+      "014ef2f4c41fa5536beee1c53bb2c38df9e8f1f5784931454e9e129d6c29bad0",
+      "0c26232713aa66c7efbc6e0cb86b544181d54777abda3d83b486553d1d2c9c05"
+    ],
+    "ai-bootstrap/templates/maintenance/README.md": [
+      "014dda6c6c1b8062bf01acf0c7f0ee3da0ac2ac6235061104d66a0dff7985b5f",
+      "7a1cdf8fc695491b47a2e383e0d3a722fc11808bff5a8ba8ac00a84bdaec7d46"
+    ],
+    "ai-bootstrap/templates/maintenance/code_changes.md": [
+      "b7cc1b914399df9a1084c519dc5ec36ef66dd7bb02113e3150465b73da487e4f",
+      "e63c156c6d97c51c479bd0e30290432dc02f0e622d7d9a6f080486c5b7a8fa91"
+    ],
+    "ai-bootstrap/templates/maintenance/config_changes.md": [
+      "41fcef65629c477276fd78d765884929a05ff906ebba190273d7064ff9d87627",
+      "bf9d4e2d60dddec0f204db637d8a18f5f79d95bf711252e83ccf844134d8353b"
+    ],
+    "ai-bootstrap/templates/maintenance/feature_changes.md": [
+      "b822e3ceb59be3618ab065a221c1a584524fa0e4a223219e5accb10eabe146b5",
+      "e92524775a8a3f1b15479f508ed7d6903cef6fe79d213456ad23f24478169252"
+    ],
+    "ai-bootstrap/templates/memory.template.md": [
+      "779a3fbec88ce3392178a95eaa2e57255cd3600e9b0e2e7b5ec3f5609a146ab5",
+      "df35ea7cf83538ca0dfbbeed6facffed6fdfee5228decacfec4edb5036a0737c"
+    ],
+    "why/doc-ecosystem.md": [
+      "65fc212cd910fe6aa76e5e16f4266606aa9a688df0dfaf6797a40b2630665f3d",
+      "fd8115f91fcd669663536775e72a13adb4bc9c19ec28f49a71d6706ce483e21f"
+    ],
+    "why/element-decoupling-and-assembly.md": [
+      "7c4240617852e40bfffa7ed2dd576f8b34db8137268e85d2e4a67ee1e3a8f0d2",
+      "f60206ca247bc4e9bd6d9b3c3bb6e5a1f9c7c59327c088bfec732f72834d74c7"
+    ],
+    "why/gradual-adoption.md": [
+      "1147220c3b2de66a6644d5a316f37c0aaf88fa67aaf1c12dbbb42141ff748f1e",
+      "26d196ad05220314f40d7e00d9adea92717c20d2966b219b5100e2ae5e0ee9df"
+    ],
+    "why/reusable-agent-skills.md": [
+      "02eec84ce2dc6e06cefec7dd153f37120d713b83e4c6326039482474205bcf46",
+      "88e0da5350dabc3eb90686724263f27e126b4faf18039a1559b41305556b4d5c"
+    ],
+    "why/three-layer-agent.md": [
+      "9392a2b96d104874271a4b60fa1a8573698390a09aa096f6248f125d4f1fb2ac",
+      "b74094a240a776604d648a4826a665bf6f87e3b9a4ba84da622b6694efee9d85"
+    ],
+    "why/wrap-up-thinking.md": [
+      "1f89bccf9270f3df9e2bb39dbf8ff617ec79f16b7a965d7d5d1692f9d582f2d5",
+      "46d5029cc0d380a4ef36629287d434580e05a549b9adf4da0e25faf0a3c4f3ae"
+    ]
+  },
+  "schema_version": 1,
+  "source_revision": "3da6c414596a7273cfc5d090101bb7dd9ed375cd"
+}

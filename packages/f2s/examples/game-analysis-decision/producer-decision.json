@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "receipt_id": "HDR-f2s-adapter-demo",
+  "request_id": "ARQ-f2s-adapter-demo",
+  "project_ref": "f2s:Demo/deepdive",
+  "decision_packet_ref": "decision:DCP-f2s-adapter-demo",
+  "action": "accepted",
+  "producer_ref": "producer:user",
+  "producer_confirmed": true,
+  "host_record_ref": "f2s:Demo/deepdive/CHANGELOG.md#analysis-decision",
+  "host_record_confirmed": true,
+  "recorded_at": "2026-08-27T18:30:00+08:00"
+}

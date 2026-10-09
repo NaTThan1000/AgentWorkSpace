@@ -1,0 +1,16 @@
+{
+  "schema_version": 2,
+  "prototype_id": "example-only",
+  "lifecycle": "maintained-project",
+  "direction": {
+    "intent": "Clear state, perceptible action and coherent visual language",
+    "rationale": "Synthetic selection example; no real project approval implied"
+  },
+  "choice": {
+    "mode": "agent"
+  },
+  "asset_source": {
+    "repository_id": "prototype-assets"
+  },
+  "assets": []
+}
