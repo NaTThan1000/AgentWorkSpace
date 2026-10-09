@@ -25,7 +25,7 @@ Brainstorm 把模糊想法变为可以碰撞、比较和继续推进的具体方
 | 当前会话索引 | workspace/sessions/index.json，由工具生成，不拥有第二份业务状态 |
 | 来源身份与适用限制 | docs/research/public-sources.json 及专业正文；来源可靠不等于方法实际有效 |
 | 正式接受、淘汰与关键取舍 | user / joint DEC 或已有明确范围的委托；运行模式不扩大权限 |
-| 外部事实与执行状态 | Knowledge / GAD / F2S 对应权威源；Brainstorm 只保存来源及消费结果 |
+| 外部事实与执行状态 | Knowledge / GAD / FromDemoToSpec 对应权威源；Brainstorm 只保存来源及消费结果 |
 
 [session 合同](contracts/session-contract.md)规定新建与继续统一新版。已关闭记录保持历史原件并只读索引；没有旧活跃运行分支。一次性迁移证据放在本次审计目录，迁移不推进业务状态。
 

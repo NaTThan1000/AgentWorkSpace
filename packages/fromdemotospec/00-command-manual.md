@@ -1,4 +1,4 @@
-# F2S 命令与意图入口 · v2
+# FromDemoToSpec 命令与意图入口 · v2
 
 自然语言与以下命令等价；按实际意图和已有授权推进，不以触发词或问句形式重复询问。用户无需记命令或调度步骤。
 
@@ -12,7 +12,7 @@
 | 请求分析与决策 | 项目授权预算内按需自主装配[GAD请求](adapters/game-analysis-decision/README.md) | 调用不等于采用，proposed保持proposed |
 | 制作人拍板 | 将用户实际意见记录到宿主，按GAD合同提供可读审阅材料与只读回执 | 不能由Agent自填确认替代；必要时集中询问具体取舍 |
 | 记录验证反馈 | 依据真实上游决定与证据整理[本地候选](04-agent-learning-feedback.md) | 不自动入库 |
-| 复盘本次F2S／学习进化 | 区分项目事实、F2S方法增量和制作人协作信号；按[反馈与学习合同](04-agent-learning-feedback.md)处理 | 新策略限定试用；不自动改Profile、Brainstorm或Knowledge |
+| 复盘本次FromDemoToSpec／学习进化 | 区分项目事实、FromDemoToSpec方法增量和制作人协作信号；按[反馈与学习合同](04-agent-learning-feedback.md)处理 | 新策略限定试用；不自动改Profile、Brainstorm或Knowledge |
 | 导入 Brainstorm 反馈 | 对应授权成立后交由Brainstorm导入并生成收据 | 不静默跨仓写入 |
 | 主策划接管 | 兼容映射到分析请求，按GAD adapter提示退役策略 | 主策划指Agent，不是制作人 |
 

@@ -50,7 +50,7 @@ Agent 在既有授权内按具体缺口请求 Knowledge、联网研究或 GAD，
 - 普通分析由 Agent 消费，重要产品选择交用户；来源不足可能只阻断相关判断，独立发散可继续。
 - 工具不可用明确 unavailable；不可伪造检索、分析、专家或验证结果。查询重复且不改变方向时停止，说明剩余未知。
 
-Knowledge 的 Clippings、raw／raw-sources、wiki 保持只读。任何调用都不自动启动 F2S、外发、付费或扩大权限。
+Knowledge 的 Clippings、raw／raw-sources、wiki 保持只读。任何调用都不自动启动 FromDemoToSpec、外发、付费或扩大权限。
 
 ## 5. 聚类与完整方案收敛
 
@@ -90,9 +90,9 @@ Current Continuation 只写真实焦点、下一动作、暂停边界和决定�
 
 游戏使用 [Game Concept](playbooks/game-concept/README.md)，非游戏机会使用 [Opportunity Thesis](playbooks/opportunity-thesis/README.md)。生成工件不自动被接受；概念选择也不等于真实玩法认可。
 
-[F2S adapter](adapters/f2s-handoff/README.md) 映射制作定义 v2，核心体验／循环／范围有来源、阻断缺口关闭才 ready。非阻断缺口带理由与下一动作；可持续工程的正式环境由 F2S 在实现前明确。handoff 只准备材料，external_flow_started=false 直到真实启动；不重启既有项目。
+[FromDemoToSpec adapter](adapters/fromdemotospec-handoff/README.md) 映射制作定义 v2，核心体验／循环／范围有来源、阻断缺口关闭才 ready。非阻断缺口带理由与下一动作；可持续工程的正式环境由 FromDemoToSpec 在实现前明确。handoff 只准备材料，external_flow_started=false 直到真实启动；不重启既有项目。
 
-随任务发现可复用纠错、方法改进、多源线索时，按 [方法学习](docs/method-learning.md) 验证并限定维护；无增量不强制记录或新增方法，不运行定时维护。项目学习反馈仍连接宿主 DEC 与实际 F2S 证据；import 不等于人工已审、Knowledge 接收或原玩法已验证。
+随任务发现可复用纠错、方法改进、多源线索时，按 [方法学习](docs/method-learning.md) 验证并限定维护；无增量不强制记录或新增方法，不运行定时维护。项目学习反馈仍连接宿主 DEC 与实际 FromDemoToSpec 证据；import 不等于人工已审、Knowledge 接收或原玩法已验证。
 
 重要采用／反馈状态判断引用用户已作决定，不能重新要求审过的事项；需要新增决定时直接呈现依据、建议、替代和最大未知。方法学习不改变权限、用户目标、正式决定或质量标准。
 

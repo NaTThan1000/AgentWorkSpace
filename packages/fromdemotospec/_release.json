@@ -1,0 +1,10 @@
+{
+  "component_id": "fromdemotospec",
+  "file_count": 56,
+  "generated_at": "2026-10-09T21:27:31+08:00",
+  "generator_version": "3.0.0",
+  "manifest_sha256": "b69b3f9705f5d88adcc524d73ea1c69f11b141f23a69f9015ff7e63c0387c0a0",
+  "preview": false,
+  "release_schema": 1,
+  "source_revision": "89ed64d2604fb28be41d01cb5c4aab1355f13915"
+}

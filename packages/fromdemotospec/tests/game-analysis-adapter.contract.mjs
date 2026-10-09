@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { prepareAdapterIntake, prepareHostDecisionReceipt, prepareUnavailableFallback, validateF2sRequest, validateProducerDecision } from '../scripts/f2s-analysis-adapter.mjs';
+import { prepareAdapterIntake, prepareHostDecisionReceipt, prepareUnavailableFallback, validateF2sRequest, validateProducerDecision } from '../scripts/fromdemotospec-analysis-adapter.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const adapterRoot = path.join(root, 'adapters', 'game-analysis-decision');
@@ -10,7 +10,7 @@ const examples = path.join(root, 'examples', 'game-analysis-decision');
 function readJson(filePath) { return JSON.parse(fs.readFileSync(filePath, 'utf8')); }
 function assert(condition, message) { if (!condition) throw new Error(message); }
 
-for (const schemaName of ['f2s-analysis-request.schema.json', 'f2s-producer-decision.schema.json']) {
+for (const schemaName of ['fromdemotospec-analysis-request.schema.json', 'fromdemotospec-producer-decision.schema.json']) {
   const schema = readJson(path.join(adapterRoot, schemaName));
   assert(schema.type === 'object' && schema.additionalProperties === false, `${schemaName}: root contract must be closed`);
 }

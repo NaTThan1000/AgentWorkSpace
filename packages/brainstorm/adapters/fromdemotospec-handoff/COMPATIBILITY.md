@@ -1,8 +1,8 @@
-# F2S 接口绑定与迁移边界
+# FromDemoToSpec 接口绑定与迁移边界
 
 当前运行只接受 f2s-gap schema 2、f2s-design-baseline-v2 与新版 brief schema 3。绑定与核验 revision 以 adapters/catalog.json 为准；本轮只读确认 FromDemoToSpec 363b116c40e7b6ae4a80a730101fa46f7cf1099a 的底稿及真实 Agent 接收协议。
 
-旧 schema 1 的11字段、最低3参数、A–G渲染和旧模板已退出 Brainstorm 运行时。关闭会话保留历史原件；未关闭会话按批准的一次性迁移保留内容、决定和原型请求事实，不重新启动 F2S。
+旧 schema 1 的11字段、最低3参数、A–G渲染和旧模板已退出 Brainstorm 运行时。关闭会话保留历史原件；未关闭会话按批准的一次性迁移保留内容、决定和原型请求事实，不重新启动 FromDemoToSpec。
 
 ## Semantics
 

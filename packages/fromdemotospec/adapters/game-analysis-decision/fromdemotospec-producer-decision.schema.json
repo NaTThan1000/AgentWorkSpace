@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://from-demo-to-spec.local/adapters/game-analysis-decision/f2s-producer-decision.schema.json",
+  "$id": "https://from-demo-to-spec.local/adapters/game-analysis-decision/fromdemotospec-producer-decision.schema.json",
   "title": "F2SProducerDecision",
   "type": "object",
   "additionalProperties": false,

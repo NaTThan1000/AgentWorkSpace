@@ -1,14 +1,14 @@
-# F2S → GameAnalysisDecision
+# FromDemoToSpec → GameAnalysisDecision
 
-GAD 提供分析、条件建议和待制作人决定的方案；F2S 拥有项目事实、工程、真实试玩与正式产品决定。现有项目授权和预算内可按需调用，无需用户逐次发命令。普通实现和已有明确决定不重复分析。
+GAD 提供分析、条件建议和待制作人决定的方案；FromDemoToSpec 拥有项目事实、工程、真实试玩与正式产品决定。现有项目授权和预算内可按需调用，无需用户逐次发命令。普通实现和已有明确决定不重复分析。
 
 ## 当前入口：v2
 
 直接提出问题即可，Agent 按需读 GAD 的 `protocols/analysis.md`。只有跨程序传递才使用 [request-v2.json](../../examples/game-analysis-decision/request-v2.json) 的最小请求；`schema_version: 2` 显式选择新版。目标、来源范围、约束、预算和宿主引用保持原样传递，不再把请求转换成一条强制文档生产链。
 
 ```powershell
-node scripts/f2s-analysis-adapter.mjs prepare-request --input examples/game-analysis-decision/request-v2.json
-node scripts/f2s-analysis-adapter.mjs consume-delivery --input delivery.json --consumer consumer.json
+node scripts/fromdemotospec-analysis-adapter.mjs prepare-request --input examples/game-analysis-decision/request-v2.json
+node scripts/fromdemotospec-analysis-adapter.mjs consume-delivery --input delivery.json --consumer consumer.json
 ```
 
 consumer.json 指定 `hostType: "f2s"`、实际 `hostRef` 和保存报告的绝对 `artifactRoot`；如需在已有授权内验证，再给出从真实宿主授权记录核实的 `authorizedRefs`。这些参数是调用方声明，不能用虚构引用获取授权。

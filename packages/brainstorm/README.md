@@ -22,9 +22,9 @@ Brainstorm 帮助人与 Agent 共同探索、形成想法并选择概念。默�
 
 [Game Concept](playbooks/game-concept/README.md) 比较能共存的完整方向和取舍，不固定包数或槽位；[Opportunity Thesis](playbooks/opportunity-thesis/README.md) 从具体用户问题形成可反驳主张。原始想法、修订链、证据、正式决定和范围排除可追溯。
 
-[F2S v2 交接](adapters/f2s-handoff/README.md) 复用已选体验、闭环与范围，并列出缺口与下一责任。概念接受、handoff ready、原型启动和真实玩法认可分别记录；Brainstorm 不自动启动 F2S。
+[FromDemoToSpec v2 交接](adapters/fromdemotospec-handoff/README.md) 复用已选体验、闭环与范围，并列出缺口与下一责任。概念接受、handoff ready、原型启动和真实玩法认可分别记录；Brainstorm 不自动启动 FromDemoToSpec。
 
-[方法学习](docs/method-learning.md) 随真实任务发现具体改进，验证后限定采用并维护方法／案例，反例使其收窄或撤回。产品反馈仍连接原 DEC 与真实 F2S 证据，不自动成为 Knowledge 记录。没有增量不创建记录，不新增定时维护或长期个人画像。
+[方法学习](docs/method-learning.md) 随真实任务发现具体改进，验证后限定采用并维护方法／案例，反例使其收窄或撤回。产品反馈仍连接原 DEC 与真实 FromDemoToSpec 证据，不自动成为 Knowledge 记录。没有增量不创建记录，不新增定时维护或长期个人画像。
 
 ## 记录与权限
 
@@ -44,4 +44,6 @@ Brainstorm 帮助人与 Agent 共同探索、形成想法并选择概念。默�
 | 当前状态 | [NOW](NOW.md) |
 
 
-独立包不携带私人记录；公开来源只含书目元数据。外部 Knowledge、GAD、F2S 需宿主另行提供；缺失不影响独立脑暴，不得宣称已执行外部流程。
+独立包不携带私人记录；公开来源只含书目元数据。外部 Knowledge、GAD、FromDemoToSpec 需宿主另行提供；缺失不影响独立脑暴，不得宣称已执行外部流程。
+
+展示名称统一为 FromDemoToSpec，包 ID 与新脚本入口使用 fromdemotospec。旧 f2s 参数、脚本入口及会话交换格式保留兼容；新调用使用完整名称，不为改名重写历史内容或批准记录。

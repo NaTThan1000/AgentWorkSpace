@@ -180,9 +180,9 @@ async function runCli() {
     process.stdout.write(`${JSON.stringify(prepareHostDecisionReceipt(input), null, 2)}\n`);
     return;
   }
-  throw new Error('Usage: f2s-analysis-adapter.mjs status | prepare-request --input <json> | prepare-unavailable --input <json> | prepare-host-decision --input <json>');
+  throw new Error('Usage: fromdemotospec-analysis-adapter.mjs status | prepare-request --input <json> | prepare-unavailable --input <json> | prepare-host-decision --input <json>');
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === scriptPath) await runCli();
 
-export { prepareAdapterIntake, prepareHostDecisionReceipt, prepareUnavailableFallback, validateF2sRequest, validateProducerDecision };
+export { runCli, prepareAdapterIntake, prepareHostDecisionReceipt, prepareUnavailableFallback, validateF2sRequest, validateProducerDecision };

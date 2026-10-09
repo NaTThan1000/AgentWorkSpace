@@ -1,8 +1,8 @@
-# F2S · Agent 游戏原型工作流 v2
+# FromDemoToSpec · Agent 游戏原型工作流 v2
 
 提供从需求到可玩原型、体验迭代和Agent正式开发接续的协议、模板与工具。首次V1需要完整闭环、功能、理解、表现反馈、可靠性和追溯共同达标；90+必须有用户本人对核心玩法的真实认可。
 
-直接告诉Agent：“按F2S制作原型，目标体验是……，已有约束是……。请自主完成规则、表现和内部检查，到可玩V1后集中交我试玩。”
+直接告诉Agent：“按FromDemoToSpec制作原型，目标体验是……，已有约束是……。请自主完成规则、表现和内部检查，到可玩V1后集中交我试玩。”
 
 从[命令入口](00-command-manual.md)进入[制作流程](protocols/prototype-workflow.md)、[质量](protocols/quality-and-evidence.md)、[表现](protocols/presentation.md)与[交付](protocols/handoff-and-production.md)。小体量后续重建用[single-file](paths/single-file.md)；保留工程继续开发用[maintained-project](paths/maintained-project.md)，实现前明确正式环境与引擎。
 

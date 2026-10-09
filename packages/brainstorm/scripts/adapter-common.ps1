@@ -3,7 +3,7 @@ $script:BrainstormAdapterProjectRoot = [IO.Path]::GetFullPath((Join-Path $script
 $script:BrainstormAdapterUtf8NoBom = New-Object Text.UTF8Encoding($false)
 
 . (Join-Path $script:BrainstormAdapterScriptsRoot 'session-common.ps1')
-. (Join-Path $script:BrainstormAdapterScriptsRoot 'f2s-v2-common.ps1')
+. (Join-Path $script:BrainstormAdapterScriptsRoot 'fromdemotospec-v2-common.ps1')
 
 function Stop-AdapterContract {
     param([string]$Message)
@@ -69,7 +69,7 @@ function Get-AdapterDefinition {
 function Get-AdapterCatalogValidation {
     $catalogPath = Join-Path $script:BrainstormAdapterProjectRoot 'adapters\catalog.json'
     $schemaPath = Join-Path $script:BrainstormAdapterProjectRoot 'schemas\adapter-catalog.schema.json'
-    $f2sSchemaPath = Join-Path $script:BrainstormAdapterProjectRoot 'schemas\f2s-gap.schema.json'
+    $f2sSchemaPath = Join-Path $script:BrainstormAdapterProjectRoot 'schemas\fromdemotospec-gap.schema.json'
     $catalog = Read-Utf8Json -Path $catalogPath
     $schema = Read-Utf8Json -Path $schemaPath
     $f2sSchema = Read-Utf8Json -Path $f2sSchemaPath
@@ -115,8 +115,8 @@ function Get-AdapterCatalogValidation {
 
     foreach ($path in @(
         'templates\knowledge-context-brief.md',
-        'templates\f2s-handoff.md',
-        'adapters\f2s-handoff\COMPATIBILITY.md',
+        'templates\fromdemotospec-handoff.md',
+        'adapters\fromdemotospec-handoff\COMPATIBILITY.md',
         'adapters\game-analysis-decision\brainstorm-analysis-request.schema.json',
         'adapters\game-analysis-decision\brainstorm-producer-decision.schema.json'
     )) {

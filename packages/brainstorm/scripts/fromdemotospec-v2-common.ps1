@@ -1,5 +1,5 @@
 function Get-F2SV2Fields {
-    $definitions = Read-Utf8Json -Path (Join-Path $script:BrainstormAdapterProjectRoot 'adapters\f2s-handoff\fields-v2.json')
+    $definitions = Read-Utf8Json -Path (Join-Path $script:BrainstormAdapterProjectRoot 'adapters\fromdemotospec-handoff\fields-v2.json')
     foreach ($definition in $definitions) { Write-Output $definition }
 }
 function Get-F2SGapV2Validation {

@@ -38,7 +38,7 @@ def stage(source, destination):
     manifest = json.loads(manifest_path.read_text(encoding='utf-8-sig'))
     if manifest.get('release_schema') != 1:
         raise ContractError('Unknown source manifest schema')
-    expected_output = {'meta': 'meta', 'brainstorm': 'packages/brainstorm', 'f2s': 'packages/f2s', 'knowledge': 'packages/knowledge'}
+    expected_output = {'meta': 'meta', 'brainstorm': 'packages/brainstorm', 'fromdemotospec': 'packages/fromdemotospec', 'knowledge': 'packages/knowledge'}
     component = manifest.get('component_id')
     if component not in expected_output or manifest.get('output_path') != expected_output[component]:
         raise ContractError('Unknown or mismatched publication target')

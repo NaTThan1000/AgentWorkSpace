@@ -37,10 +37,10 @@ class Runtime(unittest.TestCase):
         with tempfile.TemporaryDirectory(prefix='agentworkspace-installed-runtime-') as temporary:
             base = Path(temporary)
             target = base / 'workspace'
-            result = w.install(ROOT, target, 'init', ['brainstorm', 'f2s', 'knowledge'], True)
+            result = w.install(ROOT, target, 'init', ['brainstorm', 'fromdemotospec', 'knowledge'], True)
             self.assertTrue(result['applied'])
-            self.assertFalse(w.install(ROOT, target, 'init', ['brainstorm', 'f2s', 'knowledge'], True)['changes'])
-            bs, f2s, knowledge = [target / 'modules' / name for name in ('brainstorm', 'f2s', 'knowledge')]
+            self.assertFalse(w.install(ROOT, target, 'init', ['brainstorm', 'fromdemotospec', 'knowledge'], True)['changes'])
+            bs, fromdemotospec, knowledge = [target / 'modules' / name for name in ('brainstorm', 'fromdemotospec', 'knowledge')]
             self.assertIn('Runtime PASS', ps(bs / 'tests/run-release-contract.ps1'))
             self.assertIn('Release contract: PASS', ps(knowledge / 'system/maintenance/checklists/run-release-contract.ps1'))
             query_checks = json.loads(run(['node', knowledge / 'system/query/query-evidence-check.mjs']))
@@ -51,10 +51,13 @@ class Runtime(unittest.TestCase):
             discovered = json.loads(run(['node', knowledge / 'system/query/query-evidence.mjs', 'discover', request, '--root', knowledge]))
             self.assertIn('candidates', discovered)
             project = base / 'project'
-            created = json.loads(run(['node', f2s / 'scripts/prototype-project.mjs', 'init', '--project', project, '--name', 'Synthetic', '--path', 'single-file', '--apply']))
+            created = json.loads(run(['node', fromdemotospec / 'scripts/prototype-project.mjs', 'init', '--project', project, '--name', 'Synthetic', '--path', 'single-file', '--apply']))
             self.assertFalse(created['implementation_created'])
-            state = json.loads(run(['node', f2s / 'scripts/prototype-project.mjs', 'check-state', '--project', project]))
+            state = json.loads(run(['node', fromdemotospec / 'scripts/prototype-project.mjs', 'check-state', '--project', project]))
             self.assertFalse(state['actual_play_quality_verified'])
+            canonical = json.loads(run(['node', fromdemotospec / 'scripts/fromdemotospec-analysis-adapter.mjs', 'status']))
+            legacy = json.loads(run(['node', fromdemotospec / 'scripts/f2s-analysis-adapter.mjs', 'status']))
+            self.assertEqual(canonical, legacy, 'Old entrypoint must delegate to the canonical implementation')
             # Scope configuration is a real task-time step, retaining the managed directory.
             ps(knowledge / 'system/maintenance/initialize-knowledge.ps1', '-PackagePath', knowledge, '-DisplayName', 'Synthetic Knowledge', '-DirectoryName', 'knowledge', '-Purpose', 'Isolated runtime verification', '-Audience', 'Test fixture', '-Topics', 'Synthetic mechanics', '-SourceQuality', 'Traceable originals', '-UseIma', 'no', '-Apply')
             clipping = knowledge / 'Clippings/20261009-synthetic.md'

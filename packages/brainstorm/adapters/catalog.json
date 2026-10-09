@@ -26,7 +26,7 @@
       "target_system": "FromDemoToSpec",
       "input_kind": "game-concept-brief",
       "output_path": "f2s-handoff.md",
-      "contract_path": "adapters/f2s-handoff/README.md",
+      "contract_path": "adapters/fromdemotospec-handoff/README.md",
       "external_contract": {
         "path": "FromDemoToSpec/templates/design-baseline.md",
         "version": "f2s-design-baseline-v2",

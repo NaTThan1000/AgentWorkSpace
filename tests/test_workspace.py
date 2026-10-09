@@ -14,7 +14,7 @@ from publish import inventory
 
 def fixture(root, release='1.0.0', previous='legacy'):
     result = {'schema_version': 1, 'version': release, 'previous_version': previous, 'components': {}}
-    for name in ('meta', 'brainstorm', 'f2s', 'knowledge'):
+    for name in ('meta', 'brainstorm', 'fromdemotospec', 'knowledge'):
         source = 'meta/workspace' if name == 'meta' else 'packages/' + name
         folder = root / source
         folder.mkdir(parents=True, exist_ok=True)
@@ -148,7 +148,7 @@ class Installation(unittest.TestCase):
     def test_user_deleted_framework_file_not_resurrected_on_add(self):
         self.init()
         (self.target / 'README.md').unlink()
-        self.assertFalse(w.install(self.bundle, self.target, 'add', ['f2s'], True)['conflicts'])
+        self.assertFalse(w.install(self.bundle, self.target, 'add', ['fromdemotospec'], True)['conflicts'])
         self.assertFalse((self.target / 'README.md').exists())
 
     def legacy(self, modified=False):

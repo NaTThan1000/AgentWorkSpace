@@ -36,8 +36,8 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts/resume-session.ps1 -
 | 非游戏机会 | [Opportunity Thesis](../playbooks/opportunity-thesis/README.md)、validate-playbook.ps1 |
 | Knowledge | new/validate-knowledge-context-brief.ps1；准备材料与实际 Query 证据分开 |
 | GAD | brainstorm-analysis-adapter.mjs prepare-request / consume-delivery / prepare-host-decision；请求与消费统一 v2 |
-| F2S | new/validate-f2s-gap.ps1、render/validate-f2s-handoff.ps1；交接准备不代表启动 |
-| 项目学习反馈 | new/validate-learning-feedback-candidate.ps1、import-f2s-learning-feedback.ps1；状态采用遵守原人工门 |
+| FromDemoToSpec | new/validate-fromdemotospec-gap.ps1、render/validate-fromdemotospec-handoff.ps1；交接准备不代表启动 |
+| 项目学习反馈 | new/validate-learning-feedback-candidate.ps1、import-fromdemotospec-learning-feedback.ps1；状态采用遵守原人工门 |
 | 有界方法学习 | [method-learning](../docs/method-learning.md)、method-learning.mjs validate / record --input；不改全局偏好 |
 
 ## 调用与验证

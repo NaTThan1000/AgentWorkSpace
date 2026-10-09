@@ -27,4 +27,4 @@ consumer.json 提供 `hostType: "brainstorm"`、当前 `hostRef`、报告所在�
 
 新请求和正文消费统一使用 v2，旧请求格式和接管别名已退出运行入口。已发出的历史 session 报告、请求和哈希保留原件，仅用于追溯。
 
-`prepare-host-decision` 使用 GAD 当前仍在消费的 HostDecisionReceipt v1，它记录宿主已经发生的真实 user / joint 决定，并非旧脑暴流程兼容分支。无真实确认不得生成正式接受事实。Knowledge 查询、F2S 启动和实验执行都必须有各自的实际执行证据。
+`prepare-host-decision` 使用 GAD 当前仍在消费的 HostDecisionReceipt v1，它记录宿主已经发生的真实 user / joint 决定，并非旧脑暴流程兼容分支。无真实确认不得生成正式接受事实。Knowledge 查询、FromDemoToSpec 启动和实验执行都必须有各自的实际执行证据。

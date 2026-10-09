@@ -1,4 +1,4 @@
-# F2S 使用方 Agent 入口
+# FromDemoToSpec 使用方 Agent 入口
 
 先遵守当前用户授权与宿主协作规则；本包只补游戏领域合同。按[README](README.md)和[命令入口](00-command-manual.md)读取当前阶段需要的协议，不一次注入全部资料。
 

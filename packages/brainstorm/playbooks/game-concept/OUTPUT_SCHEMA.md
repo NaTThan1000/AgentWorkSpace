@@ -28,8 +28,8 @@ open/paused 的 selected/decision/deferred 为 `-`，rationale 写原因和继�
 
 新增 Experience Fragment 表头为 `Situation | Player action / choice | Visible consequence | Source IDs`。其他表头见 [模板](../../templates/game-concept-brief.md)。每个内容表至少一行，Source IDs 为既有 RAW-* 或 IDEA-*，DEC 只放决定栏。LOOP-###、PILLAR-###、ANTI-###、CHECK-### 唯一；类型 hypothesis/risk/question/test；Scope 至少 prototype 和 excluded，可加 first-playable/later。
 
-Brief status 为 draft/accepted/return-to-brainstorm；accepted 必须已有 user/joint 决定支持。F2S intent 仅 not-requested/requested。片段从既有候选展开；历史迁移不能推出的细节保留未知，不伪造用户认可。具体性、机制关系与表现反馈仍由语义审核判断。
+Brief status 为 draft/accepted/return-to-brainstorm；accepted 必须已有 user/joint 决定支持。FromDemoToSpec intent 仅 not-requested/requested。片段从既有候选展开；历史迁移不能推出的细节保留未知，不伪造用户认可。具体性、机制关系与表现反馈仍由语义审核判断。
 
 ## Delivery
 
-Brief 可独立交付，请求 F2S 时复用现行 gap/handoff v2。验证器返回 brief_schema=3、selected_package_id、brief_status、f2s_intent、semantic_review=required；工程 PASS 不是用户接受或玩法效果。
+Brief 可独立交付，请求 FromDemoToSpec 时复用现行 gap/handoff v2。验证器返回 brief_schema=3、selected_package_id、brief_status、f2s_intent、semantic_review=required；工程 PASS 不是用户接受或玩法效果。

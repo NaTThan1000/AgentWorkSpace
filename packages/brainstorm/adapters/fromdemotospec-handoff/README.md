@@ -1,4 +1,4 @@
-# F2S 制作定义交接 adapter
+# FromDemoToSpec 制作定义交接 adapter
 
 ready；外部合同 FromDemoToSpec/templates/design-baseline.md，版本 f2s-design-baseline-v2。机器工件 f2s-gap.json schema 2，人读工件 f2s-handoff.md。新建与活跃继续统一该版本，旧关闭工件仅作历史证据，不提供旧运行入口。
 
@@ -8,7 +8,7 @@ ready；外部合同 FromDemoToSpec/templates/design-baseline.md，版本 f2s-de
 
 已选概念先有 accepted brief schema 3 与明确 requested 意图。Agent 从 Concept Frame、Experience Fragment、循环/范围/验证等映射；具体情境→行动→可见反馈直接进入交接，避免只交抽象支柱。生成值先 partial/missing，Agent 核对含义、来源和缺口后才能提升状态。
 
-核心三项必须 satisfied，其他 F2S-owned 非阻断未知保留问题、理由及 next_action。assumed 明确是推导，不伪装用户决定；参数可为0，不凑数量。可持续项目正式环境仍须在 F2S 实现前明确，概念阶段可以交接这一责任。
+核心三项必须 satisfied，其他 FromDemoToSpec-owned 非阻断未知保留问题、理由及 next_action。assumed 明确是推导，不伪装用户决定；参数可为0，不凑数量。可持续项目正式环境仍须在 FromDemoToSpec 实现前明确，概念阶段可以交接这一责任。
 
 ## Readiness and consumption
 
@@ -18,6 +18,6 @@ ready 要求：accepted 概念、requested 意图；既有 user/joint 产品决�
 
 依次运行 new-f2s-gap、validate-f2s-gap、render-f2s-handoff、validate-f2s-handoff。生成与渲染不覆盖既有文件；框架迁移使用本任务一次性转换，不作为日常入口。
 
-接收方实际读取 F2S 当前制作协议和贯通设计底稿，将交接内容接入当前制作定义，列出仍需确认的生命周期、环境、预算与场景。F2S 没有专用 handoff 导入 API；不能把本仓字段导出或 prototype-project 状态校验说成完成接收。接收演练用合成临时材料并记录 Agent 对目标模板的实际映射，不能启动真实项目。
+接收方实际读取 FromDemoToSpec 当前制作协议和贯通设计底稿，将交接内容接入当前制作定义，列出仍需确认的生命周期、环境、预算与场景。FromDemoToSpec 没有专用 handoff 导入 API；不能把本仓字段导出或 prototype-project 状态校验说成完成接收。接收演练用合成临时材料并记录 Agent 对目标模板的实际映射，不能启动真实项目。
 
 ready 不表示原型已启动、V1达标、用户认可玩法或交付完成。概念采用、映射审核、正式玩法认可分别保留权威来源。

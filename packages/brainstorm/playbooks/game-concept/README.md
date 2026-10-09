@@ -14,7 +14,7 @@
 3. 把相互支持的构件组织为完整候选，按问题选择数量，允许只有一个有依据的方向。压力、恢复和槽位只是特定游戏可能需要的变量。
 4. 按 [CONVERGENCE_PROFILE.md](CONVERGENCE_PROFILE.md) 检查体验、关系、取舍与来源。多包需说明所有未选方向去向；没有合适方向保持 `open` 或 `paused`，记录下一问题，不填假概念。
 5. 只有已有 user/joint Decision 才标 `selected`。选包不自动等于接受概念简报或原型意图。
-6. 需要交接所选概念时按 [OUTPUT_SCHEMA.md](OUTPUT_SCHEMA.md) 创建 `draft` brief；真正接受必须回到 user/joint 决定。F2S 为按授权的可选下游。
+6. 需要交接所选概念时按 [OUTPUT_SCHEMA.md](OUTPUT_SCHEMA.md) 创建 `draft` brief；真正接受必须回到 user/joint 决定。FromDemoToSpec 为按授权的可选下游。
 
 ## Evidence and authority
 
@@ -29,4 +29,4 @@ Knowledge、Web 用于事实或参考缺口，GAD 用于超出创意比较的实
 - [OUTPUT_SCHEMA.md](OUTPUT_SCHEMA.md)：新版格式。
 - [组合模板](../../templates/game-concept-combinations.md)、[简报模板](../../templates/game-concept-brief.md)。
 - [合成正反例](../../examples/redesign-playbook-examples.md)。
-- [F2S adapter](../../adapters/f2s-handoff/README.md)：现行 v2 制作定义，交接不启动制作。
+- [FromDemoToSpec adapter](../../adapters/fromdemotospec-handoff/README.md)：现行 v2 制作定义，交接不启动制作。

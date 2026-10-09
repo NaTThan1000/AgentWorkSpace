@@ -44,7 +44,7 @@ phase 工具可追加实际 NAV，不要求每次四行导航与人工确认。�
 
 ## 反馈、交接与验证
 
-learning-feedback 连接当前 session 中真实 user／joint DEC 与明确 F2S 来源。import 留 SHA256 收据，不改源 F2S／Knowledge／DEC。collecting-evidence、review-required、accepted-for-host、rejected 都不等于 Knowledge 已接受；重要状态依据用户已有或新作决定。普通分析用 GAD v2 原报告，不重写第二份审阅简报。
+learning-feedback 连接当前 session 中真实 user／joint DEC 与明确 FromDemoToSpec 来源。import 留 SHA256 收据，不改源 FromDemoToSpec／Knowledge／DEC。collecting-evidence、review-required、accepted-for-host、rejected 都不等于 Knowledge 已接受；重要状态依据用户已有或新作决定。普通分析用 GAD v2 原报告，不重写第二份审阅简报。
 
 方法学习走 [方法学习](../method-learning.md)，不能伪装原型验证完成。
 

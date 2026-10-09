@@ -4,7 +4,7 @@
 
 ## 初始化
 
-从 F2S 源目录运行：
+从 FromDemoToSpec 源目录运行：
 
 ```powershell
 node scripts/prototype-project.mjs init --project E:/AstraGameLab/MyGame --name MyGame --path single-file

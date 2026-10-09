@@ -1,5 +1,13 @@
 # Releases
 
+## 1.1.0 — 2026-10-09
+
+- Humanizer-zh is included as a reusable Skill, with its MIT notice and pinned source revision.
+- Chinese and English READMEs provide equivalent instructions and clickable language links.
+- FromDemoToSpec is the canonical display name; `fromdemotospec` is the package ID and directory name. New script, schema, adapter and template paths use the full name.
+- Upgrades from 1.0.0 relocate the installed package and user files with transactional recovery. Old arguments, entrypoints and session wire formats remain compatible.
+- See [upgrade and recovery instructions](upgrades/1.1.0.md). The v1.0.0 tag is unchanged.
+
 ## 1.0.0 — 2026-10-09
 
 - First unified distribution: one complete meta edition, with optional Brainstorm, F2S and Knowledge packages.
