@@ -1,5 +1,13 @@
 # Releases
 
+## 1.2.0 — 2026-10-09
+
+- Compatible mode audits existing workspaces and recommends optional packages from current needs.
+- Missing dependencies are capabilities, satisfiable by reviewed existing providers; matching names alone are not proof.
+- Only explicitly selected components are installed. Scoped complete meta lives under modules/meta; root rules remain intact.
+- Mode and evidence-backed provider records persist across add/upgrade, with normal conflict, transaction and rollback protection.
+- Existing full-mode installations retain their layout. See [upgrade and recovery](upgrades/1.2.0.md).
+
 ## 1.1.0 — 2026-10-09
 
 - Humanizer-zh is included as a reusable Skill, with its MIT notice and pinned source revision.

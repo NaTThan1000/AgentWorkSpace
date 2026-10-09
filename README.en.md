@@ -8,7 +8,7 @@ You can ask your agent:
 
 > Set up a workspace in the directory I specify, with brainstorming, prototype development and a knowledge base. Check the environment and existing files, show the installation plan, then apply changes that have no conflicts.
 
-There is one complete meta edition. You do not need to choose a feature combination. The agent reads rules and methods as each task requires; installing the framework does not require running every workflow on every task.
+There is one complete meta edition. New workspaces install it by default; existing workspaces can use compatible mode to reuse their framework and add only selected packages and missing capabilities. The agent reads rules and methods as each task requires, without running every workflow on every task.
 
 ## Get started
 
@@ -23,13 +23,26 @@ python scripts/workspace.py init --target <workspace-path> --packages brainstorm
 python scripts/workspace.py status --target <workspace-path>
 ```
 
-You can omit `--packages` or select only the packages you need. Meta is always installed. Use `add` to add packages later and `upgrade` to update them. Commands preview changes by default; `--apply` writes them. Resolve any reported `conflicts` first.
+In the default full mode above, you can omit `--packages` or select only the packages you need. Meta is always installed in that mode. Use `add` to add packages later and `upgrade` to update them. Commands preview changes by default; `--apply` writes them. Resolve any reported `conflicts` first.
+
+## Existing workspace: audit before adding capabilities
+
+If you already have collaboration rules, a knowledge base or other modules, tell the agent what you need now, such as “I only need brainstorming; audit my existing framework and recommend an integration plan.” Compatible mode lists reusable capabilities, optional recommendations and genuinely missing dependencies of selected packages. A reviewed equivalent provider removes the need to install meta. A matching file name alone does not establish compatibility.
+
+```text
+python scripts/workspace.py audit --target <workspace-path> --needs brainstorm
+python scripts/workspace.py audit --target <workspace-path> --packages brainstorm --profile <reviewed-profile.json>
+python scripts/workspace.py init --target <workspace-path> --mode compatible --packages brainstorm --profile <reviewed-profile.json>
+python scripts/workspace.py init --target <workspace-path> --mode compatible --packages brainstorm --profile <reviewed-profile.json> --apply
+```
+
+The agent reviews host rules and interfaces against the returned criteria, then records its reason, evidence paths and hashes in a profile. Changed evidence requires re-review. Supply missing capabilities through selected complete meta or a reviewed existing substitute. Compatible mode adds no unselected package: business packages go under `modules/<id>` and optional meta under `modules/meta`, preserving root rules and home documents. Ask the agent to read the generated `agent-workspace-compatibility.md`; automatic navigation and Skill discovery depend on the actual host platform. See the [compatible-mode guide](docs/compatible-workspace.md).
 
 ## Use the workspace
 
 | Component | Installed location | Example task |
 |---|---|---|
-| [meta](meta/README.md) | Workspace root | State your goal, constraints and completion criteria |
+| [meta](meta/README.md) | Full: workspace root; compatible: `modules/meta` | State your goal, constraints and completion criteria |
 | [Brainstorm](packages/brainstorm/README.md) | `modules/brainstorm` | “Help me explore this problem…”; create sessions as needed |
 | [FromDemoToSpec](packages/fromdemotospec/README.md) | `modules/fromdemotospec` | “Build a playable prototype…”; develop it in a separate project directory |
 | [Knowledge](packages/knowledge/README.md) | `modules/knowledge` | “Query the knowledge base” or “Ingest these sources”; an empty library can be queried |

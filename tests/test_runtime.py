@@ -15,6 +15,36 @@ from publish import inventory
 
 
 class Runtime(unittest.TestCase):
+    def test_real_compatible_package_preserves_host_and_reuses_governance(self):
+        import compatibility as c
+        shell = shutil.which('pwsh') or shutil.which('powershell')
+        env = os.environ.copy()
+        if os.name == 'nt':
+            env['PSMODULEPATH'] = str(Path(os.environ['SYSTEMROOT']) / 'System32/WindowsPowerShell/v1.0/Modules')
+        with tempfile.TemporaryDirectory(prefix='agentworkspace-compatible-runtime-') as temporary:
+            target = Path(temporary) / 'host'
+            target.mkdir()
+            rules = target / 'AGENTS.md'
+            rules.write_bytes(b'Synthetic reviewed host contract: authority, scope, verification and recovery.\n')
+            definition = c.contract(w.catalog(ROOT))
+            profile = {'schema_version': 1, 'providers': [{'id': 'synthetic-host', 'capabilities': ['host-governance'], 'assurance': 'reviewed', 'reason': 'Synthetic fixture for engineering integration, not a real semantic review', 'checks': {'host-governance': definition['capabilities']['host-governance']['criteria']}, 'evidence': [{'path': 'AGENTS.md', 'sha256': w.digest(rules.read_bytes())}]}]}
+            original = rules.read_bytes()
+            report = w.install(ROOT, target, 'init', ['brainstorm'], True, mode='compatible', profile=profile)
+            self.assertTrue(report['applied'])
+            self.assertFalse((target / 'modules/meta').exists())
+            self.assertEqual(original, rules.read_bytes())
+            result = subprocess.run([shell, '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', str(target / 'modules/brainstorm/tests/run-release-contract.ps1')], capture_output=True, text=True, encoding='utf-8', errors='replace', env=env, timeout=180)
+            self.assertEqual(0, result.returncode, result.stdout[-4000:] + result.stderr[-4000:])
+            self.assertIn('Runtime PASS', result.stdout)
+            self.assertTrue(w.rollback(target, report['transaction'], True)['applied'])
+            self.assertEqual(original, rules.read_bytes())
+            meta = w.install(ROOT, target, 'init', ['meta'], True, mode='compatible')
+            self.assertTrue(meta['applied'])
+            self.assertTrue((target / 'modules/meta/AGENTS.md').is_file())
+            self.assertTrue((target / 'modules/meta/.agents/skills/humanizer-zh/SKILL.md').is_file())
+            self.assertFalse((target / '.agents').exists())
+            self.assertEqual(original, rules.read_bytes())
+
     def test_installed_packages_and_ingest_approval_boundary(self):
         if not (ROOT / 'catalog.json').exists():
             self.skipTest('Seal the real distribution before running runtime contracts')

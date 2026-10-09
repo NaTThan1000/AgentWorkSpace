@@ -9,3 +9,5 @@
 维护采用当前仓 AGENTS 与用户授权；教学正文不是维护权限源。源内容保持唯一权威，发布目标为 AgentWorkSpace/meta；旧 released 是升级迁移基线，不是新版维护目标。发布机制见[公开发布仓说明](https://github.com/ZhongTyler/AgentWorkSpace#维护与发布)。历史 Git 保存旧教学版，不继续旧组合运行入口。
 
 回流需有可迁移问题、具体依据、消费者和适用边界。技术通过、真实任务效果、用户接受分开；不携带私人工作区的真实内容和决定。
+
+已有工作区可使用公开仓的[兼容模式](https://github.com/ZhongTyler/AgentWorkSpace/blob/main/docs/compatible-workspace.md)：先审计当前需要与替代能力，仅安装所选内容。现有宿主已具备所选包的协作依赖时，无需安装 meta；选择 meta 时仍提供完整版，放在 modules/meta 作为局部补充，不覆盖宿主根规则。

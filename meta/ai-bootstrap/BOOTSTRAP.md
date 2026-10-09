@@ -1,6 +1,6 @@
 # 为用户搭建完整工作区
 
-先读当前用户目标与目标目录，复用已给信息。唯一发行形态为完整版；环境适配不裁剪通用能力。业务包按实际需要加入，不询问 A–E 组合。
+先读当前用户目标与目标目录，复用已给信息。唯一 meta 发行形态为完整版。新建工作区用 full 模式；已有工作区先按公开仓[兼容说明](https://github.com/ZhongTyler/AgentWorkSpace/blob/main/docs/compatible-workspace.md)审计，复用可替代依赖，只安装所选 meta/package。选择 meta 时不裁剪能力，不询问 A–E 组合。
 
 1. 按 [必要信息](01-questions-to-ask.md) 检查路径、已有数据、工具与授权。
 2. 按 [搭建顺序](02-build-order.md) 调用发布仓统一工具，先预览再应用。

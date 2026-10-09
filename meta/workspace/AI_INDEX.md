@@ -4,6 +4,8 @@
 
 业务模块位于 modules/brainstorm、modules/fromdemotospec、modules/knowledge；只有安装记录中存在且目录可达时才使用对应 README。缺少模块或工具明确说明，不能把准备请求称为实际执行。
 
+兼容模式中，这些模块路径以宿主工作区根为准，不相对本 meta 目录拼接。先读宿主根的 agent-workspace-compatibility.md；既有宿主导航与规则优先，复用模块按该入口中的真实路径定位。
+
 通用方法见 .agents/skills 的名称与触发描述，按缺口加载正文；assisted 仅显式请求时加载。跨任务支持与学习见 collaboration/support-and-learning.md。
 
 NOW.md 只导航真实当前任务；memory.md 与 USER_PROFILE.md 仅在相关且获授权时使用/维护，不默认推断个人画像。历史归档按当时合同解释，不当成当前指令。

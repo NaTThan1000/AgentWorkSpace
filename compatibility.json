@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "capabilities": {
+    "host-governance": {
+      "description": "Host rules for goals, authority, ownership, evidence and recovery; an equivalent existing framework may provide them.",
+      "criteria": ["goals-and-authority", "scope-and-data", "facts-and-verification", "delivery-and-recovery"]
+    },
+    "brainstorming": {
+      "description": "Traceable exploration, candidates, user decisions and recoverable sessions.",
+      "criteria": ["exploration", "decision-traceability", "session-recovery"]
+    },
+    "prototyping": {
+      "description": "Playable prototype workflow with evidence, real user play and development handoff.",
+      "criteria": ["prototype-workflow", "play-evidence", "development-handoff"]
+    },
+    "knowledge": {
+      "description": "Source-grounded knowledge query and explicitly approved ingestion.",
+      "criteria": ["source-grounded-query", "approved-ingest", "knowledge-preservation"]
+    }
+  },
+  "components": {
+    "meta": {"provides": ["host-governance"], "requires": [], "optional": []},
+    "brainstorm": {"provides": ["brainstorming"], "requires": ["host-governance"], "optional": ["knowledge", "prototyping"]},
+    "fromdemotospec": {"provides": ["prototyping"], "requires": ["host-governance"], "optional": ["knowledge"]},
+    "knowledge": {"provides": ["knowledge"], "requires": ["host-governance"], "optional": []}
+  },
+  "needs": {"collaboration": "host-governance", "brainstorm": "brainstorming", "prototype": "prototyping", "knowledge": "knowledge"}
+}

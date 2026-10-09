@@ -88,6 +88,11 @@ def catalog(bundle: Path):
     version(result.get('version'))
     if set(result.get('components', {})) not in ({'meta', 'brainstorm', 'fromdemotospec', 'knowledge'}, {'meta', 'brainstorm', 'f2s', 'knowledge'}):
         raise ContractError('Catalog must contain meta and exactly three supported packages')
+    if 'compatibility' in result:
+        if load(safe(bundle, 'compatibility.json')) != result['compatibility']:
+            raise ContractError('Capability contract differs from the sealed catalog')
+        from compatibility import contract
+        contract(result)
     destinations = set()
     for name, item in result['components'].items():
         version(item.get('version'))
@@ -170,17 +175,25 @@ def moved_name(name, moves, reverse=False):
     return name
 
 
-def plan(bundle: Path, target: Path, operation: str, packages: list[str]):
-    if target == bundle or target.is_relative_to(bundle) or bundle.is_relative_to(target):
-        raise ContractError('The distribution and user workspace must be separate directories')
+def plan(bundle: Path, target: Path, operation: str, packages: list[str], mode=None, profile=None, needs=()):
     incoming = catalog(bundle)
     old = state(target)
+    installed_mode = (old or {}).get('mode', 'full')
+    mode = mode or installed_mode
+    if mode not in ('full', 'compatible') or old and mode != installed_mode:
+        raise ContractError('Installation modes cannot be switched in place; preserve the current host')
+    if mode == 'full' and (profile is not None or needs):
+        raise ContractError('Use audit or compatible mode for existing providers and need recommendations')
+    if target == bundle or target.is_relative_to(bundle) or mode == 'full' and bundle.is_relative_to(target):
+        raise ContractError('The distribution and installation destinations must be separate')
+    if mode == 'compatible' and bundle.is_relative_to(target / '.agent-workspace'):
+        raise ContractError('Distribution cannot be inside installation metadata')
     packages = [package_name(name, incoming) for name in packages]
     moves = []
     if operation != 'init' and old is None:
         raise ContractError('Initialize the root workspace first')
     for name in packages:
-        if name not in incoming['components'] or name == 'meta':
+        if name not in incoming['components'] or name == 'meta' and mode == 'full':
             raise ContractError(f'Unknown package: {name}')
     if old and old['version'] == incoming['version'] and old.get('catalog_sha256') != digest(encoded(incoming)):
         raise ContractError('Published version changed in place; use a new version')
@@ -197,16 +210,32 @@ def plan(bundle: Path, target: Path, operation: str, packages: list[str]):
         old = json.loads(json.dumps(old))
         old['components']['fromdemotospec'] = old['components'].pop('f2s')
         old['files'] = {moved_name(name, moves): {**item, 'component': PACKAGE_ALIAS.get(item['component'], item['component'])} for name, item in old['files'].items()}
-    selected = set((old or {}).get('components', {})) | {'meta'} | set(packages)
+    audit_result = None
+    if mode == 'compatible':
+        from compatibility import audit
+        audit_result = audit(incoming, target, packages, needs, profile)
+        if audit_result['required'] or not audit_result['selected']:
+            return {**audit_result, 'operation': operation, 'components': audit_result['selected'], 'changes': [], 'conflicts': [], 'moves': [], 'applied': False}, {}
+    selected = set((old or {}).get('components', {})) | ({'meta'} if mode == 'full' else set()) | set(packages)
     next_state = {'schema_version': SCHEMA, 'version': incoming['version'], 'catalog_sha256': digest(encoded(incoming)), 'components': {}, 'files': {}}
+    if mode == 'compatible':
+        next_state.update(mode=mode, profile=audit_result['profile'])
     desired = {}
     for component in sorted(selected):
         item = incoming['components'][component]
+        location = 'modules/meta' if component == 'meta' and mode == 'compatible' else item['destination']
+        component_root = target / location
+        if mode == 'compatible' and (component_root.is_relative_to(bundle) or bundle.is_relative_to(component_root)):
+            raise ContractError('Selected component would overlap the distribution')
         next_state['components'][component] = item['version']
         for file, sha in item['files'].items():
-            destination = '/'.join(p for p in (item['destination'], file) if p)
+            destination = '/'.join(p for p in (location, file) if p)
             desired[destination] = read(safe(bundle, item['source'] + '/' + file))
             next_state['files'][destination] = {'sha256': sha, 'component': component}
+    if mode == 'compatible':
+        from compatibility import BRIDGE, bridge
+        desired[BRIDGE] = bridge(selected, audit_result['profile']['providers'])
+        next_state['files'][BRIDGE] = {'sha256': digest(desired[BRIDGE]), 'component': sorted(selected)[0]}
     changes, conflicts = [], []
     old_files = (old or {}).get('files', {})
     for name in sorted(set(old_files) | set(desired)):
@@ -228,6 +257,8 @@ def plan(bundle: Path, target: Path, operation: str, packages: list[str]):
         desired[STATE] = new_state
         changes.append({'path': STATE, 'before_sha256': digest(before_state), 'after_sha256': digest(new_state)})
     report = {'operation': operation, 'version': incoming['version'], 'components': sorted(selected), 'changes': changes, 'conflicts': conflicts, 'moves': moves, 'applied': False}
+    if audit_result is not None:
+        report.update(mode=mode, audit=audit_result, ready=audit_result['ready'])
     return report, desired
 
 
@@ -315,14 +346,14 @@ def rollback(target: Path, transaction: str, apply=False):
     return {'transaction': transaction, 'changes': [name for name, _ in actions], 'conflicts': conflicts, 'applied': apply and not conflicts}
 
 
-def install(bundle: Path, target: Path, operation: str, packages: list[str], apply=False, fail_after=None):
-    report, desired = plan(bundle, target, operation, packages)
+def install(bundle: Path, target: Path, operation: str, packages: list[str], apply=False, fail_after=None, mode=None, profile=None, needs=()):
+    report, desired = plan(bundle, target, operation, packages, mode, profile, needs)
     if not apply or report['conflicts'] or not report['changes']:
         return report
     with lock(target):
         # Replan after acquiring the lock; never trust a stale preview.
-        report, desired = plan(bundle, target, operation, packages)
-        if report['conflicts']:
+        report, desired = plan(bundle, target, operation, packages, mode, profile, needs)
+        if report['conflicts'] or report.get('ready') is False or not report['changes']:
             return report
         return apply_changes(target, report, desired, fail_after)
 
@@ -367,6 +398,8 @@ def apply_changes(target, report, desired, fail_after=None):
 
 def adoption_plan(bundle, target, packages):
     incoming, installed = catalog(bundle), state(target)
+    if installed and installed.get('mode') == 'compatible':
+        raise ContractError('Legacy adoption uses the original full-mode release chain, not compatible registration')
     packages = [package_name(name, incoming) for name in packages]
     if installed is None or installed['version'] != incoming['version'] or installed['catalog_sha256'] != digest(encoded(incoming)):
         raise ContractError('Initialize the current root before adopting legacy packages')
@@ -418,11 +451,14 @@ def doctor():
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('operation', choices=['init', 'add', 'upgrade', 'adopt', 'status', 'rollback', 'verify', 'doctor'])
+    parser.add_argument('operation', choices=['audit', 'init', 'add', 'upgrade', 'adopt', 'status', 'rollback', 'verify', 'doctor'])
     parser.add_argument('--bundle', type=Path, default=Path(__file__).resolve().parents[1])
     parser.add_argument('--target', type=Path)
     parser.add_argument('--packages', nargs='*', default=[])
     parser.add_argument('--transaction')
+    parser.add_argument('--mode', choices=['full', 'compatible'])
+    parser.add_argument('--profile', type=Path, help='Reviewed existing capability providers with local evidence hashes')
+    parser.add_argument('--needs', nargs='*', default=[], help='Audit needs: collaboration brainstorm prototype knowledge')
     parser.add_argument('--apply', action='store_true')
     args = parser.parse_args()
     try:
@@ -436,9 +472,14 @@ def main():
             if args.target is None:
                 raise ContractError('--target is required')
             target = args.target.absolute()
-            if args.operation == 'status':
+            if args.operation == 'audit':
+                if args.apply:
+                    raise ContractError('Audit is read-only; use init/add/upgrade for a selected plan')
+                from compatibility import audit
+                result = audit(catalog(bundle), target, args.packages, args.needs, args.profile)
+            elif args.operation == 'status':
                 installed = state(target)
-                result = {'installed': installed is not None, 'version': (installed or {}).get('version'), 'components': (installed or {}).get('components', {}), 'modified': [name for name, item in (installed or {}).get('files', {}).items() if digest(read(safe(target, name))) != item['sha256']]}
+                result = {'installed': installed is not None, 'version': (installed or {}).get('version'), 'mode': (installed or {}).get('mode', 'full'), 'components': (installed or {}).get('components', {}), 'modified': [name for name, item in (installed or {}).get('files', {}).items() if digest(read(safe(target, name))) != item['sha256']]}
             elif args.operation == 'adopt':
                 result = adopt(bundle, target, args.packages, args.apply)
             elif args.operation == 'rollback':
@@ -448,7 +489,7 @@ def main():
                 else:
                     result = rollback(target, args.transaction or '')
             else:
-                result = install(bundle, target, args.operation, args.packages, args.apply)
+                result = install(bundle, target, args.operation, args.packages, args.apply, mode=args.mode, profile=args.profile, needs=args.needs)
         print(json.dumps(result, ensure_ascii=False, indent=2))
         return 2 if result.get('conflicts') or result.get('ready') is False else 0
     except (ContractError, OSError, KeyError, TypeError) as error:
@@ -457,4 +498,5 @@ def main():
 
 
 if __name__ == '__main__':
+    sys.modules.setdefault('workspace', sys.modules[__name__])
     sys.exit(main())

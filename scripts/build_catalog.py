@@ -13,13 +13,17 @@ def build(root, release, previous):
     if not guide.is_file():
         raise ContractError('Write the version upgrade guide before sealing')
     result = {'schema_version': 1, 'version': release, 'previous_version': previous, 'components': {}}
+    result['compatibility'] = load(safe(root, 'compatibility.json'))
     for name in ('meta', 'brainstorm', 'fromdemotospec', 'knowledge'):
         source = 'meta/workspace' if name == 'meta' else 'packages/' + name
         marker_path = 'meta/_release.json' if name == 'meta' else source + '/_release.json'
         marker = load(safe(root, marker_path))
         if marker.get('preview') is not False or marker.get('component_id') != name:
             raise ContractError('Source preview cannot be sealed: ' + name)
-        result['components'][name] = {'version': release, 'source': source, 'destination': '' if name == 'meta' else 'modules/' + name, 'required': [] if name == 'meta' else ['meta'], 'optional': ['knowledge', 'fromdemotospec'] if name == 'brainstorm' else ['knowledge'] if name == 'fromdemotospec' else [], 'source_revision': marker['source_revision'], 'files': inventory(safe(root, source))}
+        dependency = result['compatibility']['components'][name]
+        result['components'][name] = {'version': release, 'source': source, 'destination': '' if name == 'meta' else 'modules/' + name, 'required': dependency['requires'], 'provides': dependency['provides'], 'optional': dependency['optional'], 'source_revision': marker['source_revision'], 'files': inventory(safe(root, source))}
+    from compatibility import contract
+    contract(result)
     safe(root, 'catalog.json').write_bytes(encoded(result))
     return result
 

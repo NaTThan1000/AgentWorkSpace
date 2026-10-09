@@ -1,4 +1,89 @@
 {
+  "compatibility": {
+    "capabilities": {
+      "brainstorming": {
+        "criteria": [
+          "exploration",
+          "decision-traceability",
+          "session-recovery"
+        ],
+        "description": "Traceable exploration, candidates, user decisions and recoverable sessions."
+      },
+      "host-governance": {
+        "criteria": [
+          "goals-and-authority",
+          "scope-and-data",
+          "facts-and-verification",
+          "delivery-and-recovery"
+        ],
+        "description": "Host rules for goals, authority, ownership, evidence and recovery; an equivalent existing framework may provide them."
+      },
+      "knowledge": {
+        "criteria": [
+          "source-grounded-query",
+          "approved-ingest",
+          "knowledge-preservation"
+        ],
+        "description": "Source-grounded knowledge query and explicitly approved ingestion."
+      },
+      "prototyping": {
+        "criteria": [
+          "prototype-workflow",
+          "play-evidence",
+          "development-handoff"
+        ],
+        "description": "Playable prototype workflow with evidence, real user play and development handoff."
+      }
+    },
+    "components": {
+      "brainstorm": {
+        "optional": [
+          "knowledge",
+          "prototyping"
+        ],
+        "provides": [
+          "brainstorming"
+        ],
+        "requires": [
+          "host-governance"
+        ]
+      },
+      "fromdemotospec": {
+        "optional": [
+          "knowledge"
+        ],
+        "provides": [
+          "prototyping"
+        ],
+        "requires": [
+          "host-governance"
+        ]
+      },
+      "knowledge": {
+        "optional": [],
+        "provides": [
+          "knowledge"
+        ],
+        "requires": [
+          "host-governance"
+        ]
+      },
+      "meta": {
+        "optional": [],
+        "provides": [
+          "host-governance"
+        ],
+        "requires": []
+      }
+    },
+    "needs": {
+      "brainstorm": "brainstorming",
+      "collaboration": "host-governance",
+      "knowledge": "knowledge",
+      "prototype": "prototyping"
+    },
+    "schema_version": 1
+  },
   "components": {
     "brainstorm": {
       "destination": "modules/brainstorm",
@@ -151,14 +236,17 @@
       },
       "optional": [
         "knowledge",
-        "fromdemotospec"
+        "prototyping"
+      ],
+      "provides": [
+        "brainstorming"
       ],
       "required": [
-        "meta"
+        "host-governance"
       ],
       "source": "packages/brainstorm",
       "source_revision": "c3bc50108cbe238b26971b6c38e972426d3abe95",
-      "version": "1.1.0"
+      "version": "1.2.0"
     },
     "fromdemotospec": {
       "destination": "modules/fromdemotospec",
@@ -224,12 +312,15 @@
       "optional": [
         "knowledge"
       ],
+      "provides": [
+        "prototyping"
+      ],
       "required": [
-        "meta"
+        "host-governance"
       ],
       "source": "packages/fromdemotospec",
       "source_revision": "89ed64d2604fb28be41d01cb5c4aab1355f13915",
-      "version": "1.1.0"
+      "version": "1.2.0"
     },
     "knowledge": {
       "destination": "modules/knowledge",
@@ -352,12 +443,15 @@
         "wiki/wiki.template.md": "fa9cb8c1b8b3d6e9db64f92a86fc6ae4d5d7da3922c45f59aa098d94e7398eda"
       },
       "optional": [],
+      "provides": [
+        "knowledge"
+      ],
       "required": [
-        "meta"
+        "host-governance"
       ],
       "source": "packages/knowledge",
       "source_revision": "fdf96168e0055f377f136c383df728402fdf5eed",
-      "version": "1.1.0"
+      "version": "1.2.0"
     },
     "meta": {
       "destination": "",
@@ -379,12 +473,12 @@
         ".agents/skills/workflow-redesign/SKILL.md": "ff22be8ea4bd5bceb19d664aca178c99250e6886e80a7afe7892bcad447549f8",
         ".agents/skills/workflow-redesign/references/delivery-and-validation.md": "3c59aa20d75780e4a755f3d65c9c563e64ebe7793d3a4ff3a869e5d7329ab134",
         "AGENTS.md": "f92f749ec0f1290f95b6c2c02e87f194373661ff590202ca5943cce0f524c85d",
-        "AI_INDEX.md": "a5d07a91aad2334c01e3ce4b1f259c5d4c01e0ff95633efa061ba6d34e5f3792",
+        "AI_INDEX.md": "466a8ca4c9d5f3dd7275f9df770d0f41f08511de06041e88069ce168716ba62e",
         "AI_SELF_CHECK.md": "fe8311763dc04b999236aedcbb97d6ddf4f13f938bfd7aa107fe2eded9d11440",
         "AI_SOFT_HINTS.md": "32d5f74da438f35042c7d5d2bfa844f189aaf6fd61760c24b00f51d9f0017a0b",
         "COMMAND_MANUAL.md": "d07499fb1fb3581753d7a1142282e161e786426c3a2eff9a9ce24204011828ab",
         "NOW.md": "72d2526fb48b535577738a007db28d3e87b8ebb1edd9a26e08db581b5e38af48",
-        "README.md": "3e75b142ade96e4ffbece91717741690f625b652c6ddb8c7d7dcf0be04124630",
+        "README.md": "f59770f573cf766045c48eb429f78f91bd3e345293fc8d0257a9ddeec3577c32",
         "USER_PROFILE.md": "b2f19d0836fb18a1ea554a180265bf31f18b197f2f65c3fa2755d90e0a93fe61",
         "collaboration/README.md": "8b51a99816fd3fbe4808472f4c2dd02eab445a1718b3444fa8d9dcc91a13f4cf",
         "collaboration/assisted.md": "d5613f3d12c8fec3565ba752000ba716711f32894a80a890eeaaf09827b718dd",
@@ -395,13 +489,16 @@
         "reviews/_observations.md": "146f8142cac697dc27aa6624a282294b4010d878bf6b412db4212176389135ff"
       },
       "optional": [],
+      "provides": [
+        "host-governance"
+      ],
       "required": [],
       "source": "meta/workspace",
-      "source_revision": "f45a03fb280534fefee1965409ea7f286167b8b3",
-      "version": "1.1.0"
+      "source_revision": "cab81e05fb670f1a9dc502635091f7ba1d0a8238",
+      "version": "1.2.0"
     }
   },
-  "previous_version": "1.0.0",
+  "previous_version": "1.1.0",
   "schema_version": 1,
-  "version": "1.1.0"
+  "version": "1.2.0"
 }

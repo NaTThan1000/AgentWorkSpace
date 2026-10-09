@@ -8,7 +8,7 @@ AgentWorkSpace 帮你搭建一个可持续使用的 Agent 工作区。它提供�
 
 > 在指定目录搭建工作区，加入脑暴、原型开发和知识库。先检查环境和现有文件，给出安装计划，再应用没有冲突的变更。
 
-meta 只有一个完整版，无需选择功能组合。规则和方法随任务读取；安装完整框架，不代表每次任务都要跑完整套流程。
+meta 只有一个完整版，无需选择功能组合。新建工作区默认安装它；已有工作区可以使用兼容模式，复用现有框架，只补当前需要的包与缺失能力。规则和方法随任务读取，不代表每次任务都要跑完整套流程。
 
 ## 从这里开始
 
@@ -23,13 +23,26 @@ python scripts/workspace.py init --target <workspace-path> --packages brainstorm
 python scripts/workspace.py status --target <workspace-path>
 ```
 
-`--packages` 可以为空，也可以只写需要的包；meta 始终安装。以后加包用 `add`，升级用 `upgrade`。命令默认只预览，加 `--apply` 才写入；出现 `conflicts` 时先解决具体差异。
+上述默认 full 模式中，`--packages` 可以为空，也可以只写需要的包；meta 始终安装。以后加包用 `add`，升级用 `upgrade`。命令默认只预览，加 `--apply` 才写入；出现 `conflicts` 时先解决具体差异。
+
+## 已有工作区：先审计，再按需接入
+
+如果已有协作规则、知识库或其他模块，先告诉 Agent 当前需要，例如“我现在只需要脑暴，审计现有框架并推荐接入方案”。兼容模式会列出已有能力、推荐的可选项，以及所选包确实缺少的依赖。现有模块经过审阅能够替代依赖时直接复用，不要求安装 meta；候选文件的名称本身不能证明兼容。
+
+```text
+python scripts/workspace.py audit --target <workspace-path> --needs brainstorm
+python scripts/workspace.py audit --target <workspace-path> --packages brainstorm --profile <reviewed-profile.json>
+python scripts/workspace.py init --target <workspace-path> --mode compatible --packages brainstorm --profile <reviewed-profile.json>
+python scripts/workspace.py init --target <workspace-path> --mode compatible --packages brainstorm --profile <reviewed-profile.json> --apply
+```
+
+Agent 按审计返回的 criteria 审阅现有规则与接口，记录理由、证据路径和哈希，生成 profile；证据变化时重新审阅。缺少必需能力时，可以选择完整 meta，或确认现有替代模块。兼容模式不自动增加包：业务包放 `modules/<id>`，选装 meta 放 `modules/meta`，根规则与首页保持原样。首次使用让 Agent 读取新建的 `agent-workspace-compatibility.md`；自动导航与 Skill 发现仍按实际平台核对。详见[兼容模式说明](docs/compatible-workspace.md)。
 
 ## 接入后怎样使用
 
 | 组件 | 安装位置 | 可以怎样交代任务 |
 |---|---|---|
-| [meta](meta/README.md) | 工作区根目录 | 直接说明目标、约束和完成标准 |
+| [meta](meta/README.md) | full：根目录；兼容模式：`modules/meta` | 直接说明目标、约束和完成标准 |
 | [Brainstorm](packages/brainstorm/README.md) | `modules/brainstorm` | “一起脑暴这个问题……”；会话随任务创建 |
 | [FromDemoToSpec](packages/fromdemotospec/README.md) | `modules/fromdemotospec` | “制作一个可玩原型……”；在独立项目目录开发 |
 | [Knowledge](packages/knowledge/README.md) | `modules/knowledge` | “查询知识库”或“消化这些材料”；空库也可查询 |
