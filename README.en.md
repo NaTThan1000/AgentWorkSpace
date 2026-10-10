@@ -2,11 +2,21 @@
 
 [简体中文](README.md) | **English**
 
-AgentWorkSpace helps you set up a lasting workspace for an AI agent. It includes a complete set of collaboration rules and reusable methods, with optional brainstorming, prototyping, knowledge, game analysis, presentation, curated assets and a selective skill library.
+**Set up a lasting workspace for AI agents, or extend an existing project: keep your rules and add the collaboration methods, skills and modules you need.**
 
-You can ask your agent:
+An ongoing project often means repeating rules, organizing context, choosing methods and leaving useful outputs for the next task. AgentWorkSpace packages these practices as installable, upgradable files and tools that an agent reads and uses when the task calls for them.
 
-> Set up a workspace in the directory I specify, with brainstorming, prototype development and a knowledge base. Check the environment and existing files, show the installation plan, then apply changes that have no conflicts.
+- **Existing workspace**: audit current needs, reuse reviewed capabilities and install selected modules and missing dependencies.
+- **New workspace**: install the complete collaboration framework, then choose brainstorming, prototyping, knowledge or game-development modules.
+- **A few skills**: use the Skills package on its own and install by name, without adopting the complete framework.
+
+A released version is available to try, and public examples are still being developed. **There is no complete public end-to-end case study or demo video yet.** The capabilities and commands below describe what is available; engineering checks do not establish long-term benefits, creative quality or game experience. Game development currently has broader module coverage, while the collaboration framework and skills also support other tasks.
+
+[New workspace](#get-started) · [Existing workspace](#existing-workspace-audit-before-adding-capabilities) · [Choose modules](#use-the-workspace) · [Licensing](#licensing-and-content-boundaries)
+
+Give the repository path and target workspace path to an agent that can read/write files and run commands. For example:
+
+> Read the distribution README and relevant package guides. My target workspace is … and I need brainstorming and prototype development. Audit and reuse existing rules if present; otherwise set up a new workspace. Show the installation plan, then apply changes that have no conflicts.
 
 There is one complete meta edition. New workspaces install it by default; existing workspaces can use compatible mode to reuse their framework and add only selected packages and missing capabilities. The agent reads rules and methods as each task requires, without running every workflow on every task.
 
@@ -53,7 +63,7 @@ Keep projects under `projects/` or a directory you choose. Sessions, knowledge c
 
 Meta also includes [Humanizer-zh](meta/workspace/.agents/skills/humanizer-zh/SKILL.md). Use it to edit Chinese prose for clarity while preserving facts, uncertainty and the author's voice. It is editing guidance, not an authorship detector. English documentation should preserve the same factual accuracy.
 
-## New packages and selective skill installation
+## More modules and selective skill installation
 
 | Package | Purpose | Standalone behavior |
 |---|---|---|
@@ -100,4 +110,14 @@ Before releasing, check affected source contracts, package runtime behavior and 
 
 Use the relative links at the top to switch between this page and [简体中文](README.md). Keep both pages aligned on features, commands, versions, limitations and licenses. Package documentation is currently mainly in Chinese.
 
-The public Knowledge package maintains an independent portable framework 2.0 implementation; it is not the private host's latest consolidated controller. This repository contains no private knowledge, sessions, profiles, runtime receipts or credentials. Humanizer-zh retains its [MIT license and source record](meta/workspace/.agents/skills/humanizer-zh/references/UPSTREAM.md). Other content keeps its existing rights; public visibility does not grant a new license. Engineering checks do not establish creative quality, real game play, user content approval or long-term results.
+## Licensing and content boundaries
+
+The author's original code and documentation use the [MIT license](LICENSE), allowing use, modification and redistribution, including commercial use, while retaining copyright and license notices. **The repository does not have a single license for all content**: third-party skills, assets, fonts and source-restricted material retain their own terms. See [third-party notices and exceptions](THIRD_PARTY_NOTICES.md). In particular, property-based-testing uses CC BY-SA 4.0; the Brainstorm How Might We source record includes noncommercial restrictions, and the related method card is excluded from the root MIT grant. Include the applicable licenses and provenance records when copying or redistributing content.
+
+The public Knowledge package maintains an independent portable framework 2.0 implementation; it is not the private host's latest consolidated controller. This repository contains no private knowledge, sessions, profiles, runtime receipts or credentials. Engineering checks do not establish creative quality, real game play, user content approval or long-term results.
+
+## Try it and share feedback
+
+Start with a disposable directory, or one concrete need in your existing workspace. Use [Issues](https://github.com/ZhongTyler/AgentWorkSpace/issues) to share what you wanted to accomplish, which modules you selected, where you got stuck and how the result differed from your expectation. Remove private content and credentials before sharing logs.
+
+If this direction is useful to you, a Star is welcome as a bookmark. Actual trials, integration problems and suggestions are most useful at this stage. Complete case studies will be added once there are public, reviewable results.
