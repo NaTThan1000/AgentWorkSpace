@@ -42,7 +42,7 @@ class NewPackages(unittest.TestCase):
    pick('rollback','--transaction',applied['transaction'],'--apply');self.assertFalse((target/'.agents/skills/systematic-debugging/SKILL.md').exists());self.assertTrue((target/'.codebuddy/skills/property-based-testing/SKILL.md').exists())
    conflict=target/'.agents/skills/systematic-debugging/SKILL.md';conflict.parent.mkdir(parents=True,exist_ok=True);conflict.write_text('User skill\n')
    denied=subprocess.run([sys.executable,'-B','scripts/skills.py','install','--target',str(target),'--names','systematic-debugging','--apply'],cwd=module,capture_output=True,text=True)
-   self.assertNotEqual(0,denied.returncode);self.assertEqual('User skill\n',conflict.read_text())
+   self.assertNotEqual(0,denied.returncode);self.assertEqual('User skill\n',conflict.read_text(encoding='utf-8'))
  def test_dependency_recommendations_and_reviewed_substitutes(self):
   with tempfile.TemporaryDirectory(prefix='aws-deps-') as temp:
    target=Path(temp);rules=target/'AGENTS.md';rules.write_bytes(b'Existing audited capabilities.\n');cat=w.catalog(ROOT)
@@ -56,20 +56,20 @@ class NewPackages(unittest.TestCase):
   with tempfile.TemporaryDirectory(prefix='aws-integration-') as temp:
    target=Path(temp)/'host';w.install(ROOT,target,'init',NEW,True,mode='compatible');gp=target/'modules/game-presentation';assets=target/'modules/prototype-assets';project=Path(temp)/'project'
    self.run_command(['node','scripts/init-project.mjs','--target',str(project),'--apply'],gp)
-   ids=[json.loads((assets/'catalog/assets.json').read_text())['assets'][0]['asset_id']]
+   ids=[json.loads((assets/'catalog/assets.json').read_text(encoding='utf-8'))['assets'][0]['asset_id']]
    opts=['--source',str(assets),'--engine',str(project/'Engine'),'--bundle','sample','--id',ids[0]]
    preview=json.loads(self.run_command(['node','adapters/godot/deliver.mjs','import',*opts],gp));self.assertFalse(preview['applied'])
    self.run_command(['node','adapters/godot/deliver.mjs','import',*opts,'--apply'],gp)
-   receipt=json.loads((project/'Engine/assets/vendor/sample/receipt.json').read_text());self.assertEqual(ids[0],receipt['assets'][0]['asset_id']);self.assertTrue((project/'Engine/assets/vendor/sample'/receipt['assets'][0]['path']).is_file())
+   receipt=json.loads((project/'Engine/assets/vendor/sample/receipt.json').read_text(encoding='utf-8'));self.assertEqual(ids[0],receipt['assets'][0]['asset_id']);self.assertTrue((project/'Engine/assets/vendor/sample'/receipt['assets'][0]['path']).is_file())
    # Recovery/rollback must not need a reachable source repository.
    shutil.rmtree(assets)
    self.run_command(['node','adapters/godot/deliver.mjs','rollback','--engine',str(project/'Engine'),'--bundle','sample','--apply'],gp)
-   self.assertEqual([],json.loads((project/'Engine/assets/vendor/sample/receipt.json').read_text())['assets'])
+   self.assertEqual([],json.loads((project/'Engine/assets/vendor/sample/receipt.json').read_text(encoding='utf-8'))['assets'])
  def test_curated_skill_licenses_and_local_references(self):
   base=ROOT/'packages/skills/library'
   for name in ['godot-gdscript-patterns','property-based-testing','systematic-debugging','humanizer-zh']:
    self.assertTrue((base/name/'references/LICENSE').is_file())
-  self.assertIn('Attribution-ShareAlike',(base/'property-based-testing/references/LICENSE').read_text())
-  self.assertEqual(16,len(json.loads((ROOT/'packages/skills/skills.json').read_text())['skills']))
+  self.assertIn('Attribution-ShareAlike',(base/'property-based-testing/references/LICENSE').read_text(encoding='utf-8'))
+  self.assertEqual(16,len(json.loads((ROOT/'packages/skills/skills.json').read_text(encoding='utf-8'))['skills']))
 
 if __name__=='__main__':unittest.main()

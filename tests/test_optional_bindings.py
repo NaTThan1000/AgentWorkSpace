@@ -22,7 +22,7 @@ class OptionalBindings(unittest.TestCase):
   with tempfile.TemporaryDirectory(prefix='aws-f2s-assets-') as t:
    target=Path(t)/'host';w.install(ROOT,target,'init',['fromdemotospec','prototype-assets'],True)
    f2s=target/'modules/fromdemotospec';assets=target/'modules/prototype-assets';project=Path(t)/'project';project.mkdir()
-   asset=json.loads((assets/'catalog/assets.json').read_text())['assets'][0]
+   asset=json.loads((assets/'catalog/assets.json').read_text(encoding='utf-8'))['assets'][0]
    selection={'schema_version':1,'prototype_id':'public-synthetic','presentation_grade':'A','selection_status':'auto','kit':{'skeleton':'tactical-board','skin':'neutral-readable','cast':'tactical-team','feedback_modules':['core-feedback']},'view_contract':{'state_source':'shared','player_mode':'player','analysis_mode':'analysis','toggles':['background','motion','vfx','audio']},'presentation_brief':{'decision_owner':'fixture','input_type':'sketch','experience_moment':'synthetic test','first_screen_focus':'current action','core_feedback_moment':'result','resource_exclusions':['unreviewed']},'asset_source':{'repository_id':'prototype-assets'},'assets':[{'asset_id':asset['asset_id'],'export_sha256':asset['files']['export_sha256']}]}
    file=Path(t)/'selection.json';file.write_text(json.dumps(selection),encoding='utf-8')
    args=[shell,'-NoProfile','-ExecutionPolicy','Bypass','-File',str(f2s/'scripts/import-presentation-assets.ps1'),'-SelectionPath',str(file),'-ProjectPath',str(project)]
@@ -39,7 +39,7 @@ class OptionalBindings(unittest.TestCase):
     args=['node','scripts/'+script,'prepare-request','--input',str(request)]
     prepared=json.loads(self.command(args,module).stdout);self.assertEqual(2,prepared['schema_version']);self.assertNotIn('gad_status',prepared)
     report=Path(t)/'analysis.md';body='Synthetic capacity result: 12 required units exceed 10 shared units. Independent pools change the conclusion.\n';report.write_text(body,encoding='utf-8',newline='\n')
-    req=json.loads(request.read_text());common={k:req[k] for k in ['schema_version','request_id','adapter_id','host_ref','host_write_target_ref']}
+    req=json.loads(request.read_text(encoding='utf-8'));common={k:req[k] for k in ['schema_version','request_id','adapter_id','host_ref','host_write_target_ref']}
     intake={**common,'delivery_id':'HOF-public-test','endpoint':'analysis_report','result_ref':'analysis:synthetic','result_status':'complete','action_class':'analysis_only','body':{'path':'analysis.md','sha256':hashlib.sha256(body.encode()).hexdigest(),'format':'markdown'},'source_refs':['project:synthetic'],'limitations':['Synthetic integration, not actual design acceptance']}
     intake_path=Path(t)/'intake.json';intake_path.write_text(json.dumps(intake),encoding='utf-8');delivery=Path(t)/'delivery.json';consumer=Path(t)/'consumer.json';consumer.write_text(json.dumps({'hostType':identity,'hostRef':req['host_ref'],'artifactRoot':t}),encoding='utf-8')
     code="import fs from 'node:fs';import {pathToFileURL} from 'node:url';const api=await import(pathToFileURL(process.argv[1]).href);const d=api.prepareDeliveryV2(JSON.parse(fs.readFileSync(process.argv[2],'utf8')),{artifactRoot:process.argv[3]});fs.writeFileSync(process.argv[4],JSON.stringify(d));"

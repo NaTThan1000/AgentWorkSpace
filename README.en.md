@@ -39,6 +39,8 @@ In the default full mode above, you can omit `--packages` or select only the pac
 
 If you already have collaboration rules, a knowledge base or other modules, tell the agent what you need now, such as “I only need brainstorming; audit my existing framework and recommend an integration plan.” Compatible mode lists reusable capabilities, optional recommendations and genuinely missing dependencies of selected packages. A reviewed equivalent provider removes the need to install meta. A matching file name alone does not establish compatibility.
 
+The audit also covers overlap and integration boundaries between packages and existing modules/workflows. During selective installation, later additions or actual integration, the agent uses `package_review` to examine responsibilities, inputs/outputs, entrypoints, authority and data ownership. It explains whether compatibility work is needed and proposes a host-specific approach. Reuse without installation, coexistence and adaptation are options, not preset decisions. Satisfied dependencies and conflict-free files do not establish interoperability; unresolved plans do not trigger automatic merging or migration.
+
 ```text
 python scripts/workspace.py audit --target <workspace-path> --needs brainstorm
 python scripts/workspace.py audit --target <workspace-path> --packages brainstorm --profile <reviewed-profile.json>

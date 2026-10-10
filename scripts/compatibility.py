@@ -7,6 +7,13 @@ from workspace import ContractError, STATE, digest, encoded, load, package_name,
 
 BRIDGE = 'agent-workspace-compatibility.md'
 
+PACKAGE_REVIEW_CRITERIA = {
+    'responsibility-overlap': 'Compare the requested task and existing module/workflow responsibilities; reuse capabilities before recommending duplicates.',
+    'inputs-outputs-and-entrypoints': 'Review actual inputs, outputs, protocols, invocation and navigation; matching names do not prove interoperability.',
+    'authority-and-data-ownership': 'Keep host decisions, user data, directories and state ownership explicit; do not create competing sources of truth.',
+    'integration-and-recovery': 'Propose a case-specific boundary and reversible next step; unresolved integration is not approval to merge, replace or migrate.'
+}
+
 
 def contract(incoming):
     value = incoming.get('compatibility')
@@ -64,15 +71,28 @@ def reviewed_providers(target, definition, profile):
 
 
 def candidates(target):
-    """Bounded discovery only; file names do not establish semantic equivalence."""
-    names = ['AGENTS.md', 'COMMAND_MANUAL.md', 'AI_INDEX.md']
-    modules = safe(target, 'modules')
-    if modules.is_dir():
-        for child in sorted(modules.iterdir())[:100]:
-            if child.is_dir() and not child.is_symlink() and not getattr(child.lstat(), 'st_file_attributes', 0) & 0x400:
-                names.extend('modules/' + child.name + '/' + name for name in ('README.md', 'AGENTS.md'))
+    """Bounded entry-document discovery; never execute modules or scan user content."""
+    names = ['AGENTS.md', 'README.md', 'COMMAND_MANUAL.md', 'AI_INDEX.md']
+    def entries(folder):
+        if not folder.is_dir():
+            return []
+        return [child for child in sorted(folder.iterdir())
+                if not child.name.startswith('.') and child.name not in ('node_modules', 'vendor')
+                and child.is_dir() and not child.is_symlink()
+                and not getattr(child.lstat(), 'st_file_attributes', 0) & 0x400][:100]
+    # Modules can live outside modules/, and workflows can be distributed as skills.
+    for folder in (target, safe(target, 'modules')):
+        for child in entries(folder):
+            names.extend((child / name).relative_to(target).as_posix() for name in ('README.md', 'AGENTS.md'))
+    for name in ('.agents/skills', '.claude/skills'):
+        try:
+            folder = safe(target, name)
+            for child in entries(folder):
+                names.append((child / 'SKILL.md').relative_to(target).as_posix())
+        except ContractError:
+            continue
     found = []
-    for name in names:
+    for name in dict.fromkeys(names):
         try:
             path = safe(target, name)
             if path.is_file():
@@ -80,6 +100,20 @@ def candidates(target):
         except ContractError:
             continue
     return found
+
+
+def package_reviews(definition, selected, recommended, providers, installed_valid):
+    """Queue semantic review; provider evidence is not a package integration decision."""
+    review_components = selected | {item['component'] for item in recommended}
+    reviews = []
+    for name in sorted(review_components - {'meta'}):
+        provides = set(definition['components'][name]['provides'])
+        overlaps = [{'provider': item['id'], 'capabilities': sorted(provides & set(item['capabilities'])),
+                     'evidence': item['evidence']} for item in providers if provides & set(item['capabilities'])]
+        reviews.append({'component': name, 'selection': 'selected' if name in selected else 'recommended',
+                        'provides': sorted(provides), 'assurance': 'needs-agent-review',
+                        'installed_baseline': name in installed_valid, 'existing_providers': overlaps})
+    return reviews
 
 
 def audit(incoming, target, packages, needs=(), profile=None):
@@ -126,7 +160,7 @@ def audit(incoming, target, packages, needs=(), profile=None):
                 if capability in item['provides']:
                     recommended.append({'component': name, 'need': need, 'reason': definition['capabilities'][capability]['description'], 'missing_if_selected': [dependency for dependency in item['requires'] if dependency not in available]})
     optional = [{'component': name, 'capabilities': definition['components'][name]['optional']} for name in sorted(selected) if definition['components'][name]['optional']]
-    return {'mode': 'compatible', 'version': incoming['version'], 'selected': sorted(selected), 'required': required, 'recommended': recommended, 'optional': optional, 'reuse': reuse, 'candidates': candidates(target), 'criteria': definition['capabilities'], 'profile': {'schema_version': 1, 'providers': providers}, 'ready': not required, 'writes': 0}
+    return {'mode': 'compatible', 'version': incoming['version'], 'selected': sorted(selected), 'required': required, 'recommended': recommended, 'optional': optional, 'reuse': reuse, 'candidates': candidates(target), 'criteria': definition['capabilities'], 'package_review': package_reviews(definition, selected, recommended, providers, installed_valid), 'package_review_criteria': PACKAGE_REVIEW_CRITERIA, 'profile': {'schema_version': 1, 'providers': providers}, 'ready': not required, 'writes': 0}
 
 
 def bridge(selected, providers):
@@ -134,6 +168,7 @@ def bridge(selected, providers):
              'Read this entry when using the installed packages. / 使用接入包时读取此入口。', '',
              'Current user instructions and host rules keep authority. Package rules add domain requirements; this entry does not replace root AGENTS.md. / 当前用户指令与宿主规则保持权威；包只补领域要求，不替换根 AGENTS.md。', '',
              'Meta, when selected, is the complete edition under modules/meta. Read modules/meta/AGENTS.md as scoped supplemental guidance; its relative links refer to modules/meta, not the host root. Skills there are loaded explicitly as needed, not automatically registered. / 若选择 meta，完整版位于 modules/meta；其中相对引用以该目录为准，Skill 按需显式读取。', '',
+             'Before adding or connecting a package, review similar host modules and workflows for responsibility overlap, inputs/outputs, entrypoints, authority, data ownership and recovery. A dependency profile or installed file baseline is not an integration decision. Reuse, coexistence and adapters are case-specific proposals, not automatic migrations. / 增加或接线业务包前，审阅现有同类模块和工作流的职责、输入输出、调用入口、权威、数据归属与恢复；依赖 profile 或文件基线不等于兼容决定。复用、并存或适配按实际需要提案，不自动迁移。', '',
              '## Installed components / 已装组件', '']
     lines.extend('- [' + name + '](modules/' + name + '/README.md)' for name in sorted(selected))
     lines.extend(['', '## Reused host providers / 复用宿主能力', ''])

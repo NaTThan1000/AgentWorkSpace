@@ -39,6 +39,8 @@ python scripts/workspace.py status --target <workspace-path>
 
 如果已有协作规则、知识库或其他模块，先告诉 Agent 当前需要，例如“我现在只需要脑暴，审计现有框架并推荐接入方案”。兼容模式会列出已有能力、推荐的可选项，以及所选包确实缺少的依赖。现有模块经过审阅能够替代依赖时直接复用，不要求安装 meta；候选文件的名称本身不能证明兼容。
 
+审计也覆盖 package 与现有同类模块、工作流的重叠和接入边界。按需安装、后续加包或实际接线时，Agent 根据 `package_review` 检查职责、输入输出、调用入口、权威和数据归属，说明是否需要兼容，再结合实际工作区提出方案。复用现有模块而不安装、并存或适配均可考虑，具体方式不预先定死；依赖满足和文件无冲突不代表业务兼容已通过。未定方案不触发自动合并或迁移。
+
 ```text
 python scripts/workspace.py audit --target <workspace-path> --needs brainstorm
 python scripts/workspace.py audit --target <workspace-path> --packages brainstorm --profile <reviewed-profile.json>

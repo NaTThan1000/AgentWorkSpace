@@ -17,9 +17,9 @@ python scripts/workspace.py init --target <existing-workspace> --mode compatible
 python scripts/workspace.py init --target <existing-workspace> --mode compatible --packages brainstorm --profile <reviewed-profile.json> --apply
 ```
 
-`--needs` 接受 `collaboration`、`brainstorm`、`prototype`、`knowledge`。它们表达当前需要，不自动安装任何包。`--packages` 是实际选择，可包含 `meta`。没有选择时不创建安装记录。两种模式都默认预览，加 `--apply` 才写入；audit 永远只读，不能与 `--apply` 合用。
+`--needs` 接受 `collaboration`、`brainstorm`、`prototype`、`knowledge`、`skills`、`game-analysis`、`presentation`、`assets`。它们表达当前需要，不自动安装任何包。`--packages` 是实际选择，可包含 `meta`。没有选择时不创建安装记录。两种模式都默认预览，加 `--apply` 才写入；audit 永远只读，不能与 `--apply` 合用。
 
-`--needs` accepts `collaboration`, `brainstorm`, `prototype` and `knowledge`. Needs drive recommendations, not automatic installation. `--packages` is the actual selection and may include `meta`. Selecting nothing creates no installation state. Audit never writes; other commands preview unless `--apply` is present.
+`--needs` accepts `collaboration`, `brainstorm`, `prototype`, `knowledge`, `skills`, `game-analysis`, `presentation` and `assets`. Needs drive recommendations, not automatic installation. `--packages` is the actual selection and may include `meta`. Selecting nothing creates no installation state. Audit never writes; other commands preview unless `--apply` is present.
 
 | 审计字段 / Field | 含义 / Meaning |
 |---|---|
@@ -56,6 +56,33 @@ The versioned [capability contract](../compatibility.json) is sealed into the ca
 也可以登记现有的 brainstorming、prototyping 或 knowledge 能力，满足当前需求时审计会优先列出复用，不推荐重复安装。多个文档共同证明时全部登记；脚本、协议或配置影响判断时也作为证据。证据只能指向工作区内普通文件，拒绝越界、链接、缺失、摘要变化或未覆盖全部 criteria 的记录。未知能力保留为未知，不能默认为等价。
 
 You can also review existing brainstorming, prototyping or knowledge providers to avoid duplicate recommendations. Include every document, protocol or configuration needed for the judgment. Evidence must be ordinary files inside the workspace. Missing, stale, linked, escaping or incompletely reviewed evidence is rejected. Unknown capability remains unknown.
+
+## Package 与现有工作流的兼容审查 / Package and workflow review
+
+兼容审查有两层：一层确认宿主约束与必需依赖，另一层确认所需 package 与现有业务模块、工作流如何相处。即使不安装 meta，也要进行第二层审查；现有模块可能已满足需求，也可能只覆盖一部分。
+
+There are two review layers: host governance/dependencies, and how a selected package fits existing domain modules and workflows. The second layer also applies without meta. Existing modules may fully or partially cover the requested need.
+
+`audit` 以及兼容模式 `init`、`add`、`upgrade` 的计划自动列出 `package_review` 与 `package_review_criteria`，提醒 Agent 对已选包和待推荐包开展语义审阅。`candidates` 只定位根入口、最多 100 个根目录下子目录及 modules 子目录的 README/AGENTS，以及 .agents/skills、.claude/skills 各最多 100 项 Skill 入口；它不递归扫描业务正文，也不执行现有模块。工作流可能位于其他位置，Agent 应按当前需要沿宿主导航补充定位，未发现不能写成不存在。
+
+Audit and compatible-mode init/add/upgrade plans automatically include `package_review` and `package_review_criteria` for selected and recommended packages. Candidate discovery covers root entry documents, README/AGENTS in up to 100 immediate directories at each of the root and modules locations, and up to 100 skill entrypoints in each supported skill directory. It does not recursively scan business content or execute modules. Follow relevant host navigation to find workflows elsewhere; absence from discovery is not proof of absence.
+
+Agent 先说明当前任务，再检查：
+
+| 审查面 / Review area | 要回答的问题 / Question |
+|---|---|
+| 职责与覆盖 / Responsibility | 已有模块解决了哪些需要？新包补什么，是否重复？ / What already exists, what is missing, and what would duplicate it? |
+| 接口与调用 / Interfaces | 输入、产物、协议、启动入口与导航是否匹配？ / Do inputs, outputs, protocols and invocation paths fit? |
+| 权威与数据 / Authority and data | 谁拥有决定、状态、目录和用户内容？是否产生两个事实源？ / Who owns decisions, state and user data; would integration create competing authorities? |
+| 接入与恢复 / Integration and recovery | 是否需要兼容、理由是什么、下一步怎样验证和撤回？ / Is compatibility work needed, why, and how can the next step be checked and reversed? |
+
+审查输出写入宿主接入计划或已有记录：现有材料与证据、覆盖/差异、是否需要兼容、建议边界、尚未决定的问题和下一步。可能直接复用现有模块而不安装，也可能保留两者、补调用入口或另做适配；这些只是可选思路，具体方式结合实际工作区再定。没有必要兼容时，说明依据后按默认隔离位置安装。存在重叠但方案未定时，不自动合并、替换、双写状态或迁移数据；不依赖该方案的独立安装可以继续。
+
+Record evidence, coverage/gaps, whether compatibility work is needed, proposed boundaries, unresolved questions and the next step in the host integration plan or an existing record. Reusing an existing module without installation, keeping both, adding an entrypoint or building an adapter are possible approaches, not preset decisions. If no integration is needed, explain why and use the isolated default location. Unresolved overlap does not authorize merging, replacing, dual-writing state or migrating data; independent installation can proceed when it does not depend on that decision.
+
+`ready` 只表示已选包的必需能力已满足，不代表业务兼容已经审阅或通过。`package_review` 是 Agent 审阅入口，不是安装器自动判定的兼容认证，也不增加统一人工审批。已有 provider 只有对照 capability criteria 完成审阅后才写入 profile；package 兼容方案不塞进 provider 字段，也不伪造审阅状态。后续加包、相关流程变化或实际启用接线时重审受影响部分。
+
+`ready` means required capabilities are satisfied, not that package interoperability has been reviewed or approved. `package_review` prompts agent review; it is not automatic compatibility certification or a new blanket human-approval gate. Only reviewed capability substitutes belong in the provider profile. Keep integration decisions in host records and revisit affected boundaries when adding packages, changing relevant workflows or enabling links.
 
 ## 安装位置与使用 / Placement and use
 

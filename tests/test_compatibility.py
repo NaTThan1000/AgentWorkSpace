@@ -54,6 +54,57 @@ class CompatibleWorkspace(unittest.TestCase):
         self.assertEqual('brainstorm', report['recommended'][0]['component'])
         self.assertEqual(['host-governance'], report['recommended'][0]['missing_if_selected'])
 
+    def test_package_review_discovers_custom_workflows_without_claiming_compatibility(self):
+        workflow = self.target / 'CustomDesign'
+        workflow.mkdir()
+        (workflow / 'README.md').write_text('Existing ideation workflow with its own decisions', encoding='utf-8')
+        private = workflow / 'sessions'
+        private.mkdir()
+        (private / 'README.md').write_text('Private session, outside bounded discovery', encoding='utf-8')
+        skill = self.target / '.agents/skills/custom-method'
+        skill.mkdir(parents=True)
+        (skill / 'SKILL.md').write_text('Existing user method', encoding='utf-8')
+        before = inventory(self.target)
+        report = c.audit(w.catalog(self.bundle), self.target, [], ['brainstorm'])
+        self.assertEqual(before, inventory(self.target))
+        paths = {item['path'] for item in report['candidates']}
+        self.assertIn('CustomDesign/README.md', paths)
+        self.assertIn('.agents/skills/custom-method/SKILL.md', paths)
+        self.assertNotIn('CustomDesign/sessions/README.md', paths)
+        review = report['package_review'][0]
+        self.assertEqual(('brainstorm', 'recommended', 'needs-agent-review'),
+                         (review['component'], review['selection'], review['assurance']))
+        self.assertEqual([], review['existing_providers'], 'Discovery cannot certify a substitute')
+        self.assertFalse(report['required'], 'A review reminder is not a required package')
+
+    def test_dependency_ready_does_not_certify_selected_package_interoperability(self):
+        (self.target / 'existing-knowledge.md').write_bytes(b'Reviewed query and approved ingestion protocol')
+        provider = {'id': 'my-knowledge', 'capabilities': ['knowledge'], 'assurance': 'reviewed',
+                    'reason': 'Synthetic capability review, not a package integration decision',
+                    'checks': {'knowledge': self.contract['capabilities']['knowledge']['criteria']},
+                    'evidence': [{'path': 'existing-knowledge.md', 'sha256': w.digest((self.target / 'existing-knowledge.md').read_bytes())}]}
+        self.profile['providers'].append(provider)
+        preview = self.install(['knowledge'], False, profile=self.profile)
+        self.assertTrue(preview['ready'])
+        review = preview['audit']['package_review'][0]
+        self.assertEqual('needs-agent-review', review['assurance'])
+        self.assertEqual('my-knowledge', review['existing_providers'][0]['provider'])
+        self.assertFalse((self.target / w.STATE).exists())
+        self.install(['brainstorm'], profile=self.profile)
+        added = w.install(self.bundle, self.target, 'add', ['knowledge'], False)
+        reviews = {item['component']: item for item in added['audit']['package_review']}
+        self.assertTrue(reviews['brainstorm']['installed_baseline'])
+        self.assertFalse(reviews['knowledge']['installed_baseline'])
+        self.assertEqual('needs-agent-review', reviews['knowledge']['assurance'])
+
+    def test_all_released_business_packages_have_review_prompts(self):
+        incoming = w.catalog(ROOT)
+        report = c.audit(incoming, self.target, list(incoming['components']))
+        self.assertEqual(set(incoming['components']) - {'meta'},
+                         {item['component'] for item in report['package_review']})
+        self.assertTrue(report['ready'])
+        self.assertTrue(all(item['assurance'] == 'needs-agent-review' for item in report['package_review']))
+
     def test_missing_dependencies_block_all_writes_and_no_implicit_packages(self):
         before = inventory(self.target)
         report = self.install(['brainstorm'])
