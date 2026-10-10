@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import fs from 'node:fs';
+import {publishDirectory} from './publish-directory.mjs';
 import crypto from 'node:crypto';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -43,8 +44,8 @@ export function exportAssets({source=root,target,ids,consumer='godot',apply=fals
  try{
   for(const [n,b] of Object.entries(d.files)){const p=safe(staged,n);fs.mkdirSync(path.dirname(p),{recursive:true});fs.writeFileSync(p,Buffer.from(b,'base64'),{flag:'wx'});}
   if(fs.existsSync(target)){if(fs.readdirSync(target).length)fail('target changed during export');fs.rmdirSync(target);}
-  fs.renameSync(staged,target);
- }finally{if(fs.existsSync(staged))fs.rmSync(staged,{recursive:true,force:true});}
+  publishDirectory(staged,target);
+ }finally{if(fs.existsSync(staged))fs.rmSync(staged,{recursive:true,force:true,maxRetries:5,retryDelay:100});}
  return {applied:true,files:Object.keys(d.files).length,ids};
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){

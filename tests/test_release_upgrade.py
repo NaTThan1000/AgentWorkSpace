@@ -14,21 +14,26 @@ class ActualReleaseUpgrade(unittest.TestCase):
   with tempfile.TemporaryDirectory(prefix='aws-real-upgrade-') as t:
    base=Path(t);old=base/'old';old.mkdir();target=base/'host'
    git=shutil.which('git');self.assertIsNotNone(git)
-   r=subprocess.run([git,'-c','safe.directory='+ROOT.as_posix(),'-C',str(ROOT),'archive','v1.2.0'],capture_output=True)
-   self.assertEqual(0,r.returncode,r.stderr.decode(errors='replace'))
-   with tarfile.open(fileobj=io.BytesIO(r.stdout)) as archive:
-    for member in archive:
-     if member.isdir():continue
-     self.assertTrue(member.isfile());p=w.safe(old,member.name);p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(archive.extractfile(member).read())
+   def snapshot(ref,destination):
+    destination.mkdir(exist_ok=True)
+    r=subprocess.run([git,'-c','safe.directory='+ROOT.as_posix(),'-C',str(ROOT),'archive',ref],capture_output=True)
+    self.assertEqual(0,r.returncode,r.stderr.decode(errors='replace'))
+    with tarfile.open(fileobj=io.BytesIO(r.stdout)) as archive:
+     for member in archive:
+      if member.isdir():continue
+      self.assertTrue(member.isfile());p=w.safe(destination,member.name);p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(archive.extractfile(member).read())
+   snapshot('v1.2.0',old);intermediate=base/'intermediate';snapshot('v1.3.0',intermediate)
    self.command(sys.executable,'-X','utf8','-B',old/'scripts/workspace.py','init','--target',target,'--packages','brainstorm','fromdemotospec','knowledge','--apply')
    user=target/'modules/brainstorm/sessions/my-note.md';user.parent.mkdir(parents=True,exist_ok=True);user.write_bytes(b'User data must remain.\n')
    rules=target/'AGENTS.md';rules.write_bytes(rules.read_bytes()+b'\nLocal host addition.\n');original=rules.read_bytes()
+   first=self.command(sys.executable,'-X','utf8','-B',intermediate/'scripts/workspace.py','upgrade','--target',target,'--apply');first_transaction=json.loads(first.stdout)['transaction']
+   self.assertEqual('1.3.0',w.state(target)['version'])
    preview=w.install(ROOT,target,'upgrade',[]);self.assertFalse(preview['applied']);self.assertFalse(preview['conflicts'])
-   upgraded=w.install(ROOT,target,'upgrade',[],True);self.assertEqual('1.3.0',w.state(target)['version']);self.assertEqual(original,rules.read_bytes());self.assertEqual({'meta','brainstorm','fromdemotospec','knowledge'},set(w.state(target)['components']))
+   upgraded=w.install(ROOT,target,'upgrade',[],True);self.assertEqual('1.3.1',w.state(target)['version']);self.assertEqual(original,rules.read_bytes());self.assertEqual({'meta','brainstorm','fromdemotospec','knowledge'},set(w.state(target)['components']))
    added=w.install(ROOT,target,'add',['skills','game-analysis-decision','game-presentation','prototype-assets'],True)
    self.assertTrue(added['applied']);self.assertEqual(8,len(w.state(target)['components']));self.assertFalse((target/'.agents/skills/property-based-testing').exists())
    self.assertTrue(w.rollback(target,added['transaction'],True)['applied']);self.assertFalse((target/'modules/skills/README.md').exists())
-   self.assertTrue(w.rollback(target,upgraded['transaction'],True)['applied']);self.assertEqual('1.2.0',w.state(target)['version']);self.assertEqual(original,rules.read_bytes());self.assertEqual(b'User data must remain.\n',user.read_bytes())
+   self.assertTrue(w.rollback(target,upgraded['transaction'],True)['applied']);self.assertEqual('1.3.0',w.state(target)['version']);self.assertTrue(w.rollback(target,first_transaction,True)['applied']);self.assertEqual('1.2.0',w.state(target)['version']);self.assertEqual(original,rules.read_bytes());self.assertEqual(b'User data must remain.\n',user.read_bytes())
  def test_skill_upgrade_only_selected_and_local_changes(self):
   with tempfile.TemporaryDirectory(prefix='aws-skill-upgrade-') as t:
    base=Path(t);old=ROOT/'packages/skills';new=base/'next';shutil.copytree(old,new);target=base/'host'

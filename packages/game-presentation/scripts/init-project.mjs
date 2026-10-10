@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import fs from 'node:fs';
+import {publishDirectory} from './publish-directory.mjs';
 import crypto from 'node:crypto';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -22,8 +23,8 @@ export function initProject({target,apply=false}){
   try{
    for(const [n,b] of Object.entries(files)){const p=safe(staged,n);fs.mkdirSync(path.dirname(p),{recursive:true});fs.writeFileSync(p,b,{flag:'wx'});}
    if(fs.existsSync(target)){if(fs.readdirSync(target).length)throw Error('target changed during preparation');fs.rmdirSync(target);}
-   fs.renameSync(staged,target);
-  }finally{if(fs.existsSync(staged))fs.rmSync(staged,{recursive:true,force:true});}
+   publishDirectory(staged,target);
+  }finally{if(fs.existsSync(staged))fs.rmSync(staged,{recursive:true,force:true,maxRetries:5,retryDelay:100});}
  }
  return {applied:apply,files:Object.keys(files),engine_verified:false};
 }

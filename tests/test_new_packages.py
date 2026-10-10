@@ -27,8 +27,8 @@ class NewPackages(unittest.TestCase):
     module=target/'modules'/name
     if name=='skills':self.assertIn('systematic-debugging',self.run_command([sys.executable,'-B','scripts/skills.py','list'],module))
     elif name=='game-analysis-decision':self.run_command(['node','scripts/learning-cli.mjs','audit'],module);self.run_command(['node','--test','tests/test-provider-v2.mjs','tests/test-learning-v2.mjs','tests/test-adapter-v2.mjs','tests/test-analysis-math.mjs'],module)
-    elif name=='game-presentation':self.run_command(['node','--test','tests/delivery.test.mjs','tests/workbench-delivery.test.mjs'],module)
-    else:self.run_command(['node','--test','tests/assets.test.mjs'],module)
+    elif name=='game-presentation':self.run_command(['node','--test','tests/delivery.test.mjs','tests/workbench-delivery.test.mjs','tests/publish-directory.test.mjs'],module)
+    else:self.run_command(['node','--test','tests/assets.test.mjs','tests/publish-directory.test.mjs'],module)
  def test_selective_skills_inside_host_conflict_and_rollback(self):
   with tempfile.TemporaryDirectory(prefix='aws-skills-') as temp:
    target=Path(temp)/'host';w.install(ROOT,target,'init',['skills'],True,mode='compatible');module=target/'modules/skills'

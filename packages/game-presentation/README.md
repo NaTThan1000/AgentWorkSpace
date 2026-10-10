@@ -9,9 +9,11 @@ Node.js 22+；实际引擎验证需要 Godot 4。先建立独立用户项目：
 ```text
 node scripts/init-project.mjs --target <new-project>
 node scripts/init-project.mjs --target <new-project> --apply
-node --test tests/delivery.test.mjs tests/workbench-delivery.test.mjs
+node --test tests/delivery.test.mjs tests/workbench-delivery.test.mjs tests/publish-directory.test.mjs
 ```
 
 [Godot 交付](adapters/godot/README.md)适合审核过的外部素材；[两段工作台](adapters/godot/workbench.md)支持 receive/generated → seal → publish。默认预览，显式 apply 才写；用事务收据识别所有权，冲突与人工修改阻断写入。运行资源和许可复制进工程，移走本包或素材仓后仍可使用。
 
 现有源项目曾验证 PNG/WAV/OGG/OTF 及 Godot 打包恢复；TTF 和其他引擎不继承实例证明。公开包工程测试只验证合同、事务及合成样例，不证明美术、听感或跨项目效果。版权和原素材许可不因公开改变。
+
+Windows 目录落盘遇到 EPERM/EACCES/EBUSY 时，最多追加 6 次短暂重试，总等待不超过 1.575 秒；目标在等待中出现、权限持续不足或其他错误仍明确失败，不覆盖另一写入者。
