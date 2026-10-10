@@ -16,7 +16,7 @@ Brainstorm 帮助人与 Agent 共同探索、形成想法并选择概念。默�
 
 [Perspective](perspectives/README.md) 按遗漏选择，不要求全部执行。更多角色、标题或轮数不等于发散更好。
 
-按具体缺口使用 [Knowledge](adapters/knowledge-context-brief/README.md)、联网研究和 [GAD](adapters/game-analysis-decision/README.md)。Agent 复用已知上下文，区分来源、假设和未知；GAD 原报告经核验直接消费，不二次写同义简报。仅准备请求不能宣称实际查询／分析完成。
+按具体缺口使用 [Knowledge](adapters/knowledge-context-brief/README.md)、联网研究和 [GameAnalysisDecision](adapters/game-analysis-decision/README.md)。Agent 复用已知上下文，区分来源、假设和未知；GameAnalysisDecision 原报告经核验直接消费，不二次写同义简报。仅准备请求不能宣称实际查询／分析完成。
 
 ## 收敛、交付与学习
 
@@ -44,6 +44,6 @@ Brainstorm 帮助人与 Agent 共同探索、形成想法并选择概念。默�
 | 当前状态 | [NOW](NOW.md) |
 
 
-独立包不携带私人记录；公开来源只含书目元数据。外部 Knowledge、GAD、FromDemoToSpec 需宿主另行提供；缺失不影响独立脑暴，不得宣称已执行外部流程。
+独立包不携带私人记录；公开来源只含书目元数据。外部 Knowledge、GameAnalysisDecision、FromDemoToSpec 需宿主另行提供；缺失不影响独立脑暴，不得宣称已执行外部流程。
 
-展示名称统一为 FromDemoToSpec，包 ID 与新脚本入口使用 fromdemotospec。旧 f2s 参数、脚本入口及会话交换格式保留兼容；新调用使用完整名称，不为改名重写历史内容或批准记录。
+展示名称统一为 FromDemoToSpec，包 ID 与新脚本入口使用 fromdemotospec。旧 fromdemotospec 参数、脚本入口及会话交换格式保留兼容；新调用使用完整名称，不为改名重写历史内容或批准记录。

@@ -19,7 +19,7 @@ test('export preview, copy, no-op, conflict and independent runtime',t=>{
  assert.throws(()=>exportAssets({target:root,ids}),/overlap/);
 });
 test('FromDemoToSpec export keeps the base catalog boundary',t=>{
- const temp=fs.mkdtempSync(path.join(os.tmpdir(),'assets-f2s-'));t.after(()=>fs.rmSync(temp,{recursive:true,force:true}));
+ const temp=fs.mkdtempSync(path.join(os.tmpdir(),'assets-fromdemotospec-'));t.after(()=>fs.rmSync(temp,{recursive:true,force:true}));
  const a=JSON.parse(fs.readFileSync(path.join(root,'catalog/formal-assets.json'))).assets[0];
  assert.throws(()=>exportAssets({target:path.join(temp,'bad'),ids:[a.asset_id],consumer:'fromdemotospec'}),/base 2D/);
 });

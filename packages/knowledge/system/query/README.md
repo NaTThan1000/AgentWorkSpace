@@ -1,6 +1,6 @@
 # Query：只读发现、正文读取与证据交付
 
-运行规则由 [QUERY_PROTOCOL](../protocols/QUERY_PROTOCOL.md) 拥有。本目录提供无服务、无数据库的 Node 工具；依赖本仓 `system/integrations/query-principles.mjs`，不需要 GAD 或父工作区。运行中不写文件、不更新索引／NOW。
+运行规则由 [QUERY_PROTOCOL](../protocols/QUERY_PROTOCOL.md) 拥有。本目录提供无服务、无数据库的 Node 工具；依赖本仓 `system/integrations/query-principles.mjs`，不需要 GameAnalysisDecision 或父工作区。运行中不写文件、不更新索引／NOW。
 
 ## 从实际内容开始
 

@@ -7,8 +7,8 @@ import {execFileSync} from 'node:child_process';
 import {loadCatalogue,lookup,validateChange,saveChange,retract,resolveKnowledge,assertKnowledgeWrite,containedPath,dueReviews} from '../scripts/learning-cli.mjs';
 
 const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
-const fixture=fs.mkdtempSync(path.join(os.tmpdir(),'gad-learning-v2-'));
-const root=path.join(fixture,'GAD'),knowledge=path.join(fixture,'Knowledge');
+const fixture=fs.mkdtempSync(path.join(os.tmpdir(),'game-analysis-decision-learning-v2-'));
+const root=path.join(fixture,'GameAnalysisDecision'),knowledge=path.join(fixture,'Knowledge');
 const write=(p,c)=>{fs.mkdirSync(path.dirname(p),{recursive:true});fs.writeFileSync(p,c);};
 const json=(p,v)=>write(p,JSON.stringify(v,null,2)+'\n');
 const git=(...a)=>execFileSync('git',['-C',root,...a],{encoding:'utf8',stdio:['ignore','pipe','pipe']}).trim();
@@ -94,6 +94,6 @@ try{
  // The directory is created above under the OS temporary root; unlink junctions first.
  for(const p of [path.join(root,'escape'),path.join(knowledge,'domains','alias')])if(fs.existsSync(p))fs.unlinkSync(p);
  const real=fs.realpathSync.native(fixture),temp=fs.realpathSync.native(os.tmpdir());
- assert(path.relative(temp,real).startsWith('gad-learning-v2-'));
+ assert(path.relative(temp,real).startsWith('game-analysis-decision-learning-v2-'));
  fs.rmSync(fixture,{recursive:true,force:true});
 }

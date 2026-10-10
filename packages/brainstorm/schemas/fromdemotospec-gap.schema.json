@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://tylerbrainstorm.local/schemas/f2s-gap-v2.json",
-  "title": "Brainstorm F2S gap v2",
+  "$id": "https://tylerbrainstorm.local/schemas/fromdemotospec-gap-v2.json",
+  "title": "Brainstorm FromDemoToSpec gap v2",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -24,7 +24,7 @@
       "const": 2
     },
     "adapter_id": {
-      "const": "f2s-handoff"
+      "const": "fromdemotospec-handoff"
     },
     "session_id": {
       "type": "string",
@@ -46,7 +46,7 @@
           "const": "FromDemoToSpec/templates/design-baseline.md"
         },
         "version": {
-          "const": "f2s-design-baseline-v2"
+          "const": "fromdemotospec-design-baseline-v2"
         },
         "last_verified_against": {
           "type": "string",
@@ -102,7 +102,7 @@
         "additionalProperties": false,
         "required": [
           "field_id",
-          "f2s_target",
+          "fromdemotospec_target",
           "coverage",
           "mapped_content",
           "source_ids",
@@ -115,7 +115,7 @@
             "type": "string",
             "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
           },
-          "f2s_target": {
+          "fromdemotospec_target": {
             "type": "string",
             "minLength": 1
           },
@@ -125,7 +125,7 @@
               "partial",
               "missing",
               "assumed",
-              "f2s-question"
+              "fromdemotospec-question"
             ]
           },
           "mapped_content": {
@@ -170,7 +170,7 @@
         "properties": {
           "parameter_id": {
             "type": "string",
-            "pattern": "^F2S-PARAM-[0-9]{3,}$"
+            "pattern": "^FromDemoToSpec-PARAM-[0-9]{3,}$"
           },
           "name": {
             "type": "string",

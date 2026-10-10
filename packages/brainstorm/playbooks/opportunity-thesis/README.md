@@ -11,7 +11,7 @@
 
 1. 明确选择、默认行动、时间和资源边界。可比较多方向，也可比较一个方向与维持现状；不凑数量。
 2. 给出具体片段：什么触发、现在怎样应对、哪里受阻、候选如何改变行为、可观察结果是什么。只有标签时先具体化并让用户回应。
-3. 按 [METHOD_PRESET.md](METHOD_PRESET.md) 对卡点使用方法。事实缺口及时请求 Knowledge/Web 多源核查；重要证据依赖取舍用 GAD 原报告支撑，宿主保留决定。
+3. 按 [METHOD_PRESET.md](METHOD_PRESET.md) 对卡点使用方法。事实缺口及时请求 Knowledge/Web 多源核查；重要证据依赖取舍用 GameAnalysisDecision 原报告支撑，宿主保留决定。
 4. D/N/S/C 检查需求行为、用户预期、替代结构与自身能力。它是遗漏检查工具，不是完整理论；不适用透镜说明原因，关键缺口可增加关注点。
 5. 按 [CONVERGENCE_PROFILE.md](CONVERGENCE_PROFILE.md) 写替代、反证、验证和停止条件。缺证保持 draft；方向不对可 return-to-brainstorm。
 6. 按 [OUTPUT_SCHEMA.md](OUTPUT_SCHEMA.md) 交付易读机会卡。仅实际 user/joint DEC 才 accepted；不代表事实已验证或自动授予预算、外发、发布权限。

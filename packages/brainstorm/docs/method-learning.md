@@ -9,7 +9,7 @@
 - 新来源提供可迁移的认知机制，且存在当前方法没有覆盖的卡点。
 - 交付或后续真实反馈改变了先前的适用判断。
 
-仅“觉得应更专业”“新论文很流行”或一次用户偏好不足以加入默认方法。Brainstorm 学方法与共创；领域知识仍引用 Knowledge，专业分析仍按需使用 GAD，不复制知识库或专家体系。
+仅“觉得应更专业”“新论文很流行”或一次用户偏好不足以加入默认方法。Brainstorm 学方法与共创；领域知识仍引用 Knowledge，专业分析仍按需使用 GameAnalysisDecision，不复制知识库或专家体系。
 
 ## 最短完整处理
 
@@ -32,7 +32,7 @@
 
 记录文件保存在 docs/learning-records，不是第二份方法正文或长期知识库。相同内容重复 record 为 no-op，同 ID 不同内容拒绝，修订使用新 ID 和 prior_id。旧证据和失败不覆盖。
 
-targets 只允许 methods、perspectives、examples/co-creation；工具不允许写 session、GAD、Knowledge、权限配置或全局记忆。需要修改运行代码来修 bug 时作为普通框架维护处理，不伪装成内容学习。
+targets 只允许 methods、perspectives、examples/co-creation；工具不允许写 session、GameAnalysisDecision、Knowledge、权限配置或全局记忆。需要修改运行代码来修 bug 时作为普通框架维护处理，不伪装成内容学习。
 
 ## CLI
 

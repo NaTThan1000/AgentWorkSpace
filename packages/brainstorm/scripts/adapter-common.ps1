@@ -69,13 +69,13 @@ function Get-AdapterDefinition {
 function Get-AdapterCatalogValidation {
     $catalogPath = Join-Path $script:BrainstormAdapterProjectRoot 'adapters\catalog.json'
     $schemaPath = Join-Path $script:BrainstormAdapterProjectRoot 'schemas\adapter-catalog.schema.json'
-    $f2sSchemaPath = Join-Path $script:BrainstormAdapterProjectRoot 'schemas\fromdemotospec-gap.schema.json'
+    $fromdemotospecSchemaPath = Join-Path $script:BrainstormAdapterProjectRoot 'schemas\fromdemotospec-gap.schema.json'
     $catalog = Read-Utf8Json -Path $catalogPath
     $schema = Read-Utf8Json -Path $schemaPath
-    $f2sSchema = Read-Utf8Json -Path $f2sSchemaPath
+    $fromdemotospecSchema = Read-Utf8Json -Path $fromdemotospecSchemaPath
     Assert-AdapterContract -Condition ([int]$catalog.schema_version -eq 1) -Message 'Adapter catalog schema_version must be 1.'
     Assert-AdapterContract -Condition ([string]$schema.title -ceq 'Brainstorm adapter catalog v1') -Message 'Adapter catalog schema title is invalid.'
-    Assert-AdapterContract -Condition ([string]$f2sSchema.title -ceq 'Brainstorm F2S gap v2') -Message 'F2S gap schema title is invalid.'
+    Assert-AdapterContract -Condition ([string]$fromdemotospecSchema.title -ceq 'Brainstorm FromDemoToSpec gap v2') -Message 'FromDemoToSpec gap schema title is invalid.'
 
     $ids = @{}
     foreach ($adapter in @($catalog.adapters)) {
@@ -100,17 +100,17 @@ function Get-AdapterCatalogValidation {
 
     Assert-AdapterContract -Condition ($ids.Count -eq 3) -Message 'Brainstorm must expose exactly three adapters after TB-012.'
     $knowledge = Get-AdapterDefinition -AdapterId 'knowledge-context-brief'
-    $f2s = Get-AdapterDefinition -AdapterId 'f2s-handoff'
+    $fromdemotospec = Get-AdapterDefinition -AdapterId 'fromdemotospec-handoff'
     $analysis = Get-AdapterDefinition -AdapterId 'game-analysis-decision'
     Assert-AdapterContract -Condition ([string]$knowledge.status -ceq 'ready' -and [bool]$knowledge.degradation_supported) -Message 'Knowledge ContextBrief adapter must be ready with degradation support.'
     Assert-AdapterContract -Condition ([string]$knowledge.external_contract.path -ceq 'Knowledge/system/integrations/GAME_ANALYSIS_DECISION.md') -Message 'Knowledge adapter external contract path drifted.'
-    Assert-AdapterContract -Condition ([string]$knowledge.external_contract.version -ceq 'context-brief-gad-handoff-v1') -Message 'Knowledge adapter contract version drifted.'
-    Assert-AdapterContract -Condition ([string]$f2s.status -ceq 'ready') -Message 'F2S adapter must be ready after TB-007A.'
-    Assert-AdapterContract -Condition ([string]$f2s.external_contract.path -ceq 'FromDemoToSpec/templates/design-baseline.md') -Message 'F2S external contract path drifted.'
-    Assert-AdapterContract -Condition ([string]$f2s.external_contract.version -ceq 'f2s-design-baseline-v2') -Message 'F2S external contract version drifted.'
+    Assert-AdapterContract -Condition ([string]$knowledge.external_contract.version -ceq 'context-brief-game-analysis-decision-handoff-v1') -Message 'Knowledge adapter contract version drifted.'
+    Assert-AdapterContract -Condition ([string]$fromdemotospec.status -ceq 'ready') -Message 'FromDemoToSpec adapter must be ready after TB-007A.'
+    Assert-AdapterContract -Condition ([string]$fromdemotospec.external_contract.path -ceq 'FromDemoToSpec/templates/design-baseline.md') -Message 'FromDemoToSpec external contract path drifted.'
+    Assert-AdapterContract -Condition ([string]$fromdemotospec.external_contract.version -ceq 'fromdemotospec-design-baseline-v2') -Message 'FromDemoToSpec external contract version drifted.'
     Assert-AdapterContract -Condition ([string]$analysis.status -ceq 'ready') -Message 'GameAnalysisDecision adapter must be ready after TB-012.'
     Assert-AdapterContract -Condition ([string]$analysis.external_contract.path -ceq 'GameAnalysisDecision/adapters/v2/contract.schema.json') -Message 'GameAnalysisDecision external contract path drifted.'
-    Assert-AdapterContract -Condition ([string]$analysis.external_contract.version -ceq 'gad-adapter-v2') -Message 'GameAnalysisDecision contract version drifted.'
+    Assert-AdapterContract -Condition ([string]$analysis.external_contract.version -ceq 'game-analysis-decision-adapter-v2') -Message 'GameAnalysisDecision contract version drifted.'
     Assert-AdapterContract -Condition ([string]$analysis.external_contract.last_verified_against -ceq '5d713ffa89d89f97af23d4df5ba9f83b17ef6546') -Message 'GameAnalysisDecision verification revision drifted.'
 
     foreach ($path in @(
@@ -196,7 +196,7 @@ function Invoke-GameConceptBriefValidation {
     }
 }
 
-function Get-F2SGapValidation {
+function Get-FromDemoToSpecGapValidation {
     param(
         [string]$SessionPath,
         [string]$SessionRoot = '',
@@ -204,14 +204,14 @@ function Get-F2SGapValidation {
         [string]$BriefPath = ''
     )
     $context = Get-SessionAdapterContext -SessionPath $SessionPath -SessionRoot $SessionRoot
-    if ([string]::IsNullOrWhiteSpace($GapPath)) { $GapPath = Join-Path $context.session_directory 'f2s-gap.json' }
+    if ([string]::IsNullOrWhiteSpace($GapPath)) { $GapPath = Join-Path $context.session_directory 'fromdemotospec-gap.json' }
     if ([string]::IsNullOrWhiteSpace($BriefPath)) { $BriefPath = Join-Path $context.session_directory 'game-concept-brief.md' }
     $GapPath = Resolve-AdapterSessionPath -SessionDirectory $context.session_directory -ArtifactPath $GapPath
     $BriefPath = Resolve-AdapterSessionPath -SessionDirectory $context.session_directory -ArtifactPath $BriefPath
-    Assert-AdapterContract -Condition ([IO.Path]::GetFileName($BriefPath) -ceq 'game-concept-brief.md') -Message 'F2S adapter requires the stable game-concept-brief.md source.'
-    Assert-AdapterContract -Condition (Test-Path -LiteralPath $GapPath -PathType Leaf) -Message "Missing F2S gap file: $GapPath"
+    Assert-AdapterContract -Condition ([IO.Path]::GetFileName($BriefPath) -ceq 'game-concept-brief.md') -Message 'FromDemoToSpec adapter requires the stable game-concept-brief.md source.'
+    Assert-AdapterContract -Condition (Test-Path -LiteralPath $GapPath -PathType Leaf) -Message "Missing FromDemoToSpec gap file: $GapPath"
     $briefValidation = Invoke-GameConceptBriefValidation -SessionPath $context.session_directory -SessionRoot $SessionRoot -BriefPath $BriefPath
     $gap = Read-Utf8Json -Path $GapPath
-    Assert-AdapterContract -Condition ([int]$gap.schema_version -eq 2) -Message 'Active F2S gaps require schema 2; historical documents are archives only.'
-    return Get-F2SGapV2Validation -Gap $gap -Context $context -BriefValidation $briefValidation -GapPath $GapPath
+    Assert-AdapterContract -Condition ([int]$gap.schema_version -eq 2) -Message 'Active FromDemoToSpec gaps require schema 2; historical documents are archives only.'
+    return Get-FromDemoToSpecGapV2Validation -Gap $gap -Context $context -BriefValidation $briefValidation -GapPath $GapPath
 }

@@ -22,7 +22,7 @@ meta 只有一个完整版，无需选择功能组合。新建工作区默认安
 
 ## 从这里开始
 
-把本仓克隆或下载到一个独立目录，用户工作区放在另一个目录。统一工具和 Skills 选择安装器需要 Python 3.10+；GAD、GamePresentation、PrototypeAssets 的工具需要 Node.js 22+。Brainstorm、FromDemoToSpec 及部分 Knowledge 工具另需 PowerShell 7，Knowledge 首次 Ingest 还需 Git。本次运行验证在 Windows 完成，其他平台按包内说明检查环境。
+把本仓克隆或下载到一个独立目录，用户工作区放在另一个目录。统一工具和 Skills 选择安装器需要 Python 3.10+；GameAnalysisDecision、GamePresentation、PrototypeAssets 的工具需要 Node.js 22+。Brainstorm、FromDemoToSpec 及部分 Knowledge 工具另需 PowerShell 7，Knowledge 首次 Ingest 还需 Git。本次运行验证在 Windows 完成，其他平台按包内说明检查环境。
 
 在发布仓目录运行，先预览，再应用：
 
@@ -52,12 +52,19 @@ Agent 按审计返回的 criteria 审阅现有规则与接口，记录理由、�
 
 ## 接入后怎样使用
 
-| 组件 | 安装位置 | 可以怎样交代任务 |
-|---|---|---|
-| [meta](meta/README.md) | full：根目录；兼容模式：`modules/meta` | 直接说明目标、约束和完成标准 |
-| [Brainstorm](packages/brainstorm/README.md) | `modules/brainstorm` | “一起脑暴这个问题……”；会话随任务创建 |
-| [FromDemoToSpec](packages/fromdemotospec/README.md) | `modules/fromdemotospec` | “制作一个可玩原型……”；在独立项目目录开发 |
-| [Knowledge](packages/knowledge/README.md) | `modules/knowledge` | “查询知识库”或“消化这些材料”；空库也可查询 |
+本仓由 **meta 底座和 7 个并列的 package** 组成。meta 提供协作规则与工作区框架；full 模式安装在根目录，兼容模式选装到 `modules/meta`，可直接交代目标、约束和完成标准。其余 package 都按需要选择，表中顺序不表示层级或安装优先级。Brainstorm、FromDemoToSpec、Knowledge 所需的宿主治理能力，可由 meta 或经过审阅的现有框架提供。已有工作区可以复用审阅过的能力，无需为了可选集成安装其他包。
+
+[meta 使用说明](meta/README.md) · [各包依赖与工具环境](docs/package-dependencies.md)
+
+| package | 用途与任务示例 | 安装位置 | 独立使用与可选集成 |
+|---|---|---|---|
+| [Brainstorm](packages/brainstorm/README.md) | “一起脑暴这个问题……”；会话随任务创建 | `modules/brainstorm` | 无需其他业务包；Knowledge、GameAnalysisDecision 可选 |
+| [FromDemoToSpec](packages/fromdemotospec/README.md) | “制作一个可玩原型……”；在独立项目目录开发 | `modules/fromdemotospec` | 无需其他业务包；知识、分析、表现与素材包按需接入 |
+| [Knowledge](packages/knowledge/README.md) | “查询知识库”或“消化这些材料”；空库也可查询 | `modules/knowledge` | 无需其他业务包；首次 Ingest 前配置知识范围与本地 Git |
+| [Skills](packages/skills/README.md) | 16 项开发、研究、表达与工作流方法，按名字选择安装 | `modules/skills` | 不需要其他模块；安装库不会自动启用全部 Skill |
+| [GameAnalysisDecision](packages/game-analysis-decision/README.md) | 有事实依据的游戏问题分析、条件建议与方法校正 | `modules/game-analysis-decision` | 可单独使用；Knowledge 与其他宿主包可选 |
+| [GamePresentation](packages/game-presentation/README.md) | 表现规格、资源制作与 Godot 交付、恢复 | `modules/game-presentation` | 可使用手工或生成来源；PrototypeAssets 可选 |
+| [PrototypeAssets](packages/prototype-assets/README.md) | 119 项有来源和许可记录的精选，以及校验导出工具 | `modules/prototype-assets` | 素材和许可复制后，游戏不依赖来源包 |
 
 框架接入后即可开始任务，业务内容按实际需要产生。FromDemoToSpec 的包内文档是开发工作流，游戏工程在具体任务中创建。Knowledge 首次 Ingest 前，Agent 要根据真实用途补充知识范围，并在模块内建立独立本地 Git 基线；已有库保留历史，不借用外层仓库，不自动创建远端或推送。原向导保留供独立定制，安装后无需重复问答，也不要改动已登记的模块目录名。
 
@@ -65,16 +72,9 @@ Agent 按审计返回的 criteria 审阅现有规则与接口，记录理由、�
 
 meta 还包含 [Humanizer-zh](meta/workspace/.agents/skills/humanizer-zh/SKILL.md)。需要润色中文时，可让 Agent 使用它减少空话、重复和模板化表达，同时保留事实、确定程度和作者声音。它是编辑指导，不是作者身份检测工具；英文说明也应保持同样的准确性。
 
-## 更多模块与选择安装 Skill
+## 按需选择 Skill
 
-| 包 | 用途 | 独立使用 |
-|---|---|---|
-| [Skills](packages/skills/README.md) | 16 项开发、研究、表达与工作流方法，按名字选择安装 | 不需要其他模块；安装库不会自动启用全部 Skill |
-| [GAD](packages/game-analysis-decision/README.md) | 有事实依据的游戏问题分析、条件建议与方法校正 | Knowledge 与其他宿主包可选 |
-| [GamePresentation](packages/game-presentation/README.md) | 表现规格、资源制作与 Godot 交付、恢复 | 可使用手工或生成来源；素材仓可选 |
-| [PrototypeAssets](packages/prototype-assets/README.md) | 119 项有来源和许可记录的精选，以及校验导出工具 | 素材和许可复制后，游戏不依赖来源包 |
-
-已有工作区可以只装所需新包；无需为了可选集成安装 meta 或其他包。新建工作区仍默认使用完整 meta。[依赖与工具环境](docs/package-dependencies.md)说明每个操作实际需要什么。
+Skills 也是上表中的一个 package。安装它之后，再选择要启用的方法；其他 package 同样通过 `add --packages` 按需增加。以下命令只是示例，请替换为当前需要的包和 Skill。
 
 ```text
 python scripts/workspace.py audit --target <workspace-path> --needs skills game-analysis presentation assets
@@ -100,7 +100,7 @@ python scripts/workspace.py rollback --target <workspace-path> --transaction <tr
 
 升级比较原基线、本地文件和新版内容。双方都改过的文件会报告冲突；上游未变的文件保留本地编辑或删除。用户数据保留，每次应用都有事务备份；回滚也会检查事务后的改动。
 
-从 1.0.0 升级时，`f2s` 包和 `modules/f2s` 迁为 `fromdemotospec` 与 `modules/fromdemotospec`，连同目录内的用户文件一起迁移。旧命令参数和脚本入口保留兼容；旧会话的协议 ID、字段和工件名称不强制改写。详见 [1.1.0 升级说明](upgrades/1.1.0.md)。更早的独立 released 包先按 [1.0.0 迁移说明](upgrades/1.0.0.md) 接入，再逐版升级。
+目前尚无用户使用，本次统一全称不保留旧名称别名，也不自动迁移旧会话字段、工件或用户数据。通用版本升级、冲突检查与回退继续保留；历史 tag 不改写。新接入使用当前全称入口，详见 [1.4.0 说明](upgrades/1.4.0.md)。
 
 异常终止若留下 `install.lock`，先核对 PID 和实际进程；确认没有安装操作后，保全证据并移除锁，再预览事务恢复。不要自动清除另一进程的锁。
 

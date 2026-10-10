@@ -4,7 +4,7 @@
 >
 > **用途**：只在新原型的少量高风险验收项上，预先写清“哪类证据才能关闭该项”及其实际引用；验证这是否能减少证据错配与制作人复核歧义。
 >
-> **默认**：不启用。不得回填冻结 Demo，不得因此修改 MVP/HTML 强制规范、运行时 state、GAD EvidencePacket、PrototypeAssets 或 `released/`。
+> **默认**：不启用。不得回填冻结 Demo，不得因此修改 MVP/HTML 强制规范、运行时 state、GameAnalysisDecision EvidencePacket、PrototypeAssets 或 `released/`。
 
 ```yaml
 schema_version: 0
@@ -71,4 +71,4 @@ decision_values: [continue, adjust, stop]
 
 **停止条件**：标签没有改变任何验收判断；填写成本高于节省；标签被当作通过证据；或需要新增运行时接口才能填写。
 
-**本轮结论**：`[continue / adjust / stop]`。单项目结论不得升级为 F2S 规范、shared tool 或跨项目规则；至少在另一款独立新原型复用并复核后，才可重新讨论。
+**本轮结论**：`[continue / adjust / stop]`。单项目结论不得升级为 FromDemoToSpec 规范、shared tool 或跨项目规则；至少在另一款独立新原型复用并复核后，才可重新讨论。

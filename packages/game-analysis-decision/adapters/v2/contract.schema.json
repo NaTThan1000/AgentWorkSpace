@@ -34,7 +34,7 @@
         "adapter_id": {
           "enum": [
             "standalone-adapter",
-            "f2s-adapter",
+            "fromdemotospec-adapter",
             "brainstorm-adapter",
             "knowledge-adapter"
           ]
@@ -145,7 +145,7 @@
         "adapter_id": {
           "enum": [
             "standalone-adapter",
-            "f2s-adapter",
+            "fromdemotospec-adapter",
             "brainstorm-adapter",
             "knowledge-adapter"
           ]
@@ -270,7 +270,7 @@
         "adapter_id": {
           "enum": [
             "standalone-adapter",
-            "f2s-adapter",
+            "fromdemotospec-adapter",
             "brainstorm-adapter",
             "knowledge-adapter"
           ]

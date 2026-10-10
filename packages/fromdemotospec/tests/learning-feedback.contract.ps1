@@ -2,7 +2,7 @@
 param()
 $ErrorActionPreference = 'Stop'
 $root = Split-Path -Parent $PSScriptRoot
-$fixture = [IO.Path]::GetFullPath((Join-Path ([IO.Path]::GetTempPath()) ('f2s-feedback-' + [guid]::NewGuid().ToString('N'))))
+$fixture = [IO.Path]::GetFullPath((Join-Path ([IO.Path]::GetTempPath()) ('fromdemotospec-feedback-' + [guid]::NewGuid().ToString('N'))))
 function Invoke-Tool {
     param([string]$Script, [string[]]$Arguments)
     $previous = $ErrorActionPreference

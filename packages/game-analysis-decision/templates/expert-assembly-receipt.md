@@ -16,5 +16,5 @@
 - coverage_axes / raw_expansion: `<Query 收据实际值；无则写无>`
 - role_effect: `none`（Group 不新增 role / Team，不改变 Query level、预算或 raw 权限）
 
-> 此段只消费既有 Knowledge Query 收据。GAD 不扫描 Group、不推断成员、不重排候选；若跨 Provider 保留逐候选 provenance 的需求出现，另开 schema 升级决策。
+> 此段只消费既有 Knowledge Query 收据。GameAnalysisDecision 不扫描 Group、不推断成员、不重排候选；若跨 Provider 保留逐候选 provenance 的需求出现，另开 schema 升级决策。
 > `group_provenance_mode: consume_only`; `group_algorithm: not_reimplemented`.

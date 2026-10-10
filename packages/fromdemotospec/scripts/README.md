@@ -7,7 +7,7 @@ Node.js运行prototype-project.mjs（init／check-state）和fromdemotospec-anal
 - inline-presentation-assets.ps1：-HtmlPath、-InlineAssetsPath，原位封装单文件资源；可持续工程直接用文件。
 - new-learning-feedback-candidate.ps1：-ProjectPath、-PrototypeId、-PrototypeVersion、-UpstreamSession、-DecisionId，生成本地draft，拒绝覆盖；旧DemoRoot方式仍兼容。
 - validate-learning-feedback-candidate.ps1：-FeedbackPath，只读核对格式，不写Knowledge。
-- fromdemotospec-analysis-adapter.mjs：status、prepare-request --input、prepare-unavailable --input、consume-delivery --input --consumer、prepare-host-decision --input；v2通过包内gad-v2-binding.mjs接入可选的相邻GAD，缺少GAD时明确返回unavailable并继续普通制作。重要产品决定仍需真实用户来源；旧决定回执保持v1。详见[分析接入](../adapters/game-analysis-decision/README.md)。
+- fromdemotospec-analysis-adapter.mjs：status、prepare-request --input、prepare-unavailable --input、consume-delivery --input --consumer、prepare-host-decision --input；v2通过包内game-analysis-decision-v2-binding.mjs接入可选的相邻GameAnalysisDecision，缺少GameAnalysisDecision时明确返回unavailable并继续普通制作。重要产品决定仍需真实用户来源；旧决定回执保持v1。详见[分析接入](../adapters/game-analysis-decision/README.md)。
 
 使用[schema2资源示例](../examples/presentation-selection-v2.json)，按[表现协议](../protocols/presentation.md)处理非资产库来源。反馈与跨仓责任见[反馈合同](../04-agent-learning-feedback.md)。
 

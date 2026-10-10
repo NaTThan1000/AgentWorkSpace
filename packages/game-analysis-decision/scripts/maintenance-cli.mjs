@@ -29,8 +29,8 @@ export async function planMaintenance({knowledgeRoot=null,now=new Date().toISOSt
 }
 function reviewSource(ref,knowledgeRoot,root,evidencePath){
  if(ref.startsWith('knowledge:'))return resolveKnowledge(ref,knowledgeRoot,{maxCharacters:100000});
- if(ref.startsWith('gad:asset:')){
-  const id=ref.slice('gad:asset:'.length),asset=loadCatalogue(root).assets.find(a=>a.id===id);
+ if(ref.startsWith('game-analysis-decision:asset:')){
+  const id=ref.slice('game-analysis-decision:asset:'.length),asset=loadCatalogue(root).assets.find(a=>a.id===id);
   if(!asset)return {status:'unavailable'};
   return {status:'available',sha256:hash(fs.readFileSync(containedPath(root,asset.path)))};
  }

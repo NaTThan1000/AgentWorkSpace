@@ -57,6 +57,6 @@
 
 ## Decision and Handoff
 
-| Brief status | Selected package ID | Decision IDs | F2S intent | Missing |
+| Brief status | Selected package ID | Decision IDs | FromDemoToSpec intent | Missing |
 |---|---|---|---|---|
 | draft | {{SELECTED_PACKAGE_ID}} | - | not-requested | - |

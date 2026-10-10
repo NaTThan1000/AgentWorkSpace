@@ -8,7 +8,7 @@
 
 当前Agent可以同时使用少量相关配置，无须为每个角色开Agent。先明确当前分析遗漏和预期增量，再按任务语义选择id或角色；候选默认不装配，Agent 可在已有授权内显式选择，不需要制作人逐次批准。机器lookup仅帮助筛选，不证明语义适配。没有相关性不要加载全部目录。Knowledge原则经来源解析器按需取得，不能把不存在的本地domains当作来源。
 
-运行示例（在GAD根）：
+运行示例（在GameAnalysisDecision根）：
 
 ```powershell
 node scripts/learning-cli.mjs audit

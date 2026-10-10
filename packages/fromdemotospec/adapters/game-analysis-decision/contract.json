@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "adapter_id": "f2s-adapter",
+  "adapter_id": "fromdemotospec-adapter",
   "status": "ready",
   "external_contract": {
     "repository": "https://github.com/ZhongTyler/GameAnalysisDecision.git",
@@ -21,11 +21,11 @@
     "effective_from": "2026-08-28",
     "legacy_sunset": "2026-09-30",
     "legacy_warning_code": "AD008_LEGACY_COMMAND",
-    "gad_unavailable": "continue_f2s_normal_flow",
+    "game_analysis_decision_unavailable": "continue_fromdemotospec_normal_flow",
     "automatic_knowledge_expert_fallback": false
   },
   "ownership": {
-    "formal_decision_owner": "f2s_host",
+    "formal_decision_owner": "fromdemotospec_host",
     "producer": "user",
     "game_analysis_decision_mode": "read_only_advisory",
     "host_write": false,

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "F2S project asset manifest",
+  "title": "FromDemoToSpec project asset manifest",
   "type": "object",
   "required": [
     "schema_version",

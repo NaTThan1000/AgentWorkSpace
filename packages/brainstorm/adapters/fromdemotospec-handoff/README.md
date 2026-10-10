@@ -1,6 +1,6 @@
 # FromDemoToSpec 制作定义交接 adapter
 
-ready；外部合同 FromDemoToSpec/templates/design-baseline.md，版本 f2s-design-baseline-v2。机器工件 f2s-gap.json schema 2，人读工件 f2s-handoff.md。新建与活跃继续统一该版本，旧关闭工件仅作历史证据，不提供旧运行入口。
+ready；外部合同 FromDemoToSpec/templates/design-baseline.md，版本 fromdemotospec-design-baseline-v2。机器工件 fromdemotospec-gap.json schema 2，人读工件 fromdemotospec-handoff.md。新建与活跃继续统一该版本，旧关闭工件仅作历史证据，不提供旧运行入口。
 
 ## Mapping and ownership
 
@@ -16,7 +16,7 @@ ready；外部合同 FromDemoToSpec/templates/design-baseline.md，版本 f2s-de
 
 ready 要求：accepted 概念、requested 意图；既有 user/joint 产品决定；核心有来源且完整；无 blocking；结构 passed；映射语义 passed 且 reviewer 为 agent/user/joint；external_flow_started=false。
 
-依次运行 new-f2s-gap、validate-f2s-gap、render-f2s-handoff、validate-f2s-handoff。生成与渲染不覆盖既有文件；框架迁移使用本任务一次性转换，不作为日常入口。
+依次运行 new-fromdemotospec-gap、validate-fromdemotospec-gap、render-fromdemotospec-handoff、validate-fromdemotospec-handoff。生成与渲染不覆盖既有文件；框架迁移使用本任务一次性转换，不作为日常入口。
 
 接收方实际读取 FromDemoToSpec 当前制作协议和贯通设计底稿，将交接内容接入当前制作定义，列出仍需确认的生命周期、环境、预算与场景。FromDemoToSpec 没有专用 handoff 导入 API；不能把本仓字段导出或 prototype-project 状态校验说成完成接收。接收演练用合成临时材料并记录 Agent 对目标模板的实际映射，不能启动真实项目。
 

@@ -1,6 +1,6 @@
 # Knowledge ContextBrief Adapter
 
-Adapter ID=`knowledge-context-brief`，ready；九字段 ContextBrief 结构来源于 Knowledge/system/integrations/GAME_ANALYSIS_DECISION.md（context-brief-gad-handoff-v1），普通检索执行遵守 Knowledge/system/protocols/QUERY_PROTOCOL.md。这是沿用材料格式，不启动旧版 GAD 流程；Brainstorm 的 GAD 路由使用本仓现行 v2 adapter。
+Adapter ID=`knowledge-context-brief`，ready；九字段 ContextBrief 结构来源于 Knowledge/system/integrations/GAME_ANALYSIS_DECISION.md（context-brief-game-analysis-decision-handoff-v1），普通检索执行遵守 Knowledge/system/protocols/QUERY_PROTOCOL.md。这是沿用材料格式，不启动旧版 GameAnalysisDecision 流程；Brainstorm 的 GameAnalysisDecision 路由使用本仓现行 v2 adapter。
 
 ## When and how
 
@@ -11,7 +11,7 @@ Adapter ID=`knowledge-context-brief`，ready；九字段 ContextBrief 结构来�
 3. 按 Knowledge 当前 Query 协议判断本题需要及各来源权限，调用 `Knowledge/system/query/query-evidence.mjs` 的 discover/read（可用同一模块的 JS API）：核心 Wiki 读透，补充完整章节按缺口展开，决定性命题回查 raw。工具返回真实内容、版本和范围；候选、hash 或 `evidence_consistent` 不证明已正确使用。复用检查当前对象、范围和版本；预算耗尽仍有关键缺口时如实说明。Web 独立按时效需要及用户权限处理；领域原则保留稳定 ID，按需补充，不代替 Wiki/原文。
 4. 将实际结果和适用限制写入 Evidence Annex，知识结果为 knowledge，联网结果为 web；独立来源和同源转载分开。每条 Finding 要有准确文件/来源指针，Limits 写对象/阶段/证据不足。
 5. Result Link 从 pending 变 completed 仅在真实 Query 后，引用新增/实际使用 EVID；Notes 包含查询范围、未读/不可用和结果如何影响候选。完成查询也可能无相关命中，此时记录“无相关来源”的 knowledge Evidence 及实际搜索范围，不伪造支持结论。
-6. 对照原候选记录支持、挑战或变形，不自动淘汰、不替用户采用。重要分析走 GAD v2，普通 Knowledge Query 不默认经由 GAD。
+6. 对照原候选记录支持、挑战或变形，不自动淘汰、不替用户采用。重要分析走 GameAnalysisDecision v2，普通 Knowledge Query 不默认经由 GameAnalysisDecision。
 
 ## Failure and boundary
 

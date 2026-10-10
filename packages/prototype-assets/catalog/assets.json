@@ -25,7 +25,7 @@
         "height": 64
       },
       "normalized_path": "packs/cc0/kenney-ui-pack/png/blue-button-rectangle-depth-flat.png",
-      "export_path": "exports/f2s/kenney-ui-pack/blue-button-rectangle-depth-flat.png"
+      "export_path": "exports/fromdemotospec/kenney-ui-pack/blue-button-rectangle-depth-flat.png"
     },
     {
       "schema_version": 1,
@@ -51,7 +51,7 @@
         "height": 32
       },
       "normalized_path": "packs/cc0/kenney-ui-pack/png/blue-check-square-confirm.png",
-      "export_path": "exports/f2s/kenney-ui-pack/blue-check-square-confirm.png"
+      "export_path": "exports/fromdemotospec/kenney-ui-pack/blue-check-square-confirm.png"
     },
     {
       "schema_version": 1,
@@ -77,7 +77,7 @@
         "height": 16
       },
       "normalized_path": "packs/cc0/kenney-ui-pack/png/blue-slider-horizontal.png",
-      "export_path": "exports/f2s/kenney-ui-pack/blue-slider-horizontal.png"
+      "export_path": "exports/fromdemotospec/kenney-ui-pack/blue-slider-horizontal.png"
     },
     {
       "schema_version": 1,
@@ -103,7 +103,7 @@
         "height": 22
       },
       "normalized_path": "packs/cc0/kenney-ui-pack/png/arrow-down-dark.png",
-      "export_path": "exports/f2s/kenney-ui-pack/arrow-down-dark.png"
+      "export_path": "exports/fromdemotospec/kenney-ui-pack/arrow-down-dark.png"
     },
     {
       "schema_version": 1,
@@ -129,7 +129,7 @@
         "height": 203
       },
       "normalized_path": "packs/cc0/kenney-roguelike-characters/png/roguelike-characters-transparent-spritesheet.png",
-      "export_path": "exports/f2s/kenney-roguelike-characters/roguelike-characters-transparent-spritesheet.png"
+      "export_path": "exports/fromdemotospec/kenney-roguelike-characters/roguelike-characters-transparent-spritesheet.png"
     },
     {
       "schema_version": 1,
@@ -155,7 +155,7 @@
         "height": 512
       },
       "normalized_path": "packs/cc0/kenney-particle-pack/png/particle-pack-magic-03.png",
-      "export_path": "exports/f2s/kenney-particle-pack/particle-pack-magic-03.png"
+      "export_path": "exports/fromdemotospec/kenney-particle-pack/particle-pack-magic-03.png"
     },
     {
       "schema_version": 1,
@@ -181,7 +181,7 @@
         "height": 44
       },
       "normalized_path": "packs/cc0/kenney-space-shooter-extension/png/space-shooter-astronaut-001.png",
-      "export_path": "exports/f2s/kenney-space-shooter-extension/space-shooter-astronaut-001.png"
+      "export_path": "exports/fromdemotospec/kenney-space-shooter-extension/space-shooter-astronaut-001.png"
     },
     {
       "schema_version": 1,
@@ -207,7 +207,7 @@
         "height": 42
       },
       "normalized_path": "packs/cc0/kenney-space-shooter-extension/png/space-shooter-building-001.png",
-      "export_path": "exports/f2s/kenney-space-shooter-extension/space-shooter-building-001.png"
+      "export_path": "exports/fromdemotospec/kenney-space-shooter-extension/space-shooter-building-001.png"
     },
     {
       "schema_version": 1,
@@ -233,7 +233,7 @@
         "height": 23
       },
       "normalized_path": "packs/cc0/kenney-space-shooter-extension/png/space-shooter-effect-001.png",
-      "export_path": "exports/f2s/kenney-space-shooter-extension/space-shooter-effect-001.png"
+      "export_path": "exports/fromdemotospec/kenney-space-shooter-extension/space-shooter-effect-001.png"
     },
     {
       "schema_version": 1,
@@ -263,7 +263,7 @@
         "frames": 17622
       },
       "normalized_path": "packs/cc0/kenney-interface-sounds/wav/click-a.wav",
-      "export_path": "exports/f2s/kenney-interface-sounds/click-a.wav"
+      "export_path": "exports/fromdemotospec/kenney-interface-sounds/click-a.wav"
     },
     {
       "schema_version": 1,
@@ -293,7 +293,7 @@
         "frames": 2612
       },
       "normalized_path": "packs/cc0/kenney-interface-sounds/wav/click-b.wav",
-      "export_path": "exports/f2s/kenney-interface-sounds/click-b.wav"
+      "export_path": "exports/fromdemotospec/kenney-interface-sounds/click-b.wav"
     },
     {
       "schema_version": 1,
@@ -323,7 +323,7 @@
         "frames": 10909
       },
       "normalized_path": "packs/cc0/kenney-interface-sounds/wav/switch-a.wav",
-      "export_path": "exports/f2s/kenney-interface-sounds/switch-a.wav"
+      "export_path": "exports/fromdemotospec/kenney-interface-sounds/switch-a.wav"
     },
     {
       "schema_version": 1,
@@ -353,7 +353,7 @@
         "frames": 14266
       },
       "normalized_path": "packs/cc0/kenney-interface-sounds/wav/switch-b.wav",
-      "export_path": "exports/f2s/kenney-interface-sounds/switch-b.wav"
+      "export_path": "exports/fromdemotospec/kenney-interface-sounds/switch-b.wav"
     },
     {
       "schema_version": 1,
@@ -383,7 +383,7 @@
         "frames": 4364
       },
       "normalized_path": "packs/cc0/kenney-interface-sounds/wav/tap-a.wav",
-      "export_path": "exports/f2s/kenney-interface-sounds/tap-a.wav"
+      "export_path": "exports/fromdemotospec/kenney-interface-sounds/tap-a.wav"
     },
     {
       "schema_version": 1,
@@ -413,7 +413,7 @@
         "frames": 2536
       },
       "normalized_path": "packs/cc0/kenney-interface-sounds/wav/tap-b.wav",
-      "export_path": "exports/f2s/kenney-interface-sounds/tap-b.wav"
+      "export_path": "exports/fromdemotospec/kenney-interface-sounds/tap-b.wav"
     },
     {
       "schema_version": 1,
@@ -439,7 +439,7 @@
         "height": 44
       },
       "normalized_path": "packs/cc0/kenney-minimap-pack/png/minimap-tilemap-style-a.png",
-      "export_path": "exports/f2s/kenney-minimap-pack/minimap-tilemap-style-a.png"
+      "export_path": "exports/fromdemotospec/kenney-minimap-pack/minimap-tilemap-style-a.png"
     },
     {
       "schema_version": 1,
@@ -465,7 +465,7 @@
         "height": 8
       },
       "normalized_path": "packs/cc0/kenney-minimap-pack/png/minimap-tile-style-a-0000.png",
-      "export_path": "exports/f2s/kenney-minimap-pack/minimap-tile-style-a-0000.png"
+      "export_path": "exports/fromdemotospec/kenney-minimap-pack/minimap-tile-style-a-0000.png"
     },
     {
       "schema_version": 1,
@@ -491,7 +491,7 @@
         "height": 8
       },
       "normalized_path": "packs/cc0/kenney-minimap-pack/png/minimap-tile-style-a-0001.png",
-      "export_path": "exports/f2s/kenney-minimap-pack/minimap-tile-style-a-0001.png"
+      "export_path": "exports/fromdemotospec/kenney-minimap-pack/minimap-tile-style-a-0001.png"
     },
     {
       "schema_version": 1,
@@ -517,7 +517,7 @@
         "height": 8
       },
       "normalized_path": "packs/cc0/kenney-minimap-pack/png/minimap-tile-style-a-0002.png",
-      "export_path": "exports/f2s/kenney-minimap-pack/minimap-tile-style-a-0002.png"
+      "export_path": "exports/fromdemotospec/kenney-minimap-pack/minimap-tile-style-a-0002.png"
     },
     {
       "schema_version": 1,
@@ -543,7 +543,7 @@
         "height": 64
       },
       "normalized_path": "packs/cc0/kenney-fish-pack/png/fish-background-terrain.png",
-      "export_path": "exports/f2s/kenney-fish-pack/fish-background-terrain.png"
+      "export_path": "exports/fromdemotospec/kenney-fish-pack/fish-background-terrain.png"
     },
     {
       "schema_version": 1,
@@ -569,7 +569,7 @@
         "height": 64
       },
       "normalized_path": "packs/cc0/kenney-fish-pack/png/fish-background-rock-a.png",
-      "export_path": "exports/f2s/kenney-fish-pack/fish-background-rock-a.png"
+      "export_path": "exports/fromdemotospec/kenney-fish-pack/fish-background-rock-a.png"
     },
     {
       "schema_version": 1,
@@ -595,7 +595,7 @@
         "height": 64
       },
       "normalized_path": "packs/cc0/kenney-fish-pack/png/fish-background-seaweed-a.png",
-      "export_path": "exports/f2s/kenney-fish-pack/fish-background-seaweed-a.png"
+      "export_path": "exports/fromdemotospec/kenney-fish-pack/fish-background-seaweed-a.png"
     },
     {
       "schema_version": 1,
@@ -621,7 +621,7 @@
         "height": 64
       },
       "normalized_path": "packs/cc0/kenney-fish-pack/png/fish-bubble-a.png",
-      "export_path": "exports/f2s/kenney-fish-pack/fish-bubble-a.png"
+      "export_path": "exports/fromdemotospec/kenney-fish-pack/fish-bubble-a.png"
     },
     {
       "schema_version": 1,
@@ -647,7 +647,7 @@
         "height": 64
       },
       "normalized_path": "packs/cc0/kenney-fish-pack/png/fish-blue.png",
-      "export_path": "exports/f2s/kenney-fish-pack/fish-blue.png"
+      "export_path": "exports/fromdemotospec/kenney-fish-pack/fish-blue.png"
     },
     {
       "schema_version": 1,
@@ -673,7 +673,7 @@
         "height": 64
       },
       "normalized_path": "packs/cc0/kenney-fish-pack/png/fish-orange.png",
-      "export_path": "exports/f2s/kenney-fish-pack/fish-orange.png"
+      "export_path": "exports/fromdemotospec/kenney-fish-pack/fish-orange.png"
     },
     {
       "schema_version": 1,
@@ -699,7 +699,7 @@
         "height": 512
       },
       "normalized_path": "packs/cc0/kenney-light-masks/png/light-mask-circle-rings-a.png",
-      "export_path": "exports/f2s/kenney-light-masks/light-mask-circle-rings-a.png"
+      "export_path": "exports/fromdemotospec/kenney-light-masks/light-mask-circle-rings-a.png"
     },
     {
       "schema_version": 1,
@@ -725,7 +725,7 @@
         "height": 512
       },
       "normalized_path": "packs/cc0/kenney-light-masks/png/light-mask-cone-a.png",
-      "export_path": "exports/f2s/kenney-light-masks/light-mask-cone-a.png"
+      "export_path": "exports/fromdemotospec/kenney-light-masks/light-mask-cone-a.png"
     },
     {
       "schema_version": 1,
@@ -751,7 +751,7 @@
         "height": 512
       },
       "normalized_path": "packs/cc0/kenney-light-masks/png/light-mask-cone-composed-a.png",
-      "export_path": "exports/f2s/kenney-light-masks/light-mask-cone-composed-a.png"
+      "export_path": "exports/fromdemotospec/kenney-light-masks/light-mask-cone-composed-a.png"
     },
     {
       "schema_version": 1,
@@ -777,7 +777,7 @@
         "height": 64
       },
       "normalized_path": "packs/cc0/kenney-ui-pack-sci-fi/png/ui-scifi-blue-header-panel.png",
-      "export_path": "exports/f2s/kenney-ui-pack-sci-fi/ui-scifi-blue-header-panel.png"
+      "export_path": "exports/fromdemotospec/kenney-ui-pack-sci-fi/ui-scifi-blue-header-panel.png"
     },
     {
       "schema_version": 1,
@@ -803,7 +803,7 @@
         "height": 24
       },
       "normalized_path": "packs/cc0/kenney-ui-pack-sci-fi/png/ui-scifi-blue-status-bar.png",
-      "export_path": "exports/f2s/kenney-ui-pack-sci-fi/ui-scifi-blue-status-bar.png"
+      "export_path": "exports/fromdemotospec/kenney-ui-pack-sci-fi/ui-scifi-blue-status-bar.png"
     },
     {
       "schema_version": 1,
@@ -829,7 +829,7 @@
         "height": 30
       },
       "normalized_path": "packs/cc0/kenney-ui-pack-sci-fi/png/ui-scifi-blue-crosshair-a.png",
-      "export_path": "exports/f2s/kenney-ui-pack-sci-fi/ui-scifi-blue-crosshair-a.png"
+      "export_path": "exports/fromdemotospec/kenney-ui-pack-sci-fi/ui-scifi-blue-crosshair-a.png"
     },
     {
       "schema_version": 1,
@@ -855,7 +855,7 @@
         "height": 50
       },
       "normalized_path": "packs/cc0/kenney-game-icons/png/game-icon-target-white-1x.png",
-      "export_path": "exports/f2s/kenney-game-icons/game-icon-target-white-1x.png"
+      "export_path": "exports/fromdemotospec/kenney-game-icons/game-icon-target-white-1x.png"
     },
     {
       "schema_version": 1,
@@ -881,7 +881,7 @@
         "height": 50
       },
       "normalized_path": "packs/cc0/kenney-game-icons/png/game-icon-warning-white-1x.png",
-      "export_path": "exports/f2s/kenney-game-icons/game-icon-warning-white-1x.png"
+      "export_path": "exports/fromdemotospec/kenney-game-icons/game-icon-warning-white-1x.png"
     },
     {
       "schema_version": 1,
@@ -907,7 +907,7 @@
         "height": 50
       },
       "normalized_path": "packs/cc0/kenney-game-icons/png/game-icon-information-white-1x.png",
-      "export_path": "exports/f2s/kenney-game-icons/game-icon-information-white-1x.png"
+      "export_path": "exports/fromdemotospec/kenney-game-icons/game-icon-information-white-1x.png"
     },
     {
       "schema_version": 1,
@@ -933,7 +933,7 @@
         "height": 50
       },
       "normalized_path": "packs/cc0/kenney-game-icons/png/game-icon-zoom-in-white-1x.png",
-      "export_path": "exports/f2s/kenney-game-icons/game-icon-zoom-in-white-1x.png"
+      "export_path": "exports/fromdemotospec/kenney-game-icons/game-icon-zoom-in-white-1x.png"
     },
     {
       "schema_version": 1,
@@ -963,7 +963,7 @@
         "frames": 240000
       },
       "normalized_path": "packs/cc0/kenney-deep-sea-sounds/wav/deepsea-sonar-computer.wav",
-      "export_path": "exports/f2s/kenney-deep-sea-sounds/deepsea-sonar-computer.wav"
+      "export_path": "exports/fromdemotospec/kenney-deep-sea-sounds/deepsea-sonar-computer.wav"
     },
     {
       "schema_version": 1,
@@ -993,7 +993,7 @@
         "frames": 45792
       },
       "normalized_path": "packs/cc0/kenney-deep-sea-sounds/wav/deepsea-scan-forcefield.wav",
-      "export_path": "exports/f2s/kenney-deep-sea-sounds/deepsea-scan-forcefield.wav"
+      "export_path": "exports/fromdemotospec/kenney-deep-sea-sounds/deepsea-scan-forcefield.wav"
     },
     {
       "schema_version": 1,
@@ -1023,7 +1023,7 @@
         "frames": 30475
       },
       "normalized_path": "packs/cc0/kenney-deep-sea-sounds/wav/deepsea-impact-metal.wav",
-      "export_path": "exports/f2s/kenney-deep-sea-sounds/deepsea-impact-metal.wav"
+      "export_path": "exports/fromdemotospec/kenney-deep-sea-sounds/deepsea-impact-metal.wav"
     },
     {
       "schema_version": 1,
@@ -1053,7 +1053,7 @@
         "frames": 96002
       },
       "normalized_path": "packs/cc0/kenney-deep-sea-sounds/wav/deepsea-discovery-low-frequency.wav",
-      "export_path": "exports/f2s/kenney-deep-sea-sounds/deepsea-discovery-low-frequency.wav"
+      "export_path": "exports/fromdemotospec/kenney-deep-sea-sounds/deepsea-discovery-low-frequency.wav"
     },
     {
       "schema_version": 1,
@@ -1087,7 +1087,7 @@
         "height": 160
       },
       "normalized_path": "packs/cc0/oga-submarine-role/png/exploration-unit-submarine-default.png",
-      "export_path": "exports/f2s/oga-submarine-role/exploration-unit-submarine-default.png"
+      "export_path": "exports/fromdemotospec/oga-submarine-role/exploration-unit-submarine-default.png"
     },
     {
       "schema_version": 1,
@@ -1124,7 +1124,7 @@
         "height": 160
       },
       "normalized_path": "packs/cc0/oga-submarine-role/png/exploration-unit-submarine-selected.png",
-      "export_path": "exports/f2s/oga-submarine-role/exploration-unit-submarine-selected.png"
+      "export_path": "exports/fromdemotospec/oga-submarine-role/exploration-unit-submarine-selected.png"
     },
     {
       "schema_version": 1,
@@ -1161,7 +1161,7 @@
         "height": 160
       },
       "normalized_path": "packs/cc0/oga-submarine-role/png/exploration-unit-submarine-unavailable.png",
-      "export_path": "exports/f2s/oga-submarine-role/exploration-unit-submarine-unavailable.png"
+      "export_path": "exports/fromdemotospec/oga-submarine-role/exploration-unit-submarine-unavailable.png"
     },
     {
       "schema_version": 1,
@@ -1195,7 +1195,7 @@
         "height": 178
       },
       "normalized_path": "packs/cc0/oga-submarine-role/png/exploration-unit-submarine-hit.png",
-      "export_path": "exports/f2s/oga-submarine-role/exploration-unit-submarine-hit.png"
+      "export_path": "exports/fromdemotospec/oga-submarine-role/exploration-unit-submarine-hit.png"
     },
     {
       "schema_version": 1,
@@ -1232,7 +1232,7 @@
         "height": 160
       },
       "normalized_path": "packs/cc0/oga-submarine-role/png/exploration-unit-submarine-empowered.png",
-      "export_path": "exports/f2s/oga-submarine-role/exploration-unit-submarine-empowered.png"
+      "export_path": "exports/fromdemotospec/oga-submarine-role/exploration-unit-submarine-empowered.png"
     },
     {
       "schema_version": 1,
@@ -1264,7 +1264,7 @@
         "height": 256
       },
       "normalized_path": "packs/cc0/kenney-pattern-pack-lines/png/pattern-lines-diamond.png",
-      "export_path": "exports/f2s/kenney-pattern-pack-lines/pattern-lines-diamond.png"
+      "export_path": "exports/fromdemotospec/kenney-pattern-pack-lines/pattern-lines-diamond.png"
     },
     {
       "schema_version": 1,
@@ -1296,7 +1296,7 @@
         "height": 256
       },
       "normalized_path": "packs/cc0/kenney-pattern-pack-lines/png/pattern-lines-circles.png",
-      "export_path": "exports/f2s/kenney-pattern-pack-lines/pattern-lines-circles.png"
+      "export_path": "exports/fromdemotospec/kenney-pattern-pack-lines/pattern-lines-circles.png"
     },
     {
       "schema_version": 1,
@@ -1328,7 +1328,7 @@
         "height": 256
       },
       "normalized_path": "packs/cc0/kenney-pattern-pack-lines/png/pattern-lines-crosshatch.png",
-      "export_path": "exports/f2s/kenney-pattern-pack-lines/pattern-lines-crosshatch.png"
+      "export_path": "exports/fromdemotospec/kenney-pattern-pack-lines/pattern-lines-crosshatch.png"
     },
     {
       "schema_version": 1,
@@ -1360,7 +1360,7 @@
         "height": 74
       },
       "normalized_path": "packs/cc0/kenney-crosshair-pack/png/crosshair-scan-ring.png",
-      "export_path": "exports/f2s/kenney-crosshair-pack/crosshair-scan-ring.png"
+      "export_path": "exports/fromdemotospec/kenney-crosshair-pack/crosshair-scan-ring.png"
     },
     {
       "schema_version": 1,
@@ -1392,7 +1392,7 @@
         "height": 74
       },
       "normalized_path": "packs/cc0/kenney-crosshair-pack/png/crosshair-hazard-lock.png",
-      "export_path": "exports/f2s/kenney-crosshair-pack/crosshair-hazard-lock.png"
+      "export_path": "exports/fromdemotospec/kenney-crosshair-pack/crosshair-hazard-lock.png"
     },
     {
       "schema_version": 1,
@@ -1424,7 +1424,7 @@
         "height": 40
       },
       "normalized_path": "packs/cc0/kenney-space-shooter-remastered/png/meteor-grey-medium-2.png",
-      "export_path": "exports/f2s/kenney-space-shooter-remastered/meteor-grey-medium-2.png"
+      "export_path": "exports/fromdemotospec/kenney-space-shooter-remastered/meteor-grey-medium-2.png"
     },
     {
       "schema_version": 1,
@@ -1456,7 +1456,7 @@
         "height": 28
       },
       "normalized_path": "packs/cc0/kenney-space-shooter-remastered/png/meteor-brown-small-1.png",
-      "export_path": "exports/f2s/kenney-space-shooter-remastered/meteor-brown-small-1.png"
+      "export_path": "exports/fromdemotospec/kenney-space-shooter-remastered/meteor-brown-small-1.png"
     },
     {
       "schema_version": 1,
@@ -1489,7 +1489,7 @@
         "height": 75
       },
       "normalized_path": "packs/cc0/kenney-space-shooter-remastered/png/survey-craft-blue.png",
-      "export_path": "exports/f2s/kenney-space-shooter-remastered/survey-craft-blue.png"
+      "export_path": "exports/fromdemotospec/kenney-space-shooter-remastered/survey-craft-blue.png"
     },
     {
       "schema_version": 1,
@@ -1515,7 +1515,7 @@
         "height": 64
       },
       "normalized_path": "packs/cc0/kenney-ui-pack-sci-fi/png/ui-scifi-header-blade.png",
-      "export_path": "exports/f2s/kenney-ui-pack-sci-fi/ui-scifi-header-blade.png"
+      "export_path": "exports/fromdemotospec/kenney-ui-pack-sci-fi/ui-scifi-header-blade.png"
     },
     {
       "schema_version": 1,
@@ -1541,7 +1541,7 @@
         "height": 24
       },
       "normalized_path": "packs/cc0/kenney-ui-pack-sci-fi/png/ui-scifi-status-bar-gloss.png",
-      "export_path": "exports/f2s/kenney-ui-pack-sci-fi/ui-scifi-status-bar-gloss.png"
+      "export_path": "exports/fromdemotospec/kenney-ui-pack-sci-fi/ui-scifi-status-bar-gloss.png"
     },
     {
       "schema_version": 1,
@@ -1567,7 +1567,7 @@
         "height": 28
       },
       "normalized_path": "packs/cc0/kenney-ui-pack-sci-fi/png/ui-scifi-crosshair-b.png",
-      "export_path": "exports/f2s/kenney-ui-pack-sci-fi/ui-scifi-crosshair-b.png"
+      "export_path": "exports/fromdemotospec/kenney-ui-pack-sci-fi/ui-scifi-crosshair-b.png"
     },
     {
       "schema_version": 1,
@@ -1593,7 +1593,7 @@
         "height": 50
       },
       "normalized_path": "packs/cc0/kenney-game-icons/png/game-icon-checkmark-white-1x.png",
-      "export_path": "exports/f2s/kenney-game-icons/game-icon-checkmark-white-1x.png"
+      "export_path": "exports/fromdemotospec/kenney-game-icons/game-icon-checkmark-white-1x.png"
     },
     {
       "schema_version": 1,
@@ -1619,7 +1619,7 @@
         "height": 50
       },
       "normalized_path": "packs/cc0/kenney-game-icons/png/game-icon-cross-white-1x.png",
-      "export_path": "exports/f2s/kenney-game-icons/game-icon-cross-white-1x.png"
+      "export_path": "exports/fromdemotospec/kenney-game-icons/game-icon-cross-white-1x.png"
     },
     {
       "schema_version": 1,
@@ -1645,7 +1645,7 @@
         "height": 50
       },
       "normalized_path": "packs/cc0/kenney-game-icons/png/game-icon-home-white-1x.png",
-      "export_path": "exports/f2s/kenney-game-icons/game-icon-home-white-1x.png"
+      "export_path": "exports/fromdemotospec/kenney-game-icons/game-icon-home-white-1x.png"
     },
     {
       "schema_version": 1,
@@ -1671,7 +1671,7 @@
         "height": 50
       },
       "normalized_path": "packs/cc0/kenney-game-icons/png/game-icon-locked-white-1x.png",
-      "export_path": "exports/f2s/kenney-game-icons/game-icon-locked-white-1x.png"
+      "export_path": "exports/fromdemotospec/kenney-game-icons/game-icon-locked-white-1x.png"
     },
     {
       "schema_version": 1,
@@ -1697,7 +1697,7 @@
         "height": 50
       },
       "normalized_path": "packs/cc0/kenney-game-icons/png/game-icon-unlocked-white-1x.png",
-      "export_path": "exports/f2s/kenney-game-icons/game-icon-unlocked-white-1x.png"
+      "export_path": "exports/fromdemotospec/kenney-game-icons/game-icon-unlocked-white-1x.png"
     },
     {
       "schema_version": 1,
@@ -1723,7 +1723,7 @@
         "height": 50
       },
       "normalized_path": "packs/cc0/kenney-game-icons/png/game-icon-pause-white-1x.png",
-      "export_path": "exports/f2s/kenney-game-icons/game-icon-pause-white-1x.png"
+      "export_path": "exports/fromdemotospec/kenney-game-icons/game-icon-pause-white-1x.png"
     },
     {
       "schema_version": 1,
@@ -1749,7 +1749,7 @@
         "height": 50
       },
       "normalized_path": "packs/cc0/kenney-game-icons/png/game-icon-plus-white-1x.png",
-      "export_path": "exports/f2s/kenney-game-icons/game-icon-plus-white-1x.png"
+      "export_path": "exports/fromdemotospec/kenney-game-icons/game-icon-plus-white-1x.png"
     },
     {
       "schema_version": 1,
@@ -1775,7 +1775,7 @@
         "height": 50
       },
       "normalized_path": "packs/cc0/kenney-game-icons/png/game-icon-minus-white-1x.png",
-      "export_path": "exports/f2s/kenney-game-icons/game-icon-minus-white-1x.png"
+      "export_path": "exports/fromdemotospec/kenney-game-icons/game-icon-minus-white-1x.png"
     },
     {
       "schema_version": 1,
@@ -1801,7 +1801,7 @@
         "height": 64
       },
       "normalized_path": "packs/cc0/kenney-fish-pack/png/fish-green.png",
-      "export_path": "exports/f2s/kenney-fish-pack/fish-green.png"
+      "export_path": "exports/fromdemotospec/kenney-fish-pack/fish-green.png"
     },
     {
       "schema_version": 1,
@@ -1827,7 +1827,7 @@
         "height": 64
       },
       "normalized_path": "packs/cc0/kenney-fish-pack/png/fish-red.png",
-      "export_path": "exports/f2s/kenney-fish-pack/fish-red.png"
+      "export_path": "exports/fromdemotospec/kenney-fish-pack/fish-red.png"
     },
     {
       "schema_version": 1,
@@ -1853,7 +1853,7 @@
         "height": 64
       },
       "normalized_path": "packs/cc0/kenney-fish-pack/png/fish-grey-long-a.png",
-      "export_path": "exports/f2s/kenney-fish-pack/fish-grey-long-a.png"
+      "export_path": "exports/fromdemotospec/kenney-fish-pack/fish-grey-long-a.png"
     },
     {
       "schema_version": 1,
@@ -1879,7 +1879,7 @@
         "height": 64
       },
       "normalized_path": "packs/cc0/kenney-fish-pack/png/fish-blue-skeleton.png",
-      "export_path": "exports/f2s/kenney-fish-pack/fish-blue-skeleton.png"
+      "export_path": "exports/fromdemotospec/kenney-fish-pack/fish-blue-skeleton.png"
     },
     {
       "schema_version": 1,
@@ -1905,7 +1905,7 @@
         "height": 64
       },
       "normalized_path": "packs/cc0/kenney-fish-pack/png/fish-background-terrain-top.png",
-      "export_path": "exports/f2s/kenney-fish-pack/fish-background-terrain-top.png"
+      "export_path": "exports/fromdemotospec/kenney-fish-pack/fish-background-terrain-top.png"
     },
     {
       "schema_version": 1,
@@ -1931,7 +1931,7 @@
         "height": 64
       },
       "normalized_path": "packs/cc0/kenney-fish-pack/png/fish-background-rock-b.png",
-      "export_path": "exports/f2s/kenney-fish-pack/fish-background-rock-b.png"
+      "export_path": "exports/fromdemotospec/kenney-fish-pack/fish-background-rock-b.png"
     },
     {
       "schema_version": 1,
@@ -1957,7 +1957,7 @@
         "height": 64
       },
       "normalized_path": "packs/cc0/kenney-fish-pack/png/fish-background-seaweed-b.png",
-      "export_path": "exports/f2s/kenney-fish-pack/fish-background-seaweed-b.png"
+      "export_path": "exports/fromdemotospec/kenney-fish-pack/fish-background-seaweed-b.png"
     },
     {
       "schema_version": 1,
@@ -1983,7 +1983,7 @@
         "height": 64
       },
       "normalized_path": "packs/cc0/kenney-fish-pack/png/fish-background-seaweed-c.png",
-      "export_path": "exports/f2s/kenney-fish-pack/fish-background-seaweed-c.png"
+      "export_path": "exports/fromdemotospec/kenney-fish-pack/fish-background-seaweed-c.png"
     },
     {
       "schema_version": 1,
@@ -2009,7 +2009,7 @@
         "height": 64
       },
       "normalized_path": "packs/cc0/kenney-fish-pack/png/fish-bubble-b.png",
-      "export_path": "exports/f2s/kenney-fish-pack/fish-bubble-b.png"
+      "export_path": "exports/fromdemotospec/kenney-fish-pack/fish-bubble-b.png"
     },
     {
       "schema_version": 1,
@@ -2035,7 +2035,7 @@
         "height": 64
       },
       "normalized_path": "packs/cc0/kenney-fish-pack/png/fish-bubble-c.png",
-      "export_path": "exports/f2s/kenney-fish-pack/fish-bubble-c.png"
+      "export_path": "exports/fromdemotospec/kenney-fish-pack/fish-bubble-c.png"
     },
     {
       "schema_version": 1,
@@ -2061,7 +2061,7 @@
         "height": 75
       },
       "normalized_path": "packs/cc0/kenney-space-shooter-remastered/png/space-ship-blue-default.png",
-      "export_path": "exports/f2s/kenney-space-shooter-remastered/space-ship-blue-default.png"
+      "export_path": "exports/fromdemotospec/kenney-space-shooter-remastered/space-ship-blue-default.png"
     },
     {
       "schema_version": 1,
@@ -2087,7 +2087,7 @@
         "height": 76
       },
       "normalized_path": "packs/cc0/kenney-space-shooter-remastered/png/space-ship-blue-hit.png",
-      "export_path": "exports/f2s/kenney-space-shooter-remastered/space-ship-blue-hit.png"
+      "export_path": "exports/fromdemotospec/kenney-space-shooter-remastered/space-ship-blue-hit.png"
     },
     {
       "schema_version": 1,
@@ -2113,7 +2113,7 @@
         "height": 84
       },
       "normalized_path": "packs/cc0/kenney-space-shooter-remastered/png/space-enemy-blue-1.png",
-      "export_path": "exports/f2s/kenney-space-shooter-remastered/space-enemy-blue-1.png"
+      "export_path": "exports/fromdemotospec/kenney-space-shooter-remastered/space-enemy-blue-1.png"
     },
     {
       "schema_version": 1,
@@ -2139,7 +2139,7 @@
         "height": 91
       },
       "normalized_path": "packs/cc0/kenney-space-shooter-remastered/png/space-ufo-red.png",
-      "export_path": "exports/f2s/kenney-space-shooter-remastered/space-ufo-red.png"
+      "export_path": "exports/fromdemotospec/kenney-space-shooter-remastered/space-ufo-red.png"
     },
     {
       "schema_version": 1,
@@ -2165,7 +2165,7 @@
         "height": 54
       },
       "normalized_path": "packs/cc0/kenney-space-shooter-remastered/png/space-laser-blue-01.png",
-      "export_path": "exports/f2s/kenney-space-shooter-remastered/space-laser-blue-01.png"
+      "export_path": "exports/fromdemotospec/kenney-space-shooter-remastered/space-laser-blue-01.png"
     },
     {
       "schema_version": 1,
@@ -2188,7 +2188,7 @@
       },
       "public_release_allowed": true,
       "normalized_path": "packs/cc0/kenney-foundation-audio/wav/foundation-door-open.wav",
-      "export_path": "exports/f2s/kenney-foundation-audio/foundation-door-open.wav"
+      "export_path": "exports/fromdemotospec/kenney-foundation-audio/foundation-door-open.wav"
     },
     {
       "schema_version": 1,
@@ -2211,7 +2211,7 @@
       },
       "public_release_allowed": true,
       "normalized_path": "packs/cc0/kenney-foundation-audio/wav/foundation-door-close.wav",
-      "export_path": "exports/f2s/kenney-foundation-audio/foundation-door-close.wav"
+      "export_path": "exports/fromdemotospec/kenney-foundation-audio/foundation-door-close.wav"
     },
     {
       "schema_version": 1,
@@ -2234,7 +2234,7 @@
       },
       "public_release_allowed": true,
       "normalized_path": "packs/cc0/kenney-foundation-audio/wav/foundation-engine-loop.wav",
-      "export_path": "exports/f2s/kenney-foundation-audio/foundation-engine-loop.wav"
+      "export_path": "exports/fromdemotospec/kenney-foundation-audio/foundation-engine-loop.wav"
     },
     {
       "schema_version": 1,
@@ -2257,7 +2257,7 @@
       },
       "public_release_allowed": true,
       "normalized_path": "packs/cc0/kenney-foundation-audio/wav/foundation-explosion-crunch.wav",
-      "export_path": "exports/f2s/kenney-foundation-audio/foundation-explosion-crunch.wav"
+      "export_path": "exports/fromdemotospec/kenney-foundation-audio/foundation-explosion-crunch.wav"
     },
     {
       "schema_version": 1,
@@ -2280,7 +2280,7 @@
       },
       "public_release_allowed": true,
       "normalized_path": "packs/cc0/kenney-foundation-audio/wav/foundation-laser-small.wav",
-      "export_path": "exports/f2s/kenney-foundation-audio/foundation-laser-small.wav"
+      "export_path": "exports/fromdemotospec/kenney-foundation-audio/foundation-laser-small.wav"
     },
     {
       "schema_version": 1,
@@ -2303,7 +2303,7 @@
       },
       "public_release_allowed": true,
       "normalized_path": "packs/cc0/kenney-foundation-audio/wav/foundation-computer-alert.wav",
-      "export_path": "exports/f2s/kenney-foundation-audio/foundation-computer-alert.wav"
+      "export_path": "exports/fromdemotospec/kenney-foundation-audio/foundation-computer-alert.wav"
     },
     {
       "schema_version": 1,
@@ -2326,7 +2326,7 @@
       },
       "public_release_allowed": true,
       "normalized_path": "packs/cc0/kenney-foundation-audio/wav/foundation-impact-generic-light.wav",
-      "export_path": "exports/f2s/kenney-foundation-audio/foundation-impact-generic-light.wav"
+      "export_path": "exports/fromdemotospec/kenney-foundation-audio/foundation-impact-generic-light.wav"
     },
     {
       "schema_version": 1,
@@ -2349,7 +2349,7 @@
       },
       "public_release_allowed": true,
       "normalized_path": "packs/cc0/kenney-foundation-audio/wav/foundation-impact-bell-heavy.wav",
-      "export_path": "exports/f2s/kenney-foundation-audio/foundation-impact-bell-heavy.wav"
+      "export_path": "exports/fromdemotospec/kenney-foundation-audio/foundation-impact-bell-heavy.wav"
     }
   ]
 }

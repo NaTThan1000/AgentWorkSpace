@@ -1,4 +1,4 @@
-import {prepareRequestV2,consumeDeliveryV2,unavailableV2} from './gad-v2-binding.mjs';
+import {prepareRequestV2,consumeDeliveryV2,unavailableV2} from './game-analysis-decision-v2-binding.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
@@ -72,7 +72,7 @@ function prepareHostDecisionReceipt(value) {
     host_record_ref: value.host_record_ref,
     recorded_at: value.recorded_at,
     recorded_by: 'host',
-    gad_consumption: 'read_only_reference'
+    game_analysis_decision_consumption: 'read_only_reference'
   };
 }
 
@@ -86,7 +86,7 @@ async function runCli() {
   const [command, ...args] = process.argv.slice(2);
   if (command === 'status') {
     process.stdout.write(JSON.stringify({schema_version:2,adapter_id:adapterId,status:'binding_ready',
-      request_contract:'GAD v2',receipt_contract:'HostDecisionReceipt v1',
+      request_contract:'GameAnalysisDecision v2',receipt_contract:'HostDecisionReceipt v1',
       commands:['prepare-request','consume-delivery','prepare-unavailable','prepare-host-decision'],
       analysis_executed:false,permissions:{host_write:false,accept_decision:false,run_experiment:false}},null,2)+'\n');
     return;

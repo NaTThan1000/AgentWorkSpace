@@ -1,10 +1,10 @@
 {
   "component_id": "fromdemotospec",
-  "file_count": 56,
-  "generated_at": "2026-10-10T10:10:21+08:00",
+  "file_count": 55,
+  "generated_at": "2026-10-10T14:49:14+08:00",
   "generator_version": "3.0.0",
-  "manifest_sha256": "b69b3f9705f5d88adcc524d73ea1c69f11b141f23a69f9015ff7e63c0387c0a0",
+  "manifest_sha256": "18fa424a21afd9922a9b843164ee8bfb66bc69b9971e84a08a7664e155545cbc",
   "preview": false,
   "release_schema": 1,
-  "source_revision": "c529f2b75b7e78418e0d19eda59768fcc54bd4de"
+  "source_revision": "a5de2407b9e39299bc225a15d5436571ac97825e"
 }

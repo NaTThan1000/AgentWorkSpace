@@ -216,12 +216,12 @@ try {
         if (($selected.export_sha256).ToLowerInvariant() -ne $expectedHash) { throw "Selection hash does not match catalog for $assetId" }
         if ($PublicRelease -and -not [bool]$entry.public_release_allowed) { throw "Asset is not allowed in a public release: $assetId" }
         $exportRelative = Assert-SafeRelativePath -Path ([string]$entry.export_path) -Label "catalog export_path for $assetId"
-        if (-not $exportRelative.StartsWith('exports/f2s/')) { throw "Catalog export_path is outside F2S export area: $assetId" }
+        if (-not $exportRelative.StartsWith('exports/fromdemotospec/')) { throw "Catalog export_path is outside FromDemoToSpec export area: $assetId" }
         $sourcePath = Get-FullPath (Join-Path $AssetRepositoryPath $exportRelative)
         Assert-ChildPath -Parent $AssetRepositoryPath -Child $sourcePath -Label 'source export'
         if (-not (Test-Path -LiteralPath $sourcePath -PathType Leaf)) { throw "Catalog export file is missing: $assetId" }
         if ((Get-Sha256 $sourcePath) -ne $expectedHash) { throw "Catalog export hash mismatch: $assetId" }
-        $projectRelative = 'presentation/assets/' + $exportRelative.Substring('exports/f2s/'.Length)
+        $projectRelative = 'presentation/assets/' + $exportRelative.Substring('exports/fromdemotospec/'.Length)
         $destinationPath = Get-FullPath (Join-Path $ProjectPath $projectRelative)
         Assert-ChildPath -Parent $ProjectPath -Child $destinationPath -Label 'project asset'
         $mime = switch ([IO.Path]::GetExtension($sourcePath).ToLowerInvariant()) { '.png' { 'image/png' }; '.svg' { 'image/svg+xml' }; '.wav' { 'audio/wav' }; '.mp3' { 'audio/mpeg' }; default { 'application/octet-stream' } }

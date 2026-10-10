@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://from-demo-to-spec.local/adapters/game-analysis-decision/fromdemotospec-analysis-request.schema.json",
-  "title": "F2SAnalysisRequest",
+  "title": "FromDemoToSpecAnalysisRequest",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -13,8 +13,8 @@
     "request_id": { "type": "string", "pattern": "^ARQ-[A-Za-z0-9][A-Za-z0-9._-]{2,63}$" },
     "created_at": { "type": "string", "format": "date-time" },
     "command": { "type": "string", "enum": ["request_analysis_decision", "lead_designer_takeover"] },
-    "project_ref": { "type": "string", "pattern": "^f2s:[^\\s]+$" },
-    "host_write_target_ref": { "type": "string", "pattern": "^f2s:[^\\s]+$" },
+    "project_ref": { "type": "string", "pattern": "^fromdemotospec:[^\\s]+$" },
+    "host_write_target_ref": { "type": "string", "pattern": "^fromdemotospec:[^\\s]+$" },
     "intent": { "type": "string", "enum": ["analyze", "decide"] },
     "goal": { "type": "string", "minLength": 8, "maxLength": 1000 },
     "decision_question": { "type": "string", "minLength": 8, "maxLength": 500 },

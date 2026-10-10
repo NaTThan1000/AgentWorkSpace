@@ -25,7 +25,7 @@ function fixture(t){
  const assetPath=()=>path.join(dest,JSON.parse(fs.readFileSync(path.join(dest,'receipt.json'))).assets[0].path);
  return {root,source,engine,put,assets,sources,receipt,save,options,dest,assetPath};
 }
-test('formal Godot catalog is additive; no F2S export fields needed',t=>{
+test('formal Godot catalog is additive; no FromDemoToSpec export fields needed',t=>{
  const f=fixture(t);
  const a={...f.assets[1],asset_id:'formal:audio',consumers:['godot'],processing:[{operation:'unmodified-copy'}]};
  f.put('source/catalog/formal-assets.json',{schema_version:1,assets:[a]});
@@ -36,7 +36,7 @@ test('formal Godot catalog is additive; no F2S export fields needed',t=>{
 });
 test('formal catalog rejects unsupported consumers and duplicate IDs across catalogs',t=>{
  const f=fixture(t);
- const a={...f.assets[0],consumers:['f2s']};
+ const a={...f.assets[0],consumers:['fromdemotospec']};
  f.put('source/catalog/formal-assets.json',{schema_version:1,assets:[a]});
  f.put('source/catalog/formal-sources.json',{schema_version:1,sources:f.sources});
  assert.throws(()=>deliver(f.options),/not approved for Godot/);

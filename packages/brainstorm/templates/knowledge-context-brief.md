@@ -5,7 +5,7 @@
 > Session title: {{SESSION_TITLE}}
 > Query intent: `{{QUERY_INTENT}}`
 > External contract: `Knowledge/system/integrations/GAME_ANALYSIS_DECISION.md`
-> Contract version: `context-brief-gad-handoff-v1`
+> Contract version: `context-brief-game-analysis-decision-handoff-v1`
 > Last verified against: `164c706d061853400c60edbfd548dd93073693b1`
 > Semantic review: `required`
 

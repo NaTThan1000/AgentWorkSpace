@@ -14,7 +14,7 @@ function Snapshot { param([string]$Path)
 }
 $before = Snapshot $root
 Assert-Package (Test-Path -LiteralPath (Join-Path $root '_release.json')) 'Build marker missing.'
-foreach($forbidden in @('workspace\sessions','docs\audits','docs\learning-records','docs\research\sources.json','docs\research\source-registry.md','release-input','templates\session-auto-report.md','templates\f2s-handoff-v1.md')){
+foreach($forbidden in @('workspace\sessions','docs\audits','docs\learning-records','docs\research\sources.json','docs\research\source-registry.md','release-input','templates\session-auto-report.md','templates\fromdemotospec-handoff-v1.md')){
  Assert-Package (-not(Test-Path -LiteralPath (Join-Path $root $forbidden))) "Private or retired path: $forbidden"
 }
 foreach($required in @('scripts\resume-session.ps1','scripts\method-learning.mjs','scripts\brainstorm-analysis-adapter.mjs','templates\perspective-review.md','docs\research\public-sources.json','examples\co-creation\game-open.md')){
@@ -60,17 +60,17 @@ try{
  Assert-Package ((($paused -join '|') -ceq ((Snapshot $temp) -join '|'))) 'Resume modified session or index.'
  $null = Invoke-Json 'validate-session.ps1' @('-SessionPath',$session,'-SessionRoot',$temp)
  # Force missing module via the public API, without relying on machine-installed dependencies.
- $binding = ([uri](Join-Path $root 'scripts\gad-v2-binding.mjs')).AbsoluteUri
+ $binding = ([uri](Join-Path $root 'scripts\game-analysis-decision-v2-binding.mjs')).AbsoluteUri
  $inputPath = Join-Path $root 'examples\game-analysis-decision\request-v2.json'
  $js = 'import fs from "node:fs"; import {pathToFileURL} from "node:url"; const m=await import(process.argv[2]); const v=JSON.parse(fs.readFileSync(process.argv[3],"utf8")); console.log(JSON.stringify(await m.prepareRequestV2(v,{moduleUrl:pathToFileURL(process.argv[4])})));'
- $jsPath = Join-Path $temp 'check-gad.mjs'
+ $jsPath = Join-Path $temp 'check-gameAnalysisDecision.mjs'
  [IO.File]::WriteAllText($jsPath,$js,$utf8)
  $missingModule = Join-Path $temp 'missing-adapter-v2.mjs'
- $gadText = @(& node $jsPath $binding $inputPath $missingModule)
- Assert-Package ($LASTEXITCODE -eq 0) 'GAD unavailable runtime failed.'
- $gad = ($gadText -join '') | ConvertFrom-Json
- Assert-Package ($gad.gad_status -ceq 'unavailable' -and -not $gad.host_write -and -not $gad.formal_decision_written) 'Missing GAD must be explicit and read-only.'
- Write-Output 'Runtime PASS: create -> resume -> pause -> read-resume preserves state, adoption and waiting boundary; GAD unavailable is explicit.'
+ $gameAnalysisDecisionText = @(& node $jsPath $binding $inputPath $missingModule)
+ Assert-Package ($LASTEXITCODE -eq 0) 'GameAnalysisDecision unavailable runtime failed.'
+ $gameAnalysisDecision = ($gameAnalysisDecisionText -join '') | ConvertFrom-Json
+ Assert-Package ($gameAnalysisDecision.game_analysis_decision_status -ceq 'unavailable' -and -not $gameAnalysisDecision.host_write -and -not $gameAnalysisDecision.formal_decision_written) 'Missing GameAnalysisDecision must be explicit and read-only.'
+ Write-Output 'Runtime PASS: create -> resume -> pause -> read-resume preserves state, adoption and waiting boundary; GameAnalysisDecision unavailable is explicit.'
 }finally{
  $resolved=[IO.Path]::GetFullPath($temp)
  Assert-Package ($resolved.StartsWith($systemTemp,[StringComparison]::OrdinalIgnoreCase) -and (Split-Path -Leaf $resolved).StartsWith('brainstorm-release-runtime-')) 'Unsafe temporary cleanup.'

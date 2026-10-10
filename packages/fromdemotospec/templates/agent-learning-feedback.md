@@ -1,6 +1,6 @@
 # Prototype Validation Feedback Candidate
 
-> Contract: `f2s-validation-feedback-v1`
+> Contract: `fromdemotospec-validation-feedback-v1`
 > Status: `draft`
 > Prototype ID: `{{PROTOTYPE_ID}}`
 > Prototype version: `{{PROTOTYPE_VERSION}}`

@@ -22,7 +22,7 @@ There is one complete meta edition. New workspaces install it by default; existi
 
 ## Get started
 
-Clone or download this repository into a separate directory from the user workspace. The root installer and skill picker need Python 3.10+. GAD, GamePresentation and PrototypeAssets tools need Node.js 22+. Brainstorm, FromDemoToSpec and some Knowledge tools also use PowerShell 7; the first Knowledge Ingest requires Git. Runtime verification for this release was performed on Windows; check each package before claiming other platform support.
+Clone or download this repository into a separate directory from the user workspace. The root installer and skill picker need Python 3.10+. GameAnalysisDecision, GamePresentation and PrototypeAssets tools need Node.js 22+. Brainstorm, FromDemoToSpec and some Knowledge tools also use PowerShell 7; the first Knowledge Ingest requires Git. Runtime verification for this release was performed on Windows; check each package before claiming other platform support.
 
 Run these commands from the distribution directory. Preview before applying:
 
@@ -52,12 +52,19 @@ The agent reviews host rules and interfaces against the returned criteria, then 
 
 ## Use the workspace
 
-| Component | Installed location | Example task |
-|---|---|---|
-| [meta](meta/README.md) | Full: workspace root; compatible: `modules/meta` | State your goal, constraints and completion criteria |
-| [Brainstorm](packages/brainstorm/README.md) | `modules/brainstorm` | “Help me explore this problem…”; create sessions as needed |
-| [FromDemoToSpec](packages/fromdemotospec/README.md) | `modules/fromdemotospec` | “Build a playable prototype…”; develop it in a separate project directory |
-| [Knowledge](packages/knowledge/README.md) | `modules/knowledge` | “Query the knowledge base” or “Ingest these sources”; an empty library can be queried |
+The distribution contains **one meta foundation and seven peer packages**. Meta provides collaboration rules and workspace structure; full mode installs it at the root, while compatible mode optionally installs it under `modules/meta`. State your goal, constraints and completion criteria to use it. Choose each package as needed; table order implies neither hierarchy nor installation priority. Brainstorm, FromDemoToSpec and Knowledge require host-governance capabilities, supplied by meta or a reviewed existing framework. Existing workspaces can reuse reviewed capabilities without adding packages for optional integrations.
+
+[Meta guide](meta/README.md) · [Package dependencies and tool requirements](docs/package-dependencies.md)
+
+| Package | Purpose and example task | Installed location | Standalone use and optional integration |
+|---|---|---|---|
+| [Brainstorm](packages/brainstorm/README.md) | “Help me explore this problem…”; create sessions as needed | `modules/brainstorm` | No other business package required; Knowledge and GameAnalysisDecision are optional |
+| [FromDemoToSpec](packages/fromdemotospec/README.md) | “Build a playable prototype…”; develop in a separate project directory | `modules/fromdemotospec` | No other business package required; add knowledge, analysis, presentation and assets as needed |
+| [Knowledge](packages/knowledge/README.md) | “Query the knowledge base” or “Ingest these sources”; an empty library can be queried | `modules/knowledge` | No other business package required; configure its scope and local Git before the first Ingest |
+| [Skills](packages/skills/README.md) | 16 development, research, writing and workflow methods; install chosen names | `modules/skills` | No other module required; adding the library does not activate every skill |
+| [GameAnalysisDecision](packages/game-analysis-decision/README.md) | Evidence-based game analysis, conditional recommendations and method correction | `modules/game-analysis-decision` | Works alone; Knowledge and other host packages are optional |
+| [GamePresentation](packages/game-presentation/README.md) | Presentation specifications, resource preparation and Godot delivery/recovery | `modules/game-presentation` | Manual/generated sources work; PrototypeAssets is optional |
+| [PrototypeAssets](packages/prototype-assets/README.md) | 119 assets with provenance/license records and verification/export tools | `modules/prototype-assets` | Runtime copies and licenses remain usable without their source package |
 
 Start tasks once the framework is installed; create business content when the task needs it. FromDemoToSpec provides a development workflow. The game project is created during a specific development task. Before the first Knowledge Ingest run, the agent must configure the real knowledge scope and establish a separate local Git baseline inside the module. Existing libraries keep their history. Do not use the outer repository as that baseline or create a remote or push automatically. The original setup wizard remains available for standalone customization; installation does not require another interview. Keep the registered module directory name unchanged.
 
@@ -65,16 +72,9 @@ Keep projects under `projects/` or a directory you choose. Sessions, knowledge c
 
 Meta also includes [Humanizer-zh](meta/workspace/.agents/skills/humanizer-zh/SKILL.md). Use it to edit Chinese prose for clarity while preserving facts, uncertainty and the author's voice. It is editing guidance, not an authorship detector. English documentation should preserve the same factual accuracy.
 
-## More modules and selective skill installation
+## Select skills as needed
 
-| Package | Purpose | Standalone behavior |
-|---|---|---|
-| [Skills](packages/skills/README.md) | 16 development, research, writing and workflow methods; install chosen names | No other module required; adding the library does not activate every skill |
-| [GAD](packages/game-analysis-decision/README.md) | Evidence-based game analysis, conditional recommendations and method correction | Knowledge and other host packages are optional |
-| [GamePresentation](packages/game-presentation/README.md) | Presentation specifications, resource preparation and Godot delivery/recovery | Manual/generated sources work without the asset package |
-| [PrototypeAssets](packages/prototype-assets/README.md) | 119 assets with provenance/license records and verification/export tools | Runtime copies and licenses remain usable without their source package |
-
-Existing workspaces may select just one new package, without meta or optional integrations. New workspaces still default to complete meta. See [dependencies and tool requirements](docs/package-dependencies.md).
+Skills is one of the peer packages above. After adding it, choose the methods to install. Add any other package with `add --packages` as needed. The commands below are examples; select the packages and skills relevant to your task.
 
 ```text
 python scripts/workspace.py audit --target <workspace-path> --needs skills game-analysis presentation assets
@@ -100,13 +100,13 @@ python scripts/workspace.py rollback --target <workspace-path> --transaction <tr
 
 Upgrades compare the saved baseline, local files and incoming content. If both local and upstream versions changed a file, the tool reports a conflict. If upstream did not change it, local edits or deletions remain. User data is preserved. Each application has transaction backups, and rollback also checks for later edits.
 
-When upgrading from 1.0.0, the `f2s` package and `modules/f2s` become `fromdemotospec` and `modules/fromdemotospec`, including user files inside that directory. Old command arguments and script entrypoints remain compatible. Existing session protocol IDs, fields and artifact names are not forcibly rewritten. See the [1.1.0 upgrade guide](upgrades/1.1.0.md). Earlier standalone released packages must first follow the [1.0.0 migration guide](upgrades/1.0.0.md), then upgrade through the release chain.
+With no existing users, this full-name cleanup retains no old-name aliases or automatic migration of old session fields, artifacts or user data. General version upgrades, conflict checks and rollback remain; historical tags stay unchanged. Use the current full-name entrypoints for new installations. See the [1.4.0 notes](upgrades/1.4.0.md).
 
 If a crash leaves `install.lock`, check its PID and the actual process. Once you confirm no installation is running, preserve the evidence, remove the lock and preview transaction recovery. Do not automatically clear another process's lock.
 
 ## Maintenance and releases
 
-Maintain content and behavior in their source repositories, then publish directly into the owned `meta/` or `packages/<id>/` directory here. The three business sources no longer generate local released copies. Commit the source before running `scripts/publish.py --source <source-path> --apply`. Without `--apply`, the publisher only previews changes; uncommitted sources cannot be formally published.
+Maintain content and behavior in their source repositories, then publish directly into the owned `meta/` or `packages/<id>/` directory here. Sources no longer generate duplicate local released copies for these public packages. Commit the source before running `scripts/publish.py --source <source-path> --apply`. Without `--apply`, the publisher only previews changes; uncommitted sources cannot be formally published.
 
 Before releasing, check affected source contracts, package runtime behavior and upgrades from the previous version. Run `python -B -m unittest discover -s tests -v`. Write the upgrade guide, seal the inventory with `scripts/build_catalog.py --version <version> --previous <previous-version>`, then run `workspace.py verify`. Tag the verified commit and check a fresh remote clone after publication.
 

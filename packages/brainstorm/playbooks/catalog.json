@@ -28,7 +28,7 @@
       "single_user_ai_adaptation": true,
       "downstream_adapters": [
         {
-          "adapter_id": "f2s-handoff",
+          "adapter_id": "fromdemotospec-handoff",
           "required": false,
           "status": "ready",
           "implementation_task": "TB-007A"

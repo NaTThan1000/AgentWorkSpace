@@ -80,7 +80,7 @@ $pillarRows = @(Get-MarkdownTableRows -Content $brief -Heading 'Design Pillars' 
 $antiRows = @(Get-MarkdownTableRows -Content $brief -Heading 'Anti-goals' -ExpectedHeaders @('Anti-goal ID', 'Avoid', 'Why', 'Source IDs'))
 $scopeRows = @(Get-MarkdownTableRows -Content $brief -Heading 'Scope' -ExpectedHeaders @('Bucket', 'Included / excluded', 'Rationale', 'Source IDs'))
 $checkRows = @(Get-MarkdownTableRows -Content $brief -Heading 'Validation and Open Questions' -ExpectedHeaders @('Item ID', 'Type', 'Statement', 'Source IDs', 'Next action'))
-$handoffHeaders = @('Brief status', 'Selected package ID', 'Decision IDs', 'F2S intent', 'Missing')
+$handoffHeaders = @('Brief status', 'Selected package ID', 'Decision IDs', 'FromDemoToSpec intent', 'Missing')
 $handoffRows = @(Get-MarkdownTableRows -Content $brief -Heading 'Decision and Handoff' -ExpectedHeaders $handoffHeaders)
 
 foreach ($section in @(
@@ -126,12 +126,12 @@ foreach ($row in $checkRows) {
 Assert-PlaybookContract -Condition ($handoffRows.Count -eq 1) -Message 'Decision and Handoff requires exactly one row.'
 $briefStatus = [string]$handoffRows[0].cells[0]
 $decisionIndex = 2
-$f2sIndex = 3
+$fromdemotospecIndex = 3
 Assert-PlaybookContract -Condition ([string]$handoffRows[0].cells[1] -ceq $selectedPackageId) -Message 'Decision and Handoff package does not match the combination gate.'
 $briefDecisionIds = @(Split-ControlReferences -Value ([string]$handoffRows[0].cells[$decisionIndex]))
-$f2sIntent = [string]$handoffRows[0].cells[$f2sIndex]
+$fromdemotospecIntent = [string]$handoffRows[0].cells[$fromdemotospecIndex]
 Assert-PlaybookContract -Condition (@('draft', 'accepted', 'return-to-brainstorm') -ccontains $briefStatus) -Message "Invalid brief status: $briefStatus"
-Assert-PlaybookContract -Condition (@('not-requested', 'requested') -ccontains $f2sIntent) -Message "Invalid F2S intent: $f2sIntent"
+Assert-PlaybookContract -Condition (@('not-requested', 'requested') -ccontains $fromdemotospecIntent) -Message "Invalid FromDemoToSpec intent: $fromdemotospecIntent"
 if ($briefStatus -ceq 'accepted') {
     Assert-PlaybookContract -Condition ($briefDecisionIds.Count -ge 1) -Message 'Accepted brief requires a Decision ID.'
 }
@@ -150,7 +150,7 @@ foreach ($decisionId in $briefDecisionIds) {
     brief_schema = $briefSchema
     selected_package_id = $selectedPackageId
     brief_status = $briefStatus
-    f2s_intent = $f2sIntent
+    fromdemotospec_intent = $fromdemotospecIntent
     available_source_id_count = $sourceIds.Count
     semantic_review = 'required'
 } | ConvertTo-Json -Depth 16

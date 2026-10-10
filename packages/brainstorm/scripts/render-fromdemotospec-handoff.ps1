@@ -31,13 +31,13 @@ function Format-HandoffField {
     return ($lines -join "`n")
 }
 
-$result = Get-F2SGapValidation -SessionPath $SessionPath -SessionRoot $SessionRoot -GapPath $GapPath -BriefPath $BriefPath
-Assert-AdapterContract -Condition ([string]$result.gap_status -ceq 'ready') -Message 'F2S handoff rendering requires gap status ready.'
+$result = Get-FromDemoToSpecGapValidation -SessionPath $SessionPath -SessionRoot $SessionRoot -GapPath $GapPath -BriefPath $BriefPath
+Assert-AdapterContract -Condition ([string]$result.gap_status -ceq 'ready') -Message 'FromDemoToSpec handoff rendering requires gap status ready.'
 $gap = $result.gap
 $context = $result.context
-if ([string]::IsNullOrWhiteSpace($OutputPath)) { $OutputPath = Join-Path $context.session_directory 'f2s-handoff.md' }
+if ([string]::IsNullOrWhiteSpace($OutputPath)) { $OutputPath = Join-Path $context.session_directory 'fromdemotospec-handoff.md' }
 $OutputPath = Resolve-AdapterSessionPath -SessionDirectory $context.session_directory -ArtifactPath $OutputPath
-Assert-AdapterContract -Condition (-not (Test-Path -LiteralPath $OutputPath)) -Message "F2S handoff already exists: $OutputPath"
+Assert-AdapterContract -Condition (-not (Test-Path -LiteralPath $OutputPath)) -Message "FromDemoToSpec handoff already exists: $OutputPath"
 
 $sectionV2 = (@($gap.fields | ForEach-Object { Format-HandoffField -Title ([string]$_.field_id) -Field $_ }) -join "`n`n")
 $parameterLines = @(
@@ -81,11 +81,11 @@ if ([string]::IsNullOrWhiteSpace($SessionRoot)) {
 try {
     $index = Write-SessionIndex -SessionRoot ([IO.Path]::GetFullPath($SessionRoot))
 } catch {
-    throw "F2S handoff was preserved at '$OutputPath', but the session index rebuild failed. Do not render or overwrite it again; repair the index with rebuild-index.ps1. $($_.Exception.Message)"
+    throw "FromDemoToSpec handoff was preserved at '$OutputPath', but the session index rebuild failed. Do not render or overwrite it again; repair the index with rebuild-index.ps1. $($_.Exception.Message)"
 }
 [pscustomobject][ordered]@{
     rendered = $true
-    adapter_id = 'f2s-handoff'
+    adapter_id = 'fromdemotospec-handoff'
     session_id = [string]$context.state.session_id
     handoff_path = $OutputPath
     handoff_status = 'ready'

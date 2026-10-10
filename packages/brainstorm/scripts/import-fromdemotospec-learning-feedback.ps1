@@ -2,7 +2,7 @@
 param(
     [Parameter(Mandatory = $true)][string]$SessionPath,
     [Parameter(Mandatory = $true)][string]$ArtifactId,
-    [Parameter(Mandatory = $true)][string]$F2sFeedbackPath,
+    [Parameter(Mandatory = $true)][string]$FromDemoToSpecFeedbackPath,
     [string]$SessionRoot = ''
 )
 
@@ -29,18 +29,18 @@ if (-not [string]::IsNullOrWhiteSpace($SessionRoot)) {
 $candidateResult = @(& powershell -NoProfile -ExecutionPolicy Bypass -File (Join-Path $scriptDirectory 'validate-learning-feedback-candidate.ps1') @candidateArgs)
 if ($LASTEXITCODE -ne 0) { throw 'Learning candidate validation failed before import.' }
 $candidate = ($candidateResult -join "`n") | ConvertFrom-Json
-Assert-SessionContract -Condition (Test-Path -LiteralPath $F2sFeedbackPath -PathType Leaf) -Message "Missing F2S feedback: $F2sFeedbackPath"
-$feedbackPath = [IO.Path]::GetFullPath($F2sFeedbackPath)
+Assert-SessionContract -Condition (Test-Path -LiteralPath $FromDemoToSpecFeedbackPath -PathType Leaf) -Message "Missing FromDemoToSpec feedback: $FromDemoToSpecFeedbackPath"
+$feedbackPath = [IO.Path]::GetFullPath($FromDemoToSpecFeedbackPath)
 $feedback = [IO.File]::ReadAllText($feedbackPath, $script:BrainstormUtf8NoBom)
-foreach ($required in @('> Contract: `f2s-validation-feedback-v1`', '> Status: `ready-for-import`', '> Knowledge write: `false`', '> Upstream Decision ID:')) {
-    Assert-SessionContract -Condition ($feedback.Contains($required)) -Message "F2S feedback is missing import requirement: $required"
+foreach ($required in @('> Contract: `fromdemotospec-validation-feedback-v1`', '> Status: `ready-for-import`', '> Knowledge write: `false`', '> Upstream Decision ID:')) {
+    Assert-SessionContract -Condition ($feedback.Contains($required)) -Message "FromDemoToSpec feedback is missing import requirement: $required"
 }
 $prototype = [regex]::Match($feedback, '(?m)^> Prototype ID: `([^`]+)`\s*$')
 $version = [regex]::Match($feedback, '(?m)^> Prototype version: `([^`]+)`\s*$')
 $decision = [regex]::Match($feedback, '(?m)^> Upstream Decision ID: `(DEC-[0-9]{3,})`\s*$')
 $impact = [regex]::Match($feedback, '(?m)^> Decision impact: `([^`]+)`\s*$')
-Assert-SessionContract -Condition ($prototype.Success -and $version.Success -and $decision.Success -and $impact.Success) -Message 'F2S feedback metadata is incomplete.'
-Assert-SessionContract -Condition ($decision.Groups[1].Value -ceq [string]$candidate.decision_id) -Message 'F2S feedback Decision ID does not match the Brainstorm candidate.'
+Assert-SessionContract -Condition ($prototype.Success -and $version.Success -and $decision.Success -and $impact.Success) -Message 'FromDemoToSpec feedback metadata is incomplete.'
+Assert-SessionContract -Condition ($decision.Groups[1].Value -ceq [string]$candidate.decision_id) -Message 'FromDemoToSpec feedback Decision ID does not match the Brainstorm candidate.'
 $hash = (Get-Sha256Hex -LiteralPath $feedbackPath).ToLowerInvariant()
 
 $statePath = Resolve-SessionStatePath -SessionPath $SessionPath
@@ -52,8 +52,8 @@ $artifactRows = @(Get-MarkdownTableRows -Content $record -Heading 'Artifact Inde
 $artifact = @($artifactRows | Where-Object { [string]$_.cells[0] -ceq $ArtifactId })
 $artifactPath = Resolve-SafeRelativePath -BasePath $sessionDirectory -RelativePath ([string]$artifact[0].cells[2])
 $content = [IO.File]::ReadAllText($artifactPath, $script:BrainstormUtf8NoBom)
-Assert-SessionContract -Condition (-not $content.Contains($hash)) -Message 'This F2S feedback was already imported.'
-$updated = Add-MarkdownTableRow -Content $content -Heading 'Imported F2S Feedback' -Cells @($hash, $prototype.Groups[1].Value, $version.Groups[1].Value, $decision.Groups[1].Value, $impact.Groups[1].Value, 'imported')
+Assert-SessionContract -Condition (-not $content.Contains($hash)) -Message 'This FromDemoToSpec feedback was already imported.'
+$updated = Add-MarkdownTableRow -Content $content -Heading 'Imported FromDemoToSpec Feedback' -Cells @($hash, $prototype.Groups[1].Value, $version.Groups[1].Value, $decision.Groups[1].Value, $impact.Groups[1].Value, 'imported')
 Write-Utf8TextAtomic -Path $artifactPath -Value $updated
 
 [pscustomobject][ordered]@{

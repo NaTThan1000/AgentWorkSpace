@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Formal development asset v1 (additive to legacy F2S catalog)",
+  "title": "Formal development asset v1 (additive to legacy FromDemoToSpec catalog)",
   "type": "object",
   "required": ["schema_version", "asset_id", "category", "consumers", "source", "license", "files", "normalized_path", "public_release_allowed", "processing", "decode"],
   "properties": {

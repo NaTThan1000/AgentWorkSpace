@@ -1,14 +1,14 @@
-function Get-F2SV2Fields {
+function Get-FromDemoToSpecV2Fields {
     $definitions = Read-Utf8Json -Path (Join-Path $script:BrainstormAdapterProjectRoot 'adapters\fromdemotospec-handoff\fields-v2.json')
     foreach ($definition in $definitions) { Write-Output $definition }
 }
-function Get-F2SGapV2Validation {
+function Get-FromDemoToSpecGapV2Validation {
     param($Gap, $Context, $BriefValidation, [string]$GapPath)
-    $adapter = Get-AdapterDefinition -AdapterId 'f2s-handoff'
+    $adapter = Get-AdapterDefinition -AdapterId 'fromdemotospec-handoff'
     foreach ($name in @('schema_version','adapter_id','session_id','source_brief','external_contract','status','structural_review','semantic_review','reviewer','decision_ids','external_flow_started','fields','tunable_parameters')) {
         Assert-AdapterContract ($Gap.PSObject.Properties.Name -contains $name) "V2 gap missing property: $name"
     }
-    Assert-AdapterContract ([int]$Gap.schema_version -eq 2 -and [string]$Gap.adapter_id -eq 'f2s-handoff') 'Invalid v2 identity'
+    Assert-AdapterContract ([int]$Gap.schema_version -eq 2 -and [string]$Gap.adapter_id -eq 'fromdemotospec-handoff') 'Invalid v2 identity'
     Assert-AdapterContract ([string]$Gap.session_id -ceq [string]$Context.state.session_id) 'V2 session mismatch'
     Assert-AdapterContract ([string]$Gap.source_brief -ceq 'game-concept-brief.md') 'V2 brief mismatch'
     foreach ($name in @('path','version','last_verified_against')) {
@@ -17,19 +17,19 @@ function Get-F2SGapV2Validation {
     Assert-AdapterContract (@('gap-review','ready') -ccontains [string]$Gap.status) 'Invalid v2 gap status'
     Assert-AdapterContract ([string]$Gap.structural_review -ceq 'passed') 'V2 structural review required'
     Assert-AdapterContract (@('required','passed','failed') -ccontains [string]$Gap.semantic_review) 'Invalid v2 semantic review'
-    Assert-AdapterContract ($Gap.external_flow_started -is [bool] -and $Gap.external_flow_started -eq $false) 'V2 must not launch F2S'
-    $definitions = Get-F2SV2Fields
+    Assert-AdapterContract ($Gap.external_flow_started -is [bool] -and $Gap.external_flow_started -eq $false) 'V2 must not launch FromDemoToSpec'
+    $definitions = Get-FromDemoToSpecV2Fields
     Assert-AdapterContract (@($Gap.fields).Count -eq $definitions.Count) 'V2 field count mismatch'
     $seen = @{}
     foreach ($field in @($Gap.fields)) {
-        foreach ($name in @('field_id','f2s_target','coverage','mapped_content','source_ids','gap_or_question','blocking','next_action')) {
+        foreach ($name in @('field_id','fromdemotospec_target','coverage','mapped_content','source_ids','gap_or_question','blocking','next_action')) {
             Assert-AdapterContract ($field.PSObject.Properties.Name -contains $name) "V2 field missing property: $name"
         }
         $id = [string]$field.field_id
         $definition = @($definitions | Where-Object { [string]$_.field_id -ceq $id })
         Assert-AdapterContract ($definition.Count -eq 1 -and -not $seen.ContainsKey($id)) "Unknown or duplicate v2 field: $id"
-        Assert-AdapterContract ([string]$field.f2s_target -ceq [string]$definition[0].f2s_target) "V2 target mismatch: $id"
-        Assert-AdapterContract (@('satisfied','partial','missing','assumed','f2s-question') -ccontains [string]$field.coverage) "V2 coverage invalid: $id"
+        Assert-AdapterContract ([string]$field.fromdemotospec_target -ceq [string]$definition[0].fromdemotospec_target) "V2 target mismatch: $id"
+        Assert-AdapterContract (@('satisfied','partial','missing','assumed','fromdemotospec-question') -ccontains [string]$field.coverage) "V2 coverage invalid: $id"
         Assert-AdapterContract ($field.blocking -is [bool]) "V2 blocking must be boolean: $id"
         Assert-AdapterSourceIds -SourceIds @($field.source_ids) -AllIds $Context.all_ids -Label $id
         if (@('satisfied','partial') -ccontains [string]$field.coverage) {
@@ -54,7 +54,7 @@ function Get-F2SGapV2Validation {
         foreach ($name in @('parameter_id','name','default','range','source_ids')) {
             Assert-AdapterContract ($p.PSObject.Properties.Name -contains $name) "V2 parameter missing $name"
         }
-        Assert-AdapterContract ([string]$p.parameter_id -cmatch '^F2S-PARAM-[0-9]{3,}$' -and -not $parameterIds.ContainsKey([string]$p.parameter_id)) 'Invalid v2 parameter ID'
+        Assert-AdapterContract ([string]$p.parameter_id -cmatch '^FromDemoToSpec-PARAM-[0-9]{3,}$' -and -not $parameterIds.ContainsKey([string]$p.parameter_id)) 'Invalid v2 parameter ID'
         foreach ($name in @('name','default','range')) { Assert-AdapterContract (-not [string]::IsNullOrWhiteSpace([string]$p.$name)) "Empty parameter $name" }
         Assert-AdapterContract (@($p.source_ids).Count -gt 0) 'Parameter source required'
         Assert-AdapterSourceIds -SourceIds @($p.source_ids) -AllIds $Context.all_ids -Label ([string]$p.parameter_id)
@@ -67,12 +67,12 @@ function Get-F2SGapV2Validation {
         }
     }
     if ([string]$Gap.status -ceq 'ready') {
-        Assert-AdapterContract ([string]$BriefValidation.brief_status -ceq 'accepted' -and [string]$BriefValidation.f2s_intent -ceq 'requested') 'V2 requires accepted concept and requested F2S intent'
+        Assert-AdapterContract ([string]$BriefValidation.brief_status -ceq 'accepted' -and [string]$BriefValidation.fromdemotospec_intent -ceq 'requested') 'V2 requires accepted concept and requested FromDemoToSpec intent'
         Assert-AdapterContract ([string]$Gap.semantic_review -ceq 'passed' -and @('agent','user','joint') -ccontains [string]$Gap.reviewer) 'V2 mapping needs semantic review'
         Assert-AdapterContract (@($Gap.decision_ids).Count -gt 0) 'V2 user product decision reference required'
     }
     return [pscustomobject][ordered]@{
-        structure_passed = $true; adapter_id = 'f2s-handoff'; session_id = [string]$Context.state.session_id
+        structure_passed = $true; adapter_id = 'fromdemotospec-handoff'; session_id = [string]$Context.state.session_id
         gap_status = [string]$Gap.status; semantic_review = [string]$Gap.semantic_review
         gap_count = @($Gap.fields | Where-Object { [string]$_.coverage -cne 'satisfied' }).Count
         tunable_parameter_count = @($Gap.tunable_parameters).Count

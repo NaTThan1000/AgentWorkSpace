@@ -15,7 +15,7 @@ Agent 从问题和已有情境判断，不要求用户填写等级或表格：
 | 诊断、比较 `diagnosis/comparison` | 当前项目事实＋核心 Wiki 全文；不同解释各找对应依据 | 最可能推翻建议的替代解释、条件或冲突 |
 | 专题综述 `survey` | 明确主题范围、主要维度与观点覆盖 | 未覆盖维度和相互冲突来源；不能以篇数宣称全面 |
 
-同一任务复用未变上下文，后续问题改变对象、约束或目标时重判适用性。专业知识并不自动触发专家或 GAD；仅实际请求分析与决策能力时按 外部分析工作流接口（由宿主提供） 转交。项目已拍板事实与用户决定由宿主拥有。
+同一任务复用未变上下文，后续问题改变对象、约束或目标时重判适用性。专业知识并不自动触发专家或 GameAnalysisDecision；仅实际请求分析与决策能力时按 外部分析工作流接口（由宿主提供） 转交。项目已拍板事实与用户决定由宿主拥有。
 
 ## 2. 来源权限和预算分别决定
 
@@ -46,7 +46,7 @@ Group 是候选来源而不是独立的固定优先级。可以先看最有相�
 
 ### 原则
 
-按域或 `DPR-*` 查询共享领域原则，保留 `knowledge:principle:DPR-EX-001` 稳定 ID；原 [query-principles](../integrations/query-principles.mjs) 接口继续可用。新入口可 discover `principle_ids`，或 read 稳定 ID，返回实际完整原则及来源版本。原则来源仍属 Knowledge，专业用法属 GAD。hash 只绑定内容，适用性与真伪继续核查；同源多篇转述不能算独立互证。
+按域或 `DPR-*` 查询共享领域原则，保留 `knowledge:principle:DPR-EX-001` 稳定 ID；原 [query-principles](../integrations/query-principles.mjs) 接口继续可用。新入口可 discover `principle_ids`，或 read 稳定 ID，返回实际完整原则及来源版本。原则来源仍属 Knowledge，专业用法属 GameAnalysisDecision。hash 只绑定内容，适用性与真伪继续核查；同源多篇转述不能算独立互证。
 
 ## 4. 阅读：核心读透，补充按需
 

@@ -4,7 +4,7 @@ param([Parameter(Mandatory = $true)][string]$FeedbackPath)
 $ErrorActionPreference = 'Stop'
 if (-not (Test-Path -LiteralPath $FeedbackPath -PathType Leaf)) { throw "Feedback file does not exist: $FeedbackPath" }
 $content = [IO.File]::ReadAllText($FeedbackPath, (New-Object Text.UTF8Encoding($false)))
-foreach ($required in @('> Contract: `f2s-validation-feedback-v1`', '> Prototype ID:', '> Prototype version:', '> Upstream Brainstorm session:', '> Upstream Decision ID:', '> Decision impact:', '> Knowledge write: `false`', '## Validation Evidence', '## Decision Impact', '## Candidate Learning', '## Import Gate', '## Boundary')) {
+foreach ($required in @('> Contract: `fromdemotospec-validation-feedback-v1`', '> Prototype ID:', '> Prototype version:', '> Upstream Brainstorm session:', '> Upstream Decision ID:', '> Decision impact:', '> Knowledge write: `false`', '## Validation Evidence', '## Decision Impact', '## Candidate Learning', '## Import Gate', '## Boundary')) {
     if (-not $content.Contains($required)) { throw "Learning feedback is missing: $required" }
 }
 $status = [regex]::Match($content, '(?m)^> Status: `([^`]+)`\s*$')

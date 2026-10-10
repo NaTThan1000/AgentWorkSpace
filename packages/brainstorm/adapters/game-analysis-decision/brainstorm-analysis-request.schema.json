@@ -103,5 +103,5 @@
     }
   },
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Brainstorm GAD v2 request"
+  "title": "Brainstorm GameAnalysisDecision v2 request"
 }

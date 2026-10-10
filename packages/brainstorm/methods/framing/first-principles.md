@@ -31,7 +31,7 @@
 2. 只继续分解会改变下一选择的项，不追求不可再分真理。
 3. 固定目标事实，移去无依据惯例，构造别的路径。
 4. 写事实+新增假设→机制→后果，不称设计推演为必然。
-5. 事实缺口按需Knowledge/Web，实质因果争议按需GAD，未取结果标unknown。
+5. 事实缺口按需Knowledge/Web，实质因果争议按需GameAnalysisDecision，未取结果标unknown。
 
 ## Output contract
 

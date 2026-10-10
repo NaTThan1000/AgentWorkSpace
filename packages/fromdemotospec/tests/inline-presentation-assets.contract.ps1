@@ -2,7 +2,7 @@
 param()
 $ErrorActionPreference = 'Stop'
 $Tool = Join-Path (Split-Path -Parent $PSScriptRoot) 'scripts/inline-presentation-assets.ps1'
-$Temp = [IO.Path]::GetFullPath((Join-Path ([IO.Path]::GetTempPath()) ('f2s-inline-' + [guid]::NewGuid().ToString('N'))))
+$Temp = [IO.Path]::GetFullPath((Join-Path ([IO.Path]::GetTempPath()) ('fromdemotospec-inline-' + [guid]::NewGuid().ToString('N'))))
 $Utf8 = New-Object Text.UTF8Encoding($false)
 function Run-Inline {
     $old = $ErrorActionPreference

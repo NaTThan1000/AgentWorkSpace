@@ -6,7 +6,7 @@ import {containedPath} from './learning-cli.mjs';
 const root=path.resolve(import.meta.dirname,'..');
 const schema=readJson(path.join(root,'adapters/v2/contract.schema.json'));
 assertClosedObjectSchemas(schema);
-const prefixes={'standalone-adapter':'standalone:','f2s-adapter':'f2s:','brainstorm-adapter':'brainstorm:','knowledge-adapter':'knowledge:'};
+const prefixes={'standalone-adapter':'standalone:','fromdemotospec-adapter':'fromdemotospec:','brainstorm-adapter':'brainstorm:','knowledge-adapter':'knowledge:'};
 const endpoints={analysis_report:{prefix:'analysis:',statuses:['draft','complete','needs_evidence']},decision_packet:{prefix:'decision:',statuses:['proposed','rejected','needs_evidence','superseded']},experiment_plan:{prefix:'experiment:',statuses:['proposed','needs_evidence','cancelled','superseded']}};
 function validate(value,kind){
  const errors=validateSchema(value,schema.$defs[kind],schema);
@@ -36,7 +36,7 @@ function validate(value,kind){
 export const validateRequestV2=value=>validate(value,'request');
 export const validateIntakeV2=value=>validate(value,'intake');
 export const validateDeliveryV2=value=>validate(value,'delivery');
-function requireValid(value,kind){const errors=validate(value,kind);if(errors.length)throw new Error('GAD v2 '+kind+' rejected: '+errors.join('; '));}
+function requireValid(value,kind){const errors=validate(value,kind);if(errors.length)throw new Error('GameAnalysisDecision v2 '+kind+' rejected: '+errors.join('; '));}
 export function prepareRequestV2(value){requireValid(value,'request');return structuredClone(value);}
 function route(value){
  let delivery_status='ready_for_host',next_action,reason='none';

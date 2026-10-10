@@ -4,7 +4,7 @@ param()
 $ErrorActionPreference = 'Stop'
 $ProjectRoot = Split-Path -Parent $PSScriptRoot
 $Importer = Join-Path $ProjectRoot 'scripts\import-presentation-assets.ps1'
-$TempBase = [IO.Path]::GetFullPath((Join-Path ([IO.Path]::GetTempPath()) ('f2s-presentation-contract-' + [Guid]::NewGuid().ToString('N'))))
+$TempBase = [IO.Path]::GetFullPath((Join-Path ([IO.Path]::GetTempPath()) ('fromdemotospec-presentation-contract-' + [Guid]::NewGuid().ToString('N'))))
 $Utf8NoBom = New-Object System.Text.UTF8Encoding($false)
 
 function Remove-SafeTempTree {
@@ -32,9 +32,9 @@ try {
     $assetRoot = Join-Path $TempBase 'PrototypeAssets'
     $project = Join-Path $TempBase 'DemoProject'
     $selectionPath = Join-Path $TempBase 'selection.json'
-    New-Item -ItemType Directory -Path (Join-Path $assetRoot 'exports\f2s\fixture') -Force | Out-Null
+    New-Item -ItemType Directory -Path (Join-Path $assetRoot 'exports\fromdemotospec\fixture') -Force | Out-Null
     New-Item -ItemType Directory -Path $project -Force | Out-Null
-    $assetFile = Join-Path $assetRoot 'exports\f2s\fixture\button.png'
+    $assetFile = Join-Path $assetRoot 'exports\fromdemotospec\fixture\button.png'
     [IO.File]::WriteAllBytes($assetFile, [byte[]](137,80,78,71,13,10,26,10,0,0,0,0))
     New-Item -ItemType Directory -Path (Join-Path $project 'presentation\previews') -Force | Out-Null
     [IO.File]::WriteAllBytes((Join-Path $project 'presentation\previews\first-screen.png'), [byte[]](137,80,78,71,13,10,26,10,0,0,0,0))
@@ -46,7 +46,7 @@ try {
         license = [ordered]@{ spdx = 'CC0-1.0'; receipt_path = 'licenses/fixture.json' }
         files = [ordered]@{ export_sha256 = $hash }
         public_release_allowed = $true
-        export_path = 'exports/f2s/fixture/button.png'
+        export_path = 'exports/fromdemotospec/fixture/button.png'
     }
     Write-Utf8Json -Path (Join-Path $assetRoot 'catalog\assets.json') -Value ([ordered]@{ schema_version = 1; assets = @($asset) })
 

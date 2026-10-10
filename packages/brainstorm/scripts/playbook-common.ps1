@@ -112,11 +112,11 @@ function Get-PlaybookCatalogValidation {
     $gameConcept = @($catalog.playbooks | Where-Object { [string]$_.playbook_id -ceq 'game-concept' })
     Assert-PlaybookContract -Condition ($gameConcept.Count -eq 1) -Message 'Catalog must contain exactly one game-concept playbook.'
     Assert-PlaybookContract -Condition ([string]$gameConcept[0].status -ceq 'ready') -Message 'game-concept must be ready after TB-006.'
-    $f2sAdapters = @($gameConcept[0].downstream_adapters | Where-Object { [string]$_.adapter_id -ceq 'f2s-handoff' })
-    Assert-PlaybookContract -Condition ($f2sAdapters.Count -eq 1) -Message 'Game Concept must declare exactly one f2s-handoff boundary.'
-    Assert-PlaybookContract -Condition (-not [bool]$f2sAdapters[0].required) -Message 'F2S must remain optional for Game Concept.'
-    Assert-PlaybookContract -Condition ([string]$f2sAdapters[0].status -ceq 'ready') -Message 'F2S adapter must be ready after TB-007A.'
-    Assert-PlaybookContract -Condition ([string]$f2sAdapters[0].implementation_task -ceq 'TB-007A') -Message 'F2S implementation task must remain TB-007A.'
+    $fromdemotospecAdapters = @($gameConcept[0].downstream_adapters | Where-Object { [string]$_.adapter_id -ceq 'fromdemotospec-handoff' })
+    Assert-PlaybookContract -Condition ($fromdemotospecAdapters.Count -eq 1) -Message 'Game Concept must declare exactly one fromdemotospec-handoff boundary.'
+    Assert-PlaybookContract -Condition (-not [bool]$fromdemotospecAdapters[0].required) -Message 'FromDemoToSpec must remain optional for Game Concept.'
+    Assert-PlaybookContract -Condition ([string]$fromdemotospecAdapters[0].status -ceq 'ready') -Message 'FromDemoToSpec adapter must be ready after TB-007A.'
+    Assert-PlaybookContract -Condition ([string]$fromdemotospecAdapters[0].implementation_task -ceq 'TB-007A') -Message 'FromDemoToSpec implementation task must remain TB-007A.'
 
     $readmePath = Resolve-PlaybookProjectPath -ProjectRoot $ProjectRoot -RelativePath ([string]$gameConcept[0].path)
     $presetPath = Resolve-PlaybookProjectPath -ProjectRoot $ProjectRoot -RelativePath ([string]$gameConcept[0].method_preset_path)
@@ -185,8 +185,8 @@ function Get-PlaybookCatalogValidation {
         playbook_ids = @($catalog.playbooks.playbook_id)
         referenced_method_ids = @($gameConcept[0].method_ids)
         opportunity_method_ids = @($opportunity[0].method_ids)
-        f2s_required = [bool]$f2sAdapters[0].required
-        f2s_adapter_status = [string]$f2sAdapters[0].status
+        fromdemotospec_required = [bool]$fromdemotospecAdapters[0].required
+        fromdemotospec_adapter_status = [string]$fromdemotospecAdapters[0].status
         semantic_review = 'required'
     }
 }

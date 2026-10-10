@@ -18,18 +18,18 @@ $briefPath = Join-Path $sessionDirectory 'game-concept-brief.md'
 $briefPresent = Test-Path -LiteralPath $briefPath -PathType Leaf
 $briefStatus = 'absent'
 $selectedPackageId = $null
-$f2sIntent = 'not-recorded'
+$fromdemotospecIntent = 'not-recorded'
 if ($briefPresent) {
     $brief = [IO.File]::ReadAllText($briefPath, $script:BrainstormUtf8NoBom)
-    $headers = @('Brief status', 'Selected package ID', 'Decision IDs', 'F2S intent', 'Missing')
+    $headers = @('Brief status', 'Selected package ID', 'Decision IDs', 'FromDemoToSpec intent', 'Missing')
     $rows = @(Get-MarkdownTableRows -Content $brief -Heading 'Decision and Handoff' -ExpectedHeaders $headers)
     Assert-SessionContract -Condition ($rows.Count -eq 1) -Message 'Close summary requires exactly one Brief Decision and Handoff row.'
     $briefStatus = [string]$rows[0].cells[0]
     $selectedPackageId = [string]$rows[0].cells[1]
-    $f2sIntent = [string]$rows[0].cells[3]
+    $fromdemotospecIntent = [string]$rows[0].cells[3]
 }
 
-$gapPath = Join-Path $sessionDirectory 'f2s-gap.json'
+$gapPath = Join-Path $sessionDirectory 'fromdemotospec-gap.json'
 $gapPresent = Test-Path -LiteralPath $gapPath -PathType Leaf
 $gapStatus = 'not-created'
 $externalFlowStarted = $null
@@ -38,7 +38,7 @@ if ($gapPresent) {
     $gapStatus = [string]$gap.status
     $externalFlowStarted = [bool]$gap.external_flow_started
 }
-$handoffPresent = Test-Path -LiteralPath (Join-Path $sessionDirectory 'f2s-handoff.md') -PathType Leaf
+$handoffPresent = Test-Path -LiteralPath (Join-Path $sessionDirectory 'fromdemotospec-handoff.md') -PathType Leaf
 
 $managedLifecycle = 'not-provided'
 $resultRevision = $null
@@ -86,8 +86,8 @@ if (-not [string]::IsNullOrWhiteSpace($TaskStatusPath)) {
         status = $briefStatus
         selected_package_id = $selectedPackageId
     }
-    f2s = [pscustomobject][ordered]@{
-        intent = $f2sIntent
+    fromdemotospec = [pscustomobject][ordered]@{
+        intent = $fromdemotospecIntent
         gap_status = $gapStatus
         handoff_present = $handoffPresent
         external_flow_started = $externalFlowStarted

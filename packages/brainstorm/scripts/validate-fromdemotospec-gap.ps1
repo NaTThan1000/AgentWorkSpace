@@ -9,7 +9,7 @@ param(
 $ErrorActionPreference = 'Stop'
 . (Join-Path (Split-Path -Parent $MyInvocation.MyCommand.Path) 'adapter-common.ps1')
 
-$result = Get-F2SGapValidation -SessionPath $SessionPath -SessionRoot $SessionRoot -GapPath $GapPath -BriefPath $BriefPath
+$result = Get-FromDemoToSpecGapValidation -SessionPath $SessionPath -SessionRoot $SessionRoot -GapPath $GapPath -BriefPath $BriefPath
 [pscustomobject][ordered]@{
     structure_passed = [bool]$result.structure_passed
     adapter_id = [string]$result.adapter_id

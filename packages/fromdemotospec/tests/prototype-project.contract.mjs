@@ -11,7 +11,7 @@ import { initialState, initProject, checkState } from '../scripts/prototype-proj
 const script = fileURLToPath(new URL('../scripts/prototype-project.mjs', import.meta.url));
 const hash = p => crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
 function fixture(lifecycle = 'single-file') {
-  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'f2s-state-contract-'));
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'fromdemotospec-state-contract-'));
   const file = (name, content = 'SYNTHETIC CONTRACT FIXTURE; NOT A GAME OR REAL USER ACCEPTANCE.\n') => {
     fs.writeFileSync(path.join(root, name), content);
     return { file: name, sha256: hash(path.join(root, name)) };
@@ -56,7 +56,7 @@ function scenario(name, fn, lifecycle) {
   test(name, () => { const f = fixture(lifecycle); try { fn(f); } finally { f.dispose(); } });
 }
 test('CLI init plans without writing, creates documents and refuses overwrite', () => {
-  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'f2s-init-contract-'));
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'fromdemotospec-init-contract-'));
   try {
     const project = path.join(root, 'project');
     const call = (...args) => spawnSync(process.execPath, [script, ...args], { encoding: 'utf8' });

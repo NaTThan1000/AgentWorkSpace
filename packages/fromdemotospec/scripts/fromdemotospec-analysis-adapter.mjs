@@ -1,4 +1,4 @@
-import {prepareRequestV2,consumeDeliveryV2,unavailableV2} from './gad-v2-binding.mjs';
+import {prepareRequestV2,consumeDeliveryV2,unavailableV2} from './game-analysis-decision-v2-binding.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
@@ -37,7 +37,7 @@ function validDateTime(value) {
   return typeof value === 'string' && !Number.isNaN(Date.parse(value));
 }
 
-function validateF2sRequest(value) {
+function validateFromDemoToSpecRequest(value) {
   const required = [
     'schema_version', 'request_id', 'created_at', 'command', 'project_ref', 'host_write_target_ref',
     'intent', 'goal', 'requester_role', 'time_budget_minutes', 'source_policy', 'evidence_refs'
@@ -46,8 +46,8 @@ function validateF2sRequest(value) {
   if (!value || typeof value !== 'object' || Array.isArray(value)) return errors;
   if (!validDateTime(value.created_at)) errors.push('$.created_at: valid date-time is required');
   if (!['request_analysis_decision', 'lead_designer_takeover'].includes(value.command)) errors.push('$.command: unsupported command');
-  if (!value.project_ref?.startsWith('f2s:')) errors.push('$.project_ref: must use f2s: namespace');
-  if (!value.host_write_target_ref?.startsWith('f2s:')) errors.push('$.host_write_target_ref: must use f2s: namespace');
+  if (!value.project_ref?.startsWith('fromdemotospec:')) errors.push('$.project_ref: must use fromdemotospec: namespace');
+  if (!value.host_write_target_ref?.startsWith('fromdemotospec:')) errors.push('$.host_write_target_ref: must use fromdemotospec: namespace');
   if (!['analyze', 'decide'].includes(value.intent)) errors.push('$.intent: must be analyze or decide');
   if (typeof value.goal !== 'string' || value.goal.trim().length < 8) errors.push('$.goal: must contain at least 8 characters');
   if (value.intent === 'decide' && (typeof value.decision_question !== 'string' || value.decision_question.trim().length < 8)) errors.push('$.decision_question: decide requires a real question');
@@ -60,13 +60,13 @@ function validateF2sRequest(value) {
 }
 
 function prepareAdapterIntake(value) {
-  const errors = validateF2sRequest(value);
-  if (errors.length > 0) throw new Error(`F2S analysis request rejected:\n${errors.join('\n')}`);
+  const errors = validateFromDemoToSpecRequest(value);
+  if (errors.length > 0) throw new Error(`FromDemoToSpec analysis request rejected:\n${errors.join('\n')}`);
   return {
     schema_version: 1,
     request_id: value.request_id,
     created_at: value.created_at,
-    adapter_id: 'f2s-adapter',
+    adapter_id: 'fromdemotospec-adapter',
     host_ref: value.project_ref,
     host_write_target_ref: value.host_write_target_ref,
     intent: value.intent,
@@ -81,15 +81,15 @@ function prepareAdapterIntake(value) {
 }
 
 function prepareUnavailableFallback(value) {
-  const errors = validateF2sRequest(value);
-  if (errors.length > 0) throw new Error(`F2S unavailable fallback rejected:\n${errors.join('\n')}`);
+  const errors = validateFromDemoToSpecRequest(value);
+  if (errors.length > 0) throw new Error(`FromDemoToSpec unavailable fallback rejected:\n${errors.join('\n')}`);
   return {
     schema_version: 1,
     request_id: value.request_id,
-    adapter_id: 'f2s-adapter',
+    adapter_id: 'fromdemotospec-adapter',
     host_ref: value.project_ref,
-    gad_status: 'unavailable',
-    host_action: contract.compatibility.gad_unavailable,
+    game_analysis_decision_status: 'unavailable',
+    host_action: contract.compatibility.game_analysis_decision_unavailable,
     automatic_expert_fallback: contract.compatibility.automatic_knowledge_expert_fallback,
     permissions: { host_write: false, accept_decision: false, run_experiment: false }
   };
@@ -103,25 +103,25 @@ function validateProducerDecision(value) {
   const errors = commonErrors(value, required);
   if (!value || typeof value !== 'object' || Array.isArray(value)) return errors;
   if (!/^HDR-[A-Za-z0-9][A-Za-z0-9._-]{2,63}$/.test(value.receipt_id ?? '')) errors.push('$.receipt_id: invalid HDR id');
-  if (!value.project_ref?.startsWith('f2s:')) errors.push('$.project_ref: must use f2s: namespace');
+  if (!value.project_ref?.startsWith('fromdemotospec:')) errors.push('$.project_ref: must use fromdemotospec: namespace');
   if (!value.decision_packet_ref?.startsWith('decision:')) errors.push('$.decision_packet_ref: must use decision: namespace');
   if (!['accepted', 'rejected', 'needs_evidence'].includes(value.action)) errors.push('$.action: unsupported producer action');
   if (!value.producer_ref?.startsWith('producer:')) errors.push('$.producer_ref: must use producer: namespace');
   if (value.producer_confirmed !== true) errors.push('$.producer_confirmed: explicit producer confirmation is required');
-  if (!value.host_record_ref?.startsWith('f2s:')) errors.push('$.host_record_ref: formal decision must already exist in F2S');
-  if (value.host_record_confirmed !== true) errors.push('$.host_record_confirmed: caller must confirm the formal F2S record exists');
+  if (!value.host_record_ref?.startsWith('fromdemotospec:')) errors.push('$.host_record_ref: formal decision must already exist in FromDemoToSpec');
+  if (value.host_record_confirmed !== true) errors.push('$.host_record_confirmed: caller must confirm the formal FromDemoToSpec record exists');
   if (!validDateTime(value.recorded_at)) errors.push('$.recorded_at: valid date-time is required');
   return errors;
 }
 
 function prepareHostDecisionReceipt(value) {
   const errors = validateProducerDecision(value);
-  if (errors.length > 0) throw new Error(`F2S producer decision rejected:\n${errors.join('\n')}`);
+  if (errors.length > 0) throw new Error(`FromDemoToSpec producer decision rejected:\n${errors.join('\n')}`);
   return {
     schema_version: 1,
     receipt_id: value.receipt_id,
     request_id: value.request_id,
-    adapter_id: 'f2s-adapter',
+    adapter_id: 'fromdemotospec-adapter',
     host_ref: value.project_ref,
     decision_packet_ref: value.decision_packet_ref,
     observed_action: value.action,
@@ -129,7 +129,7 @@ function prepareHostDecisionReceipt(value) {
     host_record_ref: value.host_record_ref,
     recorded_at: value.recorded_at,
     recorded_by: 'host',
-    gad_consumption: 'read_only_reference'
+    game_analysis_decision_consumption: 'read_only_reference'
   };
 }
 
@@ -185,4 +185,4 @@ async function runCli() {
 
 if (process.argv[1] && path.resolve(process.argv[1]) === scriptPath) await runCli();
 
-export { runCli, prepareAdapterIntake, prepareHostDecisionReceipt, prepareUnavailableFallback, validateF2sRequest, validateProducerDecision };
+export { runCli, prepareAdapterIntake, prepareHostDecisionReceipt, prepareUnavailableFallback, validateFromDemoToSpecRequest, validateProducerDecision };

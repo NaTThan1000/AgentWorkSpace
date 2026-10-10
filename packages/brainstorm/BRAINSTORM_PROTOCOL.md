@@ -39,14 +39,14 @@ method-generated Idea 保留 Method ID、对应 Method Run 输入输出与来源
 
 ## 4. 多源补强
 
-Agent 在既有授权内按具体缺口请求 Knowledge、联网研究或 GAD，不等待固定口令，也不强制每轮全部调用。
+Agent 在既有授权内按具体缺口请求 Knowledge、联网研究或 GameAnalysisDecision，不等待固定口令，也不强制每轮全部调用。
 
 - 开场事实会改变方向时可以先查；灵感刺激尽量保留介入前已有想法，说明借用了什么关系。
 - Knowledge 提供材料和领域原则；Web 补时效事实、外部案例与反例。资料不足或冲突时保留条件与未知。
 - 用户、ai-independent、method-generated、project-fact、knowledge、web 来源分层；模型预训练只提供线索，不冒充已查证来源。
-- 转载或 GAD／Knowledge 引用同一材料不算独立互证。外部资料不能覆盖用户原始创意来源。
+- 转载或 GameAnalysisDecision／Knowledge 引用同一材料不算独立互证。外部资料不能覆盖用户原始创意来源。
 - 通过 [Knowledge adapter](adapters/knowledge-context-brief/README.md) 装配已有上下文，并实际执行其 Query；只有准备包时报告 prepared，不能写 finding。
-- 复杂因果、关键风险、证据冲突或影响投入的取舍，使用 [GAD adapter](adapters/game-analysis-decision/README.md)。GAD 原报告是分析 SSOT，核验后直接消费；不另写同义制作人简报。
+- 复杂因果、关键风险、证据冲突或影响投入的取舍，使用 [GameAnalysisDecision adapter](adapters/game-analysis-decision/README.md)。GameAnalysisDecision 原报告是分析 SSOT，核验后直接消费；不另写同义制作人简报。
 - 普通分析由 Agent 消费，重要产品选择交用户；来源不足可能只阻断相关判断，独立发散可继续。
 - 工具不可用明确 unavailable；不可伪造检索、分析、专家或验证结果。查询重复且不改变方向时停止，说明剩余未知。
 

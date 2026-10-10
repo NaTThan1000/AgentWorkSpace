@@ -30,7 +30,7 @@ function New-GapField {
     $hasContent = @($Mapping.content).Count -gt 0
     return [pscustomobject][ordered]@{
         field_id = $FieldId
-        f2s_target = $Target
+        fromdemotospec_target = $Target
         coverage = if ($hasContent) { 'partial' } else { 'missing' }
         mapped_content = @($Mapping.content)
         source_ids = @($Mapping.sources)
@@ -39,15 +39,15 @@ function New-GapField {
 }
 
 $context = Get-SessionAdapterContext -SessionPath $SessionPath -SessionRoot $SessionRoot
-Assert-AdapterContract -Condition ([string]$context.state.status -cne 'closed') -Message 'A closed session cannot receive an F2S gap review.'
+Assert-AdapterContract -Condition ([string]$context.state.status -cne 'closed') -Message 'A closed session cannot receive an FromDemoToSpec gap review.'
 if ([string]::IsNullOrWhiteSpace($BriefPath)) { $BriefPath = Join-Path $context.session_directory 'game-concept-brief.md' }
-if ([string]::IsNullOrWhiteSpace($OutputPath)) { $OutputPath = Join-Path $context.session_directory 'f2s-gap.json' }
+if ([string]::IsNullOrWhiteSpace($OutputPath)) { $OutputPath = Join-Path $context.session_directory 'fromdemotospec-gap.json' }
 $BriefPath = Resolve-AdapterSessionPath -SessionDirectory $context.session_directory -ArtifactPath $BriefPath
 $OutputPath = Resolve-AdapterSessionPath -SessionDirectory $context.session_directory -ArtifactPath $OutputPath
-Assert-AdapterContract -Condition ([IO.Path]::GetFileName($BriefPath) -ceq 'game-concept-brief.md') -Message 'F2S adapter requires the stable game-concept-brief.md source.'
-Assert-AdapterContract -Condition (-not (Test-Path -LiteralPath $OutputPath)) -Message "F2S gap already exists: $OutputPath"
+Assert-AdapterContract -Condition ([IO.Path]::GetFileName($BriefPath) -ceq 'game-concept-brief.md') -Message 'FromDemoToSpec adapter requires the stable game-concept-brief.md source.'
+Assert-AdapterContract -Condition (-not (Test-Path -LiteralPath $OutputPath)) -Message "FromDemoToSpec gap already exists: $OutputPath"
 $briefValidation = Invoke-GameConceptBriefValidation -SessionPath $context.session_directory -SessionRoot $SessionRoot -BriefPath $BriefPath
-Assert-AdapterContract -Condition ([string]$briefValidation.f2s_intent -ceq 'requested') -Message 'Create the F2S gap only after the brief records f2s_intent=requested.'
+Assert-AdapterContract -Condition ([string]$briefValidation.fromdemotospec_intent -ceq 'requested') -Message 'Create the FromDemoToSpec gap only after the brief records fromdemotospec_intent=requested.'
 $brief = [IO.File]::ReadAllText($BriefPath, $script:BrainstormAdapterUtf8NoBom)
 
 $validationRows = @(Get-MarkdownTableRows -Content $brief -Heading 'Validation and Open Questions' -ExpectedHeaders @('Item ID', 'Type', 'Statement', 'Source IDs', 'Next action'))
@@ -88,33 +88,33 @@ $actions = @{
     'experience-goal' = 'Review the intended player experience against accepted concept sources.'
     'core-loop' = 'Review choices, costs, consequences and the next cycle across necessary systems.'
     'scope' = 'Review included content and exclusions without removing core feedback or depth.'
-    'validation-depth' = 'F2S: define observable scenarios and the depth needed to experience consequences.'
-    'presentation-feedback' = 'F2S: autonomously implement necessary understanding, feeling and coherence in the playable slice.'
-    'lifecycle-environment' = 'F2S: choose lifecycle; settle formal engine and environment before maintained implementation.'
-    'rules-state' = 'F2S: develop executable rules, state and edge cases in the connected design baseline.'
-    'risks-decisions' = 'F2S: preserve user decisions, separate assumptions and investigate actual risks.'
-    'budget-authority' = 'F2S: reuse authorized budget; propose a bounded first batch and escalate only material tradeoffs.'
+    'validation-depth' = 'FromDemoToSpec: define observable scenarios and the depth needed to experience consequences.'
+    'presentation-feedback' = 'FromDemoToSpec: autonomously implement necessary understanding, feeling and coherence in the playable slice.'
+    'lifecycle-environment' = 'FromDemoToSpec: choose lifecycle; settle formal engine and environment before maintained implementation.'
+    'rules-state' = 'FromDemoToSpec: develop executable rules, state and edge cases in the connected design baseline.'
+    'risks-decisions' = 'FromDemoToSpec: preserve user decisions, separate assumptions and investigate actual risks.'
+    'budget-authority' = 'FromDemoToSpec: reuse authorized budget; propose a bounded first batch and escalate only material tradeoffs.'
 }
 $fieldList = @(
-    foreach ($definition in @(Get-F2SV2Fields)) {
+    foreach ($definition in @(Get-FromDemoToSpecV2Fields)) {
         $id = [string]$definition.field_id
-        $field = New-GapField -FieldId $id -Target ([string]$definition.f2s_target) -Mapping $maps[$id] -Question $actions[$id]
+        $field = New-GapField -FieldId $id -Target ([string]$definition.fromdemotospec_target) -Mapping $maps[$id] -Question $actions[$id]
         $field | Add-Member -NotePropertyName blocking -NotePropertyValue ([bool]$definition.required_at_handoff)
         $field | Add-Member -NotePropertyName next_action -NotePropertyValue $actions[$id]
         $field
     }
 )
 
-$f2s = Get-AdapterDefinition -AdapterId 'f2s-handoff'
+$fromdemotospec = Get-AdapterDefinition -AdapterId 'fromdemotospec-handoff'
 $gap = [pscustomobject][ordered]@{
     schema_version = 2
-    adapter_id = 'f2s-handoff'
+    adapter_id = 'fromdemotospec-handoff'
     session_id = [string]$context.state.session_id
     source_brief = 'game-concept-brief.md'
     external_contract = [pscustomobject][ordered]@{
-        path = [string]$f2s.external_contract.path
-        version = [string]$f2s.external_contract.version
-        last_verified_against = [string]$f2s.external_contract.last_verified_against
+        path = [string]$fromdemotospec.external_contract.path
+        version = [string]$fromdemotospec.external_contract.version
+        last_verified_against = [string]$fromdemotospec.external_contract.last_verified_against
     }
     status = 'gap-review'
     structural_review = 'passed'
@@ -133,11 +133,11 @@ if ([string]::IsNullOrWhiteSpace($SessionRoot)) {
 try {
     $index = Write-SessionIndex -SessionRoot ([IO.Path]::GetFullPath($SessionRoot))
 } catch {
-    throw "F2S gap review was preserved at '$OutputPath', but the session index rebuild failed. Do not recreate or overwrite it; repair the index with build-session-index.ps1. $($_.Exception.Message)"
+    throw "FromDemoToSpec gap review was preserved at '$OutputPath', but the session index rebuild failed. Do not recreate or overwrite it; repair the index with build-session-index.ps1. $($_.Exception.Message)"
 }
 [pscustomobject][ordered]@{
     created = $true
-    adapter_id = 'f2s-handoff'
+    adapter_id = 'fromdemotospec-handoff'
     session_id = [string]$context.state.session_id
     gap_path = $OutputPath
     gap_status = 'gap-review'

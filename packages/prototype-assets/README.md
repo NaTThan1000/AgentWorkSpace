@@ -2,7 +2,7 @@
 
 来源、许可和哈希可追溯的精选素材与受控复制工具。本版包含 119 项现有许可收据明确允许公开分发的资产，基础目录与 Godot 增量分别保留；不含下载缓存、完整原包、限制素材和私人项目。
 
-不依赖 meta、GAD、GamePresentation 或 FromDemoToSpec。Node.js 22+，从包目录查看、核验、按 ID 导出：
+不依赖 meta、GameAnalysisDecision、GamePresentation 或 FromDemoToSpec。Node.js 22+，从包目录查看、核验、按 ID 导出：
 
 ```text
 node scripts/assets.mjs list

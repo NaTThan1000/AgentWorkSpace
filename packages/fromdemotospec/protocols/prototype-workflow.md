@@ -53,7 +53,7 @@ Agent 根据代码后续用途与正式目标推荐路径；已有约束足够�
 
 [设计模块](../design-modules/README.md)按问题加载。四层模型用于复杂依赖、责任不清或规则冲突时检查遗漏，不是强制文档树。Research 的 Weapon Farm 样本只作结构研究参考；未核实来源与许可前不复制正文或带入发布包。
 
-Knowledge 提供资料依据，GAD 提供分析和 proposed 决策包；项目授权与预算内可自主按需调用。记录来源、适用条件、冲突和不确定性，不能把检索命中当真理。重要产品决定由用户正式采用；GAD 不可用时继续可独立工作，不能自动补造专家结论。调用不扩大为 Knowledge 入库、Brainstorm 回写或公开发布；反馈导出沿[反馈合同](../04-agent-learning-feedback.md)。
+Knowledge 提供资料依据，GameAnalysisDecision 提供分析和 proposed 决策包；项目授权与预算内可自主按需调用。记录来源、适用条件、冲突和不确定性，不能把检索命中当真理。重要产品决定由用户正式采用；GameAnalysisDecision 不可用时继续可独立工作，不能自动补造专家结论。调用不扩大为 Knowledge 入库、Brainstorm 回写或公开发布；反馈导出沿[反馈合同](../04-agent-learning-feedback.md)。
 
 ## 关键判断的支持信号
 定义验证范围/平台、集中试玩原因不清、同类策略漏洞重复、转正式开发投入取舍时，按[共同信号](https://github.com/ZhongTyler/AgentWorkSpace/blob/main/meta/workspace/collaboration/support-and-learning.md)识别事实、知识和专业分析缺口。项目事实、Knowledge/Web案例与模型推理按适用条件互查；不把多个同源观点当独立证据。

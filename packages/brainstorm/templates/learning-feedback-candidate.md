@@ -17,7 +17,7 @@
 - Decision reference: `{{DECISION_ID}}`
 - Decision meaning remains owned by the canonical session record.
 
-## Imported F2S Feedback
+## Imported FromDemoToSpec Feedback
 
 | Feedback SHA256 | Prototype ID | Version | Decision ID | Decision impact | Import status |
 |---|---|---|---|---|---|
@@ -37,4 +37,4 @@
 ## Boundary
 
 - This artifact is an internal learning candidate, not a Knowledge record.
-- Creating or importing feedback never changes the Brainstorm decision, F2S prototype, or Knowledge repository.
+- Creating or importing feedback never changes the Brainstorm decision, FromDemoToSpec prototype, or Knowledge repository.

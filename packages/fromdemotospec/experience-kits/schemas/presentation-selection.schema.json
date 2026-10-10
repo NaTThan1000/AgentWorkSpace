@@ -1,10 +1,10 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "F2S presentation selection v2 with explicit v1 compatibility",
+  "title": "FromDemoToSpec presentation selection v2 with explicit v1 compatibility",
   "oneOf": [
     {
       "$schema": "https://json-schema.org/draft/2020-12/schema",
-      "title": "F2S presentation selection",
+      "title": "FromDemoToSpec presentation selection",
       "type": "object",
       "required": [
         "schema_version",

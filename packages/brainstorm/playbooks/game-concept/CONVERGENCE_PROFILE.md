@@ -30,6 +30,6 @@
 
 ## Stop and return
 
-抽象口号、片段需要虚构、违反硬约束、循环相互抵消、证据不足时，停止宣称收敛。按问题具体化、变形、查证、GAD 分析或等待；不为填表扩写。
+抽象口号、片段需要虚构、违反硬约束、循环相互抵消、证据不足时，停止宣称收敛。按问题具体化、变形、查证、GameAnalysisDecision 分析或等待；不为填表扩写。
 
 `accepted` 不等于 FromDemoToSpec ready。FromDemoToSpec intent 仅 `not-requested` / `requested`，按已有授权决定；gap/渲染/接收检查不能报告为启动 FromDemoToSpec。

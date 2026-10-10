@@ -3,7 +3,7 @@ param()
 $ErrorActionPreference = 'Stop'
 $Root = Split-Path -Parent $PSScriptRoot
 $Script = Join-Path $Root 'scripts\new-presentation-calibration.ps1'
-$Temp = [IO.Path]::GetFullPath((Join-Path ([IO.Path]::GetTempPath()) ('f2s-calibration-' + [Guid]::NewGuid().ToString('N'))))
+$Temp = [IO.Path]::GetFullPath((Join-Path ([IO.Path]::GetTempPath()) ('fromdemotospec-calibration-' + [Guid]::NewGuid().ToString('N'))))
 try {
     New-Item -ItemType Directory -Path $Temp -Force | Out-Null
     $output = @(& $Script -ProjectPath $Temp -PrototypeId 'fixture-demo' 2>&1)

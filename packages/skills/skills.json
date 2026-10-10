@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "version": "1.3.0",
+  "version": "1.3.1",
   "skills": [
     {
       "id": "game-presentation",
@@ -12,7 +12,7 @@
     },
     {
       "id": "game-decision-support",
-      "description": "按关键判断的事实与分析缺口路由 Knowledge Query、GAD 或二者并完成宿主消费",
+      "description": "按关键判断的事实与分析缺口路由 Knowledge Query、GameAnalysisDecision 或二者并完成宿主消费",
       "optional_modules": [
         "game-analysis-decision",
         "knowledge"

@@ -19,7 +19,7 @@ Assert-SessionContract -Condition ($artifact.Count -eq 1) -Message "Unknown Arti
 Assert-SessionContract -Condition ([string]$artifact[0].cells[1] -ceq 'learning-feedback') -Message "Artifact is not a learning-feedback candidate: $ArtifactId"
 $artifactPath = Resolve-SafeRelativePath -BasePath $sessionDirectory -RelativePath ([string]$artifact[0].cells[2])
 $content = [IO.File]::ReadAllText($artifactPath, $script:BrainstormUtf8NoBom)
-foreach ($required in @('> Contract: `brainstorm-learning-feedback-v1`', '> Candidate status:', '> Knowledge write: `false`', '## Project Decision', '## Imported F2S Feedback', '## Candidate Assessment', '## Human Review Gate', '## Boundary')) {
+foreach ($required in @('> Contract: `brainstorm-learning-feedback-v1`', '> Candidate status:', '> Knowledge write: `false`', '## Project Decision', '## Imported FromDemoToSpec Feedback', '## Candidate Assessment', '## Human Review Gate', '## Boundary')) {
     Assert-SessionContract -Condition ($content.Contains($required)) -Message "Learning candidate is missing: $required"
 }
 $decisionMatch = [regex]::Match($content, '(?m)^> Decision ID: `(DEC-[0-9]{3,})`\s*$')

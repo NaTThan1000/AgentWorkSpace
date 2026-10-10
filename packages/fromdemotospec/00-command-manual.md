@@ -9,12 +9,12 @@
 | 开始 Spec 提取／整理设计 | 对照有效底稿、实际实现、决定和证据消除冲突，补足接手信息 | 不默认再生成一套代码抄录文档；详见[交付协议](protocols/handoff-and-production.md) |
 | 准备交付 | 可提前整理材料；达到90+后执行路径对应接收 | 单文件交清基线；多文件包含真实小改动回归，不能只写交付说明 |
 | 接手开发／正式开发 | 从交付入口实际恢复，按[功能切片](templates/production-slice.md)推进下一真实需求 | 保留已有效工程与表现，按需局部重构 |
-| 请求分析与决策 | 项目授权预算内按需自主装配[GAD请求](adapters/game-analysis-decision/README.md) | 调用不等于采用，proposed保持proposed |
-| 制作人拍板 | 将用户实际意见记录到宿主，按GAD合同提供可读审阅材料与只读回执 | 不能由Agent自填确认替代；必要时集中询问具体取舍 |
+| 请求分析与决策 | 项目授权预算内按需自主装配[GameAnalysisDecision请求](adapters/game-analysis-decision/README.md) | 调用不等于采用，proposed保持proposed |
+| 制作人拍板 | 将用户实际意见记录到宿主，按GameAnalysisDecision合同提供可读审阅材料与只读回执 | 不能由Agent自填确认替代；必要时集中询问具体取舍 |
 | 记录验证反馈 | 依据真实上游决定与证据整理[本地候选](04-agent-learning-feedback.md) | 不自动入库 |
 | 复盘本次FromDemoToSpec／学习进化 | 区分项目事实、FromDemoToSpec方法增量和制作人协作信号；按[反馈与学习合同](04-agent-learning-feedback.md)处理 | 新策略限定试用；不自动改Profile、Brainstorm或Knowledge |
 | 导入 Brainstorm 反馈 | 对应授权成立后交由Brainstorm导入并生成收据 | 不静默跨仓写入 |
-| 主策划接管 | 兼容映射到分析请求，按GAD adapter提示退役策略 | 主策划指Agent，不是制作人 |
+| 主策划接管 | 兼容映射到分析请求，按GameAnalysisDecision adapter提示退役策略 | 主策划指Agent，不是制作人 |
 
 组合动作按依赖推进，不要求用户逐条发命令。已通过且仍有效的检查复用。重点产品取舍、必要质量、预算或正式环境出现实质冲突时，先准备具体构建／证据、推荐与代价，再提交用户判断；独立工作继续。
 

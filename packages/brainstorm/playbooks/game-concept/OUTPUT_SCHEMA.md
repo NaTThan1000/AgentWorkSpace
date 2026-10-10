@@ -32,4 +32,4 @@ Brief status 为 draft/accepted/return-to-brainstorm；accepted 必须已有 use
 
 ## Delivery
 
-Brief 可独立交付，请求 FromDemoToSpec 时复用现行 gap/handoff v2。验证器返回 brief_schema=3、selected_package_id、brief_status、f2s_intent、semantic_review=required；工程 PASS 不是用户接受或玩法效果。
+Brief 可独立交付，请求 FromDemoToSpec 时复用现行 gap/handoff v2。验证器返回 brief_schema=3、selected_package_id、brief_status、fromdemotospec_intent、semantic_review=required；工程 PASS 不是用户接受或玩法效果。

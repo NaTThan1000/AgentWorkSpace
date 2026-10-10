@@ -86,8 +86,7 @@ class Runtime(unittest.TestCase):
             state = json.loads(run(['node', fromdemotospec / 'scripts/prototype-project.mjs', 'check-state', '--project', project]))
             self.assertFalse(state['actual_play_quality_verified'])
             canonical = json.loads(run(['node', fromdemotospec / 'scripts/fromdemotospec-analysis-adapter.mjs', 'status']))
-            legacy = json.loads(run(['node', fromdemotospec / 'scripts/f2s-analysis-adapter.mjs', 'status']))
-            self.assertEqual(canonical, legacy, 'Old entrypoint must delegate to the canonical implementation')
+            self.assertEqual('fromdemotospec-adapter', canonical['adapter_id'])
             # Scope configuration is a real task-time step, retaining the managed directory.
             ps(knowledge / 'system/maintenance/initialize-knowledge.ps1', '-PackagePath', knowledge, '-DisplayName', 'Synthetic Knowledge', '-DirectoryName', 'knowledge', '-Purpose', 'Isolated runtime verification', '-Audience', 'Test fixture', '-Topics', 'Synthetic mechanics', '-SourceQuality', 'Traceable originals', '-UseIma', 'no', '-Apply')
             clipping = knowledge / 'Clippings/20261009-synthetic.md'

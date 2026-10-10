@@ -1,10 +1,10 @@
-# F2S Production Handoff · {{SESSION_ID}}
+# FromDemoToSpec Production Handoff · {{SESSION_ID}}
 
-> Adapter ID: `f2s-handoff`
+> Adapter ID: `fromdemotospec-handoff`
 > Session ID: `{{SESSION_ID}}`
 > Handoff status: `ready`
 > Source brief: `game-concept-brief.md`
-> Source gap: `f2s-gap.json`
+> Source gap: `fromdemotospec-gap.json`
 > External contract: `{{CONTRACT_PATH}}`
 > Contract version: `{{CONTRACT_VERSION}}`
 > Last verified against: `{{CONTRACT_REVISION}}`
@@ -34,4 +34,4 @@ Read the complete [decision ledger]({{DECISION_LEDGER}}), not only the brief sel
 |---|---|---|
 | {{REVIEWER}} | {{DECISION_IDS}} | {{SOURCE_IDS}} |
 
-Mapping review may be performed by an Agent; product acceptance and prototype intent remain user decisions. Readiness means usable input for F2S, not a completed prototype, user gameplay recognition, or permission to start an external flow. Nonblocking assumptions and F2S-owned work retain their coverage and next action. F2S prepares necessary detail and independently validates its V1, 90+ and lifecycle-specific delivery.
+Mapping review may be performed by an Agent; product acceptance and prototype intent remain user decisions. Readiness means usable input for FromDemoToSpec, not a completed prototype, user gameplay recognition, or permission to start an external flow. Nonblocking assumptions and FromDemoToSpec-owned work retain their coverage and next action. FromDemoToSpec prepares necessary detail and independently validates its V1, 90+ and lifecycle-specific delivery.

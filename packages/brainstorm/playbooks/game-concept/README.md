@@ -18,7 +18,7 @@
 
 ## Evidence and authority
 
-Knowledge、Web 用于事实或参考缺口，GAD 用于超出创意比较的实质分析与决定。在需要时介入，保留参考前的输入及来源，避免材料吞掉用户想法。查询准备、实际结果与未知分开。
+Knowledge、Web 用于事实或参考缺口，GameAnalysisDecision 用于超出创意比较的实质分析与决定。在需要时介入，保留参考前的输入及来源，避免材料吞掉用户想法。查询准备、实际结果与未知分开。
 
 组合不自动改写 Idea 的 Disposition / Adoption。暂存不是正式淘汰，Playbook 不获得额外授权。纯对话不能伪造持久 ID。持久运行先验证 session，再调用组合生成/校验、简报生成/校验；脚本不裁定好玩或吸引力。
 

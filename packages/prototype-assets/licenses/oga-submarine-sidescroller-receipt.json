@@ -8,5 +8,5 @@
   "evidence_paths": [
     "licenses/oga-submarine-sidescroller-page-evidence.json"
   ],
-  "verification": "The artist page explicitly declares CC0 for the submarine artwork. The downloaded archive passed path-safety checks; only the selected PNG derivatives enter the public F2S export."
+  "verification": "The artist page explicitly declares CC0 for the submarine artwork. The downloaded archive passed path-safety checks; only the selected PNG derivatives enter the public FromDemoToSpec export."
 }

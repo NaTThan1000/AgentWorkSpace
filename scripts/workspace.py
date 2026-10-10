@@ -17,7 +17,6 @@ import uuid
 
 SCHEMA = 1
 STATE = '.agent-workspace/state.json'
-PACKAGE_ALIAS = {'f2s': 'fromdemotospec'}
 
 
 class ContractError(Exception):
@@ -87,7 +86,7 @@ def catalog(bundle: Path):
         raise ContractError('Unsupported catalog schema')
     version(result.get('version'))
     names = set(result.get('components', {}))
-    allowed = {'meta', 'brainstorm', 'f2s', 'fromdemotospec', 'knowledge', 'skills', 'game-analysis-decision', 'game-presentation', 'prototype-assets'}
+    allowed = {'meta', 'brainstorm', 'fromdemotospec', 'knowledge', 'skills', 'game-analysis-decision', 'game-presentation', 'prototype-assets'}
     if not names or not names <= allowed or 'meta' not in names:
         raise ContractError('Catalog must contain meta and supported packages')
     if 'compatibility' in result:
@@ -142,38 +141,7 @@ def state(target: Path):
     return result
 
 
-def tree(root: Path):
-    """Inventory the whole relocated directory, including user files; reject links."""
-    result = {}
-    for directory, folders, files in os.walk(root, followlinks=False):
-        for name in folders + files:
-            safe(root, (Path(directory) / name).relative_to(root).as_posix())
-        for name in files:
-            path = Path(directory) / name
-            result[path.relative_to(root).as_posix()] = digest(path.read_bytes())
-    return result
-
-
 def package_name(name, incoming):
-    canonical = PACKAGE_ALIAS.get(name, name)
-    return canonical if canonical in incoming['components'] else name
-
-
-def relocation(target, old):
-    source, destination = 'modules/f2s', 'modules/fromdemotospec'
-    origin, result = safe(target, source), safe(target, destination)
-    if result.exists():
-        raise ContractError('Both package directories exist; preserve them and resolve the name conflict')
-    if not origin.is_dir():
-        raise ContractError('Legacy package directory is missing; restore or explicitly resolve it before upgrading')
-    return {'source': source, 'destination': destination, 'files': tree(origin)}
-
-
-def moved_name(name, moves, reverse=False):
-    for move in moves:
-        start, end = (move['destination'], move['source']) if reverse else (move['source'], move['destination'])
-        if name.startswith(start + '/'):
-            return end + name[len(start):]
     return name
 
 
@@ -190,8 +158,6 @@ def plan(bundle: Path, target: Path, operation: str, packages: list[str], mode=N
         raise ContractError('The distribution and installation destinations must be separate')
     if mode == 'compatible' and bundle.is_relative_to(target / '.agent-workspace'):
         raise ContractError('Distribution cannot be inside installation metadata')
-    packages = [package_name(name, incoming) for name in packages]
-    moves = []
     if operation != 'init' and old is None:
         raise ContractError('Initialize the root workspace first')
     for name in packages:
@@ -207,17 +173,12 @@ def plan(bundle: Path, target: Path, operation: str, packages: list[str], mode=N
         guide = safe(bundle, 'upgrades/' + incoming['version'] + '.md')
         if not guide.is_file():
             raise ContractError('Missing version upgrade guide')
-    if old and 'f2s' in old['components'] and 'fromdemotospec' in incoming['components']:
-        moves = [relocation(target, old)]
-        old = json.loads(json.dumps(old))
-        old['components']['fromdemotospec'] = old['components'].pop('f2s')
-        old['files'] = {moved_name(name, moves): {**item, 'component': PACKAGE_ALIAS.get(item['component'], item['component'])} for name, item in old['files'].items()}
     audit_result = None
     if mode == 'compatible':
         from compatibility import audit
         audit_result = audit(incoming, target, packages, needs, profile)
         if audit_result['required'] or not audit_result['selected']:
-            return {**audit_result, 'operation': operation, 'components': audit_result['selected'], 'changes': [], 'conflicts': [], 'moves': [], 'applied': False}, {}
+            return {**audit_result, 'operation': operation, 'components': audit_result['selected'], 'changes': [], 'conflicts': [], 'applied': False}, {}
     selected = set((old or {}).get('components', {})) | ({'meta'} if mode == 'full' else set()) | set(packages)
     next_state = {'schema_version': SCHEMA, 'version': incoming['version'], 'catalog_sha256': digest(encoded(incoming)), 'components': {}, 'files': {}}
     if mode == 'compatible':
@@ -241,7 +202,7 @@ def plan(bundle: Path, target: Path, operation: str, packages: list[str], mode=N
     changes, conflicts = [], []
     old_files = (old or {}).get('files', {})
     for name in sorted(set(old_files) | set(desired)):
-        before = read(safe(target, moved_name(name, moves, reverse=True)))
+        before = read(safe(target, name))
         before_sha, after_sha = digest(before), digest(desired.get(name))
         known = old_files.get(name)
         # Unchanged upstream files retain user edits, deletions and their original baseline.
@@ -258,7 +219,7 @@ def plan(bundle: Path, target: Path, operation: str, packages: list[str], mode=N
     if before_state != new_state:
         desired[STATE] = new_state
         changes.append({'path': STATE, 'before_sha256': digest(before_state), 'after_sha256': digest(new_state)})
-    report = {'operation': operation, 'version': incoming['version'], 'components': sorted(selected), 'changes': changes, 'conflicts': conflicts, 'moves': moves, 'applied': False}
+    report = {'operation': operation, 'version': incoming['version'], 'components': sorted(selected), 'changes': changes, 'conflicts': conflicts, 'applied': False}
     if audit_result is not None:
         report.update(mode=mode, audit=audit_result, ready=audit_result['ready'])
     return report, desired
@@ -304,29 +265,13 @@ def rollback(target: Path, transaction: str, apply=False):
     if record.get('schema_version') != SCHEMA:
         raise ContractError('Unsupported transaction schema')
     conflicts, actions = [], []
-    moves = record.get('moves', [])
-    for move in moves:
-        if (move['source'], move['destination']) != ('modules/f2s', 'modules/fromdemotospec'):
-            raise ContractError('Unknown recovery relocation')
-        source, destination = safe(target, move['source']), safe(target, move['destination'])
-        if source.exists() == destination.exists():
-            conflicts.append(move['destination'])
-            continue
-        actual = tree(destination if destination.exists() else source)
-        changed = {entry['path'][len(move['destination']) + 1:] for entry in record['changes'] if entry['path'].startswith(move['destination'] + '/')}
-        for name in set(actual) | set(move['files']):
-            if name not in changed and actual.get(name) != move['files'].get(name):
-                conflicts.append(move['destination'] + '/' + name)
-    def recovery_name(name):
-        for move in moves:
-            if safe(target, move['source']).exists() and not safe(target, move['destination']).exists():
-                return moved_name(name, [move], reverse=True)
-        return name
+    if record.get('moves'):
+        raise ContractError('Old package-name move transactions require their original release tool')
     for entry in reversed(record['changes']):
         name = relative(entry['path']).casefold()
         if name == '.git' or name.startswith('.git/') or (name == '.agent-workspace' or name.startswith('.agent-workspace/')) and entry['path'] != STATE:
             raise ContractError('Reserved recovery path')
-        current = digest(read(safe(target, recovery_name(entry['path']))))
+        current = digest(read(safe(target, entry['path'])))
         if current == entry['before_sha256']:
             continue
         if current != entry['after_sha256']:
@@ -335,14 +280,10 @@ def rollback(target: Path, transaction: str, apply=False):
         original = read(safe(folder, 'before/' + digest(entry['path'].encode('utf-8')))) if entry['before_sha256'] is not None else None
         if digest(original) != entry['before_sha256']:
             raise ContractError('Recovery backup checksum differs')
-        actions.append((recovery_name(entry['path']), original))
+        actions.append((entry['path'], original))
     if apply and not conflicts:
         for name, content in actions:
             write(safe(target, name), content)
-        for move in reversed(moves):
-            source, destination = safe(target, move['source']), safe(target, move['destination'])
-            if destination.exists():
-                destination.rename(source)
         record['status'] = 'rolled_back'
         write(safe(folder, 'transaction.json'), encoded(record))
     return {'transaction': transaction, 'changes': [name for name, _ in actions], 'conflicts': conflicts, 'applied': apply and not conflicts}
@@ -365,21 +306,15 @@ def apply_changes(target, report, desired, fail_after=None):
     transaction = uuid.uuid4().hex
     folder = safe(target, '.agent-workspace/transactions/' + transaction)
     folder.mkdir(parents=True)
-    moves = report.get('moves', [])
     for entry in report['changes']:
-        original = read(safe(target, moved_name(entry['path'], moves, reverse=True)))
+        original = read(safe(target, entry['path']))
         if digest(original) != entry['before_sha256']:
             raise ContractError('Workspace changed while preparing transaction')
         if original is not None:
             write(safe(folder, 'before/' + digest(entry['path'].encode('utf-8'))), original)
-    record = {'schema_version': SCHEMA, 'status': 'prepared', 'changes': report['changes'], 'moves': moves}
+    record = {'schema_version': SCHEMA, 'status': 'prepared', 'changes': report['changes']}
     write(safe(folder, 'transaction.json'), encoded(record))
     try:
-        for move in moves:
-            source, destination = safe(target, move['source']), safe(target, move['destination'])
-            if tree(source) != move['files'] or destination.exists():
-                raise ContractError('Package changed while preparing relocation')
-            source.rename(destination)
         for index, entry in enumerate(report['changes'], 1):
             path = safe(target, entry['path'])
             if digest(read(path)) != entry['before_sha256']:
@@ -402,15 +337,14 @@ def adoption_plan(bundle, target, packages):
     incoming, installed = catalog(bundle), state(target)
     if installed and installed.get('mode') == 'compatible':
         raise ContractError('Legacy adoption uses the original full-mode release chain, not compatible registration')
-    packages = [package_name(name, incoming) for name in packages]
     if installed is None or installed['version'] != incoming['version'] or installed['catalog_sha256'] != digest(encoded(incoming)):
         raise ContractError('Initialize the current root before adopting legacy packages')
     if not packages:
         raise ContractError('Specify the legacy package to adopt')
     for name in packages:
-        if name not in ('brainstorm', 'fromdemotospec', 'f2s', 'knowledge') or name in installed['components']:
+        if name not in ('brainstorm', 'fromdemotospec', 'knowledge') or name in installed['components']:
             raise ContractError('Only an unregistered supported legacy package can be adopted')
-        legacy_name = 'f2s' if name == 'fromdemotospec' else name
+        legacy_name = name
         legacy = load(safe(bundle, 'upgrades/legacy/' + legacy_name + '.json'))
         package_root = safe(target, 'modules/' + name)
         marker = load(safe(package_root, '_release.json'))
