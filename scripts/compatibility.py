@@ -89,7 +89,7 @@ def audit(incoming, target, packages, needs=(), profile=None):
     if not selected <= set(incoming['components']):
         raise ContractError('Unknown selected component')
     if not set(needs) <= set(definition['needs']):
-        raise ContractError('Unknown need; choose collaboration, brainstorm, prototype or knowledge')
+        raise ContractError('Unknown need; choose: ' + ', '.join(sorted(definition['needs'])))
     if profile is None and installed and installed.get('mode') == 'compatible':
         profile = installed.get('profile')
     providers = reviewed_providers(target, definition, profile)

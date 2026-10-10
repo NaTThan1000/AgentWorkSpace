@@ -32,8 +32,10 @@ class CompatibleWorkspace(unittest.TestCase):
 
     def seal(self, folder):
         catalog = json.loads((folder / 'catalog.json').read_text(encoding='utf-8'))
-        catalog['compatibility'] = self.contract
-        (folder / 'compatibility.json').write_bytes(w.encoded(self.contract))
+        definition = json.loads(json.dumps(self.contract))
+        definition['components'] = {name: item for name, item in definition['components'].items() if name in catalog['components']}
+        catalog['compatibility'] = definition
+        (folder / 'compatibility.json').write_bytes(w.encoded(definition))
         (folder / 'catalog.json').write_bytes(w.encoded(catalog))
 
     def install(self, packages, apply=True, **kwargs):

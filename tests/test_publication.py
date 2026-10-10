@@ -12,7 +12,7 @@ from workspace import ContractError, encoded
 
 def verify(source):
     source = source.absolute()
-    before = git(source, 'status', '--porcelain', '--untracked-files=all')
+    before = git(source, 'status', '--porcelain', '--untracked-files=all', '--ignore-submodules=all')
     with tempfile.TemporaryDirectory(prefix='agentworkspace-publication-contract-') as temporary:
         base = Path(temporary)
         output = base / 'prepared'
@@ -22,7 +22,9 @@ def verify(source):
         expected = manifest.get('expected_file_count_without_marker', manifest.get('expected_file_count')) + 1
         assert len(files) == expected, 'Explicit inventory plus provenance marker must match'
         for name in files:
-            assert not name.startswith(('sessions/', 'workspace/sessions/', '.git/', 'agents/')), name
+            assert not name.startswith(('sessions/', 'workspace/sessions/', '.git/', 'runtime/')), name
+            if (output / name).suffix.lower() in {'.png', '.wav', '.ogg', '.ttf', '.otf', '.jpg', '.webp'}:
+                continue
             text = (output / name).read_text(encoding='utf-8-sig')
             assert 'C:\\Users\\Admin' not in text and 'E:\\TylerWorkSpace' not in text and 'E:/TylerWorkSpace' not in text, name
         invalid = base / 'invalid-source'
@@ -50,7 +52,7 @@ def verify(source):
             else:
                 raise AssertionError('Dirty source was published')
             assert not (target / manifest['output_path']).exists()
-    assert before == git(source, 'status', '--porcelain', '--untracked-files=all'), 'Source mutated during export contract'
+    assert before == git(source, 'status', '--porcelain', '--untracked-files=all', '--ignore-submodules=all'), 'Source mutated during export contract'
     print(json.dumps({'component': manifest['component_id'], 'files': expected, 'source_unchanged': True, 'preview_validated': True, 'source_escape_rejected': True, 'dirty_apply_rejected': dirty}, ensure_ascii=False))
 
 

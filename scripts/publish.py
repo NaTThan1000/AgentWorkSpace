@@ -16,7 +16,8 @@ from workspace import ContractError, digest, encoded, relative, safe
 
 
 def git(root, *args):
-    run = subprocess.run(['git', '-c', 'safe.directory=' + root.as_posix(), '-C', str(root), *args], capture_output=True, text=True)
+    repository = next((p for p in (root, *root.parents) if (p / '.git').exists()), root)
+    run = subprocess.run(['git', '-c', 'safe.directory=' + repository.as_posix(), '-C', str(root), *args], capture_output=True, text=True)
     if run.returncode:
         raise ContractError('Cannot read source Git state')
     return run.stdout.strip()
@@ -38,7 +39,7 @@ def stage(source, destination):
     manifest = json.loads(manifest_path.read_text(encoding='utf-8-sig'))
     if manifest.get('release_schema') != 1:
         raise ContractError('Unknown source manifest schema')
-    expected_output = {'meta': 'meta', 'brainstorm': 'packages/brainstorm', 'fromdemotospec': 'packages/fromdemotospec', 'knowledge': 'packages/knowledge'}
+    expected_output = {'meta': 'meta', 'brainstorm': 'packages/brainstorm', 'fromdemotospec': 'packages/fromdemotospec', 'knowledge': 'packages/knowledge', 'skills': 'packages/skills', 'game-analysis-decision': 'packages/game-analysis-decision', 'game-presentation': 'packages/game-presentation', 'prototype-assets': 'packages/prototype-assets'}
     component = manifest.get('component_id')
     if component not in expected_output or manifest.get('output_path') != expected_output[component]:
         raise ContractError('Unknown or mismatched publication target')
@@ -53,12 +54,16 @@ def stage(source, destination):
             raise ContractError('Missing or duplicate curated input')
         seen.add(folded)
         target.parent.mkdir(parents=True, exist_ok=True)
-        # All current content is textual; normalize committed and working bytes consistently.
-        content = src.read_bytes().decode('utf-8-sig').replace('\r\n', '\n').replace('\r', '\n')
-        target.write_text(content, encoding='utf-8', newline='\n')
+        # Explicitly curated media preserves exact bytes; textual sources normalize LF.
+        data = src.read_bytes()
+        if src.suffix.lower() in {'.png', '.wav', '.ogg', '.otf', '.ttf', '.jpg', '.webp'}:
+            target.write_bytes(data)
+        else:
+            content = data.decode('utf-8-sig').replace('\r\n', '\n').replace('\r', '\n')
+            target.write_text(content, encoding='utf-8', newline='\n')
 
     for item in manifest.get('copy_files', []):
-        if component in ('brainstorm', 'knowledge') and not item['source'].startswith('release-input/curated/'):
+        if component in ('brainstorm', 'knowledge', 'skills', 'game-analysis-decision', 'game-presentation', 'prototype-assets') and not item['source'].startswith('release-input/curated/'):
             raise ContractError('This component only permits curated inputs')
         copy(item['source'], item['target'])
     for name in manifest.get('root_files', []):
@@ -104,7 +109,7 @@ def stage(source, destination):
             if not linked.is_relative_to(destination.resolve()) or not linked.exists():
                 raise ContractError('Unresolved portable link: ' + str(path.relative_to(destination)) + ' -> ' + link)
     revision = git(source, 'rev-parse', 'HEAD')
-    dirty = bool(git(source, 'status', '--porcelain', '--untracked-files=all'))
+    dirty = bool(git(source, 'status', '--porcelain', '--untracked-files=all', '--ignore-submodules=all', '--ignore-submodules=all'))
     manifest_bytes = manifest_path.read_text(encoding='utf-8-sig').replace('\r\n', '\n').encode('utf-8')
     marker = {'release_schema': 1, 'component_id': component, 'source_revision': revision, 'generator_version': '3.0.0', 'generated_at': git(source, 'log', '-1', '--format=%cI'), 'manifest_sha256': digest(manifest_bytes), 'file_count': len(seen), 'preview': dirty}
     (destination / '_release.json').write_bytes(encoded(marker))

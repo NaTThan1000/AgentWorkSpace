@@ -86,8 +86,10 @@ def catalog(bundle: Path):
     if result.get('schema_version') != SCHEMA:
         raise ContractError('Unsupported catalog schema')
     version(result.get('version'))
-    if set(result.get('components', {})) not in ({'meta', 'brainstorm', 'fromdemotospec', 'knowledge'}, {'meta', 'brainstorm', 'f2s', 'knowledge'}):
-        raise ContractError('Catalog must contain meta and exactly three supported packages')
+    names = set(result.get('components', {}))
+    allowed = {'meta', 'brainstorm', 'f2s', 'fromdemotospec', 'knowledge', 'skills', 'game-analysis-decision', 'game-presentation', 'prototype-assets'}
+    if not names or not names <= allowed or 'meta' not in names:
+        raise ContractError('Catalog must contain meta and supported packages')
     if 'compatibility' in result:
         if load(safe(bundle, 'compatibility.json')) != result['compatibility']:
             raise ContractError('Capability contract differs from the sealed catalog')

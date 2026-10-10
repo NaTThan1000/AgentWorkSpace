@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "version": "1.3.0",
+  "skills": [
+    {
+      "id": "game-presentation",
+      "description": "按用途推进游戏表现资源制作、真实引擎接入与可回退验证",
+      "optional_modules": [
+        "game-presentation"
+      ],
+      "install_requires": []
+    },
+    {
+      "id": "game-decision-support",
+      "description": "按关键判断的事实与分析缺口路由 Knowledge Query、GAD 或二者并完成宿主消费",
+      "optional_modules": [
+        "game-analysis-decision",
+        "knowledge"
+      ],
+      "install_requires": []
+    },
+    {
+      "id": "bidirectional-steelman",
+      "description": "双向钢人论证与决策澄清",
+      "optional_modules": [],
+      "install_requires": []
+    },
+    {
+      "id": "agent-blind-eval",
+      "description": "候选策略的匿名对照评测与可执行评测协议",
+      "optional_modules": [],
+      "install_requires": []
+    },
+    {
+      "id": "problem-clarifier",
+      "description": "澄清目标与约束，形成可行动的问题",
+      "optional_modules": [],
+      "install_requires": []
+    },
+    {
+      "id": "dual-layer-explainer",
+      "description": "直观与专业两层解释概念",
+      "optional_modules": [],
+      "install_requires": []
+    },
+    {
+      "id": "reference-deconstruction",
+      "description": "从优秀范例反向提炼可迁移机制",
+      "optional_modules": [],
+      "install_requires": []
+    },
+    {
+      "id": "horizontal-vertical-research",
+      "description": "纵向演化与横向比较的可追溯研究",
+      "optional_modules": [],
+      "install_requires": []
+    },
+    {
+      "id": "evidence-audit",
+      "description": "事实依据与推理链审计",
+      "optional_modules": [],
+      "install_requires": []
+    },
+    {
+      "id": "reversible-experiment-design",
+      "description": "设计低成本、可逆的最小实验",
+      "optional_modules": [],
+      "install_requires": []
+    },
+    {
+      "id": "workflow-redesign",
+      "description": "从目标重设计工作流框架、内容与接线，并按证据完成实施交付",
+      "optional_modules": [],
+      "install_requires": []
+    },
+    {
+      "id": "workflow-closure",
+      "description": "按工作区权威合同执行分级、验证、提交、父仓 gitlink 闭合与交接",
+      "optional_modules": [],
+      "install_requires": []
+    },
+    {
+      "id": "godot-gdscript-patterns",
+      "description": "Godot 4 GDScript 的场景、信号、状态机与性能模式",
+      "optional_modules": [],
+      "install_requires": []
+    },
+    {
+      "id": "systematic-debugging",
+      "description": "针对不确定、间歇性或跨组件故障的根因诊断与修复验证",
+      "optional_modules": [],
+      "install_requires": []
+    },
+    {
+      "id": "property-based-testing",
+      "description": "面向输入域、往返、幂等性与状态不变量的性质测试设计与审查",
+      "optional_modules": [],
+      "install_requires": []
+    },
+    {
+      "id": "humanizer-zh",
+      "description": "润色已有中文文本，保留事实、确定程度与作者声音，减少空话、重复和模板化表达",
+      "optional_modules": [],
+      "install_requires": []
+    }
+  ]
+}

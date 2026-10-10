@@ -1,10 +1,10 @@
 {
   "component_id": "brainstorm",
   "file_count": 144,
-  "generated_at": "2026-10-09T21:27:31+08:00",
+  "generated_at": "2026-10-10T10:10:21+08:00",
   "generator_version": "3.0.0",
   "manifest_sha256": "9893f924ecee1b4d2d82c2ae2b71bede894aae9ca0aa428faafbcb977a3798dd",
   "preview": false,
   "release_schema": 1,
-  "source_revision": "c3bc50108cbe238b26971b6c38e972426d3abe95"
+  "source_revision": "8452db9fb537a9360cb65d1a602db0702b942259"
 }

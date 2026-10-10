@@ -14,7 +14,7 @@ def build(root, release, previous):
         raise ContractError('Write the version upgrade guide before sealing')
     result = {'schema_version': 1, 'version': release, 'previous_version': previous, 'components': {}}
     result['compatibility'] = load(safe(root, 'compatibility.json'))
-    for name in ('meta', 'brainstorm', 'fromdemotospec', 'knowledge'):
+    for name in result['compatibility']['components']:
         source = 'meta/workspace' if name == 'meta' else 'packages/' + name
         marker_path = 'meta/_release.json' if name == 'meta' else source + '/_release.json'
         marker = load(safe(root, marker_path))

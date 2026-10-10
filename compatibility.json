@@ -3,26 +3,165 @@
   "capabilities": {
     "host-governance": {
       "description": "Host rules for goals, authority, ownership, evidence and recovery; an equivalent existing framework may provide them.",
-      "criteria": ["goals-and-authority", "scope-and-data", "facts-and-verification", "delivery-and-recovery"]
+      "criteria": [
+        "goals-and-authority",
+        "scope-and-data",
+        "facts-and-verification",
+        "delivery-and-recovery"
+      ]
     },
     "brainstorming": {
       "description": "Traceable exploration, candidates, user decisions and recoverable sessions.",
-      "criteria": ["exploration", "decision-traceability", "session-recovery"]
+      "criteria": [
+        "exploration",
+        "decision-traceability",
+        "session-recovery"
+      ]
     },
     "prototyping": {
       "description": "Playable prototype workflow with evidence, real user play and development handoff.",
-      "criteria": ["prototype-workflow", "play-evidence", "development-handoff"]
+      "criteria": [
+        "prototype-workflow",
+        "play-evidence",
+        "development-handoff"
+      ]
     },
     "knowledge": {
       "description": "Source-grounded knowledge query and explicitly approved ingestion.",
-      "criteria": ["source-grounded-query", "approved-ingest", "knowledge-preservation"]
+      "criteria": [
+        "source-grounded-query",
+        "approved-ingest",
+        "knowledge-preservation"
+      ]
+    },
+    "skill-library": {
+      "description": "Selectable, conflict-safe reusable skills.",
+      "criteria": [
+        "selective-installation",
+        "ownership-and-recovery"
+      ]
+    },
+    "game-analysis": {
+      "description": "Evidence-based game analysis without mandatory Knowledge.",
+      "criteria": [
+        "fact-inference-boundary",
+        "conditional-decisions",
+        "optional-sources"
+      ]
+    },
+    "game-presentation": {
+      "description": "Project-owned presentation workflow and Godot handoff.",
+      "criteria": [
+        "purpose-and-rights-gates",
+        "owned-delivery",
+        "engine-verification"
+      ]
+    },
+    "asset-catalog": {
+      "description": "Rights-reviewed portable asset catalog and copying tools.",
+      "criteria": [
+        "source-and-license",
+        "content-hashes",
+        "independent-runtime"
+      ]
     }
   },
   "components": {
-    "meta": {"provides": ["host-governance"], "requires": [], "optional": []},
-    "brainstorm": {"provides": ["brainstorming"], "requires": ["host-governance"], "optional": ["knowledge", "prototyping"]},
-    "fromdemotospec": {"provides": ["prototyping"], "requires": ["host-governance"], "optional": ["knowledge"]},
-    "knowledge": {"provides": ["knowledge"], "requires": ["host-governance"], "optional": []}
+    "meta": {
+      "provides": [
+        "host-governance"
+      ],
+      "requires": [],
+      "optional": []
+    },
+    "brainstorm": {
+      "provides": [
+        "brainstorming"
+      ],
+      "requires": [
+        "host-governance"
+      ],
+      "optional": [
+        "knowledge",
+        "prototyping",
+        "game-analysis"
+      ]
+    },
+    "fromdemotospec": {
+      "provides": [
+        "prototyping"
+      ],
+      "requires": [
+        "host-governance"
+      ],
+      "optional": [
+        "knowledge",
+        "game-analysis",
+        "game-presentation",
+        "asset-catalog"
+      ]
+    },
+    "knowledge": {
+      "provides": [
+        "knowledge"
+      ],
+      "requires": [
+        "host-governance"
+      ],
+      "optional": []
+    },
+    "skills": {
+      "provides": [
+        "skill-library"
+      ],
+      "requires": [],
+      "optional": [
+        "game-analysis",
+        "game-presentation",
+        "knowledge"
+      ]
+    },
+    "game-analysis-decision": {
+      "provides": [
+        "game-analysis"
+      ],
+      "requires": [],
+      "optional": [
+        "knowledge",
+        "prototyping",
+        "brainstorming"
+      ]
+    },
+    "game-presentation": {
+      "provides": [
+        "game-presentation"
+      ],
+      "requires": [],
+      "optional": [
+        "asset-catalog",
+        "game-analysis",
+        "prototyping"
+      ]
+    },
+    "prototype-assets": {
+      "provides": [
+        "asset-catalog"
+      ],
+      "requires": [],
+      "optional": [
+        "game-presentation",
+        "prototyping"
+      ]
+    }
   },
-  "needs": {"collaboration": "host-governance", "brainstorm": "brainstorming", "prototype": "prototyping", "knowledge": "knowledge"}
+  "needs": {
+    "collaboration": "host-governance",
+    "brainstorm": "brainstorming",
+    "prototype": "prototyping",
+    "knowledge": "knowledge",
+    "skills": "skill-library",
+    "game-analysis": "game-analysis",
+    "presentation": "game-presentation",
+    "assets": "asset-catalog"
+  }
 }

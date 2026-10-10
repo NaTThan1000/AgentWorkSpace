@@ -2,7 +2,7 @@
 
 [简体中文](README.md) | **English**
 
-AgentWorkSpace helps you set up a lasting workspace for an AI agent. It includes a complete set of collaboration rules and reusable methods, with Brainstorm, FromDemoToSpec and Knowledge available when you need them.
+AgentWorkSpace helps you set up a lasting workspace for an AI agent. It includes a complete set of collaboration rules and reusable methods, with optional brainstorming, prototyping, knowledge, game analysis, presentation, curated assets and a selective skill library.
 
 You can ask your agent:
 
@@ -12,7 +12,7 @@ There is one complete meta edition. New workspaces install it by default; existi
 
 ## Get started
 
-Clone or download this repository into its own directory. Keep your working directory separate. The installer requires Python 3.10+; package scripts also require Node.js 22+ and PowerShell 7. Knowledge needs Git before its first Ingest run. Runtime verification for this release was performed on Windows; check each package's guidance for other platforms.
+Clone or download this repository into a separate directory from the user workspace. The root installer and skill picker need Python 3.10+. GAD, GamePresentation and PrototypeAssets tools need Node.js 22+. Brainstorm, FromDemoToSpec and some Knowledge tools also use PowerShell 7; the first Knowledge Ingest requires Git. Runtime verification for this release was performed on Windows; check each package before claiming other platform support.
 
 Run these commands from the distribution directory. Preview before applying:
 
@@ -52,6 +52,28 @@ Start tasks once the framework is installed; create business content when the ta
 Keep projects under `projects/` or a directory you choose. Sessions, knowledge content and personal configuration belong in your workspace, not in this distribution repository. `.agent-workspace/state.json` records installed versions and framework file baselines; it does not own your business records.
 
 Meta also includes [Humanizer-zh](meta/workspace/.agents/skills/humanizer-zh/SKILL.md). Use it to edit Chinese prose for clarity while preserving facts, uncertainty and the author's voice. It is editing guidance, not an authorship detector. English documentation should preserve the same factual accuracy.
+
+## New packages and selective skill installation
+
+| Package | Purpose | Standalone behavior |
+|---|---|---|
+| [Skills](packages/skills/README.md) | 16 development, research, writing and workflow methods; install chosen names | No other module required; adding the library does not activate every skill |
+| [GAD](packages/game-analysis-decision/README.md) | Evidence-based game analysis, conditional recommendations and method correction | Knowledge and other host packages are optional |
+| [GamePresentation](packages/game-presentation/README.md) | Presentation specifications, resource preparation and Godot delivery/recovery | Manual/generated sources work without the asset package |
+| [PrototypeAssets](packages/prototype-assets/README.md) | 119 assets with provenance/license records and verification/export tools | Runtime copies and licenses remain usable without their source package |
+
+Existing workspaces may select just one new package, without meta or optional integrations. New workspaces still default to complete meta. See [dependencies and tool requirements](docs/package-dependencies.md).
+
+```text
+python scripts/workspace.py audit --target <workspace-path> --needs skills game-analysis presentation assets
+python scripts/workspace.py add --target <workspace-path> --packages skills game-analysis-decision game-presentation prototype-assets
+python scripts/workspace.py add --target <workspace-path> --packages skills game-analysis-decision game-presentation prototype-assets --apply
+python <workspace-path>/modules/skills/scripts/skills.py list
+python <workspace-path>/modules/skills/scripts/skills.py install --target <workspace-path> --names systematic-debugging property-based-testing
+python <workspace-path>/modules/skills/scripts/skills.py install --target <workspace-path> --names systematic-debugging property-based-testing --apply
+```
+
+Add --platform codebuddy for CodeBuddy selection. Skill updates and rollback use their own transactions and preserve conflicting user edits. Game-routing methods can use project facts and available tools without the optional packages. Engineering checks do not establish long-term method benefits or user acceptance of presentation quality.
 
 ## Compatibility, upgrades and recovery
 

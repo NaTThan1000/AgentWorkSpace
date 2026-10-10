@@ -1,6 +1,14 @@
 {
   "compatibility": {
     "capabilities": {
+      "asset-catalog": {
+        "criteria": [
+          "source-and-license",
+          "content-hashes",
+          "independent-runtime"
+        ],
+        "description": "Rights-reviewed portable asset catalog and copying tools."
+      },
       "brainstorming": {
         "criteria": [
           "exploration",
@@ -8,6 +16,22 @@
           "session-recovery"
         ],
         "description": "Traceable exploration, candidates, user decisions and recoverable sessions."
+      },
+      "game-analysis": {
+        "criteria": [
+          "fact-inference-boundary",
+          "conditional-decisions",
+          "optional-sources"
+        ],
+        "description": "Evidence-based game analysis without mandatory Knowledge."
+      },
+      "game-presentation": {
+        "criteria": [
+          "purpose-and-rights-gates",
+          "owned-delivery",
+          "engine-verification"
+        ],
+        "description": "Project-owned presentation workflow and Godot handoff."
       },
       "host-governance": {
         "criteria": [
@@ -33,13 +57,21 @@
           "development-handoff"
         ],
         "description": "Playable prototype workflow with evidence, real user play and development handoff."
+      },
+      "skill-library": {
+        "criteria": [
+          "selective-installation",
+          "ownership-and-recovery"
+        ],
+        "description": "Selectable, conflict-safe reusable skills."
       }
     },
     "components": {
       "brainstorm": {
         "optional": [
           "knowledge",
-          "prototyping"
+          "prototyping",
+          "game-analysis"
         ],
         "provides": [
           "brainstorming"
@@ -50,7 +82,10 @@
       },
       "fromdemotospec": {
         "optional": [
-          "knowledge"
+          "knowledge",
+          "game-analysis",
+          "game-presentation",
+          "asset-catalog"
         ],
         "provides": [
           "prototyping"
@@ -58,6 +93,28 @@
         "requires": [
           "host-governance"
         ]
+      },
+      "game-analysis-decision": {
+        "optional": [
+          "knowledge",
+          "prototyping",
+          "brainstorming"
+        ],
+        "provides": [
+          "game-analysis"
+        ],
+        "requires": []
+      },
+      "game-presentation": {
+        "optional": [
+          "asset-catalog",
+          "game-analysis",
+          "prototyping"
+        ],
+        "provides": [
+          "game-presentation"
+        ],
+        "requires": []
       },
       "knowledge": {
         "optional": [],
@@ -74,13 +131,38 @@
           "host-governance"
         ],
         "requires": []
+      },
+      "prototype-assets": {
+        "optional": [
+          "game-presentation",
+          "prototyping"
+        ],
+        "provides": [
+          "asset-catalog"
+        ],
+        "requires": []
+      },
+      "skills": {
+        "optional": [
+          "game-analysis",
+          "game-presentation",
+          "knowledge"
+        ],
+        "provides": [
+          "skill-library"
+        ],
+        "requires": []
       }
     },
     "needs": {
+      "assets": "asset-catalog",
       "brainstorm": "brainstorming",
       "collaboration": "host-governance",
+      "game-analysis": "game-analysis",
       "knowledge": "knowledge",
-      "prototype": "prototyping"
+      "presentation": "game-presentation",
+      "prototype": "prototyping",
+      "skills": "skill-library"
     },
     "schema_version": 1
   },
@@ -97,7 +179,7 @@
         "NOW.md": "05bdc8b6faee09b8f13c9cb1f97388d3e061bd47b330651934a09ffcee367184",
         "README.md": "cfc019e8706ece7f25acbe578ddc08819e888dd50da3919d16fefecb2516f0bb",
         "VALIDATION.md": "70e2173524add9b36485626a384835dbd5d3d252bc9416e5d85d447a7bd976ad",
-        "_release.json": "d2ac21f3181d2039104b1d7ebbbac4b8525a33c12fc27e8f05891d2d12ea7692",
+        "_release.json": "4f7c37440febb5c852a04f3e4a0d2fd40e336aa4615dac5794c8305f6aaced1b",
         "adapters/README.md": "be3ab293a25effb8b7fa01995a49eb7d469f6ad06fe79a18db288f688e01a749",
         "adapters/catalog.json": "9f11697e62f6c626c10d4867483ad503fcdd6103d48fc06dcc596499945a137a",
         "adapters/fromdemotospec-handoff/COMPATIBILITY.md": "81ece73ee45bca28cd246dba1b7a899106448ccdd6dc877eb68456c2b56bc606",
@@ -184,7 +266,7 @@
         "scripts/brainstorm-analysis-adapter.mjs": "5606b5a796b3579a5c255aa293209d6047dc54f8c68c02a78b57018ac27dfbef",
         "scripts/build-session-index.ps1": "78df297b737bf4078f7cbdbf3624f7db9a0d993c9d5c0a043ab7333dbbf552a9",
         "scripts/fromdemotospec-v2-common.ps1": "a859432bb4e08b9552d9f47fee43e3cde7189e1e11f67a00690bfe3413715fd2",
-        "scripts/gad-v2-binding.mjs": "a64ea0e7b0686cf8d93f3af0604b47f23c982781f2940393907d30f121ce4ecb",
+        "scripts/gad-v2-binding.mjs": "ef1b8c9169616e5723af412855c3d00d555a3a4bda76270c11e43a0720373d69",
         "scripts/game-concept-common.ps1": "caadb3a92dbfd34a03aafd4cfa7894722ef8a6157ddf4e72ff39e2aa8cc4cf0f",
         "scripts/get-close-summary.ps1": "3c2001b2d101bc7b2394bd27bf5d6024650d5dd1e4593c9cef68f0987694486d",
         "scripts/import-f2s-learning-feedback.ps1": "8feb7f490c0e298c175d782211f0269f0f63bdf5a630637d0cda3b46a1e5d541",
@@ -236,7 +318,8 @@
       },
       "optional": [
         "knowledge",
-        "prototyping"
+        "prototyping",
+        "game-analysis"
       ],
       "provides": [
         "brainstorming"
@@ -245,8 +328,8 @@
         "host-governance"
       ],
       "source": "packages/brainstorm",
-      "source_revision": "c3bc50108cbe238b26971b6c38e972426d3abe95",
-      "version": "1.2.0"
+      "source_revision": "8452db9fb537a9360cb65d1a602db0702b942259",
+      "version": "1.3.0"
     },
     "fromdemotospec": {
       "destination": "modules/fromdemotospec",
@@ -255,7 +338,7 @@
         "04-agent-learning-feedback.md": "656f5bf1d2467a10432ee1b5e60c1cf244e3cb865add6c1a2ce985ff965e2f52",
         "AGENTS.md": "b2d3cf01e9e6f85d37def77c3750b5f5f146ef8108d998cb53c38aa0f89bb5c4",
         "README.md": "8d38d1479902e6a730e1dcc6b4601a5366ccc3a2a0e6d7f5018e949ff785ccb2",
-        "_release.json": "c6d92b13c920ca2db3cd83c65c33b0084a86bd2edea1f5519cde784b0c82c1b0",
+        "_release.json": "20d9e742f512d58029261614a49a2fbddc8de066c4f7562cf4888928e2148db7",
         "adapters/game-analysis-decision/README.md": "35b0be9162a3f44e7ccd6649f62ed6525e641aa983bd63d5a5bb82e23cd84b42",
         "adapters/game-analysis-decision/contract.json": "634b2a4b7f467744d3b2c67f09693a64f55e03f25f252da84e21670648617651",
         "adapters/game-analysis-decision/fromdemotospec-analysis-request.schema.json": "e9118a51539ebca9660f1bd8173adee4e16d9b831dc94302fdbe160f50c4c917",
@@ -286,7 +369,7 @@
         "scripts/README.md": "1671824f1b01fc6d566d7fef60a374336cf6eb2452283b1b30738ce90c258bbc",
         "scripts/f2s-analysis-adapter.mjs": "b27e65969c28a5382f692ecd0939f04de52c260f932e9b035c12817dd672f8ca",
         "scripts/fromdemotospec-analysis-adapter.mjs": "dc79a74c35dc6e8bd05f0dba92acbf799bd48ca14d7c574567ce4844b27cdc68",
-        "scripts/gad-v2-binding.mjs": "ba569df301db1b322e2d192075ae23f356f6a83ba32bfc545bd535a358310f5c",
+        "scripts/gad-v2-binding.mjs": "676cd48fcf9fb82af523e1c5a4798c55115fcdf3ede2f2e38e913e07c04f303a",
         "scripts/import-presentation-assets.ps1": "9f605a74911ea115661dad4b5f4d051f25736eb029e3471e69ff9e462000042a",
         "scripts/inline-presentation-assets.ps1": "e636e346cbe94a946ba4d147226a512faea5d70b03eb0e4f52b379ce9a395d90",
         "scripts/new-learning-feedback-candidate.ps1": "47a2c7a98815acde7b92b47c4092217a7e695c77008d09fbc9e58ad5917fcc98",
@@ -310,7 +393,10 @@
         "tests/prototype-project.contract.mjs": "ba22637a03778e07f5f5f90329ea5a308c1b57ada9f0ae24edd0ac97d0bbbe66"
       },
       "optional": [
-        "knowledge"
+        "knowledge",
+        "game-analysis",
+        "game-presentation",
+        "asset-catalog"
       ],
       "provides": [
         "prototyping"
@@ -319,8 +405,133 @@
         "host-governance"
       ],
       "source": "packages/fromdemotospec",
-      "source_revision": "89ed64d2604fb28be41d01cb5c4aab1355f13915",
-      "version": "1.2.0"
+      "source_revision": "c529f2b75b7e78418e0d19eda59768fcc54bd4de",
+      "version": "1.3.0"
+    },
+    "game-analysis-decision": {
+      "destination": "modules/game-analysis-decision",
+      "files": {
+        ".gitattributes": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da",
+        "AGENTS.md": "c149cbc0d2191d553aac8170d951e3fa257953f468c29d565bc500956ea97034",
+        "README.md": "89f8f7bc8c6651fe937f9269685b21db75056c168a14d4cbd451c9640d3dd38e",
+        "_release.json": "a473c981d536cc0cd1f39fa480c130fc2f1c0741edc2cd7bea7741da1c4c3604",
+        "adapters/v2/README.md": "33ba1fc65b2d752dfce96d624d0de28fd514d635478c6784c2e63ffde236329a",
+        "adapters/v2/contract.schema.json": "316a037fa6925e0f44835456ef6acbf4c46195489df09b8243a0102aa07aa949",
+        "agents/BUILD_GUIDE.md": "dd84f3e6940477b3f3f0d9faa55d55c97d9296fbd0402a6eb42703903b1a3952",
+        "agents/catalogue.json": "08618eda78d9774111551c6992f5a8c13f8d44fa504dbfb502cfabc087e326ad",
+        "agents/methods/README.md": "b3223bee35541f7bf1d36953dccb76ac0094fd9c10bf5ea2054fb76420fe2132",
+        "agents/methods/balance-matrix-review.method.md": "2089d89561f170cbcdede42f1c132de2c578518fc02f31a40756f0ac1fe6b139",
+        "agents/methods/causal-system-map.method.md": "ff045678d76b3c1aaed27eef656de5b76a0ec046250eb44b516168ccc9154a1b",
+        "agents/methods/challenge-rhythm-theme-plan.method.md": "6baebfc2f583cb0650d2e2e5a1a52cc7ed687a0161a568e1a3a68326f576fc70",
+        "agents/methods/experience-hypothesis-chain.method.md": "4fd007d663129f44b33f4156fc5b3e3e2b8ea6bb52a719255319f58faf981615",
+        "agents/methods/method-card.template.md": "779a97cfdb5e309cda117044726d28810a1b6cdb4f2d51c9a7e8d21c0e6da44f",
+        "agents/methods/registry.md": "60888ee057f8dbbe423f393d8953452530c0ace6c72c597c90e75a948a143e84",
+        "agents/methods/reverse-milestone-plan.method.md": "464810e3eaf76002af7b78573f0945b5f19f7508cf03983271377a653837700f",
+        "agents/procedures/PRO-COM-001-combat-readability-window-audit.md": "b49c505128de5707a551c0baa209f98a0314c3a3c1776269b20c95f352fc5fb1",
+        "agents/procedures/PRO-GP-001-mechanic-cross-context-greybox.md": "3de7c6144e5ddff536780a4295b50526545e44d522b784c467ea34c2f36271e4",
+        "agents/procedures/PRO-LD-001-experience-mvp-tradeoff-review.md": "f1af04f1ac6d8afb839649837acca3d129540262cc3fb003abce798fd6436406",
+        "agents/procedures/PRO-LVL-001-challenge-route-whitebox-review.md": "b48da8989830ee391ec5258ada5a51473b4d17cbe1763acba220853d92788045",
+        "agents/procedures/PRO-NAR-001-state-choice-content-interface-review.md": "fd07521a4e24103a01fe3967b082bc646ef564d01ebb6b0e86f858493105b129",
+        "agents/procedures/PRO-NAR-002-world-conflict-character-motivation-review.md": "fc0340a49052ce4050e2facd568cfcbf75feaaf2cf9947d68e7dd4f57f68d7c5",
+        "agents/procedures/PRO-NUM-001-anchor-distribution-calibration.md": "948d3961e855f25dceb36d277c9f3add03c9488ac0ee233175ced52e90a6f23d",
+        "agents/procedures/PRO-OPS-001-segment-cadence-causal-review.md": "20ba4c94ed91e94725e899cec91c9a9e139445bc2ca2558c47503a505b3c03fd",
+        "agents/procedures/PRO-PM-001-exit-dependency-risk-plan.md": "27df13e7398b527e8f73a4c760028e6f2e27e721a53fe827ef9ae38f0c3a4242",
+        "agents/procedures/PRO-SYS-001-state-resource-lifecycle-contract.md": "3b883e4bfd2d21d842a4251a9670602ab578a1937ecd8f83d3f14e8239f66afe",
+        "agents/procedures/PRO-UX-001-state-input-feedback-recovery-audit.md": "7370054c8582fafe2d4ab00f5fb95ac86505e5e6373783fab20408fc970c4911",
+        "agents/procedures/PRO-UX-002-learning-evidence-guidance-fadeout.md": "2a99c584f77ab18dd4b96a07335d4c7eaf5f1a806e771acef48dc881f644aff9",
+        "agents/procedures/PRO-UX-003-decision-hold-evidence-reentry.md": "6c4d945cad62f9ff80c041f4c6d5aed1bd5fe9e589abe1adb678d8c322308b41",
+        "agents/prompts/AI与游戏开发-context.md": "f18eca68e05ac57f4c77a6696982c7e0bad41afe76e0551738fc4b28880ea65c",
+        "agents/prompts/主策划-expert.md": "dd1df107bb605aa5d19ad7c674a9bf0bc1dd4e4978280b278d2a690fca00ad6d",
+        "agents/prompts/交互策划-expert.md": "a96ef5771f6f04e17d52c74cf3d3bc9258d6b42277a67f7160a80b3ee426d9db",
+        "agents/prompts/关卡策划-expert.md": "72add0f05a1acc629ffb51eb7e2b2bee32f72068a4993bb09533402a3086626c",
+        "agents/prompts/战斗策划-expert.md": "601d243c7c6518fd53f17c23020afbbf585bb602021cf4a59d94954ac99669f9",
+        "agents/prompts/数值策划-expert.md": "a33df254608c1a54130e23e842f5d237089562efbcf89e699748ccff3be3a6a0",
+        "agents/prompts/文案策划-expert.md": "f9a81c1b4a6e0f63e8b0f0f268f7caf29e239472d60a64033f2a23090b87a07a",
+        "agents/prompts/游戏编程与架构-context.md": "6263c3ac39683133c67094c2aab67a38238f392909d7b9094e11f63ea90d4043",
+        "agents/prompts/玩法策划-expert.md": "38ca6b3eeec726b9ac1b70f6d8e75801ba9068cee0b5704aee1f1d6aaf00dd82",
+        "agents/prompts/系统策划-expert.md": "9d23142339bb76e268337d3b5000ca67b236c2d6dd1deade4c09b4f924a1a6d1",
+        "agents/prompts/设计哲学-context.md": "ddb4b9fc61027542c0b2980890c55bd186f775c7e1062bf4eb727d4540027e77",
+        "agents/prompts/运营策划-expert.md": "0472c5f0e2b4fbc805e18c4e9882fc2c046425af8187d596d30ab5e5ed07b740",
+        "agents/prompts/音频工程-context.md": "8b79507de99439058aa5068084c6ba5cc9afa0f5a5202fb18b717f87312aa5be",
+        "agents/prompts/项目管理-expert.md": "459a6e53127a09687a69caf3529baf972cfd6a6ff2019667e82b4ef5df3afb18",
+        "examples/query.json": "3103ac53e236b51314d926624510ac9234b72256560dc430673a8fef5d3569eb",
+        "learning/README.md": "ba47eb0c481ef137704051afac99854281dd377cba8a77abd794d58b2518cb39",
+        "learning/state.json": "b20735c556bde3ca6ce8bd17e4c3594a3f1a19fb70f2808d412593dfdd735ffa",
+        "protocols/analysis.md": "161db2eb22349169cd4eb5990428417f42e768468cc7a11bd92d1a5fb145553f",
+        "protocols/delivery.md": "9fb712863964c9c7fac597c58e1c1d70aebef6c2749b7dc75c9d342d0d20d6f9",
+        "protocols/knowledge-boundary.md": "8b1af2b72e24cf6573fbb2abb3f3dfd6e785a2bf1b3fc97bd3a121ff9bf93218",
+        "protocols/learning.md": "c7582301eaab3c2a2fc1f6e642dd1ca10503c5020ba8705d27bb5a43f9ff72cd",
+        "providers/README.md": "38e81365f36fd7d1a8aa9396e3033ba8038905288c3ab3b4f4ba1399b6aeb95d",
+        "scripts/adapter-v2.mjs": "fd79ef973314b9a49511dfa731fc15746340dfab44a47cf4d495f3a0d05543b9",
+        "scripts/analysis-math.mjs": "c3a8dc50177daade4b8be7fd75a8c7efcd30b629bd3ad0b062a399229d89ac34",
+        "scripts/learning-cli.mjs": "48fec16899a36a2e387b658193cb7dbd1914d0f7fe1eb36fff2b542fbd9dff16",
+        "scripts/maintenance-cli.mjs": "62cced8562270dcf713c93ce237d23f4ba5078709bfb5e5b17c687531f0b3526",
+        "scripts/provider-v2.mjs": "2616edf842d2407b2889cba3d34e3db93cee43f4e27b1f619e1d92d7d61546bb",
+        "scripts/validate-contracts.mjs": "dc65769688bd2c26d826ed5d62045215c3bf8882b63c98b3d2e3d0290b2c10ac",
+        "templates/README.md": "4f5863addcb69767d84cc3e58f4e64a2c3259929a994dba91538dbde0d7d0097",
+        "templates/analysis-note.md": "9c454b7e95bb37770843a66dc318b28e85c4ec58cfea22190f09b3ecc2826c6a",
+        "templates/analysis-report.md": "7d24d5b3bf94e9a73d26c31ddaa633cbbfd35b6a949ac121a06015340cb49e68",
+        "templates/analysis-request.md": "2fb7b205a3193f637c23c52639d1a2e8ac823ddde2bcbfbb44b8e4177e4f05b2",
+        "templates/context-brief.md": "4c8fb109d723647ed79a97fd1ba5401b0d34139eaadde298f9e005b3c07a10a5",
+        "templates/decision-packet.md": "665baa66543414c699f62fa5d261b9530b511afcf35d27c552a142949e9a7cf6",
+        "templates/evidence-packet.md": "398e89a4afdddc3a8a0b72a0598d890b9274e059b4729f620ce46a4ab09e0731",
+        "templates/experiment-plan.md": "c42bd4b98600163ac8aed6b32d766d5670eeffc523703148e85988b327f76aa5",
+        "templates/expert-assembly-receipt.md": "669a0d51a2de21f74e29a2187a24bb157d51202a3792abc605f23c1edd9f42e5",
+        "tests/test-adapter-v2.mjs": "d99f4c9c53a0cbf5f1dc051a9083282828db73844f6797bf2520ebdcb496b4e6",
+        "tests/test-analysis-math.mjs": "cb284ebba0cb78d7cc9fc1e20f162c43cfce9ad7a2851f3d323fcef69439d75c",
+        "tests/test-learning-v2.mjs": "64acf43ddf854bcf8635a57b50f01da95f2e33f8625017c54846fb9222e1f0e2",
+        "tests/test-provider-v2.mjs": "9ddc6aecb231cd2c0df8ec95b52d8b6b3ea1c68e2f8218c3edb020740dd1389f"
+      },
+      "optional": [
+        "knowledge",
+        "prototyping",
+        "brainstorming"
+      ],
+      "provides": [
+        "game-analysis"
+      ],
+      "required": [],
+      "source": "packages/game-analysis-decision",
+      "source_revision": "0022c232dc187208b5f8a0755fc593dc8c211cce",
+      "version": "1.3.0"
+    },
+    "game-presentation": {
+      "destination": "modules/game-presentation",
+      "files": {
+        ".gitattributes": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da",
+        "AGENTS.md": "ffe0f3d61d70dd2bf71db37deea226f041ffa4fe6b9843d3e87c0d3f88e8b71e",
+        "README.md": "d72165a173df32bdcd3a87d2509664aa87ece7683cd27924208b30d810b27fbd",
+        "_release.json": "39087a4d1ea6eec8e576c105755e2388b8257471530adb3811fd15494cb160b8",
+        "adapters/README.md": "d66f7c53d3b19bf6d3f5efb3d8f29b4017ca8403a038cedb8b2dd595f8ba5397",
+        "adapters/godot/README.md": "febf8ad6db1d29c510f9b9165198772e540dcf94982a69a1f4222296c7bb9726",
+        "adapters/godot/deliver.mjs": "3a782a48f6dcb0efb0771290f57abf89016d737603998b1f591e78b737501bff",
+        "adapters/godot/workbench.md": "a9e021a5e5f7450af1b5237b16db97b96168ecb3491c2a01ae08f517e95d9f63",
+        "adapters/godot/workbench.mjs": "c6f2300b61442c8836bd66c86c41cc6c111ebb6f59fb2825f60c14f1c794d5bc",
+        "generated-art.md": "b68fbaa6ba8d162aa116f65d72489180368a0c11168658f4aa11bfe928b04f7a",
+        "maintenance/capability-status.md": "414da793fae022a64db3059ec4172d3cc5e513119c29cd705dcff64f37a1e30a",
+        "project-assets.md": "9af65ec557c21dbfcd083fd04fe4caff21bff0c767200848cef2450af2636297",
+        "project-tools/check-assets.mjs": "9629e28a08d2909ed1d220711b15a5763cf60a142615ed7a6bc9c94bea77b575",
+        "project-tools/check-releases.mjs": "3d5789e037edb94368bda402287c7bb8e37c8c9c96fb6f2a8792dbcdc895752c",
+        "scripts/init-project.mjs": "0359d78b3522155711b373dc0bce5cd081b6b4117608998b1d065a000e9014b8",
+        "templates/README.md": "272b8396791ce67c8da0194bf65b9a6a0b879ea3429a602e3f1c814b00856494",
+        "templates/generated-art-card.md": "512d8cac6e8c9638c4732ac5870377ddbb3845e87d21e87b228bcd856d217d4c",
+        "templates/presentation-slice.md": "f21bda0f465110f32a81d4a19ebf6f3ac937cb1304b65c30185b1007cf9d0e15",
+        "tests/delivery.test.mjs": "0c65ffa615d918ba4ae964a9dcc9d2383c32b49bffaa997976f0ca468fd64488",
+        "tests/workbench-delivery.test.mjs": "e9e610a726bbb8b1d66181cc76d926982d2c9d0e0d7da2b3e33ef9a136bf5d99",
+        "workflow.md": "e4658e99e4889366b2862a0b15838772ac17816fe8c95a8bdf53955d50790cc6"
+      },
+      "optional": [
+        "asset-catalog",
+        "game-analysis",
+        "prototyping"
+      ],
+      "provides": [
+        "game-presentation"
+      ],
+      "required": [],
+      "source": "packages/game-presentation",
+      "source_revision": "216f0921f4e3e1e9b13bd34d4a6e126fbf334909",
+      "version": "1.3.0"
     },
     "knowledge": {
       "destination": "modules/knowledge",
@@ -451,7 +662,7 @@
       ],
       "source": "packages/knowledge",
       "source_revision": "fdf96168e0055f377f136c383df728402fdf5eed",
-      "version": "1.2.0"
+      "version": "1.3.0"
     },
     "meta": {
       "destination": "",
@@ -495,10 +706,364 @@
       "required": [],
       "source": "meta/workspace",
       "source_revision": "cab81e05fb670f1a9dc502635091f7ba1d0a8238",
-      "version": "1.2.0"
+      "version": "1.3.0"
+    },
+    "prototype-assets": {
+      "destination": "modules/prototype-assets",
+      "files": {
+        ".gitattributes": "dc5262ccd39f80f7e2789af3f4e5c8a996077b889166b02349b072040e0fae86",
+        "AGENTS.md": "0d4f010b803f2104fbbbd5c502791709d1c98002c37d4b0b5efef5450022d9d6",
+        "README.md": "9bc9ba32b108a89f327e43603bdc5a7d2bf72c0ba6cc5ab6748825de86a6e3e5",
+        "_release.json": "0fcf1bcee433d155226fe50c3654d8f57515f05dd5699d71a0a3bda761c2aff5",
+        "catalog/assets.json": "a617e7611ad26bf858ec20bdf3b00fb339e5b2cf0bccff16f122470367cda539",
+        "catalog/formal-assets.json": "e97b8e1bd488b4baff92adb482455a0ffbc14fb2b3e7ffe3e92fa0df2d9f3db4",
+        "catalog/formal-sources.json": "1786e6943dac9e751bea0e4f922ac09dc26c8f265e46cda1c9c1f90625fbff94",
+        "catalog/p2-audio-decoder-evidence.json": "12d4cc5fc14dd9f811107deebe13a346a9cbecb7613cbb6bb76afb66a809105d",
+        "catalog/sources.json": "4f2b647b2235a8ccd223a92a8df52cc083200a4b7de94dc646a34c827c244135",
+        "exports/f2s/kenney-crosshair-pack/crosshair-hazard-lock.png": "98b7848fb54f7113182b8a323fbdad8cdbf16fb45b6726f3b7ef4ebff018eac4",
+        "exports/f2s/kenney-crosshair-pack/crosshair-scan-ring.png": "7c7ee2ecb21f4e50cb5379e3a2d010833f51256bb65a0b935a20aeace37366d3",
+        "exports/f2s/kenney-deep-sea-sounds/deepsea-discovery-low-frequency.wav": "a4a8006d4accde2f0780acf8d40886c85d62ecaf175978f550918c201a88f4f1",
+        "exports/f2s/kenney-deep-sea-sounds/deepsea-impact-metal.wav": "a8986c3f19bc0813f6d4090f2bb6e3ad42866f4d2ff725dc64291c254418ed58",
+        "exports/f2s/kenney-deep-sea-sounds/deepsea-scan-forcefield.wav": "c0cda3deeb2d50c5beef993610c0070a700e87086aa9de16e49c1f4f0de32fc4",
+        "exports/f2s/kenney-deep-sea-sounds/deepsea-sonar-computer.wav": "878e73e1c048c4292766f1634d8325ca2963f88ecb516d357651316f0496fcd3",
+        "exports/f2s/kenney-fish-pack/fish-background-rock-a.png": "622d46b8c2a3af30f9767f5379693838a7e4ad6944a6b4f5f7f650793c4157c3",
+        "exports/f2s/kenney-fish-pack/fish-background-rock-b.png": "84175acf709aa2accf965de58507969cc364c34386112aad07bd9c92d6b1de6c",
+        "exports/f2s/kenney-fish-pack/fish-background-seaweed-a.png": "db21144691fb2d8590024ce5fd0ef7ab550f54fd849257cec17735b479c5184d",
+        "exports/f2s/kenney-fish-pack/fish-background-seaweed-b.png": "8020112c2a12d7dabf61885e6a0ec282c948a06bfa512e80116c1bc3f9d592b2",
+        "exports/f2s/kenney-fish-pack/fish-background-seaweed-c.png": "95e7231d05f59acad4373a6d1cc1611b0dd22007dccb7f85d2b25ca40d0593f6",
+        "exports/f2s/kenney-fish-pack/fish-background-terrain-top.png": "cf5807e1f35e21125adc82c4e49a64a61a6fe55e19ba392fcb6236b68e4d02f3",
+        "exports/f2s/kenney-fish-pack/fish-background-terrain.png": "968a070618781758d6bc5ea36f174853bb44174aa3270fb5ddc24bafd010d49c",
+        "exports/f2s/kenney-fish-pack/fish-blue-skeleton.png": "ffa9d0088425c41cc93a210dd410dd656b96986607da974a0a9a8ba4e9d6b143",
+        "exports/f2s/kenney-fish-pack/fish-blue.png": "cf7107566d20a29e36c70b8715d6fddcebd2caad826e8aaeafb00453b3afe934",
+        "exports/f2s/kenney-fish-pack/fish-bubble-a.png": "23f1fabc7edab58a08c5a973da418395944e4694dd024a6fd445a3fecba88e5d",
+        "exports/f2s/kenney-fish-pack/fish-bubble-b.png": "6d5815d19669f31499ed5818ec80968249ca4b58ea69318ba75c91269d0a60c7",
+        "exports/f2s/kenney-fish-pack/fish-bubble-c.png": "597cfb2369fb91f74b3c1c26358aab3f6286ee6fd0a57e4d918bfd0908bd4d93",
+        "exports/f2s/kenney-fish-pack/fish-green.png": "df1077ac0afb3ab0cf80daacaf4df6fbba84beb733c42834211a565206ed8220",
+        "exports/f2s/kenney-fish-pack/fish-grey-long-a.png": "9c4402cadcb6f362648039d3babbf14cf4354f155ebee5a3c282030315958354",
+        "exports/f2s/kenney-fish-pack/fish-orange.png": "78d368600df42852854df52b331511153554138f9eb0fd435657b613b60320f5",
+        "exports/f2s/kenney-fish-pack/fish-red.png": "a3a4d2cf317b3d511ed994ba36813867ca60b6dcd4583dea487998bb6629a5b8",
+        "exports/f2s/kenney-foundation-audio/foundation-computer-alert.wav": "9df12d18c554a4a4bb9c4e279fb21d4c0aaa2842273a50f848c15430355c1774",
+        "exports/f2s/kenney-foundation-audio/foundation-door-close.wav": "6cbd911aadbde314f74947c02a70e86ef7451c5673ff68e09e732ee566a3a3a7",
+        "exports/f2s/kenney-foundation-audio/foundation-door-open.wav": "3eb6d64c77577d9e4ef95f472f71cd6b80b90f0d2a75c46a23502189d42b7895",
+        "exports/f2s/kenney-foundation-audio/foundation-engine-loop.wav": "70f83b07ac5f02a0a718b7d1e4cd9c83bb664fc989d693364dc2078348c90c1d",
+        "exports/f2s/kenney-foundation-audio/foundation-explosion-crunch.wav": "b06b8cd2488f2c285a6e7e5a3da827f210f6b96405f471a5fc71824b47778ced",
+        "exports/f2s/kenney-foundation-audio/foundation-impact-bell-heavy.wav": "7c193179471a9a4f23a376cc0bd98f045a013489fc0cf47290eeed7176d515fe",
+        "exports/f2s/kenney-foundation-audio/foundation-impact-generic-light.wav": "b9abfb1e1b908cf049823aacf8aac2bbb4440d6e4e4d1178d662362e4cc5282c",
+        "exports/f2s/kenney-foundation-audio/foundation-laser-small.wav": "00c930ef49fc47b8bccaf5c79efede5784f0c3b3444d17efb4bdb262baa40b92",
+        "exports/f2s/kenney-game-icons/game-icon-checkmark-white-1x.png": "70ba0776b017bf61f63eb0cc143d0685213af82059c5b39bea290a06c67ecbaa",
+        "exports/f2s/kenney-game-icons/game-icon-cross-white-1x.png": "a8f9a7031f3d0b27aa0ed7fb8848593d534e88dad540e8a7c48a84a72ad583a4",
+        "exports/f2s/kenney-game-icons/game-icon-home-white-1x.png": "04fef118a290892194a00ceebd6ad62c034a773d7c346d3e0a9b2db53ae2eba3",
+        "exports/f2s/kenney-game-icons/game-icon-information-white-1x.png": "8b2681f10c7cdcc5fbd7978ba39400df4d30445af0b54ed3d0899599ed4fc120",
+        "exports/f2s/kenney-game-icons/game-icon-locked-white-1x.png": "e3020a9e04181f05c951113e78a6a5a90b797bf42d1d850bf07818d6e31f7d37",
+        "exports/f2s/kenney-game-icons/game-icon-minus-white-1x.png": "c086c31b97b11085e98989c8b2f3dc9702ca187e96ef4a26590193087cbb80c3",
+        "exports/f2s/kenney-game-icons/game-icon-pause-white-1x.png": "ef060ae24bb440e846d4ff3c77c54c1285e30787900c7c8b5280fc4fa4006cf3",
+        "exports/f2s/kenney-game-icons/game-icon-plus-white-1x.png": "2ea54f9a405a83345b1012ef38a68d52b6ba60e4bc07012351b7cffb9479e214",
+        "exports/f2s/kenney-game-icons/game-icon-target-white-1x.png": "f443d6f0a23a6f04f475d6aaa982d6ad153bd80df197456c744bed1afae2a594",
+        "exports/f2s/kenney-game-icons/game-icon-unlocked-white-1x.png": "ac822a22ff6575630abace27a7043902d893bb57ed60c6db0c1690dbc1efa9d6",
+        "exports/f2s/kenney-game-icons/game-icon-warning-white-1x.png": "08d57c7e889ff056463dd526f7160f291627ce700b5846d64f8b6c003ec8b545",
+        "exports/f2s/kenney-game-icons/game-icon-zoom-in-white-1x.png": "8cd7f10d2d480152dd2cbbf475f695d514980f41e488884ee2cdaa747dfcf6b9",
+        "exports/f2s/kenney-interface-sounds/click-a.wav": "88f95d5903c325baa6b8da35a7060871ed1e6ba3295038e61768f238850ecfdb",
+        "exports/f2s/kenney-interface-sounds/click-b.wav": "0663208ad5d6e42d76557600ced66746591da62596fa899bb6fd06a2e2121941",
+        "exports/f2s/kenney-interface-sounds/switch-a.wav": "cc32fed1ea800d35d33d385b8f519cafef52a733f8d5d8085231c2a0a1ac85c6",
+        "exports/f2s/kenney-interface-sounds/switch-b.wav": "9f6c5a43576262604714985a391cbe48cb37789e5b20f2099911fb5a66edd225",
+        "exports/f2s/kenney-interface-sounds/tap-a.wav": "c83e3e79cd5aa32bb827a967e2b5641714572d8fae1a1117b5a8698b1cf6190c",
+        "exports/f2s/kenney-interface-sounds/tap-b.wav": "88154a716cea765d16cc79c0bc62cb4c4ddefc65fa282eafd665a1929177d6fc",
+        "exports/f2s/kenney-light-masks/light-mask-circle-rings-a.png": "ee5207681ce0818836bbd7c9fc2182d28552dc846b3f1171b6c7ad7ae6ccd1b1",
+        "exports/f2s/kenney-light-masks/light-mask-cone-a.png": "bd64590147d704440552aa84ebd65517e9008837f804790860ebab89d4a42928",
+        "exports/f2s/kenney-light-masks/light-mask-cone-composed-a.png": "1fad6cfef0b37aa8969a50d7065923a39db4077ffee8692a202bd13280249763",
+        "exports/f2s/kenney-minimap-pack/minimap-tile-style-a-0000.png": "2195ca198239474db67d6a54292117c059c0bea294a3c2c730892414db520797",
+        "exports/f2s/kenney-minimap-pack/minimap-tile-style-a-0001.png": "1b0940d17d771f88abdd8903333218c1c4f609f117fb3993715311494d332518",
+        "exports/f2s/kenney-minimap-pack/minimap-tile-style-a-0002.png": "b2eafe3d994c2bc91f64d602ad80e8851549cda982be201137b8de0292037c6a",
+        "exports/f2s/kenney-minimap-pack/minimap-tilemap-style-a.png": "6799f1d361954e6d1db541b84b5133d2a611b3eead50c3129e7ce82376a20724",
+        "exports/f2s/kenney-particle-pack/particle-pack-magic-03.png": "4e1b9897e5ae22dd58d8b9c12b9d2e6b19a9ddd8709ab023870a6967945c0315",
+        "exports/f2s/kenney-pattern-pack-lines/pattern-lines-circles.png": "ecd92c07f3c3c8c89e326044fb0729a9db204addd1fc6803b8eeab95f632bfab",
+        "exports/f2s/kenney-pattern-pack-lines/pattern-lines-crosshatch.png": "6bf296d0d079e239c0f6d8273d61367158af43c31f7e0d5e90c5a9c13dd4bdc6",
+        "exports/f2s/kenney-pattern-pack-lines/pattern-lines-diamond.png": "7475c98ae6cb70863872d7a53dd68f696086bc21bd0eddaad6b3d1f8567e0d2a",
+        "exports/f2s/kenney-roguelike-characters/roguelike-characters-transparent-spritesheet.png": "586e56fee906048a2fe3a272eb673d79eec225cdaa7dfec96379209f41958e83",
+        "exports/f2s/kenney-space-shooter-extension/space-shooter-astronaut-001.png": "05c72f9332271c7a208cdc37f5916cca3ecf70fd6af31e1e14504093143ff311",
+        "exports/f2s/kenney-space-shooter-extension/space-shooter-building-001.png": "8f8694a59f4d0886de2d55dbd153afdbf5a85310c8f2f727477d966d6648116e",
+        "exports/f2s/kenney-space-shooter-extension/space-shooter-effect-001.png": "a4f2ff259adb6f3ff54371dbfce3e0c2de91faf9f176f5817a77a12c4dfae77e",
+        "exports/f2s/kenney-space-shooter-remastered/meteor-brown-small-1.png": "e3624a0e38e293b8b5b00664bd034a395f9b686fd899adfee121f40e7c8e33ce",
+        "exports/f2s/kenney-space-shooter-remastered/meteor-grey-medium-2.png": "ee99b9bcfee7ddbf25508bcd133ac3e7f9ad1a4b97e9da7abd902d0a28d5d9b6",
+        "exports/f2s/kenney-space-shooter-remastered/space-enemy-blue-1.png": "2751ffcc29265868d30aa532157cd1993ead46961d58cbe9fc5899f2041e4745",
+        "exports/f2s/kenney-space-shooter-remastered/space-laser-blue-01.png": "14f88e9c1a2c9e0eedcfa020d7b8777c7c36b606bfef818be3e1aaeb51084ade",
+        "exports/f2s/kenney-space-shooter-remastered/space-ship-blue-default.png": "b588cf74143279852a7ad2bbedcba2143d7e52322215debcc914353c8f6fe5f1",
+        "exports/f2s/kenney-space-shooter-remastered/space-ship-blue-hit.png": "1057e7d22d30a6965f0807137810ffea7c79dea47edfb6d4d7dfd5716f075bcf",
+        "exports/f2s/kenney-space-shooter-remastered/space-ufo-red.png": "63ccca98cd68e49ccc3487ff638d2ca331ff76ae67690683234835f623ed269c",
+        "exports/f2s/kenney-space-shooter-remastered/survey-craft-blue.png": "f90e8bca9787186819597f02b0d844c451ab56bbd0e2166d73174ef8c4a49c47",
+        "exports/f2s/kenney-ui-pack-sci-fi/ui-scifi-blue-crosshair-a.png": "7130e0801e20edc00fbae3df18a7dd900d9c0c4493d3e9725bb04ee868be26e6",
+        "exports/f2s/kenney-ui-pack-sci-fi/ui-scifi-blue-header-panel.png": "0505c45ac86e217b206c154c19f3885fafa9c4b5db5e3a90994eabd5d99d2d22",
+        "exports/f2s/kenney-ui-pack-sci-fi/ui-scifi-blue-status-bar.png": "415951e5f6e7fb19d5aafca10e68d33cfd865ad9a2328d8902f118012dd63754",
+        "exports/f2s/kenney-ui-pack-sci-fi/ui-scifi-crosshair-b.png": "a673905c87ee034b8f6ab7026167ef8979d28043469136df390e8f31acebc865",
+        "exports/f2s/kenney-ui-pack-sci-fi/ui-scifi-header-blade.png": "5aaa7f1b9efcd9b4072c1f8978ac79a41654ed068b3de5aeda056004dfda5284",
+        "exports/f2s/kenney-ui-pack-sci-fi/ui-scifi-status-bar-gloss.png": "dfad145b26a987f6589fc752db763190633a2f0219c011320d8bba6a5588c300",
+        "exports/f2s/kenney-ui-pack/arrow-down-dark.png": "a8a1bad82fbca8eedeafafbf36c0e97ae2fc7a0441606673d4bc4ef08723f8a6",
+        "exports/f2s/kenney-ui-pack/blue-button-rectangle-depth-flat.png": "bebe2760bc49d2ab69b9b31dd62dfd815c55c1d9f806a0d900bc2fb9946e17a5",
+        "exports/f2s/kenney-ui-pack/blue-check-square-confirm.png": "aafdca674fcd2f59d0d092eac38f8d879c0b0a81e99ddd5e9401b44ce36dfe33",
+        "exports/f2s/kenney-ui-pack/blue-slider-horizontal.png": "38b715dd87d82780d8e6eeae4748771d5ee75677d9746ed859dad311248057b1",
+        "exports/f2s/oga-submarine-role/exploration-unit-submarine-default.png": "d3424b83c63f9b21adf035b7bb53e94ad6b8c4be1ad6a848bc5934f9e75b0146",
+        "exports/f2s/oga-submarine-role/exploration-unit-submarine-empowered.png": "ddeae4e49b36c1f64092e64c1a1ce322d784e8b87497b3a8e90e76f8e92b517b",
+        "exports/f2s/oga-submarine-role/exploration-unit-submarine-hit.png": "8e8cb1a00345dd58eaa6c9674988596029d3772ce65ade853570ff5031454984",
+        "exports/f2s/oga-submarine-role/exploration-unit-submarine-selected.png": "df655d0a52a0d3208e43c976a84e8f9757fbc031b12bece8ab279787a8f837b5",
+        "exports/f2s/oga-submarine-role/exploration-unit-submarine-unavailable.png": "3b790a449d178995029050efde6549a6a9723a1d8057bc71ddb9c00b8f81fedd",
+        "licenses/kenney-crosshair-pack-License.txt": "576c35dfc97ceb6889b66967a9de7b78fd09c301894e3ac888cce982632d6c0c",
+        "licenses/kenney-crosshair-pack-receipt.json": "4717b0630bff7a37402166c2f95fca740a12963bab9cc3c1b4bff6d87f57c7d3",
+        "licenses/kenney-deep-sea-sounds-decoder-validation.json": "59d2fc99f5c856aae6c0cb343dac21162112186db6ef30cc74e22144fe572381",
+        "licenses/kenney-digital-audio-p2-24e6ce28-License.txt": "48ac15b3c34deb0a7cddc80a43302654dc9e4cb23dad38fc620a6f70be2d55cd",
+        "licenses/kenney-digital-audio-p2-24e6ce28-receipt.json": "833d632ff6523a9d3295fb331b39fe3d3088fdcd6a5a4d8a6f37d8cc61248ae0",
+        "licenses/kenney-fish-pack-License.txt": "038e1e89c68befa953b63d0cd1ded3e75a73ef21f9d394735e35436c8c7649ea",
+        "licenses/kenney-fish-pack-receipt.json": "a5be334009100d09ad2f080740356bff2b9bf5503d9ad6f59f38436caaa8fafe",
+        "licenses/kenney-game-icons-License.txt": "5d57a5e5fa1c14d5002f5735cd46cd3285b559500b648cdf137bdc4c3dec6053",
+        "licenses/kenney-game-icons-receipt.json": "3ff6491ba2cc62bd76045933a49ef024ebc0ac004c1571cf45cb00b01eaca21c",
+        "licenses/kenney-impact-sounds-License.txt": "454078804390b07e89fda9fa1a51527b1df43a8ced39110ec5dc19c411269215",
+        "licenses/kenney-impact-sounds-receipt.json": "d3a9b5df27c7b72e1f177590aee8ea3a9b28e2e39b3bc32b553f6420b3ff1253",
+        "licenses/kenney-input-prompts-gp-ac2fcf59-LICENSE.txt": "12e0cc92d3d4da782dfd5e9079cd0f141b0ef4102ba03482255ac5d5320a5184",
+        "licenses/kenney-input-prompts-gp-ac2fcf59-page-evidence.json": "61bb9dc1dab2dfe4f3a7854b92f2e633c688cbd6ac13c9f5036ae8c5fa0b4a94",
+        "licenses/kenney-input-prompts-gp-ac2fcf59-receipt.json": "833d5b0369f96b759d8148de62677fbd22a176615acc9791aca9c4d254a506a6",
+        "licenses/kenney-interface-sounds-License.txt": "cefbf7ebb51b02ecf4748b1112d5c6a2d04aa0ea82e885e74680b62ea6d3a712",
+        "licenses/kenney-interface-sounds-decoder-validation.json": "75d9029c292a85199027b12df7acd4b8cb7156313ec4b1e21f4eb53a2781a2c7",
+        "licenses/kenney-interface-sounds-receipt.json": "88d5e6a914cec866b4e1e1e8e2a96c23d81bce6a95f635341163c2dd1b5eebb1",
+        "licenses/kenney-light-masks-License.txt": "f588e0dcfad0a5f2f4ef6049f9f9c2252e483c0864240d86f974e90347e74bc5",
+        "licenses/kenney-light-masks-receipt.json": "a5b7e1e00a1d8962eff5ecd209d8d59f78e5c69c8df7fa2dd3c0547be4f369b2",
+        "licenses/kenney-minimap-pack-License.txt": "cb9f17e8bb23256b9d5ef9e30701720c9c66ed8988da4bf4297019c3db7ea2bd",
+        "licenses/kenney-minimap-pack-receipt.json": "70361448d7e5d58d70f96b52e27e2b1bb2af1f007d6396bf598fb180341d3563",
+        "licenses/kenney-monster-builder-pack-gp-6e64b797-LICENSE.txt": "4e7d831cf520f67629ca23fcd26d4d8f09b98a9914974dc8bb1c862cdb42e163",
+        "licenses/kenney-monster-builder-pack-gp-6e64b797-page-evidence.json": "c40304799cbdd7fffc2db6727413a43b12bffba89a949547d70250e6a89fa1cf",
+        "licenses/kenney-monster-builder-pack-gp-6e64b797-receipt.json": "b8e760d315c7633f805b05ea85c9219fde4ae203bb6728e0c2a06b6d8adec6f0",
+        "licenses/kenney-music-jingles-gp-b729ba57-LICENSE.txt": "c2d2cc87aa90fa7c5ad7b8280f8c771ccc75dc1c7da825a44423b4d77aac9b18",
+        "licenses/kenney-music-jingles-gp-b729ba57-page-evidence.json": "f52680f91baa817093416e67a1180d19755ac0d40209aca3a9899b02a8f7590c",
+        "licenses/kenney-music-jingles-gp-b729ba57-receipt.json": "bda9268f5fec5a2fda2f0b5de0c236d220d1ff20348bea55f0354c06aa18349e",
+        "licenses/kenney-particle-pack-License.txt": "7edd59126c258e602e69905a0517cf51bedea489b1a69eb06a77edee1769e81e",
+        "licenses/kenney-particle-pack-receipt.json": "0539c16fe2744ff7e27e8f5344313bb3aa4bfa00978e3d1a70444716bfbe4789",
+        "licenses/kenney-pattern-pack-lines-License.txt": "b0390d22d6dc13a654aefca6b5e5931b8d694b8d28c156a251f8c68c4075efa6",
+        "licenses/kenney-pattern-pack-lines-receipt.json": "ed46f4dc7d975543b32d8543931bc1a8728d2ffaa8c38f92c8fe571cc088de16",
+        "licenses/kenney-roguelike-characters-License.txt": "1d06ec2aa10b491e58d95dd860edec74436d3bc8e71124bcb695f188d2d0ceef",
+        "licenses/kenney-roguelike-characters-receipt.json": "f2d4a128e92ceb3f6685048a8e4f7976583e152217fa85deceddd03630884d50",
+        "licenses/kenney-rpg-audio-p2-6dbeaf85-License.txt": "842c42cc1942963f6fcdc18fe57e9e0631e8a4936f9803688e8152e830088eb9",
+        "licenses/kenney-rpg-audio-p2-6dbeaf85-receipt.json": "f0b9db6ea9b91f7dbfc58ea43c96739b302e470a8e0fe805a596380fc6bd9f8b",
+        "licenses/kenney-sci-fi-sounds-License.txt": "e3ec096f89b9fbb3cf18cb1e629ec27213550376983d11c7f8cfb59b8b7968b7",
+        "licenses/kenney-sci-fi-sounds-receipt.json": "bbbdc0776855884fb7c13c7d3fce65ec4d8d7947da18eaa215da4576986216c1",
+        "licenses/kenney-space-shooter-extension-License.txt": "9a35b99b3fe85e70715084aba1e2d30de4d898a83b2adb8d268b960f25ee2169",
+        "licenses/kenney-space-shooter-extension-receipt.json": "ebcf635755305f7404b1d0d070d72d9b1016a89bb4b6ebc3a131c81faada8a41",
+        "licenses/kenney-space-shooter-remastered-License.txt": "3fbeede643ba2208ab031d04b0f139fc4837ddde2420292ea9df9e88d378d5d8",
+        "licenses/kenney-space-shooter-remastered-receipt.json": "af7595d17892c6782595a85ebb2e9b7d0219d324596031604b28bc91fc3af1d2",
+        "licenses/kenney-ui-audio-p2-946fc23a-License.txt": "d3727df992b579b2330c14f8326246ab9e3524731d54739b1066ed85adda7af0",
+        "licenses/kenney-ui-audio-p2-946fc23a-receipt.json": "30782dfe64f833806659ca76f3fe1bb1390c2f94bb2a269d4191314a49cd5d41",
+        "licenses/kenney-ui-pack-License.txt": "343f173732fc7c68d05cf1a7eb364807f09af1aa28e1b60b45b6e132d5693654",
+        "licenses/kenney-ui-pack-gp-a8a14a23-LICENSE.txt": "613565aa0480a5e0691fc257b311f0d489623a97bc36d849169aae528d6e32a3",
+        "licenses/kenney-ui-pack-gp-a8a14a23-page-evidence.json": "2ef20ffd900587bff352d07b120db186990eb859464a87c004cd2d742e6e930a",
+        "licenses/kenney-ui-pack-gp-a8a14a23-receipt.json": "1c058464c3096a616d63b2da8e3652624cf13dc823ea09e5de88d580078e60ee",
+        "licenses/kenney-ui-pack-page-evidence.json": "c0497b393d8937c99c6be71dbc312626b13fcf5f394513fdc8c70cfe27287923",
+        "licenses/kenney-ui-pack-receipt.json": "4d5e4ac3dddf319d35e58c621a176ab1a2e3569f5a352ff8731b86faf7f7233b",
+        "licenses/kenney-ui-pack-sci-fi-License.txt": "e18af482a498142942f076ad570fa7e288e42dadeaf186e54164efb54d4ecfc9",
+        "licenses/kenney-ui-pack-sci-fi-receipt.json": "7d36f453512bcf8861f0484bcb7f0d63403c44270f2b4145cde35b62fdfc3330",
+        "licenses/noto-sans-cjk-sc-regular-f8d15753-LICENSE.txt": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2",
+        "licenses/noto-sans-cjk-sc-regular-f8d15753-receipt.json": "5b11b594a637aa5f7d0d689c6bef3f5b0861db928fee4ef2697a51439b7906c8",
+        "licenses/oga-submarine-sidescroller-page-evidence.json": "20e6484bda774820edffea5a51f5f03e6160ed30ae3d7a649cbfa1b96286acd6",
+        "licenses/oga-submarine-sidescroller-receipt.json": "95f1863dbf55f9ef68199f55fc1ad7c9518c936ca78dbacea28207adeeadec7f",
+        "packs/attribution/presentation-foundations/noto-sans-cjk-sc-regular.otf": "2c76254f6fc379fddfce0a7e84fb5385bb135d3e399294f6eeb6680d0365b74b",
+        "packs/cc0/audio-refresh/digital-audio-laser5.ogg": "8d7b30b35112bedf4dd6f03796a5f33af85414b02947187e4063819fd80cf3e2",
+        "packs/cc0/audio-refresh/digital-audio-lowDown.ogg": "e0215fcfd8b9d7877f74d5c46b239a13d7db0d25998da97b80404931ef9eef5d",
+        "packs/cc0/audio-refresh/digital-audio-phaseJump1.ogg": "c60069ed7108678dd6a1306404d168a93cc2575cda37b06add9dd6c4d46352a3",
+        "packs/cc0/audio-refresh/digital-audio-phaserDown1.ogg": "d2d046cd0247045f8819905fc9719a7237ccbd590b3128ce58a61a81f50d208b",
+        "packs/cc0/audio-refresh/digital-audio-phaserDown3.ogg": "19fd2f5bb8448e022381f1a72c36117d4adcb521ebeb697e888bfaf7945cfa56",
+        "packs/cc0/audio-refresh/digital-audio-powerUp7.ogg": "9048d651b51f528099c384566b0d4c6c597bee8b56c48f3adab7a901feba0fa5",
+        "packs/cc0/audio-refresh/digital-audio-threeTone1.ogg": "bdf21eb12e65507f091d074886fdac820e1ccae51d060caa168e5567acadb84b",
+        "packs/cc0/audio-refresh/digital-audio-twoTone1.ogg": "8732f14d6398407a8f1df77b986c2099cfd88f6583e1272cb60497cb2fe8da1d",
+        "packs/cc0/audio-refresh/rpg-audio-dropLeather.ogg": "097e1d3b74949b0145fda0519d40b7e0773ab82ec4858727f95be830927e1a45",
+        "packs/cc0/audio-refresh/rpg-audio-footstep00.ogg": "6fe61ef1fc3bcf0e253bf2eb64759db6cb69e2fe452f4d88cc597ecf78a3d601",
+        "packs/cc0/audio-refresh/rpg-audio-knifeSlice2.ogg": "6c2064d0ef988d1ec3d56868e823ea8823a5cac00f2742560052633529407def",
+        "packs/cc0/audio-refresh/ui-audio-click1.ogg": "59175ac17cd49a68dd736285738441287636112a84a6f7ce0d89921bda5a5360",
+        "packs/cc0/audio-refresh/ui-audio-click2.ogg": "c394b46bc6737f7f7edfbfa3031ce621b7a43d498d456d6198364eee9cd3e306",
+        "packs/cc0/kenney-crosshair-pack/png/crosshair-hazard-lock.png": "98b7848fb54f7113182b8a323fbdad8cdbf16fb45b6726f3b7ef4ebff018eac4",
+        "packs/cc0/kenney-crosshair-pack/png/crosshair-scan-ring.png": "7c7ee2ecb21f4e50cb5379e3a2d010833f51256bb65a0b935a20aeace37366d3",
+        "packs/cc0/kenney-deep-sea-sounds/wav/deepsea-discovery-low-frequency.wav": "a4a8006d4accde2f0780acf8d40886c85d62ecaf175978f550918c201a88f4f1",
+        "packs/cc0/kenney-deep-sea-sounds/wav/deepsea-impact-metal.wav": "a8986c3f19bc0813f6d4090f2bb6e3ad42866f4d2ff725dc64291c254418ed58",
+        "packs/cc0/kenney-deep-sea-sounds/wav/deepsea-scan-forcefield.wav": "c0cda3deeb2d50c5beef993610c0070a700e87086aa9de16e49c1f4f0de32fc4",
+        "packs/cc0/kenney-deep-sea-sounds/wav/deepsea-sonar-computer.wav": "878e73e1c048c4292766f1634d8325ca2963f88ecb516d357651316f0496fcd3",
+        "packs/cc0/kenney-fish-pack/png/fish-background-rock-a.png": "622d46b8c2a3af30f9767f5379693838a7e4ad6944a6b4f5f7f650793c4157c3",
+        "packs/cc0/kenney-fish-pack/png/fish-background-rock-b.png": "84175acf709aa2accf965de58507969cc364c34386112aad07bd9c92d6b1de6c",
+        "packs/cc0/kenney-fish-pack/png/fish-background-seaweed-a.png": "db21144691fb2d8590024ce5fd0ef7ab550f54fd849257cec17735b479c5184d",
+        "packs/cc0/kenney-fish-pack/png/fish-background-seaweed-b.png": "8020112c2a12d7dabf61885e6a0ec282c948a06bfa512e80116c1bc3f9d592b2",
+        "packs/cc0/kenney-fish-pack/png/fish-background-seaweed-c.png": "95e7231d05f59acad4373a6d1cc1611b0dd22007dccb7f85d2b25ca40d0593f6",
+        "packs/cc0/kenney-fish-pack/png/fish-background-terrain-top.png": "cf5807e1f35e21125adc82c4e49a64a61a6fe55e19ba392fcb6236b68e4d02f3",
+        "packs/cc0/kenney-fish-pack/png/fish-background-terrain.png": "968a070618781758d6bc5ea36f174853bb44174aa3270fb5ddc24bafd010d49c",
+        "packs/cc0/kenney-fish-pack/png/fish-blue-skeleton.png": "ffa9d0088425c41cc93a210dd410dd656b96986607da974a0a9a8ba4e9d6b143",
+        "packs/cc0/kenney-fish-pack/png/fish-blue.png": "cf7107566d20a29e36c70b8715d6fddcebd2caad826e8aaeafb00453b3afe934",
+        "packs/cc0/kenney-fish-pack/png/fish-bubble-a.png": "23f1fabc7edab58a08c5a973da418395944e4694dd024a6fd445a3fecba88e5d",
+        "packs/cc0/kenney-fish-pack/png/fish-bubble-b.png": "6d5815d19669f31499ed5818ec80968249ca4b58ea69318ba75c91269d0a60c7",
+        "packs/cc0/kenney-fish-pack/png/fish-bubble-c.png": "597cfb2369fb91f74b3c1c26358aab3f6286ee6fd0a57e4d918bfd0908bd4d93",
+        "packs/cc0/kenney-fish-pack/png/fish-green.png": "df1077ac0afb3ab0cf80daacaf4df6fbba84beb733c42834211a565206ed8220",
+        "packs/cc0/kenney-fish-pack/png/fish-grey-long-a.png": "9c4402cadcb6f362648039d3babbf14cf4354f155ebee5a3c282030315958354",
+        "packs/cc0/kenney-fish-pack/png/fish-orange.png": "78d368600df42852854df52b331511153554138f9eb0fd435657b613b60320f5",
+        "packs/cc0/kenney-fish-pack/png/fish-red.png": "a3a4d2cf317b3d511ed994ba36813867ca60b6dcd4583dea487998bb6629a5b8",
+        "packs/cc0/kenney-foundation-audio/wav/foundation-computer-alert.wav": "9df12d18c554a4a4bb9c4e279fb21d4c0aaa2842273a50f848c15430355c1774",
+        "packs/cc0/kenney-foundation-audio/wav/foundation-door-close.wav": "6cbd911aadbde314f74947c02a70e86ef7451c5673ff68e09e732ee566a3a3a7",
+        "packs/cc0/kenney-foundation-audio/wav/foundation-door-open.wav": "3eb6d64c77577d9e4ef95f472f71cd6b80b90f0d2a75c46a23502189d42b7895",
+        "packs/cc0/kenney-foundation-audio/wav/foundation-engine-loop.wav": "70f83b07ac5f02a0a718b7d1e4cd9c83bb664fc989d693364dc2078348c90c1d",
+        "packs/cc0/kenney-foundation-audio/wav/foundation-explosion-crunch.wav": "b06b8cd2488f2c285a6e7e5a3da827f210f6b96405f471a5fc71824b47778ced",
+        "packs/cc0/kenney-foundation-audio/wav/foundation-impact-bell-heavy.wav": "7c193179471a9a4f23a376cc0bd98f045a013489fc0cf47290eeed7176d515fe",
+        "packs/cc0/kenney-foundation-audio/wav/foundation-impact-generic-light.wav": "b9abfb1e1b908cf049823aacf8aac2bbb4440d6e4e4d1178d662362e4cc5282c",
+        "packs/cc0/kenney-foundation-audio/wav/foundation-laser-small.wav": "00c930ef49fc47b8bccaf5c79efede5784f0c3b3444d17efb4bdb262baa40b92",
+        "packs/cc0/kenney-game-icons/png/game-icon-checkmark-white-1x.png": "70ba0776b017bf61f63eb0cc143d0685213af82059c5b39bea290a06c67ecbaa",
+        "packs/cc0/kenney-game-icons/png/game-icon-cross-white-1x.png": "a8f9a7031f3d0b27aa0ed7fb8848593d534e88dad540e8a7c48a84a72ad583a4",
+        "packs/cc0/kenney-game-icons/png/game-icon-home-white-1x.png": "04fef118a290892194a00ceebd6ad62c034a773d7c346d3e0a9b2db53ae2eba3",
+        "packs/cc0/kenney-game-icons/png/game-icon-information-white-1x.png": "8b2681f10c7cdcc5fbd7978ba39400df4d30445af0b54ed3d0899599ed4fc120",
+        "packs/cc0/kenney-game-icons/png/game-icon-locked-white-1x.png": "e3020a9e04181f05c951113e78a6a5a90b797bf42d1d850bf07818d6e31f7d37",
+        "packs/cc0/kenney-game-icons/png/game-icon-minus-white-1x.png": "c086c31b97b11085e98989c8b2f3dc9702ca187e96ef4a26590193087cbb80c3",
+        "packs/cc0/kenney-game-icons/png/game-icon-pause-white-1x.png": "ef060ae24bb440e846d4ff3c77c54c1285e30787900c7c8b5280fc4fa4006cf3",
+        "packs/cc0/kenney-game-icons/png/game-icon-plus-white-1x.png": "2ea54f9a405a83345b1012ef38a68d52b6ba60e4bc07012351b7cffb9479e214",
+        "packs/cc0/kenney-game-icons/png/game-icon-target-white-1x.png": "f443d6f0a23a6f04f475d6aaa982d6ad153bd80df197456c744bed1afae2a594",
+        "packs/cc0/kenney-game-icons/png/game-icon-unlocked-white-1x.png": "ac822a22ff6575630abace27a7043902d893bb57ed60c6db0c1690dbc1efa9d6",
+        "packs/cc0/kenney-game-icons/png/game-icon-warning-white-1x.png": "08d57c7e889ff056463dd526f7160f291627ce700b5846d64f8b6c003ec8b545",
+        "packs/cc0/kenney-game-icons/png/game-icon-zoom-in-white-1x.png": "8cd7f10d2d480152dd2cbbf475f695d514980f41e488884ee2cdaa747dfcf6b9",
+        "packs/cc0/kenney-interface-sounds/wav/click-a.wav": "88f95d5903c325baa6b8da35a7060871ed1e6ba3295038e61768f238850ecfdb",
+        "packs/cc0/kenney-interface-sounds/wav/click-b.wav": "0663208ad5d6e42d76557600ced66746591da62596fa899bb6fd06a2e2121941",
+        "packs/cc0/kenney-interface-sounds/wav/switch-a.wav": "cc32fed1ea800d35d33d385b8f519cafef52a733f8d5d8085231c2a0a1ac85c6",
+        "packs/cc0/kenney-interface-sounds/wav/switch-b.wav": "9f6c5a43576262604714985a391cbe48cb37789e5b20f2099911fb5a66edd225",
+        "packs/cc0/kenney-interface-sounds/wav/tap-a.wav": "c83e3e79cd5aa32bb827a967e2b5641714572d8fae1a1117b5a8698b1cf6190c",
+        "packs/cc0/kenney-interface-sounds/wav/tap-b.wav": "88154a716cea765d16cc79c0bc62cb4c4ddefc65fa282eafd665a1929177d6fc",
+        "packs/cc0/kenney-light-masks/png/light-mask-circle-rings-a.png": "ee5207681ce0818836bbd7c9fc2182d28552dc846b3f1171b6c7ad7ae6ccd1b1",
+        "packs/cc0/kenney-light-masks/png/light-mask-cone-a.png": "bd64590147d704440552aa84ebd65517e9008837f804790860ebab89d4a42928",
+        "packs/cc0/kenney-light-masks/png/light-mask-cone-composed-a.png": "1fad6cfef0b37aa8969a50d7065923a39db4077ffee8692a202bd13280249763",
+        "packs/cc0/kenney-minimap-pack/png/minimap-tile-style-a-0000.png": "2195ca198239474db67d6a54292117c059c0bea294a3c2c730892414db520797",
+        "packs/cc0/kenney-minimap-pack/png/minimap-tile-style-a-0001.png": "1b0940d17d771f88abdd8903333218c1c4f609f117fb3993715311494d332518",
+        "packs/cc0/kenney-minimap-pack/png/minimap-tile-style-a-0002.png": "b2eafe3d994c2bc91f64d602ad80e8851549cda982be201137b8de0292037c6a",
+        "packs/cc0/kenney-minimap-pack/png/minimap-tilemap-style-a.png": "6799f1d361954e6d1db541b84b5133d2a611b3eead50c3129e7ce82376a20724",
+        "packs/cc0/kenney-particle-pack/png/particle-pack-magic-03.png": "4e1b9897e5ae22dd58d8b9c12b9d2e6b19a9ddd8709ab023870a6967945c0315",
+        "packs/cc0/kenney-pattern-pack-lines/png/pattern-lines-circles.png": "ecd92c07f3c3c8c89e326044fb0729a9db204addd1fc6803b8eeab95f632bfab",
+        "packs/cc0/kenney-pattern-pack-lines/png/pattern-lines-crosshatch.png": "6bf296d0d079e239c0f6d8273d61367158af43c31f7e0d5e90c5a9c13dd4bdc6",
+        "packs/cc0/kenney-pattern-pack-lines/png/pattern-lines-diamond.png": "7475c98ae6cb70863872d7a53dd68f696086bc21bd0eddaad6b3d1f8567e0d2a",
+        "packs/cc0/kenney-roguelike-characters/png/roguelike-characters-transparent-spritesheet.png": "586e56fee906048a2fe3a272eb673d79eec225cdaa7dfec96379209f41958e83",
+        "packs/cc0/kenney-space-shooter-extension/png/space-shooter-astronaut-001.png": "05c72f9332271c7a208cdc37f5916cca3ecf70fd6af31e1e14504093143ff311",
+        "packs/cc0/kenney-space-shooter-extension/png/space-shooter-building-001.png": "8f8694a59f4d0886de2d55dbd153afdbf5a85310c8f2f727477d966d6648116e",
+        "packs/cc0/kenney-space-shooter-extension/png/space-shooter-effect-001.png": "a4f2ff259adb6f3ff54371dbfce3e0c2de91faf9f176f5817a77a12c4dfae77e",
+        "packs/cc0/kenney-space-shooter-remastered/png/meteor-brown-small-1.png": "e3624a0e38e293b8b5b00664bd034a395f9b686fd899adfee121f40e7c8e33ce",
+        "packs/cc0/kenney-space-shooter-remastered/png/meteor-grey-medium-2.png": "ee99b9bcfee7ddbf25508bcd133ac3e7f9ad1a4b97e9da7abd902d0a28d5d9b6",
+        "packs/cc0/kenney-space-shooter-remastered/png/space-enemy-blue-1.png": "2751ffcc29265868d30aa532157cd1993ead46961d58cbe9fc5899f2041e4745",
+        "packs/cc0/kenney-space-shooter-remastered/png/space-laser-blue-01.png": "14f88e9c1a2c9e0eedcfa020d7b8777c7c36b606bfef818be3e1aaeb51084ade",
+        "packs/cc0/kenney-space-shooter-remastered/png/space-ship-blue-default.png": "b588cf74143279852a7ad2bbedcba2143d7e52322215debcc914353c8f6fe5f1",
+        "packs/cc0/kenney-space-shooter-remastered/png/space-ship-blue-hit.png": "1057e7d22d30a6965f0807137810ffea7c79dea47edfb6d4d7dfd5716f075bcf",
+        "packs/cc0/kenney-space-shooter-remastered/png/space-ufo-red.png": "63ccca98cd68e49ccc3487ff638d2ca331ff76ae67690683234835f623ed269c",
+        "packs/cc0/kenney-space-shooter-remastered/png/survey-craft-blue.png": "f90e8bca9787186819597f02b0d844c451ab56bbd0e2166d73174ef8c4a49c47",
+        "packs/cc0/kenney-ui-pack-sci-fi/png/ui-scifi-blue-crosshair-a.png": "7130e0801e20edc00fbae3df18a7dd900d9c0c4493d3e9725bb04ee868be26e6",
+        "packs/cc0/kenney-ui-pack-sci-fi/png/ui-scifi-blue-header-panel.png": "0505c45ac86e217b206c154c19f3885fafa9c4b5db5e3a90994eabd5d99d2d22",
+        "packs/cc0/kenney-ui-pack-sci-fi/png/ui-scifi-blue-status-bar.png": "415951e5f6e7fb19d5aafca10e68d33cfd865ad9a2328d8902f118012dd63754",
+        "packs/cc0/kenney-ui-pack-sci-fi/png/ui-scifi-crosshair-b.png": "a673905c87ee034b8f6ab7026167ef8979d28043469136df390e8f31acebc865",
+        "packs/cc0/kenney-ui-pack-sci-fi/png/ui-scifi-header-blade.png": "5aaa7f1b9efcd9b4072c1f8978ac79a41654ed068b3de5aeda056004dfda5284",
+        "packs/cc0/kenney-ui-pack-sci-fi/png/ui-scifi-status-bar-gloss.png": "dfad145b26a987f6589fc752db763190633a2f0219c011320d8bba6a5588c300",
+        "packs/cc0/kenney-ui-pack/png/arrow-down-dark.png": "a8a1bad82fbca8eedeafafbf36c0e97ae2fc7a0441606673d4bc4ef08723f8a6",
+        "packs/cc0/kenney-ui-pack/png/blue-button-rectangle-depth-flat.png": "bebe2760bc49d2ab69b9b31dd62dfd815c55c1d9f806a0d900bc2fb9946e17a5",
+        "packs/cc0/kenney-ui-pack/png/blue-check-square-confirm.png": "aafdca674fcd2f59d0d092eac38f8d879c0b0a81e99ddd5e9401b44ce36dfe33",
+        "packs/cc0/kenney-ui-pack/png/blue-slider-horizontal.png": "38b715dd87d82780d8e6eeae4748771d5ee75677d9746ed859dad311248057b1",
+        "packs/cc0/oga-submarine-role/png/exploration-unit-submarine-default.png": "d3424b83c63f9b21adf035b7bb53e94ad6b8c4be1ad6a848bc5934f9e75b0146",
+        "packs/cc0/oga-submarine-role/png/exploration-unit-submarine-empowered.png": "ddeae4e49b36c1f64092e64c1a1ce322d784e8b87497b3a8e90e76f8e92b517b",
+        "packs/cc0/oga-submarine-role/png/exploration-unit-submarine-hit.png": "8e8cb1a00345dd58eaa6c9674988596029d3772ce65ade853570ff5031454984",
+        "packs/cc0/oga-submarine-role/png/exploration-unit-submarine-selected.png": "df655d0a52a0d3208e43c976a84e8f9757fbc031b12bece8ab279787a8f837b5",
+        "packs/cc0/oga-submarine-role/png/exploration-unit-submarine-unavailable.png": "3b790a449d178995029050efde6549a6a9723a1d8057bc71ddb9c00b8f81fedd",
+        "packs/cc0/presentation-foundations/kenney-input-prompts-keyboard-d.png": "6ca4515b5f56dd2730cb9acec3b183c8b2800ae641d75b434edd753e12bc36ad",
+        "packs/cc0/presentation-foundations/kenney-input-prompts-keyboard-m.png": "f0ddf6f6b9f22b715dc79db27ee28556be9b0e933d311a7201278634b5edfd55",
+        "packs/cc0/presentation-foundations/kenney-input-prompts-keyboard-q.png": "cee375cefc9e2f19089bbd669153af9099fe71e08b6c577d48eb2a32bc567c96",
+        "packs/cc0/presentation-foundations/kenney-input-prompts-keyboard-space.png": "8ce6f043b05888bd1655f7660f8f7cc02acb6c763fecf358fef20405239524bf",
+        "packs/cc0/presentation-foundations/kenney-input-prompts-keyboard-z.png": "c0981ecffd93edf02dc7c8d15a1dc5a13e9c5a98523c736cb9a3ced299e060ee",
+        "packs/cc0/presentation-foundations/kenney-input-prompts-mouse-left.png": "80101392b423671e2812d2b64310bbd17f7c95c796f0c704dcf6c1a70d98cf35",
+        "packs/cc0/presentation-foundations/kenney-monster-builder-body-bluea.png": "4f88485cc30747c409bfd0ddca54656f4f0676f038b4dcfc54f635c09e06f940",
+        "packs/cc0/presentation-foundations/kenney-monster-builder-body-greenc.png": "a91e341b1a9932c2fad19c13883a2000824a9bc53ee623cde4af907b15e0b51e",
+        "packs/cc0/presentation-foundations/kenney-monster-builder-body-yellowb.png": "33273f124c16fe95ca3a894642c4dd3d912925f17d0aa00684541a6631ce615c",
+        "packs/cc0/presentation-foundations/kenney-monster-builder-eye-closed-happy.png": "038d83536152af28a92cd023ac59da0eca7e5117bb86730ed145f240cc4f96db",
+        "packs/cc0/presentation-foundations/kenney-monster-builder-eye-cute-dark.png": "8b060ef9f32922c5529f545a512aaa182699eb5171dcf3bae7abd124834253ce",
+        "packs/cc0/presentation-foundations/kenney-monster-builder-mouth-closed-happy.png": "1dc253434849a774dff9d3747d066a33fd9749351ba9d253dd5a351cb2fefdc9",
+        "packs/cc0/presentation-foundations/kenney-music-jingles-jingles-pizzi00.ogg": "b442ade3308a2bbda4b8c572c86f9f1071c7bdbcfb1e6f915d35c605b61bd475",
+        "packs/cc0/presentation-foundations/kenney-music-jingles-jingles-pizzi03.ogg": "88da900ec74a79fb845f2dcf2068383998833a9ee1b87a23f074924781af5700",
+        "packs/cc0/presentation-foundations/kenney-music-jingles-jingles-pizzi06.ogg": "6389d8d473c7d82375396da01584f12459039be0e709be0265ef9bda7a1ebb0c",
+        "packs/cc0/presentation-foundations/kenney-ui-pack-gp-disabled.png": "c91ee37858be6035143a8ae26588741e9350e5f42aed548e3ee00910092239e8",
+        "packs/cc0/presentation-foundations/kenney-ui-pack-gp-focus-overlay.png": "7a4b26b1dd3737938fc90a8b535be16e77da3e974f2970dbc23fbaa708b18215",
+        "packs/cc0/presentation-foundations/kenney-ui-pack-gp-normal.png": "f356ba76050319e08ff7a68458f28f068dd57b1facf156a0da4348de8c5fffe1",
+        "packs/cc0/presentation-foundations/kenney-ui-pack-gp-pressed.png": "0aad0fc500f42740ba1976ee01e9649164584e12e7ef672ac04bb03f013cc52c",
+        "schemas/asset-manifest.schema.json": "cb906ba44b55498a609b60bbe9707f754fcdaf1af976f1b09f3728f20b0c8963",
+        "schemas/formal-asset.schema.json": "6c621944e54bd634bf0b6f4b3c2f4cd26a9ccf22f3e6278ca012c7a1dc8ff512",
+        "schemas/license-receipt.schema.json": "8291b144d00430c4a347c152eb20ccfb8fa9b124b6002ab872b3c64728ac42ba",
+        "schemas/source-manifest.schema.json": "e563100e9648ed0c0bfcb98b0df32ff545332579e27b44ff1b7e84c72e17ec93",
+        "scripts/assets.mjs": "770c50ccfa224cff811912b72b9a0a878e41c3211209c26b3ec753557d42964d",
+        "scripts/vendor-delivery.mjs": "3a782a48f6dcb0efb0771290f57abf89016d737603998b1f591e78b737501bff",
+        "tests/assets.test.mjs": "21c0902d825111c40547f7192b03cfd661ee00baf551c5083fd4fc33b9cc8396"
+      },
+      "optional": [
+        "game-presentation",
+        "prototyping"
+      ],
+      "provides": [
+        "asset-catalog"
+      ],
+      "required": [],
+      "source": "packages/prototype-assets",
+      "source_revision": "cab4f18f89b48ef345eb1a222ab69a5d0944d0b7",
+      "version": "1.3.0"
+    },
+    "skills": {
+      "destination": "modules/skills",
+      "files": {
+        ".gitattributes": "8b7d05e308c8b3f2674f6f7311520f9b2421bccbec7d6abdcd79192d8fd99535",
+        "AGENTS.md": "c4d351aac39a83e5b0595a1f51f2316b8a581ae6abb70ba7f875c6e7e32db1d1",
+        "README.md": "d85d3f1e3aba59e51b411e1d3e633759d76f0a80ec6e7aa58a9013146cc58471",
+        "_release.json": "c6890239ea74738f6ba9411ec435dfdf69bac2e1d24f53ec2715c9c736b502ef",
+        "catalog.json": "c5eee8cac3cdd29b0dc03fd37905cf12472473fa244a51a14f2a643e40354e7e",
+        "library/agent-blind-eval/SKILL.md": "10d8580707534354eb22f6c1a9ccb86be19fa7587ecdeed6efd43abe81f8d3fe",
+        "library/agent-blind-eval/references/evaluation-protocol.md": "84475be418d07b89e148df4ea54b917a2bc5e4dacb44f85038c8cdf60887bea6",
+        "library/bidirectional-steelman/SKILL.md": "fe063aa466c41f4f4179d246d9aae1a414913a0fc7912356eb05458a50e2423f",
+        "library/dual-layer-explainer/SKILL.md": "64161613dc81576315fb5571897cf65214bc9793015e14038204a46e24e53417",
+        "library/evidence-audit/SKILL.md": "b33a27d488d420f41e964bd0e12999ad161e6d59ecd5a222fb4aad87e80c3d54",
+        "library/game-decision-support/SKILL.md": "178c1f58c1074f252533a0ef70a401b35b8997703549be230deeb228d9dd56ca",
+        "library/game-presentation/SKILL.md": "0d944d7fc5a104a8e07d184741cca42b8a2bbb9c270d28f7a798115b8756de5c",
+        "library/godot-gdscript-patterns/SKILL.md": "52013b9a2a6a3db8aba35cc6bb671d547ab526d1d7913c169ccb77878be257c5",
+        "library/godot-gdscript-patterns/references/LICENSE": "f89abb55d9f073f38f1703e4518f0613c788c6174be7f13b8dfe48a1c076c746",
+        "library/godot-gdscript-patterns/references/UPSTREAM.md": "dfee4a95efc9039e0de8397e9324e53b3b3d5e81d6c7e3859f56626440f59a55",
+        "library/godot-gdscript-patterns/references/advanced-patterns.md": "659531834c96b493caeeba32303eeacafe0ed482439933beb0a1765af7288bec",
+        "library/godot-gdscript-patterns/references/details.md": "e2d0f3115fce45ba1dad5b950e91318e0d9bc509b0fad7119d210b608d3576c2",
+        "library/horizontal-vertical-research/SKILL.md": "0fbdadab1c44621447503479ac603bebf7f97941f3804d85f38fbe92733835f4",
+        "library/humanizer-zh/SKILL.md": "9b07aa76be9885405f78749bf5d808292f43c283dd43644b2cbc17b8e71f00ac",
+        "library/humanizer-zh/references/LICENSE": "aa00e74769e1b9d8e7fa7094dbfcca9b129a0ded6dce1cf4da050b99146d2fa7",
+        "library/humanizer-zh/references/UPSTREAM.md": "100ceb8c078468179585e4a085c0bd8edd8b2e1f43814b9c73ac5917039bd8e8",
+        "library/problem-clarifier/SKILL.md": "946cb75bfc29032e73f0a2ff517b14e149dad0c141f5837795408d55a0275062",
+        "library/property-based-testing/SKILL.md": "5bfa9a87dbefc85f5c2a3666da2932ef6ae38c1b4b1bffd8a08e43d1259542dc",
+        "library/property-based-testing/references/LICENSE": "7abe19ec9bb73b36141b999b861d24ad855e808bafe0f81e84cce28556f6c297",
+        "library/property-based-testing/references/UPSTREAM.md": "58bfb5f1e9b770b9850b0a374f884e80a9b7eacb435a2ce540d3412806909f82",
+        "library/property-based-testing/references/generating.md": "c0e72dfc89babe3c32de718b81b94044362c85e776d7475e950dfeaab78bb58e",
+        "library/property-based-testing/references/interpreting-failures.md": "dbae7db8773712ba03268a3d56ea5aa6720af0650a5189580bfd88aa2edc3f9a",
+        "library/property-based-testing/references/libraries.md": "f7218acf8e668130ef3048983472579d04e12030c5401926f666363e5f69c686",
+        "library/property-based-testing/references/refactoring.md": "6eb5c206f575704791f089608bb06e41d6eed91b9d3c7fb27912f969aed07a18",
+        "library/property-based-testing/references/reviewing.md": "110b08118a1e7b1a2566def6e9d2a0bf43fc2deefce857d2ce3b4382b07bc774",
+        "library/reference-deconstruction/SKILL.md": "c4118326aebb3baa253704518c3e199ad07cf57188cd970511575a97f09c3794",
+        "library/reversible-experiment-design/SKILL.md": "b455f2a6d7e94060118c8c9e37d5dd62d6b190b043aaa81ac3c9c67157f8baaa",
+        "library/systematic-debugging/SKILL.md": "01f9f45d532619be1fe24911a196af0341680579c3bdec8bb5a9940f7d708e6c",
+        "library/systematic-debugging/references/LICENSE": "a37e0e9697144819e1d965176ac4ae5bc3fa02d11e7812036bbcadf6dafe2400",
+        "library/systematic-debugging/references/condition-based-waiting-example.ts": "40ae5ebe497fdf310200e43fe986552546d0a22837c0d39e855db1cfd33eb88e",
+        "library/systematic-debugging/references/condition-based-waiting.md": "e89fec8400d6cd50f43407cec9fab50976ba4d55d0ec2eb51c0bd68036b54c26",
+        "library/systematic-debugging/references/defense-in-depth.md": "1e175fb86fc357e58c6aebf5441e481e1b7868b4380c0456b63a17eefbd18ba7",
+        "library/systematic-debugging/references/root-cause-tracing.md": "6b0622269e098ca1399e123e553fd385f0b6412d88ef0e9c4f5a8ea9cf1cec7b",
+        "library/workflow-closure/SKILL.md": "d8013cfd68939a4972d93e4288813b5a740a973722d547ba0a43b548b9ec76c0",
+        "library/workflow-redesign/SKILL.md": "ff22be8ea4bd5bceb19d664aca178c99250e6886e80a7afe7892bcad447549f8",
+        "library/workflow-redesign/references/delivery-and-validation.md": "3c59aa20d75780e4a755f3d65c9c563e64ebe7793d3a4ff3a869e5d7329ab134",
+        "scripts/_runtime.py": "8d36848e3cc6c435812e4097eebe3ebeb26328f3e0b96f176036638069e40d61",
+        "scripts/skills.py": "6a5580c901a39762d2406ea8294c48f6b88e967ae89f4eba9671fb06853a42c9",
+        "skills.json": "1951e87f76c15033c509e0c0ebe30f2cf801d84df51d020625229e768f46a9f4",
+        "upgrades/1.3.0.md": "927cf0f66766df0d59fd6a34ba2dc3e1b5077e86d9ce9f501e38ba6a3198eab1"
+      },
+      "optional": [
+        "game-analysis",
+        "game-presentation",
+        "knowledge"
+      ],
+      "provides": [
+        "skill-library"
+      ],
+      "required": [],
+      "source": "packages/skills",
+      "source_revision": "216f0921f4e3e1e9b13bd34d4a6e126fbf334909",
+      "version": "1.3.0"
     }
   },
-  "previous_version": "1.1.0",
+  "previous_version": "1.2.0",
   "schema_version": 1,
-  "version": "1.2.0"
+  "version": "1.3.0"
 }

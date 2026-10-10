@@ -2,7 +2,7 @@
 
 **简体中文** | [English](README.en.md)
 
-AgentWorkSpace 帮你搭建一个可持续使用的 Agent 工作区。它提供完整的协作规则和常用方法，再按需要接入 Brainstorm、FromDemoToSpec 和 Knowledge。
+AgentWorkSpace 帮你搭建一个可持续使用的 Agent 工作区。它提供完整的协作规则和常用方法，再按需要接入脑暴、原型、知识、游戏分析、表现制作、精选素材和 Skills。
 
 你可以直接告诉 Agent：
 
@@ -12,7 +12,7 @@ meta 只有一个完整版，无需选择功能组合。新建工作区默认安
 
 ## 从这里开始
 
-把本仓克隆或下载到一个独立目录，用户工作区放在另一个目录。统一工具需要 Python 3.10+；业务脚本还需要 Node.js 22+ 和 PowerShell 7。Knowledge 首次 Ingest 还需要 Git。本次运行验证在 Windows 完成，其他平台按包内说明检查环境。
+把本仓克隆或下载到一个独立目录，用户工作区放在另一个目录。统一工具和 Skills 选择安装器需要 Python 3.10+；GAD、GamePresentation、PrototypeAssets 的工具需要 Node.js 22+。Brainstorm、FromDemoToSpec 及部分 Knowledge 工具另需 PowerShell 7，Knowledge 首次 Ingest 还需 Git。本次运行验证在 Windows 完成，其他平台按包内说明检查环境。
 
 在发布仓目录运行，先预览，再应用：
 
@@ -53,6 +53,28 @@ Agent 按审计返回的 criteria 审阅现有规则与接口，记录理由、�
 
 meta 还包含 [Humanizer-zh](meta/workspace/.agents/skills/humanizer-zh/SKILL.md)。需要润色中文时，可让 Agent 使用它减少空话、重复和模板化表达，同时保留事实、确定程度和作者声音。它是编辑指导，不是作者身份检测工具；英文说明也应保持同样的准确性。
 
+## 新增包与选择安装 Skill
+
+| 包 | 用途 | 独立使用 |
+|---|---|---|
+| [Skills](packages/skills/README.md) | 16 项开发、研究、表达与工作流方法，按名字选择安装 | 不需要其他模块；安装库不会自动启用全部 Skill |
+| [GAD](packages/game-analysis-decision/README.md) | 有事实依据的游戏问题分析、条件建议与方法校正 | Knowledge 与其他宿主包可选 |
+| [GamePresentation](packages/game-presentation/README.md) | 表现规格、资源制作与 Godot 交付、恢复 | 可使用手工或生成来源；素材仓可选 |
+| [PrototypeAssets](packages/prototype-assets/README.md) | 119 项有来源和许可记录的精选，以及校验导出工具 | 素材和许可复制后，游戏不依赖来源包 |
+
+已有工作区可以只装所需新包；无需为了可选集成安装 meta 或其他包。新建工作区仍默认使用完整 meta。[依赖与工具环境](docs/package-dependencies.md)说明每个操作实际需要什么。
+
+```text
+python scripts/workspace.py audit --target <workspace-path> --needs skills game-analysis presentation assets
+python scripts/workspace.py add --target <workspace-path> --packages skills game-analysis-decision game-presentation prototype-assets
+python scripts/workspace.py add --target <workspace-path> --packages skills game-analysis-decision game-presentation prototype-assets --apply
+python <workspace-path>/modules/skills/scripts/skills.py list
+python <workspace-path>/modules/skills/scripts/skills.py install --target <workspace-path> --names systematic-debugging property-based-testing
+python <workspace-path>/modules/skills/scripts/skills.py install --target <workspace-path> --names systematic-debugging property-based-testing --apply
+```
+
+CodeBuddy 选择安装时加 --platform codebuddy。Skill 的更新和回退单独管理，不会覆盖同名的用户改动；游戏路由方法在没有可选包时仍可按项目事实与可用工具工作。当前工程检查不代表方法长期收益或表现效果已通过用户验收。
+
 ## 兼容、升级与恢复
 
 当前版本和组件库存见 [catalog.json](catalog.json)。每版声明直接前一版，并在 `upgrades/` 提供兼容范围、操作步骤和恢复方法。不要改写已发布 tag，也不要跳过未声明的版本。
@@ -72,7 +94,7 @@ python scripts/workspace.py rollback --target <workspace-path> --transaction <tr
 
 ## 维护与发布
 
-正文和业务行为在来源仓维护，再直接发布到本仓所属的 `meta/` 或 `packages/<id>/`。三个业务来源不再生成自己的 released 副本。来源提交后运行 `scripts/publish.py --source <source-path> --apply`；默认只预览，未提交的来源不能正式发布。
+正文和业务行为在来源仓维护，再直接发布到本仓所属的 `meta/` 或 `packages/<id>/`。各来源不再为这些公开包生成另一份 released 副本。来源提交后运行 `scripts/publish.py --source <source-path> --apply`；默认只预览，未提交的来源不能正式发布。
 
 发布前验证受影响的来源合同、包内运行和上一版升级，运行 `python -B -m unittest discover -s tests -v`。写好升级说明后，用 `scripts/build_catalog.py --version <version> --previous <previous-version>` 固定库存，再运行 `workspace.py verify`。tag 对应已验证提交，公开后从远端新克隆复核。
 
